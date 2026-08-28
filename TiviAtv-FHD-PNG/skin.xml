@@ -34,12 +34,6 @@
 		<color name="greenSoft" value="#0f3320" />
 		<color name="yellowSoft" value="#3a2c0d" />
 		<color name="blueSoft" value="#102a44" />
-		<color name="fadeUp" value="#800a0a0c" />
-		<color name="barGrad" value="#000f0f12" />
-		<color name="cardGrad" value="#0018181e" />
-		<color name="pillGrad" value="#00202029" />
-		<color name="selGrad" value="#002e8ad6" />
-		<color name="liveGrad" value="#00e43e4b" />
 	</colors>
 	<windowstyle type="skinned" id="0">
 		<color name="Background" color="bg" />
@@ -60,11 +54,11 @@
 		<scrolllabel scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarBorderWidth="0" scrollbarRadius="4" />
 	</windowstyle>
 	<screen name="InfoBar" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="InfoBar">
-		<eLabel position="0,590" size="1920,230" backgroundColor="fadeUp" zPosition="0" />
-		<eLabel position="0,820" size="1920,260" backgroundColor="barGrad" zPosition="0" />
+		<eLabel position="0,590" size="1920,230" backgroundColor="#ff0a0a0c,#000a0a0c,vertical,1" zPosition="0" />
+		<eLabel position="0,820" size="1920,260" backgroundColor="#00141419,#000a0a0c,vertical" zPosition="0" />
 		<eLabel position="0,820" size="1920,3" backgroundColor="accent" zPosition="2" />
 		<widget source="session.CurrentService" render="ChannelNumber" position="68,840" size="150,64" font="TMX;52" foregroundColor="accent" transparent="1" halign="left" valign="center" noWrap="1" zPosition="2" />
-		<widget source="session.CurrentService" render="Picon" position="232,840" size="140,84" transparent="1" alphatest="blend" zPosition="2" />
+		<widget source="session.CurrentService" render="Picon" position="232,840" size="140,84" transparent="1" alphatest="blend" zPosition="2"><convert type="ServiceName">Reference</convert></widget>
 		<widget source="session.CurrentService" render="Label" position="396,838" size="700,54" font="TMB;44" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="2">
 			<convert type="ServiceName">Name</convert>
 		</widget>
@@ -72,6 +66,13 @@
 			<convert type="ServiceName">Provider</convert>
 		</widget>
 		<ePixmap pixmap="png/bg_150x36_r10_5286f82a05.png" position="1120,888" size="150,36" alphatest="blend" zPosition="2" />
+		<widget source="session.FrontendStatus" render="Label" position="1150,848" size="150,28" text=" " backgroundColor="line" cornerRadius="14" transparent="0" zPosition="2"><convert type="TiviAtvSignal">IsDVB</convert><convert type="ConditionalShowHide" /></widget>
+		<widget source="session.FrontendStatus" render="Progress" position="1150,848" size="150,28" foregroundColor="#003ea6ff,#001f6fae,horizontal" cornerRadius="14" borderWidth="0" transparent="1" zPosition="3"><convert type="TiviAtvSignal">SNR</convert></widget>
+		<widget source="session.FrontendStatus" render="Label" position="1150,848" size="150,28" font="TMB;18" foregroundColor="text" transparent="1" halign="center" valign="center" noWrap="1" zPosition="4"><convert type="TiviAtvSignal">SNRText</convert></widget>
+		<widget source="session.FrontendStatus" render="Label" position="1312,848" size="150,28" text=" " backgroundColor="line" cornerRadius="14" transparent="0" zPosition="2"><convert type="TiviAtvSignal">IsDVB</convert><convert type="ConditionalShowHide" /></widget>
+		<widget source="session.FrontendStatus" render="Progress" position="1312,848" size="150,28" foregroundColor="#003ea6ff,#001f6fae,horizontal" cornerRadius="14" borderWidth="0" transparent="1" zPosition="3"><convert type="TiviAtvSignal">AGC</convert></widget>
+		<widget source="session.FrontendStatus" render="Label" position="1312,848" size="150,28" font="TMB;18" foregroundColor="text" transparent="1" halign="center" valign="center" noWrap="1" zPosition="4"><convert type="TiviAtvSignal">AGCText</convert></widget>
+		<widget source="session.FrontendStatus" render="Label" position="1096,848" size="366,28" font="TMB;24" foregroundColor="textDim" transparent="1" halign="right" valign="center" noWrap="1" zPosition="4"><convert type="TiviAtvSignal">Speed</convert></widget>
 		<widget source="session.CurrentService" render="Label" position="1120,888" size="150,36" font="TMB;20" foregroundColor="textDim" halign="center" valign="center" noWrap="1" zPosition="2" transparent="1">
 			<convert type="PliExtraInfo">ResolutionString</convert>
 		</widget>
@@ -81,7 +82,7 @@
 		</widget>
 		<ePixmap pixmap="png/bg_104x36_r10_21d33ad491.png" position="1402,888" size="104,36" alphatest="blend" zPosition="2" />
 		<widget source="session.CurrentService" render="Label" position="1402,888" size="104,36" font="TMB;20" foregroundColor="textDim" halign="center" valign="center" noWrap="1" zPosition="2" transparent="1">
-			<convert type="PliExtraInfo">CryptoInfo</convert>
+			<convert type="PliExtraInfo">CurrentCrypto</convert>
 		</widget>
 		<widget source="global.CurrentTime" render="Label" position="1520,832" size="332,66" font="TMX;58" foregroundColor="text" transparent="1" halign="right" valign="center" zPosition="2">
 			<convert type="ClockToText">Default</convert>
@@ -99,12 +100,12 @@
 		<widget source="session.Event_Now" render="Progress" position="68,1008" size="1784,8" backgroundColor="line" borderWidth="0" transparent="1" zPosition="3" pixmap="png/fill_1784x8_r4_4d9bf9dcf9.png">
 			<convert type="EventTime">Progress</convert>
 		</widget>
-		<widget source="session.Event_Now" render="Label" position="68,1024" size="380,38" font="TMB;26" foregroundColor="accent" transparent="1" valign="center" noWrap="1" zPosition="2">
+		<widget source="session.Event_Now" render="Label" position="1400,1024" size="452,38" halign="right" font="TMB;26" foregroundColor="accent" transparent="1" valign="center" noWrap="1" zPosition="2">
 			<convert type="EventTime">Remaining</convert>
 		</widget>
 		<ePixmap pixmap="png/bg_136x34_r17_bbff762b45.png" position="900,1026" size="136,34" alphatest="blend" zPosition="2" />
-		<eLabel position="900,1026" size="136,34" text="SONRAKI" font="TMB;19" foregroundColor="textDim" halign="center" valign="center" zPosition="2" transparent="1" />
-		<widget source="session.Event_Next" render="Label" position="1052,1022" size="800,40" font="TM;26" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="2">
+		<eLabel position="68,1026" size="136,34" text="SONRAKI" font="TMB;19" foregroundColor="textDim" halign="center" valign="center" zPosition="2" transparent="1" />
+		<widget source="session.Event_Next" render="Label" position="220,1022" size="1140,40" font="TM;26" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="2">
 			<convert type="EventName">Name</convert>
 		</widget>
 	</screen>
@@ -121,7 +122,7 @@
 			<convert type="EventName">Genre</convert>
 		</widget>
 		<widget source="session.Event_Now" render="Label" position="116,574" size="1700,178" font="TM;28" foregroundColor="textDim" transparent="1" zPosition="1">
-			<convert type="EventName">ExtendedDescription</convert>
+			<convert type="EventName">FullDescription</convert>
 		</widget>
 	</screen>
 	<screen name="ChannelSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Kanallar">
@@ -135,6 +136,14 @@
 		<widget source="global.CurrentTime" render="Label" position="1560,98" size="320,30" font="TM;24" foregroundColor="textDim" transparent="1" halign="right" valign="center" zPosition="2">
 			<convert type="ClockToText">Format:%d.%m.%Y</convert>
 		</widget>
+		<widget source="session.FrontendStatus" render="Label" position="1096,48" size="150,28" text=" " backgroundColor="line" cornerRadius="14" transparent="0" zPosition="2"><convert type="TiviAtvSignal">IsDVB</convert><convert type="ConditionalShowHide" /></widget>
+		<widget source="session.FrontendStatus" render="Progress" position="1096,48" size="150,28" foregroundColor="#003ea6ff,#001f6fae,horizontal" cornerRadius="14" borderWidth="0" transparent="1" zPosition="3"><convert type="TiviAtvSignal">SNR</convert></widget>
+		<widget source="session.FrontendStatus" render="Label" position="1096,48" size="150,28" font="TMB;18" foregroundColor="text" transparent="1" halign="center" valign="center" noWrap="1" zPosition="4"><convert type="TiviAtvSignal">SNRText</convert></widget>
+		<widget source="session.FrontendStatus" render="Label" position="1258,48" size="150,28" text=" " backgroundColor="line" cornerRadius="14" transparent="0" zPosition="2"><convert type="TiviAtvSignal">IsDVB</convert><convert type="ConditionalShowHide" /></widget>
+		<widget source="session.FrontendStatus" render="Progress" position="1258,48" size="150,28" foregroundColor="#003ea6ff,#001f6fae,horizontal" cornerRadius="14" borderWidth="0" transparent="1" zPosition="3"><convert type="TiviAtvSignal">AGC</convert></widget>
+		<widget source="session.FrontendStatus" render="Label" position="1258,48" size="150,28" font="TMB;18" foregroundColor="text" transparent="1" halign="center" valign="center" noWrap="1" zPosition="4"><convert type="TiviAtvSignal">AGCText</convert></widget>
+		<widget source="session.FrontendStatus" render="Label" position="1096,48" size="312,28" font="TMB;22" foregroundColor="textDim" transparent="1" halign="right" valign="center" noWrap="1" zPosition="4"><convert type="TiviAtvSignal">Speed</convert></widget>
+
 		<widget name="list" position="44,150" size="972,820" transparent="1" zPosition="2" serviceItemHeight="76" serviceNameFont="TMB;32" serviceNumberFont="TM;28" serviceInfoFont="TM;24" itemSpacing="0,6" listMarginLeft="24" listMarginRight="24" fieldMargins="16" progressbarHeight="6" progressbarBorderWidth="0" progressBarWidth="130" colorEventProgressbar="accent" colorEventProgressbarSelected="onAccent" colorEventProgressbarBorder="line" colorEventProgressbarBorderSelected="line" colorServiceDescription="textDim" colorServiceDescriptionSelected="onAccent" colorServiceRecorded="live" colorServiceRecording="live" foregroundColorServiceNotAvail="textFaint" separatorLineColor="line" scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="14" scrollbarRadius="4" scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" selectionPixmap="png/sel_972x76_r14_22571e8c0d.png" />
 		<ePixmap pixmap="png/bg_784x448_r18_d9e54ab6ff.png" position="1096,142" size="784,448" alphatest="blend" zPosition="1" />
 		<widget source="session.VideoPicture" render="Pig" position="1104,150" size="768,432" zPosition="2" backgroundColor="transparent" />
@@ -157,16 +166,24 @@
 			<convert type="EventName">NextName</convert>
 		</widget>
 		<widget source="ServiceEvent" render="Label" position="1128,902" size="720,92" font="TM;24" foregroundColor="textFaint" transparent="1" zPosition="2">
-			<convert type="EventName">ExtendedDescription</convert>
+			<convert type="EventName">FullDescription</convert>
 		</widget>
 		<ePixmap pixmap="png/bg_228x52_r26_06b93bcc9a.png" position="48,1000" size="228,52" alphatest="blend" zPosition="2" />
-		<widget name="key_red" position="48,1000" size="228,52" font="TMB;24" foregroundColor="live" halign="center" valign="center" transparent="1" zPosition="2" />
+		<widget source="key_red" render="Label" position="48,1000" size="228,52" font="TMB;24" foregroundColor="live" halign="center" valign="center" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
 		<ePixmap pixmap="png/bg_228x52_r26_ccd15ee7f4.png" position="292,1000" size="228,52" alphatest="blend" zPosition="2" />
-		<widget name="key_green" position="292,1000" size="228,52" font="TMB;24" foregroundColor="ok" halign="center" valign="center" transparent="1" zPosition="2" />
+		<widget source="key_green" render="Label" position="292,1000" size="228,52" font="TMB;24" foregroundColor="ok" halign="center" valign="center" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
 		<ePixmap pixmap="png/bg_228x52_r26_c1ef76cd85.png" position="536,1000" size="228,52" alphatest="blend" zPosition="2" />
-		<widget name="key_yellow" position="536,1000" size="228,52" font="TMB;24" foregroundColor="warn" halign="center" valign="center" transparent="1" zPosition="2" />
+		<widget source="key_yellow" render="Label" position="536,1000" size="228,52" font="TMB;24" foregroundColor="warn" halign="center" valign="center" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
 		<ePixmap pixmap="png/bg_228x52_r26_e43952df38.png" position="780,1000" size="228,52" alphatest="blend" zPosition="2" />
-		<widget name="key_blue" position="780,1000" size="228,52" font="TMB;24" foregroundColor="accent" halign="center" valign="center" transparent="1" zPosition="2" />
+		<widget source="key_blue" render="Label" position="780,1000" size="228,52" font="TMB;24" foregroundColor="accent" halign="center" valign="center" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
 	</screen>
 	<screen name="SimpleChannelSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Kanallar">
 		<eLabel position="0,0" size="1920,1080" backgroundColor="scrim" zPosition="0" />
@@ -180,13 +197,21 @@
 		<widget source="Title" render="Label" position="48,40" size="900,56" font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="2" />
 		<widget name="list" position="44,150" size="972,820" transparent="1" zPosition="2" serviceNameFont="TMB;32" serviceNumberFont="TM;28" serviceInfoFont="TM;24" listMarginLeft="24" listMarginRight="24" scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="14" scrollbarRadius="4" scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" selectionPixmap="png/sel_972x82_r14_1d97ef6a0d.png" />
 		<ePixmap pixmap="png/bg_228x52_r26_06b93bcc9a.png" position="48,1000" size="228,52" alphatest="blend" zPosition="2" />
-		<widget name="key_red" position="48,1000" size="228,52" font="TMB;24" foregroundColor="live" halign="center" valign="center" zPosition="2" transparent="1" />
+		<widget source="key_red" render="Label" position="48,1000" size="228,52" font="TMB;24" foregroundColor="live" halign="center" valign="center" zPosition="2" transparent="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
 		<ePixmap pixmap="png/bg_228x52_r26_ccd15ee7f4.png" position="292,1000" size="228,52" alphatest="blend" zPosition="2" />
-		<widget name="key_green" position="292,1000" size="228,52" font="TMB;24" foregroundColor="ok" halign="center" valign="center" zPosition="2" transparent="1" />
+		<widget source="key_green" render="Label" position="292,1000" size="228,52" font="TMB;24" foregroundColor="ok" halign="center" valign="center" zPosition="2" transparent="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
 		<ePixmap pixmap="png/bg_228x52_r26_c1ef76cd85.png" position="536,1000" size="228,52" alphatest="blend" zPosition="2" />
-		<widget name="key_yellow" position="536,1000" size="228,52" font="TMB;24" foregroundColor="warn" halign="center" valign="center" zPosition="2" transparent="1" />
+		<widget source="key_yellow" render="Label" position="536,1000" size="228,52" font="TMB;24" foregroundColor="warn" halign="center" valign="center" zPosition="2" transparent="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
 		<ePixmap pixmap="png/bg_228x52_r26_e43952df38.png" position="780,1000" size="228,52" alphatest="blend" zPosition="2" />
-		<widget name="key_blue" position="780,1000" size="228,52" font="TMB;24" foregroundColor="accent" halign="center" valign="center" zPosition="2" transparent="1" />
+		<widget source="key_blue" render="Label" position="780,1000" size="228,52" font="TMB;24" foregroundColor="accent" halign="center" valign="center" zPosition="2" transparent="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
 	</screen>
 	<screen name="EPGSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg" title="Program Rehberi">
 		<widget source="Title" render="Label" position="68,40" size="1100,58" font="TMB;42" foregroundColor="text" transparent="1" valign="center" noWrap="1" />
@@ -196,23 +221,39 @@
 		<eLabel position="68,116" size="1784,2" backgroundColor="line" />
 		<widget name="list" position="68,146" size="1784,820" transparent="1" separatorLineColor="line" scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4" scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" selectionPixmap="png/sel_1784x82_r14_9a6bf96e45.png" />
 		<ePixmap pixmap="png/bg_240x52_r26_0011b80dd4.png" position="68,996" size="240,52" alphatest="blend" />
-		<widget name="key_red" position="68,996" size="240,52" font="TMB;24" foregroundColor="live" halign="center" valign="center" transparent="1" />
+		<widget source="key_red" render="Label" position="68,996" size="240,52" font="TMB;24" foregroundColor="live" halign="center" valign="center" transparent="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
 		<ePixmap pixmap="png/bg_240x52_r26_051b1ee82d.png" position="324,996" size="240,52" alphatest="blend" />
-		<widget name="key_green" position="324,996" size="240,52" font="TMB;24" foregroundColor="ok" halign="center" valign="center" transparent="1" />
+		<widget source="key_green" render="Label" position="324,996" size="240,52" font="TMB;24" foregroundColor="ok" halign="center" valign="center" transparent="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
 		<ePixmap pixmap="png/bg_240x52_r26_66492e1686.png" position="580,996" size="240,52" alphatest="blend" />
-		<widget name="key_yellow" position="580,996" size="240,52" font="TMB;24" foregroundColor="warn" halign="center" valign="center" transparent="1" />
+		<widget source="key_yellow" render="Label" position="580,996" size="240,52" font="TMB;24" foregroundColor="warn" halign="center" valign="center" transparent="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
 		<ePixmap pixmap="png/bg_240x52_r26_5e03f0c12d.png" position="836,996" size="240,52" alphatest="blend" />
-		<widget name="key_blue" position="836,996" size="240,52" font="TMB;24" foregroundColor="accent" halign="center" valign="center" transparent="1" />
+		<widget source="key_blue" render="Label" position="836,996" size="240,52" font="TMB;24" foregroundColor="accent" halign="center" valign="center" transparent="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
 	</screen>
 	<screen name="GraphMultiEPG" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg" title="Program Rehberi">
 		<ePixmap pixmap="png/bg_240x52_r26_0011b80dd4.png" position="68,36" size="240,52" alphatest="blend" />
-		<widget name="key_red" position="68,36" size="240,52" font="TMB;24" foregroundColor="live" halign="center" valign="center" transparent="1" />
+		<widget source="key_red" render="Label" position="68,36" size="240,52" font="TMB;24" foregroundColor="live" halign="center" valign="center" transparent="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
 		<ePixmap pixmap="png/bg_240x52_r26_051b1ee82d.png" position="324,36" size="240,52" alphatest="blend" />
-		<widget name="key_green" position="324,36" size="240,52" font="TMB;24" foregroundColor="ok" halign="center" valign="center" transparent="1" />
+		<widget source="key_green" render="Label" position="324,36" size="240,52" font="TMB;24" foregroundColor="ok" halign="center" valign="center" transparent="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
 		<ePixmap pixmap="png/bg_240x52_r26_66492e1686.png" position="580,36" size="240,52" alphatest="blend" />
-		<widget name="key_yellow" position="580,36" size="240,52" font="TMB;24" foregroundColor="warn" halign="center" valign="center" transparent="1" />
+		<widget source="key_yellow" render="Label" position="580,36" size="240,52" font="TMB;24" foregroundColor="warn" halign="center" valign="center" transparent="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
 		<ePixmap pixmap="png/bg_240x52_r26_5e03f0c12d.png" position="836,36" size="240,52" alphatest="blend" />
-		<widget name="key_blue" position="836,36" size="240,52" font="TMB;24" foregroundColor="accent" halign="center" valign="center" transparent="1" />
+		<widget source="key_blue" render="Label" position="836,36" size="240,52" font="TMB;24" foregroundColor="accent" halign="center" valign="center" transparent="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
 		<widget source="global.CurrentTime" render="Label" position="1500,32" size="352,58" font="TMX;46" foregroundColor="accent" transparent="1" halign="right" valign="center">
 			<convert type="ClockToText">Default</convert>
 		</widget>
@@ -235,18 +276,26 @@
 			<convert type="EventTime">Times</convert>
 		</widget>
 		<widget source="Event" render="Label" position="116,912" size="1700,104" font="TM;26" foregroundColor="textDim" transparent="1" zPosition="1">
-			<convert type="EventName">ExtendedDescription</convert>
+			<convert type="EventName">FullDescription</convert>
 		</widget>
 	</screen>
 	<screen name="GraphMultiEPGList" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg" title="Program Rehberi">
 		<ePixmap pixmap="png/bg_240x52_r26_0011b80dd4.png" position="68,36" size="240,52" alphatest="blend" />
-		<widget name="key_red" position="68,36" size="240,52" font="TMB;24" foregroundColor="live" halign="center" valign="center" transparent="1" />
+		<widget source="key_red" render="Label" position="68,36" size="240,52" font="TMB;24" foregroundColor="live" halign="center" valign="center" transparent="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
 		<ePixmap pixmap="png/bg_240x52_r26_051b1ee82d.png" position="324,36" size="240,52" alphatest="blend" />
-		<widget name="key_green" position="324,36" size="240,52" font="TMB;24" foregroundColor="ok" halign="center" valign="center" transparent="1" />
+		<widget source="key_green" render="Label" position="324,36" size="240,52" font="TMB;24" foregroundColor="ok" halign="center" valign="center" transparent="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
 		<ePixmap pixmap="png/bg_240x52_r26_66492e1686.png" position="580,36" size="240,52" alphatest="blend" />
-		<widget name="key_yellow" position="580,36" size="240,52" font="TMB;24" foregroundColor="warn" halign="center" valign="center" transparent="1" />
+		<widget source="key_yellow" render="Label" position="580,36" size="240,52" font="TMB;24" foregroundColor="warn" halign="center" valign="center" transparent="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
 		<ePixmap pixmap="png/bg_240x52_r26_5e03f0c12d.png" position="836,36" size="240,52" alphatest="blend" />
-		<widget name="key_blue" position="836,36" size="240,52" font="TMB;24" foregroundColor="accent" halign="center" valign="center" transparent="1" />
+		<widget source="key_blue" render="Label" position="836,36" size="240,52" font="TMB;24" foregroundColor="accent" halign="center" valign="center" transparent="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
 		<widget name="timeline_text" position="68,110" size="1784,40" font="TM;24" foregroundColor="textDim" transparent="1" />
 		<eLabel position="68,152" size="1784,2" backgroundColor="line" zPosition="1" />
 		<widget name="list" position="68,160" size="1784,860" transparent="1" EntryBorderColor="#0a0a0c" EntryBackgroundColor="#1c1c24" EntryBackgroundColorSelected="#1f6fae" scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4" scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" />
@@ -262,28 +311,75 @@
 		<widget source="Title" render="Label" position="68,44" size="1784,58" font="TMB;42" foregroundColor="text" transparent="1" valign="center" noWrap="1" />
 		<ePixmap pixmap="png/bg_120x5_r2_0528ee033c.png" position="68,120" size="120,5" alphatest="blend" />
 		<ePixmap pixmap="png/bg_1784x700_r20_d5c1b83144.png" position="68,160" size="1784,700" alphatest="blend" />
-		<widget name="epg_description" position="116,196" size="1688,628" font="TM;30" foregroundColor="textDim" backgroundColor="surface2" transparent="1" scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" />
+		<widget name="epg_description" position="116,196" size="1688,628" font="TM;30"
+		        foregroundColor="text" transparent="1" />
+		<widget name="FullDescription" position="116,196" size="1688,628" font="TM;30"
+		        foregroundColor="text" transparent="1" />
 		<widget name="datetime" position="68,888" size="500,42" font="TMB;28" foregroundColor="accent" transparent="1" valign="center" />
 		<widget name="duration" position="588,888" size="300,42" font="TM;28" foregroundColor="textDim" transparent="1" valign="center" />
 		<widget name="channel" position="908,888" size="944,42" font="TM;28" foregroundColor="textDim" transparent="1" halign="right" valign="center" />
 		<ePixmap pixmap="png/bg_240x52_r26_0011b80dd4.png" position="68,996" size="240,52" alphatest="blend" />
-		<widget name="key_red" position="68,996" size="240,52" font="TMB;24" foregroundColor="live" halign="center" valign="center" transparent="1" />
+		<widget source="key_red" render="Label" position="68,996" size="240,52" font="TMB;24" foregroundColor="live" halign="center" valign="center" transparent="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
 		<ePixmap pixmap="png/bg_240x52_r26_051b1ee82d.png" position="324,996" size="240,52" alphatest="blend" />
-		<widget name="key_green" position="324,996" size="240,52" font="TMB;24" foregroundColor="ok" halign="center" valign="center" transparent="1" />
+		<widget source="key_green" render="Label" position="324,996" size="240,52" font="TMB;24" foregroundColor="ok" halign="center" valign="center" transparent="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
 		<ePixmap pixmap="png/bg_240x52_r26_66492e1686.png" position="580,996" size="240,52" alphatest="blend" />
-		<widget name="key_yellow" position="580,996" size="240,52" font="TMB;24" foregroundColor="warn" halign="center" valign="center" transparent="1" />
+		<widget source="key_yellow" render="Label" position="580,996" size="240,52" font="TMB;24" foregroundColor="warn" halign="center" valign="center" transparent="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
 		<ePixmap pixmap="png/bg_240x52_r26_5e03f0c12d.png" position="836,996" size="240,52" alphatest="blend" />
-		<widget name="key_blue" position="836,996" size="240,52" font="TMB;24" foregroundColor="accent" halign="center" valign="center" transparent="1" />
+		<widget source="key_blue" render="Label" position="836,996" size="240,52" font="TMB;24" foregroundColor="accent" halign="center" valign="center" transparent="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
 	</screen>
 	<screen name="Menu" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Menu">
-		<eLabel position="0,0" size="1920,1080" backgroundColor="scrim" zPosition="0" />
-		<ePixmap pixmap="png/bg_1060x840_r24_9f79046f53.png" position="430,120" size="1060,840" alphatest="blend" zPosition="0" />
-		<widget source="Title" render="Label" position="486,164" size="948,58" font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
-		<ePixmap pixmap="png/bg_100x5_r2_305b81ee0c.png" position="486,232" size="100,5" alphatest="blend" zPosition="1" />
-		<widget source="menu" render="Listbox" position="486,276" size="948,584" transparent="1" zPosition="1" itemHeight="72" font="TM;32" padding="24,0" scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4" scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" selectionPixmap="png/sel_948x72_r14_fec9876cf3.png">
+		<eLabel position="0,0"   size="1920,1080" backgroundColor="scrim"   zPosition="0" />
+		<eLabel position="0,0"   size="760,1080"  backgroundColor="panelBg" zPosition="0" />
+		<eLabel position="758,0" size="2,1080"    backgroundColor="line"    zPosition="1" />
+
+		<widget source="Title" render="Label" position="60,56" size="640,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<eLabel position="60,124" size="100,5" backgroundColor="accent" cornerRadius="3" zPosition="1" />
+
+		<widget source="menu" render="Listbox" position="44,180" size="672,828" transparent="1" zPosition="1"
+		        itemHeight="72" itemAlignment="leftMiddle" font="TM;32" itemCornerRadiusSelected="14"
+		        itemGradientSelected="#003ea6ff,#001f6fae,vertical" padding="24,12,24,0"
+		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line">
 			<convert type="StringList" />
 		</widget>
-		<widget source="global.CurrentTime" render="Label" position="1134,890" size="300,40" font="TM;26" foregroundColor="textFaint" transparent="1" halign="right" valign="center" zPosition="1">
+
+		<widget source="global.CurrentTime" render="Label" position="400,1016" size="316,40"
+		        font="TM;26" foregroundColor="textFaint" transparent="1" halign="right" valign="center" zPosition="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+	</screen>
+
+	<!-- Ana menu 8 kalem: enigma2 Menu ekraninda skinName sirasi
+	     Menu<id> / menu_<id> / Menu oldugu icin bu tanim yalnizca ana menuye
+	     uygulanir. Liste dikeyde ortalanir, altta yigilan bosluk kalmaz. -->
+	<screen name="menu_mainmenu" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Ana Menu">
+		<eLabel position="0,0"   size="1920,1080" backgroundColor="scrim"   zPosition="0" />
+		<eLabel position="0,0"   size="760,1080"  backgroundColor="panelBg" zPosition="0" />
+		<eLabel position="758,0" size="2,1080"    backgroundColor="line"    zPosition="1" />
+
+		<widget source="Title" render="Label" position="60,56" size="640,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<eLabel position="60,124" size="100,5" backgroundColor="accent" cornerRadius="3" zPosition="1" />
+
+		<widget source="menu" render="Listbox" position="44,306" size="672,576" transparent="1" zPosition="1"
+		        itemHeight="72" itemAlignment="leftMiddle" font="TM;32" itemCornerRadiusSelected="14"
+		        itemGradientSelected="#003ea6ff,#001f6fae,vertical" padding="24,12,24,0"
+		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line">
+			<convert type="StringList" />
+		</widget>
+
+		<widget source="global.CurrentTime" render="Label" position="400,1016" size="316,40"
+		        font="TM;26" foregroundColor="textFaint" transparent="1" halign="right" valign="center" zPosition="1">
 			<convert type="ClockToText">Default</convert>
 		</widget>
 	</screen>
@@ -292,7 +388,7 @@
 		<ePixmap pixmap="png/bg_1440x900_r24_011d7f0067.png" position="240,90" size="1440,900" alphatest="blend" zPosition="0" />
 		<widget source="Title" render="Label" position="296,134" size="1328,58" font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
 		<ePixmap pixmap="png/bg_100x5_r2_305b81ee0c.png" position="296,202" size="100,5" alphatest="blend" zPosition="1" />
-		<widget name="config" position="296,246" size="1328,562" transparent="1" zPosition="1" itemHeight="64" font="TM;30" padding="24,0" enableWrapAround="1" scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4" scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" selectionPixmap="png/sel_1328x64_r14_eb8f7aa86e.png" />
+		<widget name="config" position="296,246" size="1328,562" transparent="1" zPosition="1" itemHeight="64" itemAlignment="leftMiddle" font="TM;30" padding="24,12,24,0" enableWrapAround="1" scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4" scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" selectionPixmap="png/sel_1328x64_r14_eb8f7aa86e.png" />
 		<eLabel position="296,828" size="1328,2" backgroundColor="line" zPosition="1" />
 		<widget name="description" position="296,844" size="1328,64" font="TM;26" foregroundColor="textDim" backgroundColor="surface2" transparent="1" valign="center" zPosition="1" />
 		<widget name="footnote" position="296,916" size="1328,36" font="TM;22" foregroundColor="textFaint" transparent="1" halign="right" valign="center" zPosition="1" />
@@ -303,14 +399,14 @@
 		<ePixmap pixmap="png/bg_900x420_r24_9a7e90041b.png" position="510,330" size="900,420" alphatest="blend" zPosition="0" />
 		<ePixmap pixmap="png/bg_900x6_r3_6d0421dbed.png" position="510,330" size="900,6" alphatest="blend" zPosition="1" />
 		<widget name="text" position="570,386" size="780,180" font="TM;30" foregroundColor="text" backgroundColor="surface2" transparent="1" zPosition="1" />
-		<widget name="list" position="570,586" size="780,132" transparent="1" zPosition="1" itemHeight="60" font="TM;30" padding="24,0" scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarRadius="4" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" selectionPixmap="png/sel_780x60_r14_c5d9de2ae2.png" />
+		<widget name="list" position="570,586" size="780,132" transparent="1" zPosition="1" itemHeight="60" itemAlignment="leftMiddle" font="TM;30" padding="24,12,24,0" scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarRadius="4" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" selectionPixmap="png/sel_780x60_r14_c5d9de2ae2.png" />
 	</screen>
 	<screen name="ChoiceBox" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Secim">
 		<eLabel position="0,0" size="1920,1080" backgroundColor="scrim" zPosition="0" />
 		<ePixmap pixmap="png/bg_900x700_r24_e48bc30cf6.png" position="510,190" size="900,700" alphatest="blend" zPosition="0" />
 		<ePixmap pixmap="png/bg_900x6_r3_6d0421dbed.png" position="510,190" size="900,6" alphatest="blend" zPosition="1" />
 		<widget name="text" position="570,240" size="780,80" font="TMB;32" foregroundColor="text" backgroundColor="surface2" transparent="1" valign="center" zPosition="1" />
-		<widget name="list" position="570,340" size="780,500" transparent="1" zPosition="1" itemHeight="60" font="TM;30" padding="24,0" scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4" scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" selectionPixmap="png/sel_780x60_r14_c5d9de2ae2.png" />
+		<widget name="list" position="570,340" size="780,500" transparent="1" zPosition="1" itemHeight="60" itemAlignment="leftMiddle" font="TM;30" padding="24,12,24,0" scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4" scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" selectionPixmap="png/sel_780x60_r14_c5d9de2ae2.png" />
 	</screen>
 	<screen name="Volume" position="600,900" size="720,80" flags="wfNoBorder" backgroundColor="transparent" title="Ses" zPosition="1">
 		<ePixmap pixmap="png/bg_720x80_r40_45cd6e3714.png" position="0,0" size="720,80" alphatest="blend" />

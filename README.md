@@ -27,6 +27,15 @@ Klasörü olduğu gibi kutuya kopyala:
 /usr/share/enigma2/TiviAtv-FHD/
 ```
 
+InfoBar'daki sinyal / akış hızı göstergesi bir converter kullanır, o da
+enigma2'nin converter dizinine gider:
+
+```
+TiviAtv-FHD/converter/TiviAtvSignal.py  →  /usr/lib/enigma2/python/Components/Converter/
+```
+
+Kopyalanmazsa skin yine açılır, yalnız o alan boş kalır.
+
 Sonra: **Menü → Ayarlar → Sistem → Kullanıcı arayüzü → Skin seçimi**
 
 TiviMate görünümü için kanal listesini iki satırlı moda al —
@@ -40,12 +49,54 @@ TiviMate görünümü için kanal listesini iki satırlı moda al —
 > (`ServiceList.setItemsPerPage`), yani `serviceItemHeight` bu hesabın altında
 > kalır. Satırlar sık ya da seyrek görünüyorsa o ayarı değiştir.
 
+## Ekranlar
+
+Hepsi bir Octagon SX88V2 4K üzerinde, openATV 8.0'da çekildi.
+
+### InfoBar
+
+Saydam alt bant, kanal logosu, çift satır program bilgisi. Sağ üstte uydu
+kanalında SNR/AGC yüzdeleri, IPTV'de akış hızı — ikisi de aynı alanı paylaşır,
+hangi kaynak aktifse o görünür.
+
+![InfoBar](docs/screenshots/infobar.jpg)
+
+### Kanal listesi
+
+İki satırlı servis listesi, picon, ilerleme çubuğu; sağda canlı önizleme ve
+şimdi/sonraki kartı.
+
+![Kanal listesi](docs/screenshots/channelselection.jpg)
+
+### Program rehberi
+
+![EPG](docs/screenshots/epg-grid.jpg)
+
+### Menü
+
+Tam boy sol panel; ana menü kendi yerleşimini `menu_mainmenu` ile alır.
+
+![Menü](docs/screenshots/menu.jpg)
+
+### Ayarlar
+
+![Ayarlar](docs/screenshots/setup.jpg)
+
+### Ses
+
+![Ses](docs/screenshots/volume.jpg)
+
 ## Tanımlı ekranlar
 
 `InfoBar` · `SecondInfoBar` · `ChannelSelection` · `SimpleChannelSelection` ·
-`ChannelSelectionRadio` · `EPGSelection` · `GraphMultiEPG` · `GraphMultiEPGList` ·
-`EventView` · `Menu` · `Setup` · `MessageBox` · `ChoiceBox` · `Volume` · `Mute` ·
-`NumberZap` · `SimpleSummary`
+`ChannelSelectionRadio` · `EPGSelection` · `GraphicalEPG` · `GraphicalEPGPIG` ·
+`EPGSelectionMulti` · `GraphMultiEPG` · `GraphMultiEPGList` · `EventView` ·
+`Menu` · `menu_mainmenu` · `Setup` · `MessageBox` · `ChoiceBox` · `Volume` ·
+`Mute` · `NumberZap` · `SimpleSummary`
+
+> EPG ekranlarının adı openATV 8 ile değişti: `GraphMultiEPG` yerine
+> `GraphicalEPG` / `GraphicalEPGPIG` / `EPGSelectionMulti` aranıyor. Eski adlar
+> 7.3–7.5 dalları için duruyor.
 
 Burada tanımlı olmayan ekranlar openATV'nin kendi `skin_default.xml`'inden gelir,
 yani hiçbir ekran boş kalmaz.
@@ -60,10 +111,13 @@ Tek yerden değişir — `TiviAtv-FHD/skin.xml` başındaki `<colors>` bloğu.
 > `00` tamamen opak, `FF` tamamen görünmez. CSS'ten alışkın olanın en sık
 > düştüğü tuzak.
 
-Virgül içeren her `<color>` değeri otomatik olarak **gradient** sayılır:
+Gradient, `<colors>` bloğunda **tanımlanamaz** — `parseColor` orada yalnız
+`#aarrggbb` kabul eder, virgüllü değer sessizce beyaza düşer. Gradient doğrudan
+elemanın attribute'una yazılır; `backgroundColor` / `foregroundColor` değerinde
+virgül görürse `parseGradient`'e gider:
 
 ```xml
-<color name="cardGrad" value="#001c1c24,#00141419,vertical" />
+<eLabel backgroundColor="#001c1c24,#00141419,vertical" />
 ```
 
 Sözdizimi: `başlangıç[,orta],bitiş,vertical|horizontal[,alphaBlend]`
