@@ -1,0 +1,11 @@
+Third-party assets
+==================
+
+Barlow typeface (TiviAtv-FHD/Barlow-*.ttf, TiviAtv-FHD-PNG/Barlow-*.ttf)
+  Copyright (c) Jeremy Tribby
+  Licensed under the SIL Open Font License, Version 1.1.
+  Full text: OFL-Barlow.txt in each skin folder.
+  https://github.com/jeremytribby/barlow
+
+Channel logos (picons) are NOT included in this repository.
+They are installed separately under /usr/share/enigma2/picon/.
