@@ -4,20 +4,13 @@ TiviMate düzeninde, 1920×1080 openATV / enigma2 skini.
 Yuvarlak köşeler, gradientler, ilerleme çubukları ve seçim vurgusu — hepsi
 enigma2'nin kendi çizim motoruyla, **tek bir PNG kullanılmadan**.
 
-![önizleme](TiviAtv-FHD/preview.png)
+![önizleme](TiviAtv-FHD/prev.png)
 
-## İki sürüm
+## Gereksinim
 
-| | `TiviAtv-FHD` | `TiviAtv-FHD-PNG` |
-|---|---|---|
-| Gereken openATV | **7.3+** | **her sürüm** (7.0 dahil) |
-| Yuvarlaklık / gradient | motor çiziyor | 43 PNG'ye pişirilmiş (52 KB) |
-| OpenSkin Designer'da | köşeler kare görünür | doğru görünür |
-| Renk teması değiştirmek | `<colors>` bloğu, tek satır | PNG'lerin yeniden üretimi gerekir |
-
-`cornerRadius`, gradient ve `itemCornerRadiusSelected` enigma2 motoruna
-**7.3 ile** girdi — openATV'nin 7.2 ve altındaki dallarında bu tanımlar yok.
-Kutun eskiyse ya da tasarımcıda çalışacaksan PNG sürümünü kullan.
+openATV **7.3+**. `cornerRadius`, gradient ve `itemCornerRadiusSelected`
+enigma2 motoruna 7.3 ile girdi; 7.2 ve altındaki dallarda bu tanımlar yok,
+köşeler kare çıkar.
 
 ## Kurulum
 
@@ -74,7 +67,7 @@ hangi kaynak aktifse o görünür.
 
 ### Menü
 
-Tam boy sol panel; ana menü kendi yerleşimini `menu_mainmenu` ile alır.
+Tam boy sol panel, 14 satır kapasite.
 
 ![Menü](docs/screenshots/menu.jpg)
 
@@ -91,9 +84,9 @@ Tam boy sol panel; ana menü kendi yerleşimini `menu_mainmenu` ile alır.
 `InfoBar` · `SecondInfoBar` · `ChannelSelection` · `SimpleChannelSelection` ·
 `ChannelSelectionRadio` · `EPGSelection` · `GraphicalEPG` · `GraphicalEPGPIG` ·
 `EPGSelectionMulti` · `GraphMultiEPG` · `GraphMultiEPGList` · `EventView` ·
-`Menu` · `menu_mainmenu` · `Setup` · `MessageBox` · `ChoiceBox` · `Volume` ·
-`Mute` · `NumberZap` · `AudioSelection` · `PluginBrowser` · `PackageAction` ·
-`SimpleSummary`
+`Menu` · `Setup` · `MessageBox` · `ChoiceBox` · `Volume` ·
+`Mute` · `NumberZap` · `AudioSelection` · `SkinSelection` · `PluginBrowser` ·
+`PackageAction` · `SimpleSummary`
 
 Ayrıca enigma2'nin standart renk adları (`window-bg`, `window-fg`, `key_red`,
 `grey` …) skin paletine eşlendi. Bunlar tanımsızken, skinde karşılığı olmayan
@@ -151,12 +144,11 @@ Depo kökünden çalıştırılır, hiçbirinde sabit yol yok.
 | Betik | Ne yapar |
 |---|---|
 | `tools/lint_skin.py` | Skini openATV'nin **gerçek** attribute listesine karşı denetler — `skin.py` ve `ServiceList.py`'yi upstream'den indirip parse eder. Tanımsız renk/font, ekran dışına taşan eleman, bilinmeyen attribute yakalar. |
-| `tools/make_png_variant.py` | PNG sürümünü üretir. `cornerRadius` + `backgroundColor` taşıyan her elemanı bulur, **tam o boyutta** yuvarlak köşeli + gradientli bir PNG çizer, arkasına `<ePixmap alphatest="blend">` koyar. Esnetme yok, alfa korunur. |
 | `tools/render_preview.py` | `preview.html`'i üretir — ekranları skin.xml'in gerçek koordinat, renk ve yarıçaplarından tarayıcıda çizer. |
-| `tools/make_thumb.py` | Skin seçicideki `preview.png`'yi üretir. |
+| `tools/make_thumb.py` | Skin seçicideki `prev.png`'yi üretir. |
 | `tools/make_designer_copy.py` | OpenSkin Designer uyumlu kopya üretir (aşağıya bak). |
 
-Gereksinim: Python 3.9+ ve `Pillow` (yalnız PNG üreten iki betik için).
+Gereksinim: Python 3.9+ ve `Pillow` (yalnız `make_thumb.py` için).
 
 ```bash
 pip install pillow
@@ -174,11 +166,12 @@ skini olduğu gibi açamaz. `tools/make_designer_copy.py` uyumlu bir kopya üret
 | Gradient renk değerleri | `#a,#b,vertical` renk olarak ayrıştırılamaz | iki durağın ortalaması alınır |
 | `<windowstyle>` içindeki `listbox`/`label`/`configList`/`scrolllabel` | Çalışan örnek skinlerde yok, `name` attribute'u yok | kaldırılır |
 
-`cornerRadius` string'i programın binary'sinde hiç geçmiyor — bu yüzden sıfır-PNG
-sürümü tasarımcıda **her zaman kare köşeli** görünür. PNG sürümünü aç.
+`cornerRadius` string'i programın binary'sinde hiç geçmiyor — skin tasarımcıda
+**her zaman kare köşeli** görünür. Yuvarlaklık yalnız kutuda, enigma2 çizerken
+ortaya çıkar.
 
 ```bash
-python tools/make_designer_copy.py --png
+python tools/make_designer_copy.py
 ```
 
 ## Lisans
@@ -196,14 +189,11 @@ A TiviMate-style 1080p skin for openATV / enigma2. Rounded corners, gradients,
 progress bars and selection highlights are drawn by the enigma2 engine itself —
 **no PNG assets at all**.
 
-Two variants: `TiviAtv-FHD` needs openATV **7.3+** (that is when `cornerRadius`,
-gradients and `itemCornerRadiusSelected` landed in the engine);
-`TiviAtv-FHD-PNG` bakes the same look into 43 exactly-sized PNGs (52 KB) and
-works on **any** version, including inside OpenSkin Designer.
+Needs openATV **7.3+** — that is when `cornerRadius`, gradients and
+`itemCornerRadiusSelected` landed in the engine.
 
 Copy the folder to `/usr/share/enigma2/`, pick it under
 **Menu → Setup → System → User interface → Skin**, and enable the two-line
 service list for the TiviMate layout.
 
-The `tools/` scripts regenerate everything from `skin.xml`; the PNG variant is
-generated, never hand-edited.
+The `tools/` scripts regenerate the preview and the thumbnail from `skin.xml`.

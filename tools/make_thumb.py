@@ -1,4 +1,4 @@
-# skin.xml'deki gercek renk ve koordinatlardan preview.png uretir.
+# skin.xml'deki gercek renk ve koordinatlardan prev.png uretir.
 import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -7,7 +7,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "TiviAtv-FHD"
-TARGETS = [SRC, ROOT / "TiviAtv-FHD-PNG"]
+TARGETS = [SRC]
 
 W, H = 1920, 1080
 S = 0.5                     # 960x540 cikti
@@ -124,8 +124,5 @@ for i, (lbl, bgc, fgc) in enumerate([("Tumu", "redSoft", "live"), ("Uydular", "g
     w = d.textlength(lbl, font=f_pill)
     d.text((px(x + 114) - w / 2, px(1014)), lbl, font=f_pill, fill=C(fgc)[:3])
 
-img.save(TARGETS[0] / "preview.png")
-for t in TARGETS[1:]:
-    img.save(t / "preview.png")
-    img.save(t / "prev.png")
-print(f"preview.png uretildi ({img.width}x{img.height}) ->", ", ".join(str(t) for t in TARGETS))
+img.save(TARGETS[0] / "prev.png")
+print(f"prev.png uretildi ({img.width}x{img.height}) ->", ", ".join(str(t) for t in TARGETS))

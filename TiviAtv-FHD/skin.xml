@@ -775,37 +775,11 @@
 		<eLabel position="0,0"   size="760,1080"  backgroundColor="panelBg" zPosition="0" />
 		<eLabel position="758,0" size="2,1080"    backgroundColor="line"    zPosition="1" />
 
-		<widget source="Title" render="Label" position="60,56" size="640,58"
+		<widget source="Title" render="Label" position="60,36" size="640,58"
 		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
-		<eLabel position="60,124" size="100,5" backgroundColor="accent" cornerRadius="3" zPosition="1" />
+		<eLabel position="60,104" size="100,5" backgroundColor="accent" cornerRadius="3" zPosition="1" />
 
-		<widget source="menu" render="Listbox" position="44,180" size="672,864" transparent="1" zPosition="1"
-		        itemHeight="64" itemAlignment="leftMiddle" font="TM;32" itemCornerRadiusSelected="14"
-		        itemGradientSelected="#003ea6ff,#001f6fae,vertical" padding="24,12,24,0"
-		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line">
-			<convert type="StringList" />
-		</widget>
-
-		<widget source="global.CurrentTime" render="Label" position="400,1016" size="316,40"
-		        font="TM;26" foregroundColor="textFaint" transparent="1" halign="right" valign="center" zPosition="1">
-			<convert type="ClockToText">Default</convert>
-		</widget>
-	</screen>
-
-	<!-- Ana menu 8 kalem: enigma2 Menu ekraninda skinName sirasi
-	     Menu<id> / menu_<id> / Menu oldugu icin bu tanim yalnizca ana menuye
-	     uygulanir. Liste dikeyde ortalanir, altta yigilan bosluk kalmaz. -->
-	<screen name="menu_mainmenu" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Ana Menu">
-		<eLabel position="0,0"   size="1920,1080" backgroundColor="scrim"   zPosition="0" />
-		<eLabel position="0,0"   size="760,1080"  backgroundColor="panelBg" zPosition="0" />
-		<eLabel position="758,0" size="2,1080"    backgroundColor="line"    zPosition="1" />
-
-		<widget source="Title" render="Label" position="60,56" size="640,58"
-		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
-		<eLabel position="60,124" size="100,5" backgroundColor="accent" cornerRadius="3" zPosition="1" />
-
-		<widget source="menu" render="Listbox" position="44,356" size="672,512" transparent="1" zPosition="1"
+		<widget source="menu" render="Listbox" position="44,128" size="672,896" transparent="1" zPosition="1"
 		        itemHeight="64" itemAlignment="leftMiddle" font="TM;32" itemCornerRadiusSelected="14"
 		        itemGradientSelected="#003ea6ff,#001f6fae,vertical" padding="24,12,24,0"
 		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
@@ -845,6 +819,38 @@
 	<!-- ============================================================
 	     DIYALOGLAR
 	     ============================================================ -->
+	<!-- ============================================================
+	     SKINSELECTION  -  arayuz secimi
+	     Setup duzeni + sagda secili skinin onizlemesi
+	     ============================================================ -->
+	<screen name="SkinSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Arayuz Secimi">
+		<eLabel position="0,0"    size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="240,90" size="1440,900"  backgroundColor="#001c1c24,#00141419,vertical" cornerRadius="24" zPosition="0" />
+
+		<widget source="Title" render="Label" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<eLabel position="296,202" size="100,5" backgroundColor="accent" cornerRadius="3" zPosition="1" />
+
+		<widget name="config" position="296,246" size="820,562" transparent="1" zPosition="1"
+		        itemHeight="64" itemAlignment="leftMiddle" font="TM;30" itemCornerRadiusSelected="14"
+		        itemGradientSelected="#003ea6ff,#001f6fae,vertical" padding="24,12,24,0" enableWrapAround="1"
+		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" />
+
+		<!-- secili arayuzun onizlemesi -->
+		<eLabel position="1156,246" size="468,340" backgroundColor="surface2" cornerRadius="18" zPosition="1" />
+		<widget name="preview" position="1172,262" size="436,308" alphatest="blend" scale="1"
+		        conditional="preview" transparent="1" zPosition="2" />
+
+		<eLabel position="296,828" size="1328,2" backgroundColor="line" zPosition="1" />
+		<widget name="description" position="296,844" size="1328,64" font="TM;26" foregroundColor="textDim"
+		        transparent="1" valign="center" zPosition="1" />
+		<widget name="footnote" position="296,916" size="1328,36" font="TM;22" foregroundColor="textFaint"
+		        transparent="1" halign="right" valign="center" zPosition="1" />
+		<widget name="HelpWindow" pixmap="skin_default/vkey_icon.png" position="1700,1040" size="1,1"
+		        transparent="1" alphatest="on" zPosition="1" />
+	</screen>
+
 	<screen name="MessageBox" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Mesaj">
 		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
 		<eLabel position="510,330" size="900,420"   backgroundColor="#001c1c24,#00141419,vertical" cornerRadius="24" zPosition="0" />
@@ -1067,17 +1073,19 @@
 
 	</screen>
 
-	<screen name="Volume" position="600,900" size="720,80" flags="wfNoBorder" backgroundColor="transparent" title="Ses" zPosition="1">
+	<screen name="Volume" position="center,900" size="720,80" flags="wfNoBorder" backgroundColor="transparent" title="Ses" zPosition="1">
 		<eLabel position="0,0" size="720,80" backgroundColor="#001c1c24,#00141419,vertical" cornerRadius="40" />
-		<eLabel position="36,0" size="90,80" text="SES" font="TMB;24" foregroundColor="textDim"
-		        backgroundColor="surface2" transparent="1" halign="left" valign="center" zPosition="1" />
-		<eLabel position="150,36" size="530,8" backgroundColor="line" cornerRadius="4" zPosition="1" />
-		<widget name="Volume" position="150,36" size="530,8" backgroundColor="line"
+		<eLabel position="36,0" size="64,80" text="-" font="TMB;44" foregroundColor="textDim"
+		        backgroundColor="surface2" transparent="1" halign="center" valign="center" zPosition="1" />
+		<eLabel position="120,36" size="480,8" backgroundColor="line" cornerRadius="4" zPosition="1" />
+		<widget name="Volume" position="120,36" size="480,8" backgroundColor="line"
 		        foregroundColor="#003ea6ff,#0068d0ff,horizontal" cornerRadius="4" borderWidth="0"
 		        transparent="1" zPosition="2" />
+		<eLabel position="620,0" size="64,80" text="+" font="TMB;44" foregroundColor="textDim"
+		        backgroundColor="surface2" transparent="1" halign="center" valign="center" zPosition="1" />
 	</screen>
 
-	<screen name="Mute" position="600,900" size="200,80" flags="wfNoBorder" backgroundColor="transparent" title="Sessiz" zPosition="1">
+	<screen name="Mute" position="center,900" size="200,80" flags="wfNoBorder" backgroundColor="transparent" title="Sessiz" zPosition="1">
 		<eLabel position="0,0" size="200,80" backgroundColor="#00ff4d5a,#00c9303c,vertical" cornerRadius="40" />
 		<eLabel position="0,0" size="200,80" text="SESSIZ" font="TMB;26" foregroundColor="text"
 		        backgroundColor="live" transparent="1" halign="center" valign="center" zPosition="1" />

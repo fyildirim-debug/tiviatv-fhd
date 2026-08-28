@@ -1,7 +1,6 @@
 # Bir skin klasorunu OpenSkin Designer uyumlu hale getirip kopyalar.
 #
-#   python tools/make_designer_copy.py          -> TiviAtv-FHD      (sifir PNG surumu)
-#   python tools/make_designer_copy.py --png    -> TiviAtv-FHD-PNG  (PNG surumu)
+#   python tools/make_designer_copy.py -> TiviAtv-FHD
 #
 # Designer (2014) su uc seyi sindiremiyor, kopyada temizleniyor:
 #   1. <alias>  - cDataBase.initFonts, <fonts> altindaki HER cocuk dugumden
@@ -19,7 +18,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 ap = argparse.ArgumentParser()
-ap.add_argument("--png", action="store_true", help="PNG tabanli varyanti kopyala")
 DEFAULT_DESIGNER = next(
     (c for c in (Path.home() / "OneDrive" / "Desktop" / "OpenSkin-Designer-master",
                  Path.home() / "Desktop" / "OpenSkin-Designer-master") if c.is_dir()),
@@ -28,7 +26,7 @@ ap.add_argument("--designer", default=str(DEFAULT_DESIGNER),
                 help="OpenSkin Designer kok klasoru")
 args = ap.parse_args()
 
-NAME = "TiviAtv-FHD-PNG" if args.png else "TiviAtv-FHD"
+NAME = "TiviAtv-FHD"
 SRC = ROOT / NAME
 DST = Path(args.designer) / "skins" / NAME
 
@@ -99,10 +97,10 @@ s = s.replace("<skin>\n", (
 
 for f in SRC.glob("Barlow-*.ttf"):
     shutil.copy2(f, DST / f.name)
-for extra in ("OFL-Barlow.txt", "preview.png"):
+for extra in ("OFL-Barlow.txt", "prev.png"):
     if (SRC / extra).exists():
         shutil.copy2(SRC / extra, DST / extra)
-        if extra == "preview.png":
+        if extra == "prev.png":
             shutil.copy2(SRC / extra, DST / "prev.png")
 
 n_png = 0
