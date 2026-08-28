@@ -134,8 +134,11 @@ Geçerli köşe adları: `topLeft` `topRight` `top` `bottomLeft` `bottomRight`
 
 ### Font
 
-Dört `.ttf` dosyasını değiştir, `<fonts>` bloğundaki adları güncelle.
-Font adları (`TM` / `TMM` / `TMB` / `TMX`) aynı kalırsa başka hiçbir şey değişmez.
+Arayüz `Sony_Sketch_Bold_205.ttf` (Sony Sketch EF Bold) ile çiziliyor; tek
+ağırlık olduğu için `TM` / `TMM` / `TMB` / `TMX` adlarının dördü de aynı dosyaya
+bakar. Barlow dosyaları klasörde duruyor — geri dönmek için `<fonts>` bloğundaki
+dört satırı `Barlow-Regular` / `Medium` / `SemiBold` / `Bold` ile değiştirmek
+yeterli, skinde başka hiçbir şey değişmez.
 
 ## Araçlar
 
@@ -178,6 +181,8 @@ python tools/make_designer_copy.py
 
 Skin dosyaları MIT ile — bkz. [LICENSE](LICENSE).
 Barlow fontu SIL Open Font License 1.1 altındadır, ayrıntılar `OFL-Barlow.txt`.
+`Sony_Sketch_Bold_205.ttf` üçüncü taraf bir fonttur; dağıtım hakları skin
+lisansının kapsamı dışındadır.
 Kanal logoları (picon) skine dahil değildir; ayrı paket olarak
 `/usr/share/enigma2/picon/` altına kurulur.
 

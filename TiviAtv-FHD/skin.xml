@@ -13,11 +13,13 @@
 	</output>
 
 	<fonts>
-		<!-- skin fontlari -->
-		<font filename="Barlow-Regular.ttf"  name="TM"  scale="100" />
-		<font filename="Barlow-Medium.ttf"   name="TMM" scale="100" />
-		<font filename="Barlow-SemiBold.ttf" name="TMB" scale="100" />
-		<font filename="Barlow-Bold.ttf"     name="TMX" scale="100" />
+		<!-- skin fontlari  -  Sony Sketch EF Bold, tek agirlik
+		     Barlow dosyalari klasorde duruyor; geri donmek icin bu dort satiri
+		     Barlow-Regular / Medium / SemiBold / Bold ile degistirmek yeterli. -->
+		<font filename="Sony_Sketch_Bold_205.ttf" name="TM"  scale="100" />
+		<font filename="Sony_Sketch_Bold_205.ttf" name="TMM" scale="100" />
+		<font filename="Sony_Sketch_Bold_205.ttf" name="TMB" scale="100" />
+		<font filename="Sony_Sketch_Bold_205.ttf" name="TMX" scale="100" />
 		<!-- kutuda hazir gelen fontlar (VFD ve yedek icin) -->
 		<font filename="nmsbd.ttf"  name="Regular" scale="100" />
 		<!-- enigma2'nin bekledigi takma adlar -->
