@@ -16,7 +16,7 @@ import shutil
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-from PIL import Image, ImageDraw
+from PIL import Image, ImageChops, ImageDraw
 
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "TiviAtv-FHD"
@@ -119,14 +119,18 @@ def make_png(w, h, radius_attr, fill, tag="bg"):
                 for y in range(h):
                     px[i, y] = col
 
-    mask = Image.new("L", (w, h), 0)
-    ImageDraw.Draw(mask).rounded_rectangle([0, 0, w - 1, h - 1], radius=r,
-                                           fill=255, corners=corners)
-    # alfayi koru: gövdenin kendi alfasi ile kose maskesini carp
-    alpha = body.getchannel("A").point(lambda a: a)
-    combined = Image.new("L", (w, h))
-    combined.paste(alpha, (0, 0), mask)
-    body.putalpha(combined)
+    # Kose maskesi: ImageDraw kenar yumusatma yapmaz, o yuzden SS katiyla
+    # buyuk cizip LANCZOS ile kucultuyoruz -> yumusak, basamaksiz kose.
+    SS = 4
+    big = Image.new("L", (w * SS, h * SS), 0)
+    ImageDraw.Draw(big).rounded_rectangle([0, 0, w * SS - 1, h * SS - 1],
+                                          radius=r * SS, fill=255, corners=corners)
+    mask = big.resize((w, h), Image.LANCZOS)
+
+    # Alfayi koru: govdenin kendi alfasi ile kose maskesini CARP.
+    # (paste degil carpma; boylece yari saydam bir dolgu maskeden gecerken
+    #  saydamligini kaybetmez.)
+    body.putalpha(ImageChops.multiply(body.getchannel("A"), mask))
     img.alpha_composite(body)
     img.save(PNGDIR / fname)
     made[key] = f"png/{fname}"
