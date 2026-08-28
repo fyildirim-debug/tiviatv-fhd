@@ -1,0 +1,18 @@
+<skin>
+	<!-- TiviATV FHD  -  aktif yazi tipi seti
+	     Bu dosyayi "TiviATV Yazi Tipi" eklentisi uretir; elle de duzenlenebilir.
+	     skin.xml bunu <include> ile yukler, font adlari hep ayni kalir. -->
+	<fonts>
+		<!-- Sony_Sketch_Bold_205 -->
+		<font filename="Sony_Sketch_Bold_205.ttf" name="TM" scale="100" />
+		<font filename="Sony_Sketch_Bold_205.ttf" name="TMM" scale="100" />
+		<font filename="Sony_Sketch_Bold_205.ttf" name="TMB" scale="100" />
+		<font filename="Sony_Sketch_Bold_205.ttf" name="TMX" scale="100" />
+		<!-- kutuda hazir gelen fontlar (VFD ve yedek icin) -->
+		<font filename="nmsbd.ttf"  name="Regular" scale="100" />
+		<!-- enigma2'nin bekledigi takma adlar -->
+		<alias name="Body"       font="TM"  size="30" height="40" />
+		<alias name="TextNormal" font="TM"  size="30" height="40" />
+		<alias name="ChoiceList" font="TM"  size="30" height="48" />
+	</fonts>
+</skin>

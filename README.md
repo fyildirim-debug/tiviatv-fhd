@@ -134,11 +134,26 @@ Geçerli köşe adları: `topLeft` `topRight` `top` `bottomLeft` `bottomRight`
 
 ### Font
 
-Arayüz `Sony_Sketch_Bold_205.ttf` (Sony Sketch EF Bold) ile çiziliyor; tek
-ağırlık olduğu için `TM` / `TMM` / `TMB` / `TMX` adlarının dördü de aynı dosyaya
-bakar. Barlow dosyaları klasörde duruyor — geri dönmek için `<fonts>` bloğundaki
-dört satırı `Barlow-Regular` / `Medium` / `SemiBold` / `Bold` ile değiştirmek
-yeterli, skinde başka hiçbir şey değişmez.
+Aktif yazı tipi `skin.xml`'de değil, ayrı bir `fonts.xml` dosyasında durur;
+`skin.xml` onu `<include filename="fonts.xml" />` ile yükler. Skinde geçen font
+adları (`TM` / `TMM` / `TMB` / `TMX`) hiç değişmez, sadece hangi `.ttf`
+dosyasına baktıkları değişir.
+
+Kutu üstünden değiştirmek için `plugin/TiviAtvFont` klasörünü
+
+```
+/usr/lib/enigma2/python/Plugins/Extensions/TiviAtvFont/
+```
+
+altına kopyala. **Menü → Kurulum → Kullanım & Kullanıcı Arayüzü → TiviATV Yazı
+Tipi** altında, skin klasöründeki ve `/usr/share/fonts` altındaki yazı tipleri
+listelenir; seçilen aile `fonts.xml`'e yazılır ve arayüz yeniden başlatılır.
+Aynı ailenin birden çok ağırlığı varsa (örneğin Barlow'un dördü) dört slot
+otomatik eşleşir, tek ağırlıklı bir font seçilirse dördü de ona bakar.
+
+Seçim listesi enigma2'nin `ChoiceBox` ekranıdır — görünümü bu skinin
+`<screen name="ChoiceBox">` tanımından gelir, eklentinin içinde gömülü skin
+yoktur. `fonts.xml` elle de düzenlenebilir.
 
 ## Araçlar
 
