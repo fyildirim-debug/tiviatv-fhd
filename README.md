@@ -92,7 +92,13 @@ Tam boy sol panel; ana menü kendi yerleşimini `menu_mainmenu` ile alır.
 `ChannelSelectionRadio` · `EPGSelection` · `GraphicalEPG` · `GraphicalEPGPIG` ·
 `EPGSelectionMulti` · `GraphMultiEPG` · `GraphMultiEPGList` · `EventView` ·
 `Menu` · `menu_mainmenu` · `Setup` · `MessageBox` · `ChoiceBox` · `Volume` ·
-`Mute` · `NumberZap` · `SimpleSummary`
+`Mute` · `NumberZap` · `AudioSelection` · `PluginBrowser` · `PackageAction` ·
+`SimpleSummary`
+
+Ayrıca enigma2'nin standart renk adları (`window-bg`, `window-fg`, `key_red`,
+`grey` …) skin paletine eşlendi. Bunlar tanımsızken, skinde karşılığı olmayan
+her ekran — üçüncü taraf eklentiler dahil — `parseColor` hatasına düşüp
+okunaksız kalıyordu.
 
 > EPG ekranlarının adı openATV 8 ile değişti: `GraphMultiEPG` yerine
 > `GraphicalEPG` / `GraphicalEPGPIG` / `EPGSelectionMulti` aranıyor. Eski adlar

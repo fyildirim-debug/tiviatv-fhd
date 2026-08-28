@@ -46,6 +46,58 @@
 		<color name="ok"          value="#3ddc84" />
 		<color name="warn"        value="#ffb020" />
 		<color name="transparent" value="#ff000000" />
+
+		<!-- enigma2'nin standart renk adlari: skinde tanimlanmayan ekranlar
+		     (eklenti tarayici, paket listesi, ucuncu taraf eklentiler) bu adlari
+		     kullanir. Tanimsiz birakilirsa parseColor reddedip beyaza dusuyor. -->
+		<color name="foreground"                value="#14141a" />
+		<color name="background"                value="#0a0a0c" />
+		<color name="window-bg"                 value="#14141a" />
+		<color name="window-fg"                 value="#f5f6f8" />
+		<color name="window-frgrnd"             value="#f5f6f8" />
+		<color name="window-sel-bg"             value="#3ea6ff" />
+		<color name="window-sel-fg"             value="#04121e" />
+		<color name="menu-title-frgrnd"         value="#f5f6f8" />
+		<color name="menu-title-bkgrnd"         value="#1c1c24" />
+		<color name="menu-time-bkgrnd"          value="#1c1c24" />
+		<color name="menu-buttons-frgrnd"       value="#f5f6f8" />
+		<color name="menu-buttons-bkgrnd1"      value="#1c1c24" />
+		<color name="menu-buttons-bkgrnd2"      value="#24242e" />
+		<color name="fullscreen-topbar-frgrnd"  value="#f5f6f8" />
+		<color name="fullscreen-topbar-bkgrnd"  value="#14141a" />
+		<color name="fullscreen-buttons-bkgrnd" value="#14141a" />
+		<color name="infobar-frgrnd"            value="#f5f6f8" />
+		<color name="infobar-frgrnd-on"         value="#3ddc84" />
+		<color name="infobar-bkgrnd"            value="#14141a" />
+		<color name="infobar_sunken"            value="#1c1c24" />
+		<color name="infobar_sunken_frgnd_dark" value="#9ba1ac" />
+		<color name="infobar_collab_back"       value="#1c1c24" />
+		<color name="infobar_service_frgrnd"    value="#3ea6ff" />
+		<color name="infobar_tuner_rec"         value="#ff4d5a" />
+		<color name="event-frgrnd"              value="#3ea6ff" />
+		<color name="pig-channel-name"          value="#500a0a0c" />
+		<color name="secondBG"                  value="#14141a" />
+		<color name="secondFG"                  value="#3ea6ff" />
+		<color name="key_back"                  value="#24242e" />
+		<color name="key_text"                  value="#f5f6f8" />
+		<color name="key_red"                   value="#3a1116" />
+		<color name="key_green"                 value="#0f3320" />
+		<color name="key_yellow"                value="#3a2c0d" />
+		<color name="key_blue"                  value="#102a44" />
+		<color name="black"                     value="#0a0a0c" />
+		<color name="white"                     value="#f5f6f8" />
+		<color name="grey"                      value="#9ba1ac" />
+		<color name="darkgrey"                  value="#2c2c38" />
+		<color name="verydarkgrey"              value="#1c1c24" />
+		<color name="dark"                      value="#14141a" />
+		<color name="red"                       value="#ff4d5a" />
+		<color name="green"                     value="#3ddc84" />
+		<color name="blue"                      value="#3ea6ff" />
+		<color name="yellow"                    value="#ffb020" />
+		<color name="orange"                    value="#ffb020" />
+		<color name="transpBlack"               value="#800a0a0c" />
+		<color name="transpWhite"               value="#80f5f6f8" />
+
 		<color name="scrim"       value="#33000000" />
 		<color name="panelBg"     value="#140a0a0c" />
 		<color name="redSoft"     value="#3a1116" />
@@ -727,8 +779,8 @@
 		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
 		<eLabel position="60,124" size="100,5" backgroundColor="accent" cornerRadius="3" zPosition="1" />
 
-		<widget source="menu" render="Listbox" position="44,180" size="672,828" transparent="1" zPosition="1"
-		        itemHeight="72" itemAlignment="leftMiddle" font="TM;32" itemCornerRadiusSelected="14"
+		<widget source="menu" render="Listbox" position="44,180" size="672,864" transparent="1" zPosition="1"
+		        itemHeight="64" itemAlignment="leftMiddle" font="TM;32" itemCornerRadiusSelected="14"
 		        itemGradientSelected="#003ea6ff,#001f6fae,vertical" padding="24,12,24,0"
 		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line">
@@ -753,8 +805,8 @@
 		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
 		<eLabel position="60,124" size="100,5" backgroundColor="accent" cornerRadius="3" zPosition="1" />
 
-		<widget source="menu" render="Listbox" position="44,306" size="672,576" transparent="1" zPosition="1"
-		        itemHeight="72" itemAlignment="leftMiddle" font="TM;32" itemCornerRadiusSelected="14"
+		<widget source="menu" render="Listbox" position="44,356" size="672,512" transparent="1" zPosition="1"
+		        itemHeight="64" itemAlignment="leftMiddle" font="TM;32" itemCornerRadiusSelected="14"
 		        itemGradientSelected="#003ea6ff,#001f6fae,vertical" padding="24,12,24,0"
 		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line">
@@ -824,6 +876,197 @@
 	<!-- ============================================================
 	     SES / NUMARA
 	     ============================================================ -->
+	<!-- ============================================================
+	     AUDIOSELECTION  -  ses / dil secimi
+	     config = downmix ve ses kanali ayarlari, streams = parca listesi
+	     ============================================================ -->
+	<!-- ============================================================
+	     PLUGINBROWSER / PACKAGEACTION  -  eklenti ve paket ekranlari
+	     Bu ekranlarin skini enigma2 kodunun icinde gomulu gelir ve arka
+	     plani yoktur; video uzerinde okunaksiz kaliyordu. Duzen korunup
+	     panel, yuvarlak kose ve skin fontlari eklendi. resolution="1280,720"
+	     ile koordinatlar 1080p'ye motor tarafindan olceklenir.
+	     ============================================================ -->
+	<screen name="PluginBrowser" title="Eklentiler" position="center,center" size="1040,595"
+	        resolution="1280,720" backgroundColor="transparent" flags="wfNoBorder">
+		<eLabel position="0,0" size="e,e" backgroundColor="surface" cornerRadius="18" zPosition="-1" />
+
+		<widget source="pluginList" render="Listbox" position="20,20" size="1000,450" conditional="pluginList"
+		        listOrientation="vertical" transparent="1" itemCornerRadiusSelected="10"
+		        itemGradientSelected="#003ea6ff,#001f6fae,vertical"
+		        scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarOffset="10" scrollbarRadius="3"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line">
+			<convert type="TemplatedMultiContent">
+				{
+				"template":
+					[
+					MultiContentEntryPixmapAlphaBlend(pos=(10, 5), size=(100, 40), png=3, flags=BT_SCALE),
+					MultiContentEntryText(pos=(125, 3), size=(865, 24), font=0, flags=RT_HALIGN_LEFT | RT_VALIGN_TOP, text=1),
+					MultiContentEntryText(pos=(145, 30), size=(845, 19), font=1, flags=RT_HALIGN_LEFT | RT_VALIGN_BOTTOM, text=2)
+					],
+				"fonts": [parseFont("TM;20"), parseFont("TM;15")],
+				"itemHeight": 50
+				}
+			</convert>
+		</widget>
+
+		<widget source="pluginGrid" render="Listbox" position="20,20" size="1000,448" conditional="pluginGrid"
+		        listOrientation="grid" transparent="1" itemCornerRadiusSelected="10"
+		        itemGradientSelected="#003ea6ff,#001f6fae,vertical"
+		        scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarOffset="10" scrollbarRadius="3"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line">
+			<convert type="TemplatedMultiContent">
+				{
+				"template":
+					[
+					MultiContentEntryText(pos=(0, 0), size=(195, 110), font=0),
+					MultiContentEntryText(pos=(4, 4), size=(187, 102), font=0, backcolor=0x001c1c24),
+					MultiContentEntryPixmapAlphaBlend(pos=(45, 14), size=(100, 40), png=3, flags=BT_SCALE),
+					MultiContentEntryText(pos=(5, 58), size=(185, 45), font=0, flags=RT_VALIGN_CENTER | RT_HALIGN_CENTER | RT_WRAP, text=1)
+					],
+				"fonts": [parseFont("TM;18")],
+				"itemWidth": 195,
+				"itemHeight": 112
+				}
+			</convert>
+		</widget>
+
+		<widget name="quickselect" position="20,20" size="1000,450" font="TMX;100" foregroundColor="accent"
+		        halign="center" transparent="1" valign="center" zPosition="+1" />
+		<widget name="description" position="20,e-95" size="1000,28" font="TM;20" foregroundColor="textDim"
+		        transparent="1" valign="center" />
+		<widget source="key_red" render="Label" position="20,e-66" size="190,46" backgroundColor="redSoft"
+		        cornerRadius="23" font="TMB;18" foregroundColor="live" halign="center" valign="center"
+		        conditional="key_red" transparent="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" render="Label" position="216,e-66" size="190,46" backgroundColor="greenSoft"
+		        cornerRadius="23" font="TMB;18" foregroundColor="ok" halign="center" valign="center"
+		        conditional="key_green" transparent="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="412,e-66" size="190,46" backgroundColor="yellowSoft"
+		        cornerRadius="23" font="TMB;18" foregroundColor="warn" halign="center" valign="center"
+		        conditional="key_yellow" transparent="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label" position="608,e-66" size="190,46" backgroundColor="blueSoft"
+		        cornerRadius="23" font="TMB;18" foregroundColor="accent" halign="center" valign="center"
+		        conditional="key_blue" transparent="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_menu" render="Label" position="e-210,e-66" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center"
+		        conditional="key_menu" transparent="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_help" render="Label" position="e-110,e-66" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center"
+		        conditional="key_help" transparent="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+	</screen>
+
+	<screen name="PackageAction" title="Paketler" position="center,center" size="940,645"
+	        resolution="1280,720" backgroundColor="transparent" flags="wfNoBorder">
+		<eLabel position="0,0" size="e,e" backgroundColor="surface" cornerRadius="18" zPosition="-1" />
+
+		<widget source="plugins" render="Listbox" position="20,20" size="900,500" transparent="1"
+		        itemCornerRadiusSelected="10" itemGradientSelected="#003ea6ff,#001f6fae,vertical"
+		        scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarOffset="10" scrollbarRadius="3"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line">
+			<convert type="TemplatedMultiContent">
+				{
+				"template":
+					[
+					MultiContentEntryPixmapAlphaBlend(pos=(5, 0), size=(60, 50), png=6, flags=BT_SCALE),
+					MultiContentEntryText(pos=(70, 0), size=(810, 50), font=0, flags=RT_VALIGN_CENTER, text=2),
+					MultiContentEntryText(pos=(70, 2), size=(530, 25), font=1, flags=RT_VALIGN_CENTER, text=3),
+					MultiContentEntryText(pos=(610, 2), size=(220, 25), font=1, flags=RT_VALIGN_CENTER, text=5),
+					MultiContentEntryText(pos=(70, 28), size=(760, 20), font=2, flags=RT_VALIGN_CENTER, text=4, color=0x009ba1ac),
+					MultiContentEntryPixmapAlphaBlend(pos=(840, 1), size=(48, 48), png=7, flags=BT_SCALE)
+					],
+				"fonts": [parseFont("TM;25"), parseFont("TM;20"), parseFont("TM;16")],
+				"itemHeight": 50
+				}
+			</convert>
+		</widget>
+
+		<widget name="quickselect" position="20,20" size="900,500" font="TMX;100" foregroundColor="accent"
+		        halign="center" transparent="1" valign="center" zPosition="+1" />
+		<widget name="description" position="20,e-95" size="900,28" font="TM;20" foregroundColor="textDim"
+		        transparent="1" valign="center" />
+		<widget source="key_red" render="Label" position="20,e-66" size="190,46" backgroundColor="redSoft"
+		        cornerRadius="23" font="TMB;18" foregroundColor="live" halign="center" valign="center"
+		        conditional="key_red" transparent="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" render="Label" position="216,e-66" size="190,46" backgroundColor="greenSoft"
+		        cornerRadius="23" font="TMB;18" foregroundColor="ok" halign="center" valign="center"
+		        conditional="key_green" transparent="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="412,e-66" size="190,46" backgroundColor="yellowSoft"
+		        cornerRadius="23" font="TMB;18" foregroundColor="warn" halign="center" valign="center"
+		        conditional="key_yellow" transparent="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_help" render="Label" position="e-110,e-66" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center"
+		        conditional="key_help" transparent="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+	</screen>
+
+	<screen name="AudioSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Ses">
+		<eLabel position="0,0" size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="410,190" size="1100,700" backgroundColor="#001c1c24,#00141419,vertical" cornerRadius="24" zPosition="0" />
+
+		<widget source="Title" render="Label" position="466,234" size="988,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<eLabel position="466,302" size="100,5" backgroundColor="accent" cornerRadius="3" zPosition="1" />
+
+		<widget name="config" position="520,346" size="934,240" transparent="1" zPosition="1"
+		        itemHeight="48" itemAlignment="leftMiddle" font="TM;28" itemCornerRadiusSelected="12"
+		        itemGradientSelected="#003ea6ff,#001f6fae,vertical" padding="20,10,20,0"
+		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="14" scrollbarRadius="4"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" />
+
+		<eLabel position="470,360" size="22,22" backgroundColor="live" cornerRadius="11" zPosition="1" />
+		<eLabel position="470,408" size="22,22" backgroundColor="ok" cornerRadius="11" zPosition="1" />
+		<eLabel position="470,456" size="22,22" backgroundColor="warn" cornerRadius="11" zPosition="1" />
+		<eLabel position="470,504" size="22,22" backgroundColor="accent" cornerRadius="11" zPosition="1" />
+		<eLabel position="466,606" size="988,2" backgroundColor="line" zPosition="1" />
+
+		<widget source="streams" render="Listbox" position="450,626" size="1020,180" transparent="1" zPosition="1"
+		        itemCornerRadiusSelected="12" itemGradientSelected="#003ea6ff,#001f6fae,vertical"
+		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="14" scrollbarRadius="4"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line">
+			<convert type="TemplatedMultiContent">
+				{"templates":
+					{"default": (48, [
+						MultiContentEntryText(pos = (16, 0), size = (60, 48), font = 0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 1),
+						MultiContentEntryText(pos = (76, 0), size = (70, 48), font = 0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 2),
+						MultiContentEntryText(pos = (156, 0), size = (300, 48), font = 0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 3),
+						MultiContentEntryText(pos = (466, 0), size = (460, 48), font = 0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 4),
+						MultiContentEntryText(pos = (936, 0), size = (60, 48), font = 1, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER, text = 5),
+					], True, "showNever"),
+					"notselected": (48, [
+						MultiContentEntryText(pos = (16, 0), size = (60, 48), font = 0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 1),
+						MultiContentEntryText(pos = (76, 0), size = (70, 48), font = 0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 2),
+						MultiContentEntryText(pos = (156, 0), size = (300, 48), font = 0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 3),
+						MultiContentEntryText(pos = (466, 0), size = (460, 48), font = 0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 4),
+						MultiContentEntryText(pos = (936, 0), size = (60, 48), font = 1, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER, text = 5),
+					], False, "showNever")
+				},
+				"fonts": [gFont("TM", 28), gFont("TMB", 24)],
+				"itemHeight": 48
+				}
+			</convert>
+		</widget>
+
+	</screen>
+
 	<screen name="Volume" position="600,900" size="720,80" flags="wfNoBorder" backgroundColor="transparent" title="Ses" zPosition="1">
 		<eLabel position="0,0" size="720,80" backgroundColor="#001c1c24,#00141419,vertical" cornerRadius="40" />
 		<eLabel position="36,0" size="90,80" text="SES" font="TMB;24" foregroundColor="textDim"
