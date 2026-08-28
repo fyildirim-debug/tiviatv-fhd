@@ -1,0 +1,384 @@
+<title>TiviATV FHD</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<style>
+  :root {
+    --ground: #eaeef3;
+    --surface: #ffffff;
+    --sunk: #dde4ec;
+    --ink: #131820;
+    --ink-2: #4d5866;
+    --ink-3: #7b8695;
+    --rule: #ccd5e0;
+    --accent: #12569f;
+    --accent-soft: #e3edf9;
+    --shadow: 0 1px 2px rgba(19, 24, 32, .06), 0 8px 24px rgba(19, 24, 32, .07);
+  }
+  :root:not([data-theme="light"]) {
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0d1016;
+      --surface: #151a22;
+      --sunk: #0a0d12;
+      --ink: #e7ecf3;
+      --ink-2: #99a4b3;
+      --ink-3: #6b7788;
+      --rule: #232b37;
+      --accent: #4fadff;
+      --accent-soft: #16283c;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .5), 0 10px 30px rgba(0, 0, 0, .45);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #0d1016;
+    --surface: #151a22;
+    --sunk: #0a0d12;
+    --ink: #e7ecf3;
+    --ink-2: #99a4b3;
+    --ink-3: #6b7788;
+    --rule: #232b37;
+    --accent: #4fadff;
+    --accent-soft: #16283c;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .5), 0 10px 30px rgba(0, 0, 0, .45);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font: 400 16px/1.6 "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 56px 24px 96px; }
+
+  /* ---------- masthead ---------- */
+  .mast { border-bottom: 1px solid var(--rule); padding-bottom: 32px; margin-bottom: 40px; }
+  .eyebrow {
+    font: 500 12px/1 "IBM Plex Mono", ui-monospace, monospace;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3);
+    margin: 0 0 18px;
+  }
+  h1 {
+    font: 700 clamp(38px, 6vw, 62px)/1.02 "IBM Plex Sans Condensed", "IBM Plex Sans", sans-serif;
+    letter-spacing: -.015em; margin: 0 0 14px; text-wrap: balance;
+  }
+  .lede {
+    margin: 0; max-width: 62ch; font-size: 18px; color: var(--ink-2);
+  }
+  .lede strong { color: var(--ink); font-weight: 500; }
+
+  /* ---------- spec strip ---------- */
+  .specs {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+    border-radius: 6px; overflow: hidden; margin: 34px 0 0;
+  }
+  .spec { background: var(--surface); padding: 16px 18px; }
+  .spec dt {
+    font: 500 11px/1 "IBM Plex Mono", monospace; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-3); margin: 0 0 8px;
+  }
+  .spec dd {
+    margin: 0; font: 600 21px/1.15 "IBM Plex Sans Condensed", sans-serif;
+    font-variant-numeric: tabular-nums;
+  }
+  .spec dd span { font-size: 13px; color: var(--ink-3); font-weight: 400; }
+
+  /* ---------- boards ---------- */
+  .boards { display: flex; flex-direction: column; gap: 56px; margin-top: 56px; }
+  .board { margin: 0; }
+  figcaption { margin-bottom: 14px; }
+  .cap-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .cap-head h3 {
+    font: 600 24px/1.2 "IBM Plex Sans Condensed", sans-serif;
+    margin: 0; letter-spacing: -.005em;
+  }
+  .cap-head code {
+    font: 500 12px/1 "IBM Plex Mono", monospace; color: var(--accent);
+    background: var(--accent-soft); padding: 5px 8px; border-radius: 4px;
+  }
+  .sub { margin: 6px 0 0; color: var(--ink-2); font-size: 15px; }
+  .note {
+    margin: 14px 0 0; padding-left: 14px; border-left: 2px solid var(--rule);
+    color: var(--ink-3); font-size: 14px; max-width: 68ch;
+  }
+
+  .frame {
+    container-type: inline-size;
+    border: 1px solid var(--rule); border-radius: 8px; overflow: hidden;
+    background: #05060a; box-shadow: var(--shadow);
+  }
+
+  /* ---------- the 1920x1080 stage: everything below mirrors skin.xml ---------- */
+  .stage {
+    position: relative; width: 100%; aspect-ratio: 16 / 9;
+    font-family: Barlow, sans-serif; overflow: hidden;
+  }
+  .backdrop {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(120% 90% at 22% 18%, #2a3a52 0%, transparent 55%),
+      radial-gradient(90% 80% at 78% 72%, #43303c 0%, transparent 60%),
+      linear-gradient(160deg, #101722 0%, #060a10 100%);
+  }
+  .backdrop::after {
+    content: ""; position: absolute; inset: 0;
+    background: repeating-linear-gradient(0deg, rgba(255,255,255,.022) 0 2px, transparent 2px 4px);
+  }
+  .el {
+    position: absolute; display: flex; overflow: hidden;
+    line-height: 1.18; letter-spacing: .002em;
+  }
+  .el.nowrap { white-space: nowrap; }
+
+  .picon { align-items: center !important; justify-content: center !important;
+           background: linear-gradient(160deg, #2b3442, #171d27); border-radius: 8cqw / 14cqw; }
+  .picon { border-radius: calc(100cqw * .005); }
+  .picon span { font: 700 calc(100cqw * .019)/1 Barlow, sans-serif; color: #dfe6ef; letter-spacing: .04em; }
+  .picon b { color: #3ea6ff; }
+
+  .pig { align-items: flex-end !important; justify-content: flex-start !important;
+         background: linear-gradient(150deg, #21324a 0%, #0f1620 60%, #1a1420 100%) !important; }
+  .pig span { font: 500 calc(100cqw * .011)/1 "IBM Plex Mono", monospace;
+              color: rgba(255,255,255,.42); padding: calc(100cqw * .009);
+              letter-spacing: .08em; text-transform: uppercase; }
+
+  .prog { align-items: stretch !important; padding: 0 !important; }
+  .prog i { display: block; height: 100%; border-radius: inherit; }
+
+  .para { display: block !important; white-space: normal;
+          overflow: hidden; text-overflow: ellipsis; }
+
+  .ticks { justify-content: space-between !important; align-items: center !important;
+           font: 400 calc(100cqw * .0125)/1 Barlow, sans-serif; }
+
+  .list { flex-direction: column !important; align-items: stretch !important;
+          justify-content: flex-start !important; gap: calc(100cqw * .003); }
+  .row { display: flex; align-items: center; flex: 1; min-height: 0;
+         padding: 0 calc(100cqw * .012); border-radius: calc(100cqw * .0073); }
+
+  .chrow em { font-style: normal; font-weight: 400; opacity: .5;
+              width: calc(100cqw * .038); flex: none;
+              font-variant-numeric: tabular-nums; }
+  .chtxt { flex: 1; min-width: 0; display: flex; flex-direction: column;
+           gap: calc(100cqw * .0015); }
+  .chtxt b { font-weight: 600; font-size: calc(100cqw * .0167);
+             white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .chtxt small { font-size: calc(100cqw * .0115); opacity: .58;
+                 white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .chbar { width: calc(100cqw * .068); height: calc(100cqw * .0031); flex: none;
+           background: rgba(255,255,255,.14); border-radius: 99px; overflow: hidden; }
+  .chbar i { display: block; height: 100%; background: #3ea6ff; }
+  .chrow.sel { background: linear-gradient(to bottom, #3ea6ff, #1f6fae); color: #04121e; }
+  .chrow.sel em { opacity: .72; }
+  .chrow.sel .chbar { background: rgba(4,18,30,.28); }
+  .chrow.sel .chbar i { background: #04121e; }
+
+  .menurow { font-size: calc(100cqw * .0167); }
+  .menurow.sel { background: linear-gradient(to bottom, #3ea6ff, #1f6fae); color: #04121e;
+                 font-weight: 600; }
+  .cfgrow { font-size: calc(100cqw * .0156); justify-content: space-between; }
+  .cfgrow b { font-weight: 600; }
+  .cfgrow.sel { background: linear-gradient(to bottom, #3ea6ff, #1f6fae); color: #04121e; }
+  .epgrow { gap: calc(100cqw * .016); font-size: calc(100cqw * .0156); }
+  .epgrow em { font-style: normal; color: #3ea6ff; font-variant-numeric: tabular-nums; }
+  .epgrow b { font-weight: 500; }
+  .epgrow.sel { background: linear-gradient(to bottom, #3ea6ff, #1f6fae); color: #04121e; }
+  .epgrow.sel em { color: #04121e; }
+
+  .grow { display: flex; align-items: center; flex: 1; gap: calc(100cqw * .002);
+          font-size: calc(100cqw * .0115); }
+  .grow em { font-style: normal; font-weight: 600; width: calc(100cqw * .088);
+             flex: none; opacity: .72; white-space: nowrap; overflow: hidden; }
+  .cell { display: flex; align-items: center; height: 78%;
+          padding: 0 calc(100cqw * .006); background: #1c1c24;
+          border-radius: calc(100cqw * .0042); white-space: nowrap; overflow: hidden;
+          color: rgba(245,246,248,.8); }
+  .cell.sel { background: #1f6fae; color: #fff; }
+
+  .tline { background: rgba(255,255,255,.09) !important; }
+  .tline.now { background: #ff4d5a !important; width: calc(100cqw * .0016) !important; }
+
+  /* ---------- install ---------- */
+  .install { margin-top: 72px; border-top: 1px solid var(--rule); padding-top: 40px; }
+  .install h2 {
+    font: 600 28px/1.2 "IBM Plex Sans Condensed", sans-serif; margin: 0 0 20px;
+  }
+  ol.steps { margin: 0; padding: 0; list-style: none; counter-reset: s;
+             display: flex; flex-direction: column; gap: 18px; }
+  ol.steps li {
+    counter-increment: s; display: grid; grid-template-columns: 30px 1fr;
+    gap: 14px; align-items: start;
+  }
+  ol.steps li::before {
+    content: counter(s); font: 500 12px/28px "IBM Plex Mono", monospace;
+    text-align: center; color: var(--accent); background: var(--accent-soft);
+    border-radius: 50%; width: 28px; height: 28px;
+  }
+  ol.steps p { margin: 0 0 8px; }
+  pre {
+    margin: 0; background: var(--sunk); border: 1px solid var(--rule);
+    border-radius: 6px; padding: 12px 14px; overflow-x: auto;
+    font: 400 13.5px/1.6 "IBM Plex Mono", ui-monospace, monospace; color: var(--ink);
+  }
+  .caveat {
+    margin-top: 36px; background: var(--surface); border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent); border-radius: 6px; padding: 18px 20px;
+  }
+  .caveat h3 { font: 600 15px/1.3 "IBM Plex Sans", sans-serif; margin: 0 0 8px; }
+  .caveat p { margin: 0 0 10px; color: var(--ink-2); font-size: 15px; }
+  .caveat p:last-child { margin-bottom: 0; }
+  .caveat code, .inline {
+    font: 400 13px "IBM Plex Mono", monospace; background: var(--sunk);
+    padding: 2px 5px; border-radius: 3px;
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header class="mast">
+    <p class="eyebrow">openATV 7.3+ &middot; enigma2 skin</p>
+    <h1>TiviATV FHD</h1>
+    <p class="lede">TiviMate duzeninde, <strong>tek bir PNG kullanmayan</strong> 1080p openATV skini.
+      Yuvarlak koseler, gradientler, ilerleme cubuklari ve secim vurgusu &mdash; hepsini enigma2'nin
+      kendi cizim motoru uretiyor. Asagidaki ekranlar ekran goruntusu degil:
+      <strong>skin.xml'deki gercek koordinat, renk ve yaricaplardan</strong> tarayicida cizildi.</p>
+
+    <dl class="specs">
+      <div class="spec"><dt>Cozunurluk</dt><dd>1920&times;1080</dd></div>
+      <div class="spec"><dt>Ekran sayisi</dt><dd>17</dd></div>
+      <div class="spec"><dt>PNG varligi</dt><dd>0 <span>/ 43</span></dd></div>
+      <div class="spec"><dt>Font</dt><dd>Barlow <span>OFL</span></dd></div>
+      <div class="spec"><dt>Gereken surum</dt><dd>7.3+</dd></div>
+    </dl>
+  </header>
+
+  <div class="boards">
+    <figure class="board">
+<figcaption>
+  <div class="cap-head"><h3>InfoBar</h3><code>InfoBar</code></div>
+  <p class="sub">Alt bilgi cubugu - zap sonrasi ve OK tusunda</p>
+</figcaption>
+<div class="frame"><div class="stage" style="background:rgba(0,0,0,0.000)"><div class="backdrop"></div><div class="el" style="left:0.0000%;top:54.6296%;width:100.0000%;height:21.2963%;background:linear-gradient(to bottom, rgba(10,10,12,0.000), rgba(10,10,12,1.000));color:rgba(245,246,248,1.000);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:5"></div><div class="el" style="left:0.0000%;top:75.9259%;width:100.0000%;height:24.0741%;background:linear-gradient(to bottom, rgba(20,20,25,1.000), rgba(10,10,12,1.000));color:rgba(245,246,248,1.000);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:5"></div><div class="el" style="left:0.0000%;top:75.9259%;width:100.0000%;height:0.2778%;background:rgba(62,166,255,1.000);color:rgba(245,246,248,1.000);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:7"></div><div class="el nowrap" style="left:3.5417%;top:77.7778%;width:7.8125%;height:5.9259%;color:rgba(62,166,255,1.000);font-size:calc(100cqw * 0.027083);font-weight:700;justify-content:flex-start;align-items:center;z-index:7">104</div><div class="el picon" style="left:12.0833%;top:77.7778%;width:7.2917%;height:7.7778%;color:rgba(245,246,248,1.000);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:7"><span>TRT<b>1</b></span></div><div class="el nowrap" style="left:20.6250%;top:77.5926%;width:36.4583%;height:5.0000%;color:rgba(245,246,248,1.000);font-size:calc(100cqw * 0.022917);font-weight:600;justify-content:flex-start;align-items:center;z-index:7">TRT 1 HD</div><div class="el nowrap" style="left:20.6250%;top:82.7778%;width:36.4583%;height:2.7778%;color:rgba(106,112,123,1.000);font-size:calc(100cqw * 0.012500);font-weight:400;justify-content:flex-start;align-items:center;z-index:7">TURKSAT 42.0E</div><div class="el nowrap" style="left:58.3333%;top:82.2222%;width:7.8125%;height:3.3333%;background:rgba(36,36,46,1.000);color:rgba(155,161,172,1.000);border-radius:calc(100cqw * 0.005208);font-size:calc(100cqw * 0.010417);font-weight:600;justify-content:center;align-items:center;text-align:center;z-index:7">1920x1080i</div><div class="el nowrap" style="left:66.7708%;top:82.2222%;width:5.6250%;height:3.3333%;background:rgba(36,36,46,1.000);color:rgba(155,161,172,1.000);border-radius:calc(100cqw * 0.005208);font-size:calc(100cqw * 0.010417);font-weight:600;justify-content:center;align-items:center;text-align:center;z-index:7">H.264</div><div class="el nowrap" style="left:73.0208%;top:82.2222%;width:5.4167%;height:3.3333%;background:rgba(36,36,46,1.000);color:rgba(155,161,172,1.000);border-radius:calc(100cqw * 0.005208);font-size:calc(100cqw * 0.010417);font-weight:600;justify-content:center;align-items:center;text-align:center;z-index:7">FTA</div><div class="el" style="left:79.1667%;top:77.0370%;width:17.2917%;height:6.1111%;color:rgba(245,246,248,1.000);font-size:calc(100cqw * 0.030208);font-weight:700;justify-content:flex-end;align-items:center;text-align:right;z-index:7">21:03</div><div class="el" style="left:79.1667%;top:83.1481%;width:17.2917%;height:2.7778%;color:rgba(155,161,172,1.000);font-size:calc(100cqw * 0.012500);font-weight:400;justify-content:flex-end;align-items:center;text-align:right;z-index:7">28.08.2026</div><div class="el nowrap" style="left:3.5417%;top:87.9630%;width:64.5833%;height:4.2593%;color:rgba(245,246,248,1.000);font-size:calc(100cqw * 0.017708);font-weight:400;justify-content:flex-start;align-items:center;z-index:7">Teskilat</div><div class="el nowrap" style="left:71.8750%;top:88.3333%;width:24.5833%;height:3.5185%;color:rgba(155,161,172,1.000);font-size:calc(100cqw * 0.014583);font-weight:400;justify-content:flex-end;align-items:center;text-align:right;z-index:7">20:00 - 21:45</div><div class="el" style="left:3.5417%;top:93.3333%;width:92.9167%;height:0.7407%;background:rgba(44,44,56,1.000);color:rgba(245,246,248,1.000);border-radius:calc(100cqw * 0.002083);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:7"></div><div class="el nowrap" style="left:3.5417%;top:94.8148%;width:19.7917%;height:3.5185%;color:rgba(62,166,255,1.000);font-size:calc(100cqw * 0.013542);font-weight:600;justify-content:flex-start;align-items:center;z-index:7">42 dk kaldi</div><div class="el" style="left:46.8750%;top:95.0000%;width:7.0833%;height:3.1481%;background:rgba(36,36,46,1.000);color:rgba(155,161,172,1.000);border-radius:calc(100cqw * 0.008854);font-size:calc(100cqw * 0.009896);font-weight:600;justify-content:center;align-items:center;text-align:center;z-index:7">SONRAKI</div><div class="el nowrap" style="left:54.7917%;top:94.6296%;width:41.6667%;height:3.7037%;color:rgba(155,161,172,1.000);font-size:calc(100cqw * 0.013542);font-weight:400;justify-content:flex-start;align-items:center;z-index:7">Ana Haber Bulteni</div><div class="el prog" style="left:3.5417%;top:93.3333%;width:92.9167%;height:0.7407%;color:rgba(245,246,248,1.000);border-radius:calc(100cqw * 0.002083);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:8"><i style="width:63%;background:linear-gradient(to right, rgba(62,166,255,1.000), rgba(104,208,255,1.000))"></i></div></div></div>
+<p class="note">Kanal numarasi, picon, program, ilerleme cubugu ve sonraki yayin. Videodan cubuga gecis seffaftan opaga bir gradient - PNG degil.</p>
+</figure>
+<figure class="board">
+<figcaption>
+  <div class="cap-head"><h3>Kanal listesi</h3><code>ChannelSelection</code></div>
+  <p class="sub">TiviMate duzeni - liste solda, canli goruntu sagda</p>
+</figcaption>
+<div class="frame"><div class="stage" style="background:rgba(0,0,0,0.000)"><div class="backdrop"></div><div class="el" style="left:0.0000%;top:0.0000%;width:100.0000%;height:100.0000%;background:rgba(0,0,0,0.800);color:rgba(245,246,248,1.000);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:5"></div><div class="el" style="left:0.0000%;top:0.0000%;width:55.2083%;height:100.0000%;background:rgba(10,10,12,0.922);color:rgba(245,246,248,1.000);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:5"></div><div class="el" style="left:55.1042%;top:0.0000%;width:0.1042%;height:100.0000%;background:rgba(44,44,56,1.000);color:rgba(245,246,248,1.000);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:6"></div><div class="el" style="left:57.0833%;top:13.1481%;width:40.8333%;height:41.4815%;background:rgba(28,28,36,1.000);color:rgba(245,246,248,1.000);border-radius:calc(100cqw * 0.009375);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:6"></div><div class="el" style="left:57.0833%;top:57.5926%;width:40.8333%;height:36.6667%;background:linear-gradient(to bottom, rgba(28,28,36,1.000), rgba(20,20,25,1.000));color:rgba(245,246,248,1.000);border-radius:calc(100cqw * 0.009375);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:6"></div><div class="el nowrap" style="left:2.5000%;top:3.7037%;width:36.4583%;height:5.1852%;color:rgba(245,246,248,1.000);font-size:calc(100cqw * 0.020833);font-weight:600;justify-content:flex-start;align-items:center;z-index:7">Favoriler (TV)</div><div class="el" style="left:81.2500%;top:3.5185%;width:16.6667%;height:5.3704%;color:rgba(245,246,248,1.000);font-size:calc(100cqw * 0.023958);font-weight:700;justify-content:flex-end;align-items:center;text-align:right;z-index:7">21:03</div><div class="el" style="left:81.2500%;top:9.0741%;width:16.6667%;height:2.7778%;color:rgba(155,161,172,1.000);font-size:calc(100cqw * 0.012500);font-weight:400;justify-content:flex-end;align-items:center;text-align:right;z-index:7">28.08.2026</div><div class="el list" style="left:2.2917%;top:13.8889%;width:50.6250%;height:75.9259%;color:rgba(245,246,248,1.000);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:7"><div class="row chrow"><em>101</em><div class="chtxt"><b>TRT 1 HD</b><small>Teskilat</small></div><div class="chbar"><i style="width:63%"></i></div></div><div class="row chrow"><em>102</em><div class="chtxt"><b>Show TV HD</b><small>Kalp Yarasi</small></div><div class="chbar"><i style="width:21%"></i></div></div><div class="row chrow"><em>103</em><div class="chtxt"><b>ATV HD</b><small>Sadakatsiz</small></div><div class="chbar"><i style="width:88%"></i></div></div><div class="row chrow sel"><em>104</em><div class="chtxt"><b>Star TV HD</b><small>Yasak Elma</small></div><div class="chbar"><i style="width:45%"></i></div></div><div class="row chrow"><em>105</em><div class="chtxt"><b>Kanal D HD</b><small>Camdaki Kiz</small></div><div class="chbar"><i style="width:12%"></i></div></div><div class="row chrow"><em>106</em><div class="chtxt"><b>FOX HD</b><small>Ana Haber</small></div><div class="chbar"><i style="width:71%"></i></div></div><div class="row chrow"><em>107</em><div class="chtxt"><b>TV8 HD</b><small>MasterChef</small></div><div class="chbar"><i style="width:34%"></i></div></div><div class="row chrow"><em>108</em><div class="chtxt"><b>NOW TV HD</b><small>Kizil Goncalar</small></div><div class="chbar"><i style="width:55%"></i></div></div><div class="row chrow"><em>109</em><div class="chtxt"><b>TRT Spor HD</b><small>Sup Ozet</small></div><div class="chbar"><i style="width:9%"></i></div></div><div class="row chrow"><em>110</em><div class="chtxt"><b>beIN SPORTS 1</b><small>Derbi Oncesi</small></div><div class="chbar"><i style="width:77%"></i></div></div></div><div class="el pig" style="left:57.5000%;top:13.8889%;width:40.0000%;height:40.0000%;background:rgba(0,0,0,0.000);color:rgba(245,246,248,1.000);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:7"><span>canli goruntu</span></div><div class="el" style="left:58.7500%;top:60.1852%;width:6.2500%;height:3.1481%;background:rgba(62,166,255,1.000);color:rgba(4,18,30,1.000);border-radius:calc(100cqw * 0.008854);font-size:calc(100cqw * 0.009896);font-weight:600;justify-content:center;align-items:center;text-align:center;z-index:7">SIMDI</div><div class="el nowrap" style="left:58.7500%;top:64.2593%;width:37.5000%;height:4.0741%;color:rgba(245,246,248,1.000);font-size:calc(100cqw * 0.016667);font-weight:600;justify-content:flex-start;align-items:center;z-index:7">Teskilat</div><div class="el nowrap" style="left:58.7500%;top:68.5185%;width:37.5000%;height:2.9630%;color:rgba(155,161,172,1.000);font-size:calc(100cqw * 0.012500);font-weight:400;justify-content:flex-start;align-items:center;z-index:7">20:00 - 21:45</div><div class="el" style="left:58.7500%;top:72.7778%;width:37.5000%;height:0.5556%;background:rgba(44,44,56,1.000);color:rgba(245,246,248,1.000);border-radius:calc(100cqw * 0.001563);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:7"></div><div class="el" style="left:58.7500%;top:75.3704%;width:7.0833%;height:3.1481%;background:rgba(36,36,46,1.000);color:rgba(155,161,172,1.000);border-radius:calc(100cqw * 0.008854);font-size:calc(100cqw * 0.009896);font-weight:600;justify-content:center;align-items:center;text-align:center;z-index:7">SONRAKI</div><div class="el nowrap" style="left:58.7500%;top:79.4444%;width:37.5000%;height:3.5185%;color:rgba(155,161,172,1.000);font-size:calc(100cqw * 0.014583);font-weight:400;justify-content:flex-start;align-items:center;z-index:7">Ana Haber Bulteni</div><div class="el" style="left:58.7500%;top:83.5185%;width:37.5000%;height:8.5185%;color:rgba(106,112,123,1.000);font-size:calc(100cqw * 0.012500);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:7">Milli Istihbarat Teskilati&#x27;nin sahada gorev alan ekibi, ulke guvenligini tehdit eden yeni bir operasyonun izini surer.</div><div class="el" style="left:2.5000%;top:92.5926%;width:11.8750%;height:4.8148%;background:rgba(58,17,22,1.000);color:rgba(255,77,90,1.000);border-radius:calc(100cqw * 0.013542);font-size:calc(100cqw * 0.012500);font-weight:600;justify-content:center;align-items:center;text-align:center;z-index:7">Tumu</div><div class="el" style="left:15.2083%;top:92.5926%;width:11.8750%;height:4.8148%;background:rgba(15,51,32,1.000);color:rgba(61,220,132,1.000);border-radius:calc(100cqw * 0.013542);font-size:calc(100cqw * 0.012500);font-weight:600;justify-content:center;align-items:center;text-align:center;z-index:7">Uydular</div><div class="el" style="left:27.9167%;top:92.5926%;width:11.8750%;height:4.8148%;background:rgba(58,44,13,1.000);color:rgba(255,176,32,1.000);border-radius:calc(100cqw * 0.013542);font-size:calc(100cqw * 0.012500);font-weight:600;justify-content:center;align-items:center;text-align:center;z-index:7">Saglayici</div><div class="el" style="left:40.6250%;top:92.5926%;width:11.8750%;height:4.8148%;background:rgba(16,42,68,1.000);color:rgba(62,166,255,1.000);border-radius:calc(100cqw * 0.013542);font-size:calc(100cqw * 0.012500);font-weight:600;justify-content:center;align-items:center;text-align:center;z-index:7">Favoriler</div><div class="el prog" style="left:58.7500%;top:72.7778%;width:37.5000%;height:0.5556%;color:rgba(62,166,255,1.000);border-radius:calc(100cqw * 0.001563);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:8"><i style="width:63%;background:rgba(62,166,255,1.000)"></i></div></div></div>
+<p class="note">Secili satir yuvarlak kosesini itemCornerRadiusSelected&#x27;dan, mavi dolgusunu itemGradientSelected&#x27;dan aliyor. Sag ustteki kutu Pig renderer ile gercek video.</p>
+</figure>
+<figure class="board">
+<figcaption>
+  <div class="cap-head"><h3>Zaman cizelgesi</h3><code>GraphMultiEPG</code></div>
+  <p class="sub">Coklu kanal EPG izgarasi</p>
+</figcaption>
+<div class="frame"><div class="stage" style="background:rgba(10,10,12,1.000)"><div class="backdrop"></div><div class="el" style="left:3.5417%;top:3.3333%;width:12.5000%;height:4.8148%;background:rgba(58,17,22,1.000);color:rgba(255,77,90,1.000);border-radius:calc(100cqw * 0.013542);font-size:calc(100cqw * 0.012500);font-weight:600;justify-content:center;align-items:center;text-align:center;z-index:5">Tumu</div><div class="el" style="left:16.8750%;top:3.3333%;width:12.5000%;height:4.8148%;background:rgba(15,51,32,1.000);color:rgba(61,220,132,1.000);border-radius:calc(100cqw * 0.013542);font-size:calc(100cqw * 0.012500);font-weight:600;justify-content:center;align-items:center;text-align:center;z-index:5">Uydular</div><div class="el" style="left:30.2083%;top:3.3333%;width:12.5000%;height:4.8148%;background:rgba(58,44,13,1.000);color:rgba(255,176,32,1.000);border-radius:calc(100cqw * 0.013542);font-size:calc(100cqw * 0.012500);font-weight:600;justify-content:center;align-items:center;text-align:center;z-index:5">Saglayici</div><div class="el" style="left:43.5417%;top:3.3333%;width:12.5000%;height:4.8148%;background:rgba(16,42,68,1.000);color:rgba(62,166,255,1.000);border-radius:calc(100cqw * 0.013542);font-size:calc(100cqw * 0.012500);font-weight:600;justify-content:center;align-items:center;text-align:center;z-index:5">Favoriler</div><div class="el" style="left:78.1250%;top:2.9630%;width:18.3333%;height:5.3704%;color:rgba(62,166,255,1.000);font-size:calc(100cqw * 0.023958);font-weight:700;justify-content:flex-end;align-items:center;text-align:right;z-index:5">21:03</div><div class="el ticks" style="left:3.5417%;top:10.1852%;width:92.9167%;height:3.7037%;color:rgba(155,161,172,1.000);font-size:calc(100cqw * 0.012500);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:5"><span>20:00</span><span>20:30</span><span>21:00</span><span>21:30</span><span>22:00</span><span>22:30</span></div><div class="el list" style="left:3.5417%;top:14.8148%;width:92.9167%;height:55.5556%;color:rgba(245,246,248,1.000);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:5"><div class="grow"><em>TRT 1 HD</em><span class="cell" style="width:28%">Teskilat</span><span class="cell" style="width:22%">Ana Haber</span><span class="cell" style="width:30%">Film Kusagi</span><span class="cell" style="width:20%">Spor</span></div><div class="grow"><em>Show TV HD</em><span class="cell" style="width:28%">Kalp Yarasi</span><span class="cell" style="width:22%">Ana Haber</span><span class="cell" style="width:30%">Film Kusagi</span><span class="cell" style="width:20%">Spor</span></div><div class="grow"><em>ATV HD</em><span class="cell" style="width:28%">Sadakatsiz</span><span class="cell sel" style="width:22%">Ana Haber</span><span class="cell" style="width:30%">Film Kusagi</span><span class="cell" style="width:20%">Spor</span></div><div class="grow"><em>Star TV HD</em><span class="cell" style="width:28%">Yasak Elma</span><span class="cell" style="width:22%">Ana Haber</span><span class="cell" style="width:30%">Film Kusagi</span><span class="cell" style="width:20%">Spor</span></div><div class="grow"><em>Kanal D HD</em><span class="cell" style="width:28%">Camdaki Kiz</span><span class="cell" style="width:22%">Ana Haber</span><span class="cell" style="width:30%">Film Kusagi</span><span class="cell" style="width:20%">Spor</span></div><div class="grow"><em>FOX HD</em><span class="cell" style="width:28%">Ana Haber</span><span class="cell" style="width:22%">Ana Haber</span><span class="cell" style="width:30%">Film Kusagi</span><span class="cell" style="width:20%">Spor</span></div><div class="grow"><em>TV8 HD</em><span class="cell" style="width:28%">MasterChef</span><span class="cell" style="width:22%">Ana Haber</span><span class="cell" style="width:30%">Film Kusagi</span><span class="cell" style="width:20%">Spor</span></div></div><div class="el" style="left:3.5417%;top:73.1481%;width:92.9167%;height:22.5926%;background:linear-gradient(to bottom, rgba(28,28,36,1.000), rgba(20,20,25,1.000));color:rgba(245,246,248,1.000);border-radius:calc(100cqw * 0.009375);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:5"></div><div class="el" style="left:3.5417%;top:14.0741%;width:92.9167%;height:0.1852%;background:rgba(44,44,56,1.000);color:rgba(245,246,248,1.000);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:6"></div><div class="el tline" style="left:19.0104%;top:14.8148%;width:0.0521%;height:55.5556%;color:rgba(245,246,248,1.000);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:6"></div><div class="el tline" style="left:34.4792%;top:14.8148%;width:0.0521%;height:55.5556%;color:rgba(245,246,248,1.000);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:6"></div><div class="el tline" style="left:49.9479%;top:14.8148%;width:0.0521%;height:55.5556%;color:rgba(245,246,248,1.000);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:6"></div><div class="el tline" style="left:65.4167%;top:14.8148%;width:0.0521%;height:55.5556%;color:rgba(245,246,248,1.000);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:6"></div><div class="el tline" style="left:80.8854%;top:14.8148%;width:0.0521%;height:55.5556%;color:rgba(245,246,248,1.000);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:6"></div><div class="el tline" style="left:96.3542%;top:14.8148%;width:0.0521%;height:55.5556%;color:rgba(245,246,248,1.000);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:6"></div><div class="el" style="left:3.5417%;top:73.1481%;width:0.3125%;height:22.5926%;background:rgba(62,166,255,1.000);color:rgba(245,246,248,1.000);border-radius:calc(100cqw * 0.001563) 0 0 calc(100cqw * 0.001563);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:6"></div><div class="el nowrap" style="left:6.0417%;top:75.5556%;width:78.1250%;height:4.2593%;color:rgba(245,246,248,1.000);font-size:calc(100cqw * 0.017708);font-weight:600;justify-content:flex-start;align-items:center;z-index:6">Teskilat</div><div class="el nowrap" style="left:6.0417%;top:80.1852%;width:36.4583%;height:3.1481%;color:rgba(62,166,255,1.000);font-size:calc(100cqw * 0.013542);font-weight:400;justify-content:flex-start;align-items:center;z-index:6">20:00 - 21:45</div><div class="el" style="left:6.0417%;top:84.4444%;width:88.5417%;height:9.6296%;color:rgba(155,161,172,1.000);font-size:calc(100cqw * 0.013542);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:6">Milli Istihbarat Teskilati&#x27;nin sahada gorev alan ekibi, ulke guvenligini tehdit eden yeni bir operasyonun izini surer. Bolumde ekip, sinir hattinda beklenmedik bir baglantiyla karsilasir.</div><div class="el tline now" style="left:29.1667%;top:14.6296%;width:0.9896%;height:55.9259%;color:rgba(245,246,248,1.000);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:7"></div></div></div>
+<p class="note">Alt kartta secili programin tam aciklamasi. Zaman cizgileri kutunun kendi 1px sistem grafigi.</p>
+</figure>
+<figure class="board">
+<figcaption>
+  <div class="cap-head"><h3>Program detayi</h3><code>EventView</code></div>
+  <p class="sub">Tek programin genis gorunumu</p>
+</figcaption>
+<div class="frame"><div class="stage" style="background:rgba(10,10,12,1.000)"><div class="backdrop"></div><div class="el nowrap" style="left:3.5417%;top:4.0741%;width:92.9167%;height:5.3704%;color:rgba(245,246,248,1.000);font-size:calc(100cqw * 0.021875);font-weight:600;justify-content:flex-start;align-items:center;z-index:5">Teskilat</div><div class="el" style="left:3.5417%;top:11.1111%;width:6.2500%;height:0.4630%;background:rgba(62,166,255,1.000);color:rgba(245,246,248,1.000);border-radius:calc(100cqw * 0.001563);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:5"></div><div class="el" style="left:3.5417%;top:14.8148%;width:92.9167%;height:64.8148%;background:linear-gradient(to bottom, rgba(28,28,36,1.000), rgba(20,20,25,1.000));color:rgba(245,246,248,1.000);border-radius:calc(100cqw * 0.010417);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:5"></div><div class="el para" style="left:6.0417%;top:18.1481%;width:87.9167%;height:58.1481%;color:rgba(155,161,172,1.000);font-size:calc(100cqw * 0.015625);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:5">Milli Istihbarat Teskilati&#x27;nin sahada gorev alan ekibi, ulke guvenligini tehdit eden yeni bir operasyonun izini surer. Bolumde ekip, sinir hattinda beklenmedik bir baglantiyla karsilasir.Milli Istihbarat Teskilati&#x27;nin sahada gorev alan ekibi, ulke guvenligini tehdit eden yeni bir operasyonun izini surer. Bolumde ekip, sinir hattinda beklenmedik bir baglantiyla karsilasir.Milli Istihbarat Teskilati&#x27;nin sahada gorev alan ekibi, ulke guvenligini tehdit eden yeni bir operasyonun izini surer. Bolumde ekip, sinir hattinda beklenmedik bir baglantiyla karsilasir.</div><div class="el" style="left:3.5417%;top:82.2222%;width:26.0417%;height:3.8889%;color:rgba(62,166,255,1.000);font-size:calc(100cqw * 0.014583);font-weight:600;justify-content:flex-start;align-items:center;z-index:5">28.08.2026  20:00</div><div class="el" style="left:30.6250%;top:82.2222%;width:15.6250%;height:3.8889%;color:rgba(155,161,172,1.000);font-size:calc(100cqw * 0.014583);font-weight:400;justify-content:flex-start;align-items:center;z-index:5">105 dk</div><div class="el" style="left:47.2917%;top:82.2222%;width:49.1667%;height:3.8889%;color:rgba(155,161,172,1.000);font-size:calc(100cqw * 0.014583);font-weight:400;justify-content:flex-end;align-items:center;text-align:right;z-index:5">TRT 1 HD</div><div class="el" style="left:3.5417%;top:92.2222%;width:12.5000%;height:4.8148%;background:rgba(58,17,22,1.000);color:rgba(255,77,90,1.000);border-radius:calc(100cqw * 0.013542);font-size:calc(100cqw * 0.012500);font-weight:600;justify-content:center;align-items:center;text-align:center;z-index:5">Tumu</div><div class="el" style="left:16.8750%;top:92.2222%;width:12.5000%;height:4.8148%;background:rgba(15,51,32,1.000);color:rgba(61,220,132,1.000);border-radius:calc(100cqw * 0.013542);font-size:calc(100cqw * 0.012500);font-weight:600;justify-content:center;align-items:center;text-align:center;z-index:5">Uydular</div><div class="el" style="left:30.2083%;top:92.2222%;width:12.5000%;height:4.8148%;background:rgba(58,44,13,1.000);color:rgba(255,176,32,1.000);border-radius:calc(100cqw * 0.013542);font-size:calc(100cqw * 0.012500);font-weight:600;justify-content:center;align-items:center;text-align:center;z-index:5">Saglayici</div><div class="el" style="left:43.5417%;top:92.2222%;width:12.5000%;height:4.8148%;background:rgba(16,42,68,1.000);color:rgba(62,166,255,1.000);border-radius:calc(100cqw * 0.013542);font-size:calc(100cqw * 0.012500);font-weight:600;justify-content:center;align-items:center;text-align:center;z-index:5">Favoriler</div></div></div>
+
+</figure>
+<figure class="board">
+<figcaption>
+  <div class="cap-head"><h3>Ikinci bilgi cubugu</h3><code>SecondInfoBar</code></div>
+  <p class="sub">InfoBar acikken tekrar OK</p>
+</figcaption>
+<div class="frame"><div class="stage" style="background:rgba(0,0,0,0.000)"><div class="backdrop"></div><div class="el" style="left:3.5417%;top:40.3704%;width:92.9167%;height:31.4815%;background:linear-gradient(to bottom, rgba(28,28,36,1.000), rgba(20,20,25,1.000));color:rgba(245,246,248,1.000);border-radius:calc(100cqw * 0.010417);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:5"></div><div class="el" style="left:3.5417%;top:40.3704%;width:0.3125%;height:31.4815%;background:rgba(62,166,255,1.000);color:rgba(245,246,248,1.000);border-radius:calc(100cqw * 0.001563) 0 0 calc(100cqw * 0.001563);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:6"></div><div class="el nowrap" style="left:6.0417%;top:43.3333%;width:88.5417%;height:4.6296%;color:rgba(245,246,248,1.000);font-size:calc(100cqw * 0.018750);font-weight:600;justify-content:flex-start;align-items:center;z-index:6">Teskilat</div><div class="el nowrap" style="left:6.0417%;top:48.3333%;width:52.0833%;height:2.9630%;color:rgba(62,166,255,1.000);font-size:calc(100cqw * 0.013542);font-weight:400;justify-content:flex-start;align-items:center;z-index:6">20:00 - 21:45</div><div class="el nowrap" style="left:63.3333%;top:48.3333%;width:31.2500%;height:2.9630%;color:rgba(106,112,123,1.000);font-size:calc(100cqw * 0.013542);font-weight:400;justify-content:flex-end;align-items:center;text-align:right;z-index:6">Dizi / Aksiyon</div><div class="el" style="left:6.0417%;top:53.1481%;width:88.5417%;height:16.4815%;color:rgba(155,161,172,1.000);font-size:calc(100cqw * 0.014583);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:6">Milli Istihbarat Teskilati&#x27;nin sahada gorev alan ekibi, ulke guvenligini tehdit eden yeni bir operasyonun izini surer. Bolumde ekip, sinir hattinda beklenmedik bir baglantiyla karsilasir.</div></div></div>
+
+</figure>
+<figure class="board">
+<figcaption>
+  <div class="cap-head"><h3>Ana menu</h3><code>Menu</code></div>
+  <p class="sub">Karartilmis arka plan uzerinde kart</p>
+</figcaption>
+<div class="frame"><div class="stage" style="background:rgba(0,0,0,0.000)"><div class="backdrop"></div><div class="el" style="left:0.0000%;top:0.0000%;width:100.0000%;height:100.0000%;background:rgba(0,0,0,0.800);color:rgba(245,246,248,1.000);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:5"></div><div class="el" style="left:22.3958%;top:11.1111%;width:55.2083%;height:77.7778%;background:linear-gradient(to bottom, rgba(28,28,36,1.000), rgba(20,20,25,1.000));color:rgba(245,246,248,1.000);border-radius:calc(100cqw * 0.012500);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:5"></div><div class="el nowrap" style="left:25.3125%;top:15.1852%;width:49.3750%;height:5.3704%;color:rgba(245,246,248,1.000);font-size:calc(100cqw * 0.020833);font-weight:600;justify-content:flex-start;align-items:center;z-index:6">Ana Menu</div><div class="el" style="left:25.3125%;top:21.4815%;width:5.2083%;height:0.4630%;background:rgba(62,166,255,1.000);color:rgba(245,246,248,1.000);border-radius:calc(100cqw * 0.001563);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:6"></div><div class="el" style="left:25.3125%;top:25.5556%;width:49.3750%;height:54.0741%;color:rgba(245,246,248,1.000);font-size:calc(100cqw * 0.016667);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:6"></div><div class="el" style="left:59.0625%;top:82.4074%;width:15.6250%;height:3.7037%;color:rgba(106,112,123,1.000);font-size:calc(100cqw * 0.013542);font-weight:400;justify-content:flex-end;align-items:center;text-align:right;z-index:6">21:03</div></div></div>
+
+</figure>
+<figure class="board">
+<figcaption>
+  <div class="cap-head"><h3>Ayarlar</h3><code>Setup</code></div>
+  <p class="sub">config listesi + aciklama satiri</p>
+</figcaption>
+<div class="frame"><div class="stage" style="background:rgba(0,0,0,0.000)"><div class="backdrop"></div><div class="el" style="left:0.0000%;top:0.0000%;width:100.0000%;height:100.0000%;background:rgba(0,0,0,0.800);color:rgba(245,246,248,1.000);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:5"></div><div class="el" style="left:12.5000%;top:8.3333%;width:75.0000%;height:83.3333%;background:linear-gradient(to bottom, rgba(28,28,36,1.000), rgba(20,20,25,1.000));color:rgba(245,246,248,1.000);border-radius:calc(100cqw * 0.012500);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:5"></div><div class="el nowrap" style="left:15.4167%;top:12.4074%;width:69.1667%;height:5.3704%;color:rgba(245,246,248,1.000);font-size:calc(100cqw * 0.020833);font-weight:600;justify-content:flex-start;align-items:center;z-index:6">Goruntu Ayarlari</div><div class="el" style="left:15.4167%;top:18.7037%;width:5.2083%;height:0.4630%;background:rgba(62,166,255,1.000);color:rgba(245,246,248,1.000);border-radius:calc(100cqw * 0.001563);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:6"></div><div class="el list" style="left:15.4167%;top:22.7778%;width:69.1667%;height:52.0370%;color:rgba(245,246,248,1.000);font-size:calc(100cqw * 0.015625);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:6"><div class="row cfgrow sel"><span>Cozunurluk</span><b>1080p</b></div><div class="row cfgrow"><span>Yenileme hizi</span><b>50 Hz</b></div><div class="row cfgrow"><span>Renk formati</span><b>Otomatik</b></div><div class="row cfgrow"><span>HDMI ses</span><b>PCM</b></div><div class="row cfgrow"><span>Ekran tasmasi</span><b>Kapali</b></div><div class="row cfgrow"><span>AC3 varsayilan</span><b>Evet</b></div></div><div class="el" style="left:15.4167%;top:76.6667%;width:69.1667%;height:0.1852%;background:rgba(44,44,56,1.000);color:rgba(245,246,248,1.000);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:6"></div><div class="el" style="left:15.4167%;top:78.1481%;width:69.1667%;height:5.9259%;color:rgba(155,161,172,1.000);font-size:calc(100cqw * 0.013542);font-weight:400;justify-content:flex-start;align-items:center;z-index:6">Cikis cozunurlugunu secin. 1080p tum modern televizyonlarda desteklenir.</div><div class="el" style="left:15.4167%;top:84.8148%;width:69.1667%;height:3.3333%;color:rgba(106,112,123,1.000);font-size:calc(100cqw * 0.011458);font-weight:400;justify-content:flex-end;align-items:center;text-align:right;z-index:6">OK ile kaydet</div></div></div>
+
+</figure>
+<figure class="board">
+<figcaption>
+  <div class="cap-head"><h3>Onay kutusu</h3><code>MessageBox</code></div>
+  
+</figcaption>
+<div class="frame"><div class="stage" style="background:rgba(0,0,0,0.000)"><div class="backdrop"></div><div class="el" style="left:0.0000%;top:0.0000%;width:100.0000%;height:100.0000%;background:rgba(0,0,0,0.800);color:rgba(245,246,248,1.000);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:5"></div><div class="el" style="left:26.5625%;top:30.5556%;width:46.8750%;height:38.8889%;background:linear-gradient(to bottom, rgba(28,28,36,1.000), rgba(20,20,25,1.000));color:rgba(245,246,248,1.000);border-radius:calc(100cqw * 0.012500);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:5"></div><div class="el" style="left:26.5625%;top:30.5556%;width:46.8750%;height:0.5556%;background:rgba(62,166,255,1.000);color:rgba(245,246,248,1.000);border-radius:calc(100cqw * 0.001563) calc(100cqw * 0.001563) 0 0;font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:6"></div><div class="el" style="left:29.6875%;top:35.7407%;width:40.6250%;height:16.6667%;color:rgba(245,246,248,1.000);font-size:calc(100cqw * 0.015625);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:6">Kutuyu yeniden baslatmak istiyor musunuz?</div><div class="el list" style="left:29.6875%;top:54.2593%;width:40.6250%;height:12.2222%;color:rgba(245,246,248,1.000);font-size:calc(100cqw * 0.015625);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:6"><div class="row menurow sel">Evet</div><div class="row menurow">Hayir</div></div></div></div>
+
+</figure>
+<figure class="board">
+<figcaption>
+  <div class="cap-head"><h3>Numara ile kanal</h3><code>NumberZap</code></div>
+  
+</figcaption>
+<div class="frame"><div class="stage" style="background:rgba(0,0,0,0.000)"><div class="backdrop"></div><div class="el" style="left:28.6458%;top:43.0556%;width:42.7083%;height:13.8889%;background:linear-gradient(to bottom, rgba(28,28,36,1.000), rgba(20,20,25,1.000));color:rgba(245,246,248,1.000);border-radius:calc(100cqw * 0.012500);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:5"></div><div class="el" style="left:28.6458%;top:43.0556%;width:0.3125%;height:13.8889%;background:rgba(62,166,255,1.000);color:rgba(245,246,248,1.000);border-radius:calc(100cqw * 0.001563) 0 0 calc(100cqw * 0.001563);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:6"></div><div class="el" style="left:31.1458%;top:45.3704%;width:10.4167%;height:9.2593%;color:rgba(62,166,255,1.000);font-size:calc(100cqw * 0.037500);font-weight:700;justify-content:flex-end;align-items:center;text-align:right;z-index:6">104</div><div class="el nowrap" style="left:43.0208%;top:45.3704%;width:26.0417%;height:9.2593%;color:rgba(245,246,248,1.000);font-size:calc(100cqw * 0.017708);font-weight:400;justify-content:flex-start;align-items:center;z-index:6">TRT 1 HD</div></div></div>
+
+</figure>
+<figure class="board">
+<figcaption>
+  <div class="cap-head"><h3>Ses gostergesi</h3><code>Volume</code></div>
+  
+</figcaption>
+<div class="frame"><div class="stage" style="background:rgba(0,0,0,0.000)"><div class="backdrop"></div><div class="el" style="left:31.2500%;top:83.3333%;width:37.5000%;height:7.4074%;background:linear-gradient(to bottom, rgba(28,28,36,1.000), rgba(20,20,25,1.000));color:rgba(245,246,248,1.000);border-radius:calc(100cqw * 0.020833);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:5"></div><div class="el" style="left:33.1250%;top:83.3333%;width:4.6875%;height:7.4074%;color:rgba(155,161,172,1.000);font-size:calc(100cqw * 0.012500);font-weight:600;justify-content:flex-start;align-items:center;z-index:6">SES</div><div class="el" style="left:39.0625%;top:86.6667%;width:27.6042%;height:0.7407%;background:rgba(44,44,56,1.000);color:rgba(245,246,248,1.000);border-radius:calc(100cqw * 0.002083);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:6"></div><div class="el prog" style="left:39.0625%;top:86.6667%;width:27.6042%;height:0.7407%;color:rgba(245,246,248,1.000);border-radius:calc(100cqw * 0.002083);font-weight:400;justify-content:flex-start;align-items:flex-start;z-index:7"><i style="width:45%;background:linear-gradient(to right, rgba(62,166,255,1.000), rgba(104,208,255,1.000))"></i></div></div></div>
+
+</figure>
+  </div>
+
+  <section class="install">
+    <h2>Kutuya kurulum</h2>
+    <ol class="steps">
+      <li><div><p><code class="inline">TiviAtv-FHD</code> klasorunu FTP ile kutuya kopyala:</p>
+        <pre>/usr/share/enigma2/TiviAtv-FHD/</pre></div></li>
+      <li><div><p>Kutuda skini sec:</p>
+        <pre>Menu &rarr; Ayarlar &rarr; Sistem &rarr; Kullanici arayuzu &rarr; Skin secimi</pre></div></li>
+      <li><div><p>Kanal listesini iki satirli moda al &mdash; TiviMate gorunumu buna bagli:</p>
+        <pre>Menu &rarr; Ayarlar &rarr; Kanal secimi &rarr; "Iki satirli servis listesi" = Evet
+Ayni ekranda "Sayfa basina oge" = 10</pre></div></li>
+    </ol>
+
+    <div class="caveat">
+      <h3>Iki surum</h3>
+      <p><strong>TiviAtv-FHD</strong> &mdash; sifir PNG, yuvarlakligi ve gradientleri motor
+        cizer. openATV <strong>7.3 ve uzeri</strong> gerekir; 7.2 ve altinda bu ozellikler
+        motorda yok, koseler kare cikar.</p>
+      <p><strong>TiviAtv-FHD-PNG</strong> &mdash; ayni tasarim, ama her yuvarlak kutu
+        <strong>tam o boyutta uretilmis bir PNG</strong> olarak pisirilmis (43 dosya, 52 KB).
+        openATV'nin <strong>her surumunde</strong> ve OpenSkin Designer'da dogru gorunur.
+        <code>tools/make_png_variant.py</code> ile kaynaktan otomatik uretilir &mdash;
+        PNG'ler elemanin gercek olcusunde ciziliyor, yani hicbir yerde esnetme yok.</p>
+    </div>
+
+    <div class="caveat">
+      <h3>Bilinmesi gerekenler</h3>
+      <p><strong>Satir yuksekligi skinden gelmez.</strong> enigma2 kanal listesi satir yuksekligini
+        <code>liste yuksekligi / sayfa basina oge</code> olarak hesaplar
+        (<code>ServiceList.setItemsPerPage</code>). Skindeki <code>serviceItemHeight</code> degeri
+        bu hesabin altinda kalir; satirlar cok sik ya da cok seyrek gorunuyorsa
+        "sayfa basina oge" ayarini degistir.</p>
+      <p><strong>Renklerde alfa terstir.</strong> Format <code>#AARRGGBB</code> ama AA = seffaflik:
+        <code>00</code> tamamen opak, <code>FF</code> tamamen gorunmez. CSS'ten aliskin olanin
+        en sik dustugu tuzak.</p>
+      <p><strong>Kanal logolari (picon) skine dahil degil.</strong> Onlar ayri bir paket olarak
+        <code>/usr/share/enigma2/picon/</code> altina kurulur.</p>
+      <p><strong>Barlow yerine baska font</strong> istersen klasordeki dort <code>.ttf</code> dosyasini
+        degistirip <code>skin.xml</code>'in basindaki <code>&lt;fonts&gt;</code> blogunda dosya
+        adlarini guncelle. Isimler (TM / TMM / TMB / TMX) ayni kalirsa geri kalan hicbir sey degismez.</p>
+    </div>
+  </section>
+</div>

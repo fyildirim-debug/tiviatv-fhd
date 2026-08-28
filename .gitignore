@@ -1,0 +1,11 @@
+# lint_skin.py'nin indirdigi upstream kaynaklar
+.cache/
+
+# Python
+__pycache__/
+*.pyc
+
+# OS
+Thumbs.db
+desktop.ini
+.DS_Store
