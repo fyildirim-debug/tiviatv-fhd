@@ -5,9 +5,10 @@ Yayın arkada akarken yarı saydam paneller, beyaz seçim hapları, yuvarlak
 köşeler, ince ilerleme çizgileri ve Inter yazı tipi — hepsi enigma2'nin kendi
 çizim motoruyla, **tek bir PNG kullanılmadan**.
 
-![önizleme](TiviAtv-FHD/prev.png)
+![TiviATV FHD: kanal listesi, program rehberi, InfoBar, çoklu EPG](docs/screenshots/hero.jpg)
 
 **Kurulum:** [Türkçe](#türkçe) · **Installation:** [English](#english) ·
+**Ekranlar / Screenshots:** [aşağıda / below](#ekranlar--screenshots) ·
 **About:** [In English](#in-english)
 
 ## Gereksinim
@@ -131,12 +132,14 @@ içine koyar (yeni eklenen font tanımları eksik kalmasın diye).
 script merges your four font lines into the new template, so fonts added in
 later versions are not missing.*
 
-## Ekranlar
+## Ekranlar / Screenshots
 
 Görüntüler PC emülatöründen (örnek kanal listesi, EPG ve picon ile, bkz.
 [Emülatörde test](#emülatörde-test)). Emülatörde video oynamadığı için OSD,
 kutudaki donanım birleştirmesi gibi alfasıyla örnek bir yayın karesinin üstüne
 konuldu (kare: Unsplash, Vienna Reyes).
+*Captured in the PC emulator; the OSD is composited over a sample frame by its
+alpha, the way the box hardware does it.*
 
 ### InfoBar
 
@@ -149,7 +152,12 @@ paylaşır, hangi kaynak aktifse o görünür.
 
 ![InfoBar](docs/screenshots/infobar.jpg)
 
-### Kanal listesi
+İkinci bilgi çubuğu (InfoBar açıkken OK): programın tam açıklaması ve türü.
+*Second infobar: full description and genre.*
+
+![İkinci bilgi çubuğu](docs/screenshots/second-infobar.jpg)
+
+### Kanal listesi · Channel list
 
 TiviMate'teki gibi yayın durmadan tam ekran arkada akar (PiG kutusu yok):
 solda yarı saydam panelde iki satırlı liste, picon ve ilerleme; seçili kanal
@@ -158,7 +166,7 @@ gri odakla (beyaz hap beyaz logoları yutardı). Sağ altta seçili kanalın
 
 ![Kanal listesi](docs/screenshots/channelselection.jpg)
 
-### Program rehberi
+### Program rehberi · TV guide
 
 Zaman çizelgesi: yarı saydam zemin, TiviMate gibi gri hücreler; şu an yayında
 olanlar bir ton açık, seçili hücre açık gri, kırmızı "şimdi" çizgisi, izlenen
@@ -171,36 +179,58 @@ verilir (önceden motorun varsayılan yeşil/sarı bloklarıydı).
 
 ![Çoklu EPG](docs/screenshots/epg-multi.jpg)
 
-### Kanal menüsü
+Tek kanal EPG ve program detayı (benzer yayınlarla).
+*Single-channel EPG and event details with similar broadcasts.*
+
+<table>
+<tr>
+<td width="50%"><img src="docs/screenshots/epg-single.jpg" alt="Tek kanal EPG"></td>
+<td width="50%"><img src="docs/screenshots/event-view.jpg" alt="Program detayı"></td>
+</tr>
+</table>
+
+### Kanal menüsü · Channel menu
 
 Kanal listesinde MENU: sağdan açılan çekmece.
 
 ![Kanal menüsü](docs/screenshots/channel-menu.jpg)
 
-### Sanal klavye
+### Sanal klavye · Virtual keyboard
 
 Alttan açılan sayfa; tuşlar PNG değil, motorun çizdiği kutular ve ikon fontu.
 
 ![Klavye](docs/screenshots/keyboard.jpg)
 
-### Menü
+### Menü · Menu
 
 Yayın üstünde sağa doğru solan yarı saydam sol panel, beyaz seçim hapı.
 
 ![Menü](docs/screenshots/menu.jpg)
 
-### Ayarlar
+### Ayarlar · Settings
 
 ![Ayarlar](docs/screenshots/setup.jpg)
 
-### Ses
+### Zamanlayıcılar · Timers
+
+Kayıt listesi beyaz seçim hapıyla; sağda seçili programın kartı.
+
+![Zamanlayıcılar](docs/screenshots/timers.jpg)
+
+### Eklentiler · Plugins
+
+Izgara düzeninde eklenti tarayıcı, altta renk tuşu çipleri.
+
+![Eklentiler](docs/screenshots/plugins.jpg)
+
+### Ses · Volume
 
 Altta ince kenarlı hap: hoparlör glifi (`enigma2icons`), ince süre çizgisiyle
 aynı dolgu, sayı. Sessizde kırmızı glif ve "SESSIZ".
 
 ![Ses](docs/screenshots/volume.jpg)
 
-### Numara ile kanal
+### Numara ile kanal · Number zap
 
 Numara kendi karosunda, kanal adı yanında. Kullanım ayarlarında numara zap
 logosu açıksa picon sağda çerçevesiz görünür (motor o zaman `NumberZapPicon`
@@ -208,17 +238,47 @@ adını arar, aynı tasarım o adla da tanımlı).
 
 ![Numara zap](docs/screenshots/numberzap.jpg)
 
-### Oynatıcı
+### Oynatıcı · Player
 
 Geçen / kalan süre ince çizginin iki ucunda; duraklatınca sol üstte durum hapı
 (`PVRState`).
 
 ![Oynatıcı](docs/screenshots/player.jpg)
 
-### Renk tuşları
+### Renk tuşları · Colour keys
 
 Doygun renkli haplar yerine koyu cam çip + renkli nokta + beyaz yazı. Nokta,
 tuşla aynı kaynağa bağlı ayrı bir etiket; tuş boşken ikisi birlikte gizlenir.
+(Görüntülerdeki alt satırlar.)
+
+### Yazı tipleri · Typefaces
+
+Aynı InfoBar dört yazı tipiyle. Varsayılan Inter; diğerleri **TiviATV Yazı
+Tipi** eklentisinden seçilir (bkz. [Font](#font)).
+*The same infobar in the four bundled typefaces; Inter is the default.*
+
+![Yazı tipleri](docs/screenshots/fonts.jpg)
+
+### Diğer ekranlar · More screens
+
+<table>
+<tr>
+<td width="50%"><img src="docs/screenshots/messagebox.jpg" alt="Onay kutusu"><br>Onay kutusu · <i>Message box</i></td>
+<td width="50%"><img src="docs/screenshots/inputbox.jpg" alt="Giriş kutusu"><br>Giriş kutusu · <i>Input box</i></td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/pin.jpg" alt="PIN"><br>Ebeveyn kilidi PIN · <i>Parental PIN</i></td>
+<td><img src="docs/screenshots/mute.jpg" alt="Sessiz"><br>Sessiz · <i>Mute</i></td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/console.jpg" alt="Konsol"><br>Konsol (paket kurulumu) · <i>Console</i></td>
+<td><img src="docs/screenshots/information.jpg" alt="Bilgi"><br>İmaj bilgisi · <i>Information</i></td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/skin-settings.jpg" alt="Arayüz ayarları"><br>Arayüz ayarları (skin seçimi) · <i>Skin settings</i></td>
+<td><img src="docs/screenshots/font-picker.jpg" alt="Yazı tipi seçici"><br>Yazı tipi seçici · <i>Font picker</i></td>
+</tr>
+</table>
 
 ## Tanımlı ekranlar
 
@@ -449,7 +509,9 @@ blending.
 Needs openATV **7.3+** — that is when `cornerRadius`, gradients and
 `itemCornerRadiusSelected` landed in the engine.
 
-Installation: see [English install steps](#english) above.
+Installation: see [English install steps](#english) above. Screenshots of
+every screen, with bilingual headings, are in
+[Ekranlar / Screenshots](#ekranlar--screenshots).
 
 Progress lines are 4 px hairlines between the start and end times, filled
 with a slate-to-white gradient; colour keys are dark glass chips with a
