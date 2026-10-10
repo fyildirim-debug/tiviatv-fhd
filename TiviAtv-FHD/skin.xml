@@ -44,7 +44,8 @@
 		<color name="focusHi"     value="#4a5059" />
 		<color name="cell"        value="#1b1f24" />
 		<color name="cellNow"     value="#262b32" />
-		<color name="track"       value="#3a3f46" />
+		<color name="track"       value="#444a52" />
+		<color name="edge"        value="#3d434b" />
 
 		<!-- Saydamlik: goruntu ustunde DUZ yari saydam dolgu. OSD pikselinin alfasi
 		     oldugu gibi yazilir, goruntuyle birlestirmeyi kutu donanimi yapar; OSD
@@ -132,7 +133,7 @@
 		<parameter name="EPGNativeControls" value="1" />
 		<parameter name="EpgListSingle" value="90,270" />
 		<parameter name="EpgListMulti" value="300,200,150,30" />
-		<parameter name="EpgListMultiProgressBar" value="150,8,0" />
+		<parameter name="EpgListMultiProgressBar" value="130,4,0" />
 		<parameter name="VirtualKeyboardNative" value="1" />
 		<parameter name="VirtualKeyboard" value="96,76" />
 		<!-- zemin, secili, secili kenar, yazi, kirmizi, yesil, sari, mavi -->
@@ -157,12 +158,12 @@
 		<color name="ListboxMarkedAndSelectedForeground" color="onAccent" />
 		<color name="WindowTitleForeground"              color="text" />
 		<color name="WindowTitleBackground"              color="transparent" />
-		<listbox font="TM;30" scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16"
-		         scrollbarBorderWidth="0" scrollbarRadius="4" enableWrapAround="1" />
+		<listbox font="TM;30" scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16"
+		         scrollbarBorderWidth="0" scrollbarRadius="2" enableWrapAround="1" />
 		<label font="TM;30" />
 		<configList entryFont="TM;30" valueFont="TMB;30" headerFont="TMB;32" entryLeftOffset="28" indentSize="32" />
-		<scrolllabel scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16"
-		             scrollbarBorderWidth="0" scrollbarRadius="4" />
+		<scrolllabel scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16"
+		             scrollbarBorderWidth="0" scrollbarRadius="2" />
 	</windowstyle>
 
 	<!-- ============================================================
@@ -175,116 +176,127 @@
 		<eLabel position="0,560" size="1920,520" backgroundColor="#ff0a0f13,#8c0a0f13,#140a0f13,vertical" zPosition="0" />
 
 		<!-- logo karosu + numara / kanal -->
-		<eLabel position="68,834" size="228,128" backgroundColor="chip" cornerRadius="18" zPosition="1" />
-		<widget source="session.CurrentService" render="Picon" position="82,844" size="200,108"
+		<eLabel position="68,826" size="228,132" backgroundColor="chip" widgetBorderWidth="2" widgetBorderColor="edge" cornerRadius="22" zPosition="1" />
+		<widget source="session.CurrentService" render="Picon" position="82,838" size="200,108"
 		        transparent="1" alphatest="blend" zPosition="2">
 			<convert type="ServiceName">Reference</convert>
 		</widget>
-		<widget source="session.CurrentService" render="ChannelNumber" position="324,834" size="110,56"
-		        font="TMX;42" foregroundColor="textDim" transparent="1" halign="left" valign="center"
-		        noWrap="1" zPosition="2" />
-		<widget source="session.CurrentService" render="Label" position="434,834" size="900,56"
+		<widget source="session.CurrentService" render="ChannelNumber" position="324,835" size="76,40"
+		        font="TMB;24" foregroundColor="textDim" backgroundColor="chip" widgetBorderWidth="2" widgetBorderColor="edge"
+		        cornerRadius="20" halign="center" valign="center" noWrap="1" zPosition="2" />
+		<widget source="session.CurrentService" render="Label" position="416,826" size="918,58"
 		        font="TMB;44" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="2">
 			<convert type="ServiceName">Name</convert>
 		</widget>
 
 		<!-- simdiki program -->
-		<widget source="session.Event_Now" render="Label" position="324,892" size="1100,44"
+		<widget source="session.Event_Now" render="Label" position="324,886" size="1100,46"
 		        font="TM;34" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="2">
 			<convert type="EventName">Name</convert>
 		</widget>
-		<widget source="session.Event_Now" render="Label" position="324,940" size="240,34"
-		        font="TM;26" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="2">
-			<convert type="EventTime">Times</convert>
-			<convert type="ClockToText">Default</convert>
-		</widget>
-		<widget source="session.Event_Now" render="Label" position="572,940" size="160,34"
+
+		<!-- kalan sure + bilgi rozetleri (bosken gizli, ince kenarli) -->
+		<widget source="session.Event_Now" render="Label" position="324,940" size="150,34"
 		        font="TMB;24" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="2">
 			<convert type="EventTime">Remaining</convert>
 			<convert type="RemainingToText">Default</convert>
 		</widget>
-
-		<!-- bilgi rozetleri (bosken gizli) -->
-		<widget source="session.CurrentService" render="Label" position="744,940" size="170,34"
-		        font="TMB;19" foregroundColor="textDim" backgroundColor="chip" cornerRadius="10"
-		        halign="center" valign="center" noWrap="1" zPosition="2">
+		<widget source="session.CurrentService" render="Label" position="486,940" size="170,34"
+		        font="TMB;19" foregroundColor="textDim" backgroundColor="chip" widgetBorderWidth="2" widgetBorderColor="edge"
+		        cornerRadius="17" halign="center" valign="center" noWrap="1" zPosition="2">
 			<convert type="PliExtraInfo">ResolutionString</convert>
 			<convert type="TiviAtvText" />
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.CurrentService" render="Label" position="926,940" size="140,34"
-		        font="TMB;19" foregroundColor="textDim" backgroundColor="chip" cornerRadius="10"
-		        halign="center" valign="center" noWrap="1" zPosition="2">
+		<widget source="session.CurrentService" render="Label" position="668,940" size="140,34"
+		        font="TMB;19" foregroundColor="textDim" backgroundColor="chip" widgetBorderWidth="2" widgetBorderColor="edge"
+		        cornerRadius="17" halign="center" valign="center" noWrap="1" zPosition="2">
 			<convert type="PliExtraInfo">VideoCodec</convert>
 			<convert type="TiviAtvText" />
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.CurrentService" render="Label" position="1078,940" size="140,34"
-		        font="TMB;19" foregroundColor="textDim" backgroundColor="chip" cornerRadius="10"
-		        halign="center" valign="center" noWrap="1" zPosition="2">
+		<widget source="session.CurrentService" render="Label" position="820,940" size="140,34"
+		        font="TMB;19" foregroundColor="textDim" backgroundColor="chip" widgetBorderWidth="2" widgetBorderColor="edge"
+		        cornerRadius="17" halign="center" valign="center" noWrap="1" zPosition="2">
 			<convert type="PliExtraInfo">CurrentCrypto</convert>
 			<convert type="TiviAtvText" />
 			<convert type="ConditionalShowHide" />
 		</widget>
 
-		<!-- ilerleme: beyaz dolgu, koyu iz -->
-		<eLabel position="68,994" size="1784,6" backgroundColor="track" cornerRadius="3" zPosition="2" />
-		<widget source="session.Event_Now" render="Progress" position="68,994" size="1784,6"
-		        backgroundColor="track" foregroundColor="selBg" cornerRadius="3" borderWidth="0"
+		<!-- sure cizgisi: baslangic | cizgi | bitis. Dolgu sonuk arduvazdan parlak
+		     beyaza akar; ucu hep en parlak yer -->
+		<widget source="session.Event_Now" render="Label" position="68,984" size="70,32"
+		        font="TMB;22" foregroundColor="textDim" transparent="1" halign="left" valign="center" noWrap="1" zPosition="2">
+			<convert type="EventTime">StartTime</convert>
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<eLabel position="144,998" size="1632,4" backgroundColor="track" cornerRadius="2" zPosition="2" />
+		<widget source="session.Event_Now" render="Progress" position="144,998" size="1632,4"
+		        backgroundColor="track" foregroundColor="#00718096,#00ffffff,horizontal" cornerRadius="2" borderWidth="0"
 		        transparent="1" zPosition="3">
 			<convert type="EventTime">Progress</convert>
 		</widget>
+		<widget source="session.Event_Now" render="Label" position="1782,984" size="70,32"
+		        font="TMB;22" foregroundColor="textDim" transparent="1" halign="right" valign="center" noWrap="1" zPosition="2">
+			<convert type="EventTime">EndTime</convert>
+			<convert type="ClockToText">Default</convert>
+		</widget>
 
-		<!-- sonraki -->
-		<eLabel position="68,1018" size="136,36" text="SONRAKI" backgroundColor="chip" cornerRadius="18"
-		        font="TMB;19" foregroundColor="textDim" halign="center" valign="center" zPosition="2" />
-		<widget source="session.Event_Next" render="Label" position="220,1016" size="1000,40"
+		<!-- sonraki: baslangic saati + ad -->
+		<eLabel position="68,1028" size="136,34" text="SONRAKI" backgroundColor="chip" widgetBorderWidth="2" widgetBorderColor="edge"
+		        cornerRadius="17" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="2" />
+		<widget source="session.Event_Next" render="Label" position="222,1026" size="92,38"
+		        font="TMB;24" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="2">
+			<convert type="EventTime">StartTime</convert>
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="session.Event_Next" render="Label" position="318,1026" size="1000,38"
 		        font="TM;26" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="2">
 			<convert type="EventName">Name</convert>
 		</widget>
 
 		<!-- saat / tarih -->
-		<widget source="global.CurrentTime" render="Label" position="1500,830" size="352,70"
+		<widget source="global.CurrentTime" render="Label" position="1500,826" size="352,70"
 		        font="TMX;62" foregroundColor="text" transparent="1" halign="right" valign="center" zPosition="2">
 			<convert type="ClockToText">Default</convert>
 		</widget>
-		<widget source="global.CurrentTime" render="Label" position="1500,900" size="352,32"
+		<widget source="global.CurrentTime" render="Label" position="1500,896" size="352,32"
 		        font="TM;24" foregroundColor="textDim" transparent="1" halign="right" valign="center" zPosition="2">
 			<convert type="ClockToText">Format:%d.%m.%Y</convert>
 		</widget>
 
 		<!-- sinyal: yuzde barin icinde (DVB) / akis hizi (IPTV) -->
-		<widget source="session.FrontendStatus" render="Label" position="1540,1022" size="150,28" text=" "
+		<widget source="session.FrontendStatus" render="Label" position="1540,943" size="150,28" text=" "
 		        backgroundColor="track" cornerRadius="14" transparent="0" zPosition="2">
 			<convert type="TiviAtvSignal">IsDVB</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.FrontendStatus" render="Progress" position="1540,1022" size="150,28"
+		<widget source="session.FrontendStatus" render="Progress" position="1540,943" size="150,28"
 		        foregroundColor="#003ea6ff,#001f6fae,horizontal" cornerRadius="14" borderWidth="0"
 		        transparent="1" zPosition="3">
 			<convert type="TiviAtvSignal">SNR</convert>
 		</widget>
-		<widget source="session.FrontendStatus" render="Label" position="1540,1022" size="150,28"
+		<widget source="session.FrontendStatus" render="Label" position="1540,943" size="150,28"
 		        font="TMB;18" foregroundColor="text" transparent="1" halign="center" valign="center"
 		        noWrap="1" zPosition="4">
 			<convert type="TiviAtvSignal">SNRText</convert>
 		</widget>
-		<widget source="session.FrontendStatus" render="Label" position="1702,1022" size="150,28" text=" "
+		<widget source="session.FrontendStatus" render="Label" position="1702,943" size="150,28" text=" "
 		        backgroundColor="track" cornerRadius="14" transparent="0" zPosition="2">
 			<convert type="TiviAtvSignal">IsDVB</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.FrontendStatus" render="Progress" position="1702,1022" size="150,28"
+		<widget source="session.FrontendStatus" render="Progress" position="1702,943" size="150,28"
 		        foregroundColor="#003ea6ff,#001f6fae,horizontal" cornerRadius="14" borderWidth="0"
 		        transparent="1" zPosition="3">
 			<convert type="TiviAtvSignal">AGC</convert>
 		</widget>
-		<widget source="session.FrontendStatus" render="Label" position="1702,1022" size="150,28"
+		<widget source="session.FrontendStatus" render="Label" position="1702,943" size="150,28"
 		        font="TMB;18" foregroundColor="text" transparent="1" halign="center" valign="center"
 		        noWrap="1" zPosition="4">
 			<convert type="TiviAtvSignal">AGCText</convert>
 		</widget>
-		<widget source="session.FrontendStatus" render="Label" position="1486,1018" size="366,36"
+		<widget source="session.FrontendStatus" render="Label" position="1486,940" size="366,34"
 		        font="TMB;24" foregroundColor="textDim" transparent="1" halign="right" valign="center"
 		        noWrap="1" zPosition="4">
 			<convert type="TiviAtvSignal">Speed</convert>
@@ -333,31 +345,43 @@
 		        itemCornerRadius="16" itemCornerRadiusSelected="16"
 		        backgroundColorSelected="focus" foregroundColorSelected="text"
 		        listMarginLeft="24" listMarginRight="24" fieldMargins="16"
-		        progressbarHeight="6" progressbarBorderWidth="0" progressBarWidth="130"
+		        progressbarHeight="4" progressbarBorderWidth="0" progressBarWidth="112"
 		        colorEventProgressbar="selBg" colorEventProgressbarSelected="selBg"
-		        colorEventProgressbarBorder="track" colorEventProgressbarBorderSelected="track"
+		        colorEventProgressbarBorder="track" colorEventProgressbarBorderSelected="focusHi"
 		        colorServiceDescription="textDim" colorServiceDescriptionSelected="textDim"
 		        colorServiceRecorded="live" colorServiceRecording="live"
 		        foregroundColorServiceNotAvail="textFaint"
 		        separatorLineColor="line"
-		        scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarOffset="12" scrollbarRadius="3"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="12" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 
 		<!-- renk tuslari -->
-		<widget source="key_red" render="Label"    position="64,1004"  size="212,48" backgroundColor="redSoft"    cornerRadius="24"
-		        font="TMB;22" foregroundColor="live"  halign="center" valign="center" transparent="0" zPosition="2">
+		<widget source="key_red" render="Label" position="64,1004" size="212,48" backgroundColor="chip" cornerRadius="24"
+		        font="TMB;22" foregroundColor="text" halign="left" valign="center" padding="46,0,14,0" noWrap="1" zPosition="2">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_green" render="Label"  position="288,1004" size="212,48" backgroundColor="greenSoft"  cornerRadius="24"
-		        font="TMB;22" foregroundColor="ok"    halign="center" valign="center" transparent="0" zPosition="2">
+		<widget source="key_red" render="Label" position="84,1021" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;22" cornerRadius="7" zPosition="3">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_yellow" render="Label" position="512,1004" size="212,48" backgroundColor="yellowSoft" cornerRadius="24"
-		        font="TMB;22" foregroundColor="warn"  halign="center" valign="center" transparent="0" zPosition="2">
+		<widget source="key_green" render="Label" position="288,1004" size="212,48" backgroundColor="chip" cornerRadius="24"
+		        font="TMB;22" foregroundColor="text" halign="left" valign="center" padding="46,0,14,0" noWrap="1" zPosition="2">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_blue" render="Label"   position="736,1004" size="212,48" backgroundColor="blueSoft"   cornerRadius="24"
-		        font="TMB;22" foregroundColor="accent" halign="center" valign="center" transparent="0" zPosition="2">
+		<widget source="key_green" render="Label" position="308,1021" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;22" cornerRadius="7" zPosition="3">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="512,1004" size="212,48" backgroundColor="chip" cornerRadius="24"
+		        font="TMB;22" foregroundColor="text" halign="left" valign="center" padding="46,0,14,0" noWrap="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="532,1021" size="14,14" backgroundColor="warn" foregroundColor="warn" font="TMB;22" cornerRadius="7" zPosition="3">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label" position="736,1004" size="212,48" backgroundColor="chip" cornerRadius="24"
+		        font="TMB;22" foregroundColor="text" halign="left" valign="center" padding="46,0,14,0" noWrap="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label" position="756,1021" size="14,14" backgroundColor="accent" foregroundColor="accent" font="TMB;22" cornerRadius="7" zPosition="3">
 			<convert type="ConditionalShowHide" />
 		</widget>
 
@@ -423,14 +447,14 @@
 			<convert type="EventTime">Times</convert>
 			<convert type="ClockToText">Default</convert>
 		</widget>
-		<eLabel position="1220,788" size="610,6" backgroundColor="track" cornerRadius="3" zPosition="2" />
-		<widget source="ServiceEvent" render="Progress" position="1220,788" size="610,6"
-		        backgroundColor="track" foregroundColor="selBg" cornerRadius="3" borderWidth="0"
+		<eLabel position="1220,789" size="610,4" backgroundColor="track" cornerRadius="2" zPosition="2" />
+		<widget source="ServiceEvent" render="Progress" position="1220,789" size="610,4"
+		        backgroundColor="track" foregroundColor="#00718096,#00ffffff,horizontal" cornerRadius="2" borderWidth="0"
 		        transparent="1" zPosition="3">
 			<convert type="EventTime">Progress</convert>
 		</widget>
 
-		<eLabel position="1220,816" size="136,34" text="SONRAKI" backgroundColor="chip" cornerRadius="17"
+		<eLabel position="1220,816" size="136,34" text="SONRAKI" backgroundColor="chip" widgetBorderWidth="2" widgetBorderColor="edge" cornerRadius="17"
 		        font="TMB;19" foregroundColor="textDim" halign="center" valign="center" zPosition="2" />
 		<widget source="ServiceEvent" render="Label" position="1370,814" size="460,38"
 		        font="TM;26" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="2">
@@ -452,7 +476,10 @@
 		        itemCornerRadiusSelected="16" backgroundColorSelected="focus" foregroundColorSelected="text"
 		        colorServiceDescription="textDim" colorServiceDescriptionSelected="textDim"
 		        listMarginLeft="24" listMarginRight="24"
-		        scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarOffset="12" scrollbarRadius="3"
+		        progressbarHeight="4" progressbarBorderWidth="0" progressBarWidth="112"
+		        colorEventProgressbar="selBg" colorEventProgressbarSelected="selBg"
+		        colorEventProgressbarBorder="track" colorEventProgressbarBorderSelected="focusHi"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="12" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 	</screen>
 
@@ -466,22 +493,37 @@
 		        itemCornerRadiusSelected="16" backgroundColorSelected="focus" foregroundColorSelected="text"
 		        colorServiceDescription="textDim" colorServiceDescriptionSelected="textDim"
 		        listMarginLeft="24" listMarginRight="24"
-		        scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarOffset="12" scrollbarRadius="3"
+		        progressbarHeight="4" progressbarBorderWidth="0" progressBarWidth="112"
+		        colorEventProgressbar="selBg" colorEventProgressbarSelected="selBg"
+		        colorEventProgressbarBorder="track" colorEventProgressbarBorderSelected="focusHi"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="12" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
-		<widget source="key_red" render="Label"    position="64,1004"  size="212,48" backgroundColor="redSoft"    cornerRadius="24"
-		        font="TMB;22" foregroundColor="live"   halign="center" valign="center" zPosition="2">
+		<widget source="key_red" render="Label" position="64,1004" size="212,48" backgroundColor="chip" cornerRadius="24"
+		        font="TMB;22" foregroundColor="text" halign="left" valign="center" padding="46,0,14,0" noWrap="1" zPosition="2">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_green" render="Label"  position="288,1004" size="212,48" backgroundColor="greenSoft"  cornerRadius="24"
-		        font="TMB;22" foregroundColor="ok"     halign="center" valign="center" zPosition="2">
+		<widget source="key_red" render="Label" position="84,1021" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;22" cornerRadius="7" zPosition="3">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_yellow" render="Label" position="512,1004" size="212,48" backgroundColor="yellowSoft" cornerRadius="24"
-		        font="TMB;22" foregroundColor="warn"   halign="center" valign="center" zPosition="2">
+		<widget source="key_green" render="Label" position="288,1004" size="212,48" backgroundColor="chip" cornerRadius="24"
+		        font="TMB;22" foregroundColor="text" halign="left" valign="center" padding="46,0,14,0" noWrap="1" zPosition="2">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_blue" render="Label"   position="736,1004" size="212,48" backgroundColor="blueSoft"   cornerRadius="24"
-		        font="TMB;22" foregroundColor="accent" halign="center" valign="center" zPosition="2">
+		<widget source="key_green" render="Label" position="308,1021" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;22" cornerRadius="7" zPosition="3">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="512,1004" size="212,48" backgroundColor="chip" cornerRadius="24"
+		        font="TMB;22" foregroundColor="text" halign="left" valign="center" padding="46,0,14,0" noWrap="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="532,1021" size="14,14" backgroundColor="warn" foregroundColor="warn" font="TMB;22" cornerRadius="7" zPosition="3">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label" position="736,1004" size="212,48" backgroundColor="chip" cornerRadius="24"
+		        font="TMB;22" foregroundColor="text" halign="left" valign="center" padding="46,0,14,0" noWrap="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label" position="756,1021" size="14,14" backgroundColor="accent" foregroundColor="accent" font="TMB;22" cornerRadius="7" zPosition="3">
 			<convert type="ConditionalShowHide" />
 		</widget>
 	</screen>
@@ -502,23 +544,35 @@
 		        EventFontSingle="TM;30"
 		        itemCornerRadiusSelected="14"
 		        separatorLineColor="line"
-		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 
-		<widget source="key_red" render="Label"    position="68,996"   size="240,52" backgroundColor="redSoft"    cornerRadius="26"
-		        font="TMB;24" foregroundColor="live"   halign="center" valign="center">
+		<widget source="key_red" render="Label" position="68,996" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_green" render="Label"  position="324,996"  size="240,52" backgroundColor="greenSoft"  cornerRadius="26"
-		        font="TMB;24" foregroundColor="ok"     halign="center" valign="center">
+		<widget source="key_red" render="Label" position="90,1015" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="1">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_yellow" render="Label" position="580,996"  size="240,52" backgroundColor="yellowSoft" cornerRadius="26"
-		        font="TMB;24" foregroundColor="warn"   halign="center" valign="center">
+		<widget source="key_green" render="Label" position="324,996" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_blue" render="Label"   position="836,996"  size="240,52" backgroundColor="blueSoft"   cornerRadius="26"
-		        font="TMB;24" foregroundColor="accent" halign="center" valign="center">
+		<widget source="key_green" render="Label" position="346,1015" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="580,996" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="602,1015" size="14,14" backgroundColor="warn" foregroundColor="warn" font="TMB;24" cornerRadius="7" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label" position="836,996" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label" position="858,1015" size="14,14" backgroundColor="accent" foregroundColor="accent" font="TMB;24" cornerRadius="7" zPosition="1">
 			<convert type="ConditionalShowHide" />
 		</widget>
 	</screen>
@@ -527,20 +581,32 @@
 	     GRAPH MULTI EPG  -  TiviMate zaman cizelgesi
 	     ============================================================ -->
 	<screen name="GraphMultiEPG" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="Program Rehberi">
-		<widget source="key_red" render="Label"    position="68,36"  size="240,52" backgroundColor="redSoft"    cornerRadius="26"
-		        font="TMB;24" foregroundColor="live"   halign="center" valign="center">
+		<widget source="key_red" render="Label" position="68,36" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_green" render="Label"  position="324,36" size="240,52" backgroundColor="greenSoft"  cornerRadius="26"
-		        font="TMB;24" foregroundColor="ok"     halign="center" valign="center">
+		<widget source="key_red" render="Label" position="90,55" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="1">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_yellow" render="Label" position="580,36" size="240,52" backgroundColor="yellowSoft" cornerRadius="26"
-		        font="TMB;24" foregroundColor="warn"   halign="center" valign="center">
+		<widget source="key_green" render="Label" position="324,36" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_blue" render="Label"   position="836,36" size="240,52" backgroundColor="blueSoft"   cornerRadius="26"
-		        font="TMB;24" foregroundColor="accent" halign="center" valign="center">
+		<widget source="key_green" render="Label" position="346,55" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="580,36" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="602,55" size="14,14" backgroundColor="warn" foregroundColor="warn" font="TMB;24" cornerRadius="7" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label" position="836,36" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label" position="858,55" size="14,14" backgroundColor="accent" foregroundColor="accent" font="TMB;24" cornerRadius="7" zPosition="1">
 			<convert type="ConditionalShowHide" />
 		</widget>
 		<widget source="global.CurrentTime" render="Label" position="1500,32" size="352,58"
@@ -568,7 +634,7 @@
 		        RecordForegroundColorSelected="text" RecordBackgroundColorSelected="live"
 		        ZapForegroundColor="text" ZapBackgroundColor="greenSoft"
 		        ZapForegroundColorSelected="onAccent" ZapBackgroundColorSelected="ok"
-		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 
 		<!-- zaman cizgileri: kutuda hazir gelen 1px sistem grafikleri -->
@@ -619,20 +685,32 @@
 	</screen>
 
 	<screen name="GraphicalEPG" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="Program Rehberi">
-		<widget source="key_red" render="Label"    position="68,36"  size="240,52" backgroundColor="redSoft"    cornerRadius="26"
-		        font="TMB;24" foregroundColor="live"   halign="center" valign="center">
+		<widget source="key_red" render="Label" position="68,36" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_green" render="Label"  position="324,36" size="240,52" backgroundColor="greenSoft"  cornerRadius="26"
-		        font="TMB;24" foregroundColor="ok"     halign="center" valign="center">
+		<widget source="key_red" render="Label" position="90,55" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="1">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_yellow" render="Label" position="580,36" size="240,52" backgroundColor="yellowSoft" cornerRadius="26"
-		        font="TMB;24" foregroundColor="warn"   halign="center" valign="center">
+		<widget source="key_green" render="Label" position="324,36" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_blue" render="Label"   position="836,36" size="240,52" backgroundColor="blueSoft"   cornerRadius="26"
-		        font="TMB;24" foregroundColor="accent" halign="center" valign="center">
+		<widget source="key_green" render="Label" position="346,55" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="580,36" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="602,55" size="14,14" backgroundColor="warn" foregroundColor="warn" font="TMB;24" cornerRadius="7" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label" position="836,36" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label" position="858,55" size="14,14" backgroundColor="accent" foregroundColor="accent" font="TMB;24" cornerRadius="7" zPosition="1">
 			<convert type="ConditionalShowHide" />
 		</widget>
 		<widget source="global.CurrentTime" render="Label" position="1500,32" size="352,58"
@@ -660,13 +738,13 @@
 		        RecordForegroundColorSelected="text" RecordBackgroundColorSelected="live"
 		        ZapForegroundColor="text" ZapBackgroundColor="greenSoft"
 		        ZapForegroundColorSelected="onAccent" ZapBackgroundColorSelected="ok"
-		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 
 		<widget name="lab1" position="68,160" size="1784,600" font="TMB;34" foregroundColor="textDim"
 		        transparent="1" halign="center" valign="center" zPosition="4" />
 		<widget name="bouquetlist" position="68,160" size="1784,600" transparent="1" zPosition="3"
-		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 		<widget name="timeline_now" position="68,158" size="4,604" backgroundColor="live" zPosition="2"
 		        objectTypes="timeline_now,Label" />
@@ -691,20 +769,32 @@
 	</screen>
 
 	<screen name="GraphicalEPGPIG" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="Program Rehberi">
-		<widget source="key_red" render="Label"    position="68,36"  size="240,52" backgroundColor="redSoft"    cornerRadius="26"
-		        font="TMB;24" foregroundColor="live"   halign="center" valign="center">
+		<widget source="key_red" render="Label" position="68,36" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_green" render="Label"  position="324,36" size="240,52" backgroundColor="greenSoft"  cornerRadius="26"
-		        font="TMB;24" foregroundColor="ok"     halign="center" valign="center">
+		<widget source="key_red" render="Label" position="90,55" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="1">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_yellow" render="Label" position="580,36" size="240,52" backgroundColor="yellowSoft" cornerRadius="26"
-		        font="TMB;24" foregroundColor="warn"   halign="center" valign="center">
+		<widget source="key_green" render="Label" position="324,36" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_blue" render="Label"   position="836,36" size="240,52" backgroundColor="blueSoft"   cornerRadius="26"
-		        font="TMB;24" foregroundColor="accent" halign="center" valign="center">
+		<widget source="key_green" render="Label" position="346,55" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="580,36" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="602,55" size="14,14" backgroundColor="warn" foregroundColor="warn" font="TMB;24" cornerRadius="7" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label" position="836,36" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label" position="858,55" size="14,14" backgroundColor="accent" foregroundColor="accent" font="TMB;24" cornerRadius="7" zPosition="1">
 			<convert type="ConditionalShowHide" />
 		</widget>
 		<widget source="global.CurrentTime" render="Label" position="1500,32" size="352,58"
@@ -732,13 +822,13 @@
 		        RecordForegroundColorSelected="text" RecordBackgroundColorSelected="live"
 		        ZapForegroundColor="text" ZapBackgroundColor="greenSoft"
 		        ZapForegroundColorSelected="onAccent" ZapBackgroundColorSelected="ok"
-		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 
 		<widget name="lab1" position="68,160" size="1784,600" font="TMB;34" foregroundColor="textDim"
 		        transparent="1" halign="center" valign="center" zPosition="4" />
 		<widget name="bouquetlist" position="68,160" size="1784,600" transparent="1" zPosition="3"
-		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 		<widget name="timeline_now" position="68,158" size="4,604" backgroundColor="live" zPosition="2"
 		        objectTypes="timeline_now,Label" />
@@ -766,20 +856,32 @@
 	</screen>
 
 	<screen name="GraphMultiEPGList" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="Program Rehberi">
-		<widget source="key_red" render="Label"    position="68,36"  size="240,52" backgroundColor="redSoft"    cornerRadius="26"
-		        font="TMB;24" foregroundColor="live"   halign="center" valign="center">
+		<widget source="key_red" render="Label" position="68,36" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_green" render="Label"  position="324,36" size="240,52" backgroundColor="greenSoft"  cornerRadius="26"
-		        font="TMB;24" foregroundColor="ok"     halign="center" valign="center">
+		<widget source="key_red" render="Label" position="90,55" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="1">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_yellow" render="Label" position="580,36" size="240,52" backgroundColor="yellowSoft" cornerRadius="26"
-		        font="TMB;24" foregroundColor="warn"   halign="center" valign="center">
+		<widget source="key_green" render="Label" position="324,36" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_blue" render="Label"   position="836,36" size="240,52" backgroundColor="blueSoft"   cornerRadius="26"
-		        font="TMB;24" foregroundColor="accent" halign="center" valign="center">
+		<widget source="key_green" render="Label" position="346,55" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="580,36" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="602,55" size="14,14" backgroundColor="warn" foregroundColor="warn" font="TMB;24" cornerRadius="7" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label" position="836,36" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label" position="858,55" size="14,14" backgroundColor="accent" foregroundColor="accent" font="TMB;24" cornerRadius="7" zPosition="1">
 			<convert type="ConditionalShowHide" />
 		</widget>
 		<widget name="timeline_text" position="68,110" size="1784,40" TimelineFont="TMB;24" foregroundColor="textDim" transparent="1" />
@@ -800,7 +902,7 @@
 		        RecordForegroundColorSelected="text" RecordBackgroundColorSelected="live"
 		        ZapForegroundColor="text" ZapBackgroundColor="greenSoft"
 		        ZapForegroundColorSelected="onAccent" ZapBackgroundColorSelected="ok"
-		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 		<widget name="timeline0" position="68,160" size="2,860" backgroundColor="line" zPosition="1"
 		        objectTypes="timeline0,Label" />
@@ -838,20 +940,32 @@
 	     imajlarda Pixmap'tir ve gorunmez, yazilar yine kalir.
 	     ============================================================ -->
 	<screen name="EPGSelectionMulti" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="Program Rehberi">
-		<widget source="key_red" render="Label"    position="68,36"  size="240,52" backgroundColor="redSoft"    cornerRadius="26"
-		        font="TMB;24" foregroundColor="live"   halign="center" valign="center">
+		<widget source="key_red" render="Label" position="68,36" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_green" render="Label"  position="324,36" size="240,52" backgroundColor="greenSoft"  cornerRadius="26"
-		        font="TMB;24" foregroundColor="ok"     halign="center" valign="center">
+		<widget source="key_red" render="Label" position="90,55" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="1">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_yellow" render="Label" position="580,36" size="240,52" backgroundColor="yellowSoft" cornerRadius="26"
-		        font="TMB;24" foregroundColor="warn"   halign="center" valign="center">
+		<widget source="key_green" render="Label" position="324,36" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_blue" render="Label"   position="836,36" size="240,52" backgroundColor="blueSoft"   cornerRadius="26"
-		        font="TMB;24" foregroundColor="accent" halign="center" valign="center">
+		<widget source="key_green" render="Label" position="346,55" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="580,36" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="602,55" size="14,14" backgroundColor="warn" foregroundColor="warn" font="TMB;24" cornerRadius="7" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label" position="836,36" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label" position="858,55" size="14,14" backgroundColor="accent" foregroundColor="accent" font="TMB;24" cornerRadius="7" zPosition="1">
 			<convert type="ConditionalShowHide" />
 		</widget>
 		<widget source="global.CurrentTime" render="Label" position="1500,32" size="352,58"
@@ -878,10 +992,10 @@
 
 		<widget name="list" position="68,190" size="1784,576" transparent="1" zPosition="1"
 		        EventFontMulti="TM;28" itemCornerRadiusSelected="14"
-		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 		<widget name="bouquetlist" position="68,190" size="1784,576" transparent="1" zPosition="3"
-		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 
 		<!-- secili program karti -->
@@ -925,20 +1039,32 @@
 		<widget name="channel"  position="908,888" size="944,42" font="TM;28" foregroundColor="textDim"
 		        transparent="1" halign="right" valign="center" />
 
-		<widget source="key_red" render="Label"    position="68,996"   size="240,52" backgroundColor="redSoft"    cornerRadius="26"
-		        font="TMB;24" foregroundColor="live"   halign="center" valign="center">
+		<widget source="key_red" render="Label" position="68,996" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_green" render="Label"  position="324,996"  size="240,52" backgroundColor="greenSoft"  cornerRadius="26"
-		        font="TMB;24" foregroundColor="ok"     halign="center" valign="center">
+		<widget source="key_red" render="Label" position="90,1015" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="1">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_yellow" render="Label" position="580,996"  size="240,52" backgroundColor="yellowSoft" cornerRadius="26"
-		        font="TMB;24" foregroundColor="warn"   halign="center" valign="center">
+		<widget source="key_green" render="Label" position="324,996" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_blue" render="Label"   position="836,996"  size="240,52" backgroundColor="blueSoft"   cornerRadius="26"
-		        font="TMB;24" foregroundColor="accent" halign="center" valign="center">
+		<widget source="key_green" render="Label" position="346,1015" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="580,996" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="602,1015" size="14,14" backgroundColor="warn" foregroundColor="warn" font="TMB;24" cornerRadius="7" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label" position="836,996" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label" position="858,1015" size="14,14" backgroundColor="accent" foregroundColor="accent" font="TMB;24" cornerRadius="7" zPosition="1">
 			<convert type="ConditionalShowHide" />
 		</widget>
 	</screen>
@@ -956,7 +1082,7 @@
 		<widget source="menu" render="Listbox" position="40,124" size="640,868" transparent="1" zPosition="1"
 		        itemHeight="62" itemAlignment="leftMiddle" font="TM;32" itemCornerRadiusSelected="16"
 		        padding="24,12,24,0"
-		        scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarOffset="12" scrollbarRadius="3"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="12" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track">
 			<convert type="StringList" />
 		</widget>
@@ -976,7 +1102,7 @@
 
 		<widget name="config" position="296,246" size="1328,562" transparent="1" zPosition="1"
 		        itemHeight="64" itemAlignment="leftMiddle" font="TM;30" itemCornerRadiusSelected="14" padding="24,12,24,0" enableWrapAround="1"
-		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 
 		<eLabel position="296,828" size="1328,2" backgroundColor="line" zPosition="1" />
@@ -1004,7 +1130,7 @@
 
 		<widget name="config" position="296,246" size="820,562" transparent="1" zPosition="1"
 		        itemHeight="64" itemAlignment="leftMiddle" font="TM;30" itemCornerRadiusSelected="14" padding="24,12,24,0" enableWrapAround="1"
-		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 
 		<!-- secili arayuzun onizlemesi -->
@@ -1034,7 +1160,7 @@
 		        backgroundColor="surface2" transparent="1" zPosition="1" />
 		<widget name="list" position="570,586" size="780,132" transparent="1" zPosition="1"
 		        itemHeight="60" itemAlignment="leftMiddle" font="TM;30" itemCornerRadiusSelected="14" padding="24,12,24,0"
-		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarRadius="4"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarRadius="2"
 		        scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 	</screen>
 
@@ -1048,7 +1174,7 @@
 		        backgroundColor="surface2" transparent="1" valign="center" zPosition="1" />
 		<widget name="list" position="570,380" size="780,480" transparent="1" zPosition="1"
 		        itemHeight="60" itemAlignment="leftMiddle" font="TM;30" itemCornerRadiusSelected="14" padding="24,12,24,0"
-		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 	</screen>
 
@@ -1072,7 +1198,7 @@
 
 		<widget source="pluginList" render="Listbox" position="20,20" size="1000,450" conditional="pluginList"
 		        listOrientation="vertical" transparent="1" itemCornerRadiusSelected="10"
-		        scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarOffset="10" scrollbarRadius="3"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="10" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track">
 			<convert type="TemplatedMultiContent">
 				{
@@ -1090,7 +1216,7 @@
 
 		<widget source="pluginGrid" render="Listbox" position="20,20" size="1000,448" conditional="pluginGrid"
 		        listOrientation="grid" transparent="1" itemCornerRadiusSelected="10"
-		        scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarOffset="10" scrollbarRadius="3"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="10" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track">
 			<convert type="TemplatedMultiContent">
 				{
@@ -1112,24 +1238,32 @@
 		        halign="center" transparent="1" valign="center" zPosition="+1" />
 		<widget name="description" position="20,e-95" size="1000,28" font="TM;20" foregroundColor="textDim"
 		        transparent="1" valign="center" />
-		<widget source="key_red" render="Label" position="20,e-66" size="190,46" backgroundColor="redSoft"
-		        cornerRadius="23" font="TMB;18" foregroundColor="live" halign="center" valign="center"
-		        conditional="key_red" transparent="0">
+		<widget source="key_red" render="Label" position="20,e-66" size="190,46" backgroundColor="chip" cornerRadius="23"
+		        font="TMB;18" foregroundColor="text" halign="left" valign="center" padding="43,0,14,0" noWrap="1" conditional="key_red" zPosition="0">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_green" render="Label" position="216,e-66" size="190,46" backgroundColor="greenSoft"
-		        cornerRadius="23" font="TMB;18" foregroundColor="ok" halign="center" valign="center"
-		        conditional="key_green" transparent="0">
+		<widget source="key_red" render="Label" position="39,e-49" size="12,12" backgroundColor="live" foregroundColor="live" font="TMB;18" cornerRadius="6" conditional="key_red" zPosition="1">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_yellow" render="Label" position="412,e-66" size="190,46" backgroundColor="yellowSoft"
-		        cornerRadius="23" font="TMB;18" foregroundColor="warn" halign="center" valign="center"
-		        conditional="key_yellow" transparent="0">
+		<widget source="key_green" render="Label" position="216,e-66" size="190,46" backgroundColor="chip" cornerRadius="23"
+		        font="TMB;18" foregroundColor="text" halign="left" valign="center" padding="43,0,14,0" noWrap="1" conditional="key_green" zPosition="0">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_blue" render="Label" position="608,e-66" size="190,46" backgroundColor="blueSoft"
-		        cornerRadius="23" font="TMB;18" foregroundColor="accent" halign="center" valign="center"
-		        conditional="key_blue" transparent="0">
+		<widget source="key_green" render="Label" position="235,e-49" size="12,12" backgroundColor="ok" foregroundColor="ok" font="TMB;18" cornerRadius="6" conditional="key_green" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="412,e-66" size="190,46" backgroundColor="chip" cornerRadius="23"
+		        font="TMB;18" foregroundColor="text" halign="left" valign="center" padding="43,0,14,0" noWrap="1" conditional="key_yellow" zPosition="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="431,e-49" size="12,12" backgroundColor="warn" foregroundColor="warn" font="TMB;18" cornerRadius="6" conditional="key_yellow" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label" position="608,e-66" size="190,46" backgroundColor="chip" cornerRadius="23"
+		        font="TMB;18" foregroundColor="text" halign="left" valign="center" padding="43,0,14,0" noWrap="1" conditional="key_blue" zPosition="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label" position="627,e-49" size="12,12" backgroundColor="accent" foregroundColor="accent" font="TMB;18" cornerRadius="6" conditional="key_blue" zPosition="1">
 			<convert type="ConditionalShowHide" />
 		</widget>
 		<widget source="key_menu" render="Label" position="e-210,e-66" size="90,46" backgroundColor="surface3"
@@ -1150,7 +1284,7 @@
 
 		<widget source="plugins" render="Listbox" position="20,20" size="900,500" transparent="1"
 		        itemCornerRadiusSelected="10"
-		        scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarOffset="10" scrollbarRadius="3"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="10" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track">
 			<convert type="TemplatedMultiContent">
 				{
@@ -1173,19 +1307,25 @@
 		        halign="center" transparent="1" valign="center" zPosition="+1" />
 		<widget name="description" position="20,e-95" size="900,28" font="TM;20" foregroundColor="textDim"
 		        transparent="1" valign="center" />
-		<widget source="key_red" render="Label" position="20,e-66" size="190,46" backgroundColor="redSoft"
-		        cornerRadius="23" font="TMB;18" foregroundColor="live" halign="center" valign="center"
-		        conditional="key_red" transparent="0">
+		<widget source="key_red" render="Label" position="20,e-66" size="190,46" backgroundColor="chip" cornerRadius="23"
+		        font="TMB;18" foregroundColor="text" halign="left" valign="center" padding="43,0,14,0" noWrap="1" conditional="key_red" zPosition="0">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_green" render="Label" position="216,e-66" size="190,46" backgroundColor="greenSoft"
-		        cornerRadius="23" font="TMB;18" foregroundColor="ok" halign="center" valign="center"
-		        conditional="key_green" transparent="0">
+		<widget source="key_red" render="Label" position="39,e-49" size="12,12" backgroundColor="live" foregroundColor="live" font="TMB;18" cornerRadius="6" conditional="key_red" zPosition="1">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_yellow" render="Label" position="412,e-66" size="190,46" backgroundColor="yellowSoft"
-		        cornerRadius="23" font="TMB;18" foregroundColor="warn" halign="center" valign="center"
-		        conditional="key_yellow" transparent="0">
+		<widget source="key_green" render="Label" position="216,e-66" size="190,46" backgroundColor="chip" cornerRadius="23"
+		        font="TMB;18" foregroundColor="text" halign="left" valign="center" padding="43,0,14,0" noWrap="1" conditional="key_green" zPosition="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" render="Label" position="235,e-49" size="12,12" backgroundColor="ok" foregroundColor="ok" font="TMB;18" cornerRadius="6" conditional="key_green" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="412,e-66" size="190,46" backgroundColor="chip" cornerRadius="23"
+		        font="TMB;18" foregroundColor="text" halign="left" valign="center" padding="43,0,14,0" noWrap="1" conditional="key_yellow" zPosition="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="431,e-49" size="12,12" backgroundColor="warn" foregroundColor="warn" font="TMB;18" cornerRadius="6" conditional="key_yellow" zPosition="1">
 			<convert type="ConditionalShowHide" />
 		</widget>
 		<widget source="key_help" render="Label" position="e-110,e-66" size="90,46" backgroundColor="surface3"
@@ -1204,7 +1344,7 @@
 
 		<widget name="config" position="520,346" size="934,240" transparent="1" zPosition="1"
 		        itemHeight="48" itemAlignment="leftMiddle" font="TM;28" itemCornerRadiusSelected="12" padding="20,10,20,0"
-		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="14" scrollbarRadius="4"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="14" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 
 		<eLabel position="470,360" size="22,22" backgroundColor="live" cornerRadius="11" zPosition="1" />
@@ -1215,7 +1355,7 @@
 
 		<widget source="streams" render="Listbox" position="450,626" size="1020,180" transparent="1" zPosition="1"
 		        itemCornerRadiusSelected="12"
-		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="14" scrollbarRadius="4"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="14" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track">
 			<convert type="TemplatedMultiContent">
 				{"templates":
@@ -1242,30 +1382,51 @@
 
 	</screen>
 
-	<screen name="Volume" position="center,900" size="720,80" flags="wfNoBorder" backgroundColor="transparent" title="Ses" zPosition="1">
-		<eLabel position="0,0" size="720,80" backgroundColor="card" cornerRadius="40" />
-		<eLabel position="36,0" size="64,80" text="-" font="TMB;44" foregroundColor="textDim"
-		        backgroundColor="surface2" transparent="1" halign="center" valign="center" zPosition="1" />
-		<eLabel position="120,36" size="480,8" backgroundColor="track" cornerRadius="4" zPosition="1" />
-		<widget name="Volume" position="120,36" size="480,8" backgroundColor="line"
-		        foregroundColor="selBg" cornerRadius="4" borderWidth="0"
+	<screen name="Volume" position="center,904" size="720,76" flags="wfNoBorder" backgroundColor="transparent" title="Ses" zPosition="1">
+		<eLabel position="0,0" size="720,76" backgroundColor="card" widgetBorderWidth="2" widgetBorderColor="edge" cornerRadius="38" />
+		<!-- enigma2icons: volume_up -->
+		<eLabel position="26,0" size="60,76" text="&#xe901;" font="enigma2icons;38" foregroundColor="text"
+		        transparent="1" halign="center" valign="center" zPosition="1" />
+		<eLabel position="104,36" size="500,4" backgroundColor="track" cornerRadius="2" zPosition="1" />
+		<widget name="Volume" position="104,36" size="500,4" backgroundColor="track"
+		        foregroundColor="#00718096,#00ffffff,horizontal" cornerRadius="2" borderWidth="0"
 		        transparent="1" zPosition="2" />
-		<eLabel position="620,0" size="64,80" text="+" font="TMB;44" foregroundColor="textDim"
-		        backgroundColor="surface2" transparent="1" halign="center" valign="center" zPosition="1" />
+		<widget name="VolumeText" position="616,0" size="76,76" font="TMB;28" foregroundColor="text"
+		        transparent="1" halign="right" valign="center" zPosition="1" />
 	</screen>
 
-	<screen name="Mute" position="center,900" size="200,80" flags="wfNoBorder" backgroundColor="transparent" title="Sessiz" zPosition="1">
-		<eLabel position="0,0" size="200,80" backgroundColor="#00ff4d5a,#00c9303c,vertical" cornerRadius="40" />
-		<eLabel position="0,0" size="200,80" text="SESSIZ" font="TMB;26" foregroundColor="text"
-		        backgroundColor="live" transparent="1" halign="center" valign="center" zPosition="1" />
+	<screen name="Mute" position="center,904" size="236,76" flags="wfNoBorder" backgroundColor="transparent" title="Sessiz" zPosition="1">
+		<eLabel position="0,0" size="236,76" backgroundColor="card" widgetBorderWidth="2" widgetBorderColor="edge" cornerRadius="38" />
+		<!-- enigma2icons: volume_off -->
+		<eLabel position="22,0" size="60,76" text="&#xe900;" font="enigma2icons;38" foregroundColor="live"
+		        transparent="1" halign="center" valign="center" zPosition="1" />
+		<eLabel position="88,0" size="128,76" text="SESSIZ" font="TMB;24" foregroundColor="text"
+		        transparent="1" halign="left" valign="center" zPosition="1" />
 	</screen>
 
-	<screen name="NumberZap" position="center,center" size="820,150" flags="wfNoBorder" backgroundColor="transparent" title="Kanal No">
-		<eLabel position="0,0" size="820,150" backgroundColor="card" cornerRadius="24" />
-		<widget name="number" position="48,25" size="200,100" font="TMX;72" foregroundColor="accent"
-		        backgroundColor="surface2" transparent="1" halign="right" valign="center" zPosition="1" />
-		<widget name="servicename" position="276,25" size="500,100" font="TM;34" foregroundColor="text"
-		        backgroundColor="surface2" transparent="1" halign="left" valign="center" noWrap="1" zPosition="1" />
+	<screen name="NumberZap" position="center,center" size="860,160" flags="wfNoBorder" backgroundColor="transparent" title="Kanal No">
+		<eLabel position="0,0" size="860,160" backgroundColor="card" widgetBorderWidth="2" widgetBorderColor="edge" cornerRadius="32" />
+		<!-- numara kendi karosunda; logo (Kullanim > numara zap logosu acikken) sagda, cercevesiz -->
+		<widget name="number" position="24,24" size="196,112" font="TMX;72" foregroundColor="text" backgroundColor="chip"
+		        widgetBorderWidth="2" widgetBorderColor="edge" cornerRadius="18" halign="center" valign="center" zPosition="1" />
+		<widget name="servicename" position="248,30" size="400,100" font="TMB;34" foregroundColor="text"
+		        transparent="1" halign="left" valign="center" noWrap="1" zPosition="1" />
+		<widget source="Service" render="Picon" position="660,32" size="176,96" transparent="1" alphatest="blend" zPosition="2">
+			<convert type="ServiceName">Reference</convert>
+		</widget>
+	</screen>
+
+	<!-- "numara zap logosu" acikken motor skinName'i ["NumberZapPicon", "NumberZapWithName"]
+	     yapar ve NumberZap'e geri donmez; ayni tasarim bu adla da var -->
+	<screen name="NumberZapPicon" position="center,center" size="860,160" flags="wfNoBorder" backgroundColor="transparent" title="Kanal No">
+		<eLabel position="0,0" size="860,160" backgroundColor="card" widgetBorderWidth="2" widgetBorderColor="edge" cornerRadius="32" />
+		<widget name="number" position="24,24" size="196,112" font="TMX;72" foregroundColor="text" backgroundColor="chip"
+		        widgetBorderWidth="2" widgetBorderColor="edge" cornerRadius="18" halign="center" valign="center" zPosition="1" />
+		<widget name="servicename" position="248,30" size="400,100" font="TMB;34" foregroundColor="text"
+		        transparent="1" halign="left" valign="center" noWrap="1" zPosition="1" />
+		<widget source="Service" render="Picon" position="660,32" size="176,96" transparent="1" alphatest="blend" zPosition="2">
+			<convert type="ServiceName">Reference</convert>
+		</widget>
 	</screen>
 
 	<!-- ============================================================
@@ -1283,15 +1444,21 @@
 
 		<widget name="menu" position="1212,136" size="676,840" transparent="1" zPosition="1"
 		        itemHeight="60" font="TM;30" itemCornerRadiusSelected="14"
-		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="14" scrollbarRadius="4"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="14" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 
-		<widget source="key_red" render="Label" position="1228,1000" size="210,52" backgroundColor="redSoft" cornerRadius="26"
-		        font="TMB;24" foregroundColor="live" halign="center" valign="center" zPosition="1">
+		<widget source="key_red" render="Label" position="1228,1000" size="210,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="1">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_green" render="Label" position="1452,1000" size="210,52" backgroundColor="greenSoft" cornerRadius="26"
-		        font="TMB;24" foregroundColor="ok" halign="center" valign="center" zPosition="1">
+		<widget source="key_red" render="Label" position="1250,1019" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" render="Label" position="1452,1000" size="210,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" render="Label" position="1474,1019" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="2">
 			<convert type="ConditionalShowHide" />
 		</widget>
 	</screen>
@@ -1375,19 +1542,28 @@
 		        foregroundColor="text" transparent="1" valign="center" noWrap="1" />
 
 		<widget name="text" position="296,236" size="1328,660" font="TM;24" foregroundColor="text" transparent="1"
-		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 
-		<widget source="key_red" render="Label" position="296,914" size="228,52" backgroundColor="redSoft" cornerRadius="26"
-		        font="TMB;24" foregroundColor="live" halign="center" valign="center">
+		<widget source="key_red" render="Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_green" render="Label" position="540,914" size="228,52" backgroundColor="greenSoft" cornerRadius="26"
-		        font="TMB;24" foregroundColor="ok" halign="center" valign="center">
+		<widget source="key_red" render="Label" position="318,933" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="1">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_yellow" render="Label" position="784,914" size="228,52" backgroundColor="yellowSoft" cornerRadius="26"
-		        font="TMB;24" foregroundColor="warn" halign="center" valign="center">
+		<widget source="key_green" render="Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" render="Label" position="562,933" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="784,914" size="228,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="806,933" size="14,14" backgroundColor="warn" foregroundColor="warn" font="TMB;24" cornerRadius="7" zPosition="1">
 			<convert type="ConditionalShowHide" />
 		</widget>
 	</screen>
@@ -1400,11 +1576,14 @@
 		        foregroundColor="text" transparent="1" valign="center" noWrap="1" />
 
 		<widget name="text" position="296,236" size="1328,660" font="TM;28" foregroundColor="text" transparent="1"
-		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 
-		<widget source="key_red" render="Label" position="296,914" size="228,52" backgroundColor="redSoft" cornerRadius="26"
-		        font="TMB;24" foregroundColor="live" halign="center" valign="center">
+		<widget source="key_red" render="Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_red" render="Label" position="318,933" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="1">
 			<convert type="ConditionalShowHide" />
 		</widget>
 	</screen>
@@ -1418,23 +1597,35 @@
 		        foregroundColor="text" transparent="1" valign="center" noWrap="1" />
 
 		<widget name="information" position="296,236" size="1328,660" font="TM;26" foregroundColor="text" transparent="1"
-		        splitPosition="560" scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
+		        splitPosition="560" scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 
-		<widget source="key_red" render="Label" position="296,914" size="228,52" backgroundColor="redSoft" cornerRadius="26"
-		        font="TMB;24" foregroundColor="live" halign="center" valign="center" conditional="key_red">
+		<widget source="key_red" render="Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" conditional="key_red" zPosition="0">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_green" render="Label" position="540,914" size="228,52" backgroundColor="greenSoft" cornerRadius="26"
-		        font="TMB;24" foregroundColor="ok" halign="center" valign="center" conditional="key_green">
+		<widget source="key_red" render="Label" position="318,933" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" conditional="key_red" zPosition="1">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_yellow" render="Label" position="784,914" size="228,52" backgroundColor="yellowSoft" cornerRadius="26"
-		        font="TMB;24" foregroundColor="warn" halign="center" valign="center" conditional="key_yellow">
+		<widget source="key_green" render="Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" conditional="key_green" zPosition="0">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_blue" render="Label" position="1028,914" size="228,52" backgroundColor="blueSoft" cornerRadius="26"
-		        font="TMB;24" foregroundColor="accent" halign="center" valign="center" conditional="key_blue">
+		<widget source="key_green" render="Label" position="562,933" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" conditional="key_green" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="784,914" size="228,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" conditional="key_yellow" zPosition="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="806,933" size="14,14" backgroundColor="warn" foregroundColor="warn" font="TMB;24" cornerRadius="7" conditional="key_yellow" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label" position="1028,914" size="228,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" conditional="key_blue" zPosition="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label" position="1050,933" size="14,14" backgroundColor="accent" foregroundColor="accent" font="TMB;24" cornerRadius="7" conditional="key_blue" zPosition="1">
 			<convert type="ConditionalShowHide" />
 		</widget>
 		<widget source="key_info" render="Label" position="1424,914" size="96,52" backgroundColor="surface3" cornerRadius="26"
@@ -1464,7 +1655,7 @@
 		        timerNameFont="TMB;30" statusFont="TM;24" detailFont="TM;24"
 		        itemHeight="92" topHeight="45" bottomHeight="45" indent="24" iconMargin="12" satPosLeft="320"
 		        itemCornerRadiusSelected="14"
-		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 
 		<!-- secili zamanlayicinin programi -->
@@ -1491,20 +1682,32 @@
 		<widget name="description" position="1240,664" size="580,280" font="TM;22" foregroundColor="textFaint"
 		        transparent="1" zPosition="1" />
 
-		<widget source="key_red" render="Label"    position="68,996"   size="240,52" backgroundColor="redSoft"    cornerRadius="26"
-		        font="TMB;24" foregroundColor="live"   halign="center" valign="center">
+		<widget source="key_red" render="Label" position="68,996" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_green" render="Label"  position="324,996"  size="240,52" backgroundColor="greenSoft"  cornerRadius="26"
-		        font="TMB;24" foregroundColor="ok"     halign="center" valign="center">
+		<widget source="key_red" render="Label" position="90,1015" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="1">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_yellow" render="Label" position="580,996"  size="240,52" backgroundColor="yellowSoft" cornerRadius="26"
-		        font="TMB;24" foregroundColor="warn"   halign="center" valign="center">
+		<widget source="key_green" render="Label" position="324,996" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_blue" render="Label"   position="836,996"  size="240,52" backgroundColor="blueSoft"   cornerRadius="26"
-		        font="TMB;24" foregroundColor="accent" halign="center" valign="center">
+		<widget source="key_green" render="Label" position="346,1015" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="580,996" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="602,1015" size="14,14" backgroundColor="warn" foregroundColor="warn" font="TMB;24" cornerRadius="7" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label" position="836,996" size="240,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label" position="858,1015" size="14,14" backgroundColor="accent" foregroundColor="accent" font="TMB;24" cornerRadius="7" zPosition="1">
 			<convert type="ConditionalShowHide" />
 		</widget>
 	</screen>
@@ -1519,8 +1722,8 @@
 
 		<!-- oynat, duraklat, durdur, ileri, geri, yavas, bos; ilk durum degisikligine
 		     kadar bos kalmasin diye baslangic glifi (oynat) text ile -->
-		<widget name="statusicon" position="60,842" size="72,72" iconFont="enigma2icons;60" text="&#xea0e;"
-		        iconGlyphs="0xea0e,0xea0f,0xea12,0xea14,0xea17,0xe974,0x20" foregroundColor="accent"
+		<widget name="statusicon" position="60,842" size="72,72" iconFont="enigma2icons;48" text="&#xea0e;"
+		        iconGlyphs="0xea0e,0xea0f,0xea12,0xea14,0xea17,0xe974,0x20" foregroundColor="text"
 		        halign="center" valign="center" transparent="1" zPosition="2" />
 		<widget source="session.CurrentService" render="Label" position="150,840" size="1300,60"
 		        font="TMB;44" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="2">
@@ -1543,30 +1746,30 @@
 		</widget>
 
 		<!-- ilerleme -->
-		<widget source="session.CurrentService" render="Label" position="68,986" size="200,40"
-		        font="TMB;28" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="2">
+		<widget source="session.CurrentService" render="Label" position="68,986" size="116,40"
+		        font="TMB;26" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="2">
 			<convert type="ServicePosition">Position,ShowHours</convert>
 		</widget>
-		<eLabel position="280,1002" size="1360,8" backgroundColor="track" cornerRadius="4" zPosition="2" />
-		<widget source="session.CurrentService" render="Progress" position="280,1002" size="1360,8"
-		        backgroundColor="track" foregroundColor="selBg"
-		        cornerRadius="4" borderWidth="0" transparent="1" zPosition="3">
+		<eLabel position="196,1004" size="1528,4" backgroundColor="track" cornerRadius="2" zPosition="2" />
+		<widget source="session.CurrentService" render="Progress" position="196,1004" size="1528,4"
+		        backgroundColor="track" foregroundColor="#00718096,#00ffffff,horizontal"
+		        cornerRadius="2" borderWidth="0" transparent="1" zPosition="3">
 			<convert type="ServicePosition">Position</convert>
 		</widget>
-		<widget source="session.CurrentService" render="Label" position="1652,986" size="200,40"
-		        font="TMB;28" foregroundColor="accent" transparent="1" halign="right" valign="center" noWrap="1" zPosition="2">
+		<widget source="session.CurrentService" render="Label" position="1736,986" size="116,40"
+		        font="TMB;26" foregroundColor="textDim" transparent="1" halign="right" valign="center" noWrap="1" zPosition="2">
 			<convert type="ServicePosition">Remaining,ShowHours</convert>
 		</widget>
 	</screen>
 
 	<!-- Oynatici durumu (oynat / duraklat / ileri sarma hizi): varsayilan ayarda
 	     bilgi cubugundan ayri, bu kucuk pencerede gosterilir -->
-	<screen name="PVRState" position="68,56" size="232,96" flags="wfNoBorder" backgroundColor="transparent" zPosition="2" title="Durum">
-		<eLabel position="0,0" size="232,96" backgroundColor="card" cornerRadius="24" />
-		<widget name="statusicon" position="22,12" size="72,72" iconFont="enigma2icons;60" text="&#xea0e;"
-		        iconGlyphs="0xea0e,0xea0f,0xea12,0xea14,0xea17,0xe974" foregroundColor="accent"
+	<screen name="PVRState" position="68,56" size="200,80" flags="wfNoBorder" backgroundColor="transparent" zPosition="2" title="Durum">
+		<eLabel position="0,0" size="200,80" backgroundColor="card" widgetBorderWidth="2" widgetBorderColor="edge" cornerRadius="40" />
+		<widget name="statusicon" position="18,8" size="64,64" iconFont="enigma2icons;44" text="&#xea0e;"
+		        iconGlyphs="0xea0e,0xea0f,0xea12,0xea14,0xea17,0xe974" foregroundColor="text"
 		        halign="center" valign="center" transparent="1" zPosition="1" />
-		<widget name="speed" position="104,12" size="112,72" font="TMB;30" foregroundColor="text"
+		<widget name="speed" position="92,8" size="92,64" font="TMB;28" foregroundColor="textDim"
 		        halign="left" valign="center" transparent="1" zPosition="1" />
 	</screen>
 

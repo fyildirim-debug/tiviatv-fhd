@@ -199,6 +199,10 @@ def render_el(el, screen, ox=0, oy=0):
     rad = radius(el)
     if rad:
         style.append(rad.rstrip(";").replace("border-radius:", "border-radius:"))
+    bw = num(el.get("widgetBorderWidth"), 0)
+    if bw and el.get("widgetBorderColor") and not transparent:
+        # motor kenari kutunun icine cizer: inset golge ayni yeri tutar
+        style.append(f"box-shadow:inset 0 0 0 {fsize(bw)} {css_color(el.get('widgetBorderColor'))}")
     font = el.get("font", "")
     weight = 400
     if font:
@@ -348,7 +352,8 @@ def render_screen(name, backdrop=True):
 
 SCREENS = [
     ("InfoBar", "InfoBar", "Alt bilgi cubugu - zap sonrasi ve OK tusunda",
-     "Kanal numarasi, picon, program, ilerleme cubugu ve sonraki yayin. "
+     "Numara cipi, kenarli logo karosu, program ve sonraki yayin. Sure cizgisi "
+     "baslangic ile bitis saati arasinda 4 px; dolgu sonuk arduvazdan beyaza akar. "
      "Videodan cubuga gecis saydamdan koyuya, karistirmasiz bir gradyan - PNG degil."),
     ("ChannelSelection", "Kanal listesi", "TiviMate duzeni - yayin arkada akar, liste solda",
      "Liste yari saydam panelde (duz dolgu + saga solan gradyan, karistirma yok). Secili "

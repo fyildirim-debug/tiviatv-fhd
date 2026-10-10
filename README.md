@@ -56,8 +56,10 @@ konuldu (kare: Unsplash, Vienna Reyes).
 
 ### InfoBar
 
-Yayından koyuya solan alt bant, logo karosu, numara + kanal, program, saat
-aralığı ve kalan süre, boşken gizlenen rozetler, beyaz ilerleme çizgisi. Sağ
+Yayından koyuya solan alt bant, ince kenarlı logo karosu, numara çipi + kanal,
+program, kalan süre ve boşken gizlenen rozetler. Süre çizgisi başlangıç ve bitiş
+saatinin arasında 4 px'lik ince bir hat: dolgu sönük arduvazdan parlak beyaza
+akar, ucu hep en parlak yer. Sağ
 altta uydu kanalında SNR/AGC yüzdeleri, IPTV'de akış hızı — ikisi de aynı alanı
 paylaşır, hangi kaynak aktifse o görünür.
 
@@ -109,7 +111,30 @@ Yayın üstünde sağa doğru solan yarı saydam sol panel, beyaz seçim hapı.
 
 ### Ses
 
+Altta ince kenarlı hap: hoparlör glifi (`enigma2icons`), ince süre çizgisiyle
+aynı dolgu, sayı. Sessizde kırmızı glif ve "SESSIZ".
+
 ![Ses](docs/screenshots/volume.jpg)
+
+### Numara ile kanal
+
+Numara kendi karosunda, kanal adı yanında. Kullanım ayarlarında numara zap
+logosu açıksa picon sağda çerçevesiz görünür (motor o zaman `NumberZapPicon`
+adını arar, aynı tasarım o adla da tanımlı).
+
+![Numara zap](docs/screenshots/numberzap.jpg)
+
+### Oynatıcı
+
+Geçen / kalan süre ince çizginin iki ucunda; duraklatınca sol üstte durum hapı
+(`PVRState`).
+
+![Oynatıcı](docs/screenshots/player.jpg)
+
+### Renk tuşları
+
+Doygun renkli haplar yerine koyu cam çip + renkli nokta + beyaz yazı. Nokta,
+tuşla aynı kaynağa bağlı ayrı bir etiket; tuş boşken ikisi birlikte gizlenir.
 
 ## Tanımlı ekranlar
 
@@ -117,10 +142,10 @@ Yayın üstünde sağa doğru solan yarı saydam sol panel, beyaz seçim hapı.
 `ChannelSelectionRadio` · `EPGSelection` · `GraphicalEPG` · `GraphicalEPGPIG` ·
 `EPGSelectionMulti` · `GraphMultiEPG` · `GraphMultiEPGList` · `EventView` ·
 `Menu` · `Setup` · `MessageBox` · `ChoiceBox` · `Volume` ·
-`Mute` · `NumberZap` · `AudioSelection` · `SkinSelection` · `PluginBrowser` ·
+`Mute` · `NumberZap` · `NumberZapPicon` · `AudioSelection` · `SkinSelection` · `PluginBrowser` ·
 `PackageAction` · `ChannelContextMenu` · `InputBox` · `PinInput` · `PinInputPopup` ·
 `VirtualKeyBoard` · `Console` · `TextBox` · `Information` · `TimerEditList` ·
-`MoviePlayer` · `SimpleSummary`
+`MoviePlayer` · `PVRState` · `SimpleSummary`
 
 Ayrıca enigma2'nin standart renk adları (`window-bg`, `window-fg`, `key_red`,
 `grey` …) skin paletine eşlendi. Bunlar tanımsızken, skinde karşılığı olmayan
@@ -187,7 +212,12 @@ bayraksız gradyandır.
 Saydamlık renkleri `<colors>`'ta: `glass` (panel, %80 opak), `glassSoft`
 (saat kapsülü), `card` (diyalog / kart), `chip` (rozet), `scrim` (diyalog
 arkası karartma). Seçim: `selBg` / `selFg` (beyaz hap), `focus` / `focusHi`
-(gri odak).
+(gri odak). Çizgiler: `track` (ilerleme ve kaydırma çubuğu zemini), `edge`
+(kart ve çiplerin 2 px kenarı).
+
+> Kutu kenarı `eLabel`'da `widgetBorderWidth` / `widgetBorderColor` ile
+> çizilir. `borderWidth` / `borderColor` orada yazının dış çizgisidir
+> (`elabel.h`); `lint_skin.py` bunu uyarır.
 
 > Pencereler üst üste binerken de karıştırma yok: üstteki pencerenin pikseli
 > alttakinin yerine geçer. Yarı saydam bir kartın arkasından alttaki ekran
@@ -233,7 +263,7 @@ Depo kökünden çalıştırılır, hiçbirinde sabit yol yok.
 
 | Betik | Ne yapar |
 |---|---|
-| `tools/lint_skin.py` | Skini openATV'nin **gerçek** attribute listesine karşı denetler — `skin.py` ve `ServiceList.py`'yi upstream'den indirip parse eder. Tanımsız renk/font, ekran dışına taşan eleman, bilinmeyen attribute yakalar. |
+| `tools/lint_skin.py` | Skini openATV'nin **gerçek** attribute listesine karşı denetler — `skin.py` ve `ServiceList.py`'yi upstream'den indirip parse eder. Tanımsız renk/font, ekran dışına taşan eleman, bilinmeyen attribute, `eLabel`'da kutu kenarı sanılan yazı kenarını yakalar. |
 | `tools/render_preview.py` | `preview.html`'i üretir — ekranları skin.xml'in gerçek koordinat, renk ve yarıçaplarından tarayıcıda çizer. |
 | `tools/make_thumb.py` | Skin seçicideki `prev.png`'yi emülatörün kanal listesi görüntüsünden üretir. |
 | `tools/make_designer_copy.py` | OpenSkin Designer uyumlu kopya üretir (aşağıya bak). |
@@ -316,4 +346,10 @@ Copy the folder to `/usr/share/enigma2/`, pick it under
 **Menu → Setup → System → User interface → Skin**, and enable the two-line
 service list for the TiviMate layout.
 
-The `tools/` scripts regenerate the preview and the thumbnail from `skin.xml`.
+Progress lines are 4 px hairlines between the start and end times, filled
+with a slate-to-white gradient; colour keys are dark glass chips with a
+coloured dot.
+
+The `tools/` scripts lint the skin against the engine's real attribute list,
+render `preview.html` from `skin.xml` and build the thumbnail from an emulator
+capture.

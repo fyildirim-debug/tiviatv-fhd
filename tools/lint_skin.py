@@ -90,6 +90,9 @@ for part in parts:
 
 COLOR_LIST_ATTRS = {"iconColors"}  # her glif icin bir renk, virgullu
 
+# skin.py enigma2icons.ttf'yi kendisi kaydeder (ikon glifleri)
+fonts.add("enigma2icons")
+
 HEX = re.compile(r"^#[0-9a-fA-F]{6}$|^#[0-9a-fA-F]{8}$")
 
 
@@ -125,6 +128,11 @@ for scr in screens:
                     check_color(where, attr, c.strip())
             elif attr in COLOR_ATTRS and val:
                 check_color(where, attr, val)
+            # eLabel'de borderWidth/borderColor yazinin dis cizgisidir (elabel.h);
+            # kutu kenari widgetBorderWidth/widgetBorderColor ile cizilir
+            if attr in ("borderWidth", "borderColor") and val not in ("0", "") and \
+               (el.tag == "eLabel" or el.get("render") == "Label"):
+                warns.append(f"{where}: {attr} eLabel'de yazi kenaridir, kutu icin widget{attr[0].upper()}{attr[1:]}")
             if attr == "font" and val:
                 fam = val.split(";")[0]
                 if fam not in fonts:

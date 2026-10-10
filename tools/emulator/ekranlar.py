@@ -48,7 +48,8 @@ SCREENS = {
 	"audioselection": ("ib.audioSelection()", [], 2),
 	"volume": ("from Components.VolumeControl import VolumeControl\nVolumeControl.instance.volUp()", [], 0.8),
 	"mute": ("from Components.VolumeControl import VolumeControl\nVolumeControl.instance.volMute()", [], 0.8),
-	"numberzap": ("ib.keyNumberGlobal(1)", [], 0.6),
+	# InfoBar.keyNumberGlobal oynatilan akis sarilabiliyorsa sarar; ekran dogrudan acilir
+	"numberzap": ("from Screens.InfoBarGenerics import NumberZap\nfrom Components.config import config\nconfig.usage.numzappicon.value = True\nsession.open(NumberZap, 7, ib.searchNumber)", [], 0.6),
 	"pluginbrowser": ("from Screens.PluginBrowser import PluginBrowser\nsession.open(PluginBrowser)", [], 2),
 	# skinde henuz olmayan, sik acilan ekranlar
 	"inputbox": ("from Screens.InputBox import InputBox\nsession.open(InputBox, title='Kanal adini girin', text='Kanal D')", [], 1.5),
