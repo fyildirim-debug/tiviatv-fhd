@@ -1,0 +1,12 @@
+#!/bin/bash
+# Emulatordeki enigma2'nin icinde Python calistirir (TiviAtvTest eklentisi gerekir).
+# `session` hazirdir; cikti icin out(...) kullan.
+#   e2-py 'from Screens.Menu import MainMenu; out(session.current_dialog)'
+#   echo 'kod' | e2-py
+CODE=${1:-$(cat)}
+rm -f /tmp/e2py.out
+printf '%s\n' "$CODE" > /tmp/e2py.cmd.tmp && mv /tmp/e2py.cmd.tmp /tmp/e2py.cmd
+for i in $(seq 1 200); do [ -f /tmp/e2py.out ] && break; sleep 0.05; done
+[ -f /tmp/e2py.out ] || { echo "cevap yok (enigma2 calisiyor mu, TiviAtvTest kurulu mu?)"; exit 1; }
+cat /tmp/e2py.out
+head -1 /tmp/e2py.out | grep -q '^OK'

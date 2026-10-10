@@ -1,0 +1,17 @@
+#!/bin/bash
+# IPTV test yayini: http://127.0.0.1:8099/kanal.ts  (demo_kanallar.py'nin urettigi dosya, sonsuz dongu)
+# Her zap baglantiyi kapatir; ffmpeg yeniden dinlemeye baslar.  Durdurmak: e2-yayin dur
+PID=/tmp/tivitest-yayin.pid
+if [ "$1" = "dur" ]; then
+	[ -f $PID ] && kill -- -"$(cat $PID)" 2>/dev/null
+	rm -f $PID; echo "yayin durdu"; exit 0
+fi
+[ -f $PID ] && kill -0 "$(cat $PID)" 2>/dev/null && { echo "yayin zaten acik"; exit 0; }
+[ -f /opt/tivitest/kanal.ts ] || { echo "/opt/tivitest/kanal.ts yok: once demo_kanallar.py"; exit 1; }
+setsid bash -c 'while true; do
+	ffmpeg -loglevel error -re -stream_loop -1 -i /opt/tivitest/kanal.ts -c copy -f mpegts \
+		-listen 1 http://127.0.0.1:8099/kanal.ts
+	sleep 0.2
+done' > /tmp/tivitest-yayin.log 2>&1 < /dev/null &
+echo $! > $PID
+echo "yayin: http://127.0.0.1:8099/kanal.ts"
