@@ -1,6 +1,20 @@
 Third-party assets
 ==================
 
+Inter typeface (TiviAtv-FHD/Inter-*.ttf) - default
+  Copyright 2020 The Inter Project Authors
+  Licensed under the SIL Open Font License, Version 1.1.
+  Full text: OFL-Inter.txt. Static weights instantiated from the variable
+  font (opsz 22) with fontTools; see tools/make_fonts.py.
+  https://github.com/rsms/inter
+
+Geist typeface (TiviAtv-FHD/Geist-*.ttf)
+  Copyright 2024 The Geist Project Authors
+  Licensed under the SIL Open Font License, Version 1.1.
+  Full text: OFL-Geist.txt. Static weights instantiated from the variable
+  font with fontTools; see tools/make_fonts.py.
+  https://github.com/vercel/geist-font
+
 Barlow typeface (TiviAtv-FHD/Barlow-*.ttf)
   Copyright (c) Jeremy Tribby
   Licensed under the SIL Open Font License, Version 1.1.

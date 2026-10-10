@@ -15,29 +15,55 @@ köşeler kare çıkar.
 
 ## Kurulum
 
-Klasörü olduğu gibi kutuya kopyala:
+Kutuya telnet ya da SSH ile bağlanıp tek komut:
 
-```
-/usr/share/enigma2/TiviAtv-FHD/
-```
-
-Skinin iki küçük converter'ı var, enigma2'nin converter dizinine gider:
-
-```
-TiviAtv-FHD/converter/*.py  →  /usr/lib/enigma2/python/Components/Converter/
+```sh
+wget -qO- https://raw.githubusercontent.com/fyildirim-debug/tiviatv-fhd/main/installer.sh | sh
 ```
 
-| Dosya | Ne yapar |
+Betik depodaki son paketi (`dist/`) indirir, sha256 ile doğrular ve `opkg`
+ile kurar. Kuruluysa aynı komut günceller.
+
+Paketi elle kurmak istersen `dist/` altındaki `.ipk`'yi kutunun `/tmp`
+klasörüne at:
+
+```sh
+opkg install /tmp/enigma2-plugin-skins-tiviatv-fhd_*_all.ipk
+```
+
+Kaldırmak:
+
+```sh
+opkg remove enigma2-plugin-skins-tiviatv-fhd
+```
+
+Paket (`enigma2-plugin-skins-tiviatv-fhd`) üç yere kurar:
+
+| Yer | İçerik |
+|---|---|
+| `/usr/share/enigma2/TiviAtv-FHD/` | skin, `fonts.xml`, yazı tipleri, lisanslar, önizleme |
+| `/usr/lib/enigma2/python/Components/Converter/` | `TiviAtvSignal.py`, `TiviAtvText.py` |
+| `/usr/lib/enigma2/python/Plugins/Extensions/TiviAtvFont/` | yazı tipi seçici eklenti |
+
+| Converter | Ne yapar |
 |---|---|
 | `TiviAtvSignal.py` | InfoBar / kanal listesindeki sinyal (SNR/AGC) ya da IPTV akış hızı |
 | `TiviAtvText.py` | Çözünürlük / codec / şifre rozetlerini boşken gizler (IPTV'de şifre rozeti hep boş hap olarak çiziliyordu) |
 
-Kopyalanmazsa skin yine açılır, yalnız o alanlar boş kalır.
+Yazı tipi seçimin güncellemede korunur. `fonts.xml` paketin yapılandırma
+dosyasıdır; değiştirdiysen opkg onu ezmez, kurulum betiği yeni sürümün
+şablonunu alıp senin seçtiğin dört font satırını içine koyar (yeni eklenen
+font tanımları eksik kalmasın diye).
 
-Sonra: **Menü → Ayarlar → Sistem → Kullanıcı arayüzü → Skin seçimi**
+Paketsiz kurmak da mümkün: `TiviAtv-FHD/` klasörünü `/usr/share/enigma2/`
+altına, `TiviAtv-FHD/converter/*.py` dosyalarını converter dizinine,
+`plugin/TiviAtvFont/` klasörünü eklenti dizinine kopyala. Converter'lar
+kopyalanmazsa skin yine açılır, yalnız o alanlar boş kalır.
+
+Sonra skini seç: **Menü → Kurulum → Kullanım & Kullanıcı Arayüzü → Arayüz Ayarları**
 
 TiviMate görünümü için kanal listesini iki satırlı moda al —
-**Menü → Ayarlar → Kanal seçimi**:
+**Menü → Kurulum → Kullanım & Kullanıcı Arayüzü → Kanal Seçim Ayarları**:
 
 - "İki satırlı servis listesi" = **Evet**
 - "Sayfa başına öğe" = **10**
@@ -252,14 +278,8 @@ Aktif yazı tipi `skin.xml`'de değil, ayrı bir `fonts.xml` dosyasında durur;
 adları (`TM` / `TMM` / `TMB` / `TMX`) hiç değişmez, sadece hangi `.ttf`
 dosyasına baktıkları değişir.
 
-Kutu üstünden değiştirmek için `plugin/TiviAtvFont` klasörünü
-
-```
-/usr/lib/enigma2/python/Plugins/Extensions/TiviAtvFont/
-```
-
-altına kopyala. **Menü → Kurulum → Kullanım & Kullanıcı Arayüzü → TiviATV Yazı
-Tipi** altında, skin klasöründeki ve `/usr/share/fonts` altındaki yazı tipleri
+Kutu üstünden değiştirmek için paketle gelen eklentiyi aç: **Menü → Kurulum →
+Kullanım & Kullanıcı Arayüzü → TiviATV Yazı Tipi** altında, skin klasöründeki ve `/usr/share/fonts` altındaki yazı tipleri
 listelenir; seçilen aile `fonts.xml`'e yazılır ve arayüz yeniden başlatılır.
 Aynı ailenin birden çok ağırlığı varsa (örneğin Inter'in dördü) dört slot
 otomatik eşleşir, tek ağırlıklı bir font seçilirse dördü de ona bakar.
@@ -280,6 +300,7 @@ Depo kökünden çalıştırılır, hiçbirinde sabit yol yok.
 | `tools/lint_skin.py` | Skini openATV'nin **gerçek** attribute listesine karşı denetler — `skin.py` ve `ServiceList.py`'yi upstream'den indirip parse eder. Tanımsız renk/font, ekran dışına taşan eleman, bilinmeyen attribute, `eLabel`'da kutu kenarı sanılan yazı kenarını yakalar. |
 | `tools/render_preview.py` | `preview.html`'i üretir — ekranları skin.xml'in gerçek koordinat, renk ve yarıçaplarından tarayıcıda çizer. |
 | `tools/make_thumb.py` | Skin seçicideki `prev.png`'yi emülatörün kanal listesi görüntüsünden üretir. |
+| `tools/build_ipk.py` | Kurulum paketini (`dist/*.ipk` + `.sha256`) üretir; önce lint, Python derlemesi ve `fonts.xml` denetimi. Aynı kaynaktan aynı paket çıkar. |
 | `tools/make_fonts.py` | Inter ve Geist'in statik ağırlıklarını Google Fonts'taki değişken fonttan üretir (enigma2 değişken fontta ağırlık seçemez). |
 | `tools/make_designer_copy.py` | OpenSkin Designer uyumlu kopya üretir (aşağıya bak). |
 | `tools/emulator/` | PC emülatöründe skin testi: örnek kanal/EPG, test yayını, tüm ekranların görüntüsü (aşağıya bak). |
@@ -290,6 +311,13 @@ Gereksinim: Python 3.9+, `Pillow` (`make_thumb.py`) ve `fonttools`
 ```bash
 pip install pillow fonttools
 ```
+
+### Sürüm çıkarma
+
+1. `VERSION`'ı artır, değişikliklerle birlikte commit et.
+2. `python3 tools/build_ipk.py` → `dist/` altında yeni paket (eskisi silinir).
+3. `dist/`'i commit edip `main`'e push et; `installer.sh` sürümü `VERSION`'dan
+   okuduğu için kutular bir sonraki çalıştırmada yeni paketi alır.
 
 ## Emülatörde test
 
@@ -363,8 +391,17 @@ blending.
 Needs openATV **7.3+** — that is when `cornerRadius`, gradients and
 `itemCornerRadiusSelected` landed in the engine.
 
-Copy the folder to `/usr/share/enigma2/`, pick it under
-**Menu → Setup → System → User interface → Skin**, and enable the two-line
+Install on the box (telnet / SSH):
+
+```sh
+wget -qO- https://raw.githubusercontent.com/fyildirim-debug/tiviatv-fhd/main/installer.sh | sh
+```
+
+It downloads the `.ipk` from `dist/`, checks its sha256 and installs it with
+`opkg` (skin, two converters and the font picker plugin); running it again
+upgrades and keeps your font choice. Remove with
+`opkg remove enigma2-plugin-skins-tiviatv-fhd`. Then pick the skin under
+**Menu → Setup → Usage & GUI → Skin Settings**, and enable the two-line
 service list for the TiviMate layout.
 
 Progress lines are 4 px hairlines between the start and end times, filled
