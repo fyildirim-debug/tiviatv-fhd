@@ -1,5 +1,5 @@
 <title>TiviATV FHD</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=__FONTCSS__&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500&display=swap">
 <style>
   :root {
     --ground: #eaeef3;
@@ -116,7 +116,7 @@
   /* ---------- the 1920x1080 stage: everything below mirrors skin.xml ---------- */
   .stage {
     position: relative; width: 100%; aspect-ratio: 16 / 9;
-    font-family: Barlow, sans-serif; overflow: hidden;
+    font-family: "__FONT__", sans-serif; overflow: hidden;
   }
   .backdrop {
     position: absolute; inset: 0; z-index: 0;
@@ -138,7 +138,7 @@
   .picon { align-items: center !important; justify-content: center !important;
            background: linear-gradient(160deg, #2b3442, #171d27); border-radius: 8cqw / 14cqw; }
   .picon { border-radius: calc(100cqw * .005); }
-  .picon span { font: 700 calc(100cqw * .019)/1 Barlow, sans-serif; color: #dfe6ef; letter-spacing: .04em; }
+  .picon span { font: 700 calc(100cqw * .019)/1 "__FONT__", sans-serif; color: #dfe6ef; letter-spacing: .04em; }
   .picon b { color: #3ea6ff; }
 
   .pig { align-items: flex-end !important; justify-content: flex-start !important;
@@ -154,7 +154,7 @@
           overflow: hidden; text-overflow: ellipsis; }
 
   .ticks { justify-content: space-between !important; align-items: center !important;
-           font: 400 calc(100cqw * .0125)/1 Barlow, sans-serif; }
+           font: 400 calc(100cqw * .0125)/1 "__FONT__", sans-serif; }
 
   .list { flex-direction: column !important; align-items: stretch !important;
           justify-content: flex-start !important; gap: calc(100cqw * .003); }
@@ -252,7 +252,7 @@
       <div class="spec"><dt>Cozunurluk</dt><dd>1920&times;1080</dd></div>
       <div class="spec"><dt>Ekran sayisi</dt><dd>17</dd></div>
       <div class="spec"><dt>PNG varligi</dt><dd>0</dd></div>
-      <div class="spec"><dt>Font</dt><dd>Barlow <span>OFL</span></dd></div>
+      <div class="spec"><dt>Font</dt><dd>__FONT__ <span>OFL</span></dd></div>
       <div class="spec"><dt>Gereken surum</dt><dd>7.3+</dd></div>
     </dl>
   </header>
@@ -292,9 +292,9 @@ Ayni ekranda "Sayfa basina oge" = 10</pre></div></li>
         en sik dustugu tuzak.</p>
       <p><strong>Kanal logolari (picon) skine dahil degil.</strong> Onlar ayri bir paket olarak
         <code>/usr/share/enigma2/picon/</code> altina kurulur.</p>
-      <p><strong>Barlow yerine baska font</strong> istersen klasordeki dort <code>.ttf</code> dosyasini
-        degistirip <code>skin.xml</code>'in basindaki <code>&lt;fonts&gt;</code> blogunda dosya
-        adlarini guncelle. Isimler (TM / TMM / TMB / TMX) ayni kalirsa geri kalan hicbir sey degismez.</p>
+      <p><strong>Yazi tipi</strong> skin.xml'de degil, <code>fonts.xml</code>'de: varsayilan Inter,
+        klasorde Geist ve Barlow da var. Kutuda <em>TiviATV Yazi Tipi</em> eklentisiyle secilir; isimler
+        (TM / TMM / TMB / TMX) ayni kaldigi icin geri kalan hicbir sey degismez.</p>
     </div>
   </section>
 </div>

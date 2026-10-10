@@ -3,11 +3,11 @@
 	     Bu dosyayi "TiviATV Yazi Tipi" eklentisi uretir; elle de duzenlenebilir.
 	     skin.xml bunu <include> ile yukler, font adlari hep ayni kalir. -->
 	<fonts>
-		<!-- Sony_Sketch_Bold_205 -->
-		<font filename="Sony_Sketch_Bold_205.ttf" name="TM" scale="100" />
-		<font filename="Sony_Sketch_Bold_205.ttf" name="TMM" scale="100" />
-		<font filename="Sony_Sketch_Bold_205.ttf" name="TMB" scale="100" />
-		<font filename="Sony_Sketch_Bold_205.ttf" name="TMX" scale="100" />
+		<!-- Inter -->
+		<font filename="Inter-Regular.ttf" name="TM" scale="92" />
+		<font filename="Inter-Medium.ttf" name="TMM" scale="92" />
+		<font filename="Inter-SemiBold.ttf" name="TMB" scale="92" />
+		<font filename="Inter-Bold.ttf" name="TMX" scale="92" />
 		<!-- kutuda hazir gelen fontlar (VFD ve yedek icin) -->
 		<font filename="nmsbd.ttf"  name="Regular" scale="100" />
 		<!-- enigma2'nin bekledigi takma adlar -->

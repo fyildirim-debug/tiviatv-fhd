@@ -2,8 +2,8 @@
 
 TiviMate düzeninde ve görünümünde, 1920×1080 openATV / enigma2 skini.
 Yayın arkada akarken yarı saydam paneller, beyaz seçim hapları, yuvarlak
-köşeler ve ilerleme çubukları — hepsi enigma2'nin kendi çizim motoruyla,
-**tek bir PNG kullanılmadan**.
+köşeler, ince ilerleme çizgileri ve Inter yazı tipi — hepsi enigma2'nin kendi
+çizim motoruyla, **tek bir PNG kullanılmadan**.
 
 ![önizleme](TiviAtv-FHD/prev.png)
 
@@ -236,6 +236,17 @@ Geçerli köşe adları: `topLeft` `topRight` `top` `bottomLeft` `bottomRight`
 
 ### Font
 
+Varsayılan yazı tipi **Inter**: ekran arayüzleri için çizilmiş, iri x-yüksekliği
+sayesinde uzaktan okunan, Türkçe karakterleri eksiksiz bir grotesk. Klasörde
+dört ağırlık var (Regular / Medium / SemiBold / Bold → `TM` / `TMM` / `TMB` /
+`TMX`); değişken fonttan `opsz=22` kesimiyle statik üretildi — metin kesiminin
+(14) rahat aralığıyla başlık kesiminin (32) sıkılığı arasında. Seçicide ikinci
+modern seçenek **Geist**, ayrıca Barlow ve eski Sony Sketch durur.
+
+Skin ölçüleri dar bir font için kurulduğundan geniş aileler `fonts.xml`'de
+küçültülür: Inter `scale="92"`, Geist `scale="94"` (motor punto × scale / 100
+uygular). Eklenti bir aile seçerken bu ölçeği kendisi yazar.
+
 Aktif yazı tipi `skin.xml`'de değil, ayrı bir `fonts.xml` dosyasında durur;
 `skin.xml` onu `<include filename="fonts.xml" />` ile yükler. Skinde geçen font
 adları (`TM` / `TMM` / `TMB` / `TMX`) hiç değişmez, sadece hangi `.ttf`
@@ -250,8 +261,11 @@ Kutu üstünden değiştirmek için `plugin/TiviAtvFont` klasörünü
 altına kopyala. **Menü → Kurulum → Kullanım & Kullanıcı Arayüzü → TiviATV Yazı
 Tipi** altında, skin klasöründeki ve `/usr/share/fonts` altındaki yazı tipleri
 listelenir; seçilen aile `fonts.xml`'e yazılır ve arayüz yeniden başlatılır.
-Aynı ailenin birden çok ağırlığı varsa (örneğin Barlow'un dördü) dört slot
+Aynı ailenin birden çok ağırlığı varsa (örneğin Inter'in dördü) dört slot
 otomatik eşleşir, tek ağırlıklı bir font seçilirse dördü de ona bakar.
+`enigma2icons` gibi glif fontları listeye girmez.
+
+![Yazı tipi seçici](docs/screenshots/font-picker.jpg)
 
 Seçim listesi enigma2'nin `ChoiceBox` ekranıdır — görünümü bu skinin
 `<screen name="ChoiceBox">` tanımından gelir, eklentinin içinde gömülü skin
@@ -266,13 +280,15 @@ Depo kökünden çalıştırılır, hiçbirinde sabit yol yok.
 | `tools/lint_skin.py` | Skini openATV'nin **gerçek** attribute listesine karşı denetler — `skin.py` ve `ServiceList.py`'yi upstream'den indirip parse eder. Tanımsız renk/font, ekran dışına taşan eleman, bilinmeyen attribute, `eLabel`'da kutu kenarı sanılan yazı kenarını yakalar. |
 | `tools/render_preview.py` | `preview.html`'i üretir — ekranları skin.xml'in gerçek koordinat, renk ve yarıçaplarından tarayıcıda çizer. |
 | `tools/make_thumb.py` | Skin seçicideki `prev.png`'yi emülatörün kanal listesi görüntüsünden üretir. |
+| `tools/make_fonts.py` | Inter ve Geist'in statik ağırlıklarını Google Fonts'taki değişken fonttan üretir (enigma2 değişken fontta ağırlık seçemez). |
 | `tools/make_designer_copy.py` | OpenSkin Designer uyumlu kopya üretir (aşağıya bak). |
 | `tools/emulator/` | PC emülatöründe skin testi: örnek kanal/EPG, test yayını, tüm ekranların görüntüsü (aşağıya bak). |
 
-Gereksinim: Python 3.9+ ve `Pillow` (yalnız `make_thumb.py` için).
+Gereksinim: Python 3.9+, `Pillow` (`make_thumb.py`) ve `fonttools`
+(`make_fonts.py`).
 
 ```bash
-pip install pillow
+pip install pillow fonttools
 ```
 
 ## Emülatörde test
@@ -323,7 +339,10 @@ python tools/make_designer_copy.py
 ## Lisans
 
 Skin dosyaları MIT ile — bkz. [LICENSE](LICENSE).
-Barlow fontu SIL Open Font License 1.1 altındadır, ayrıntılar `OFL-Barlow.txt`.
+Inter, Geist ve Barlow fontları SIL Open Font License 1.1 altındadır, ayrıntılar
+`OFL-Inter.txt`, `OFL-Geist.txt`, `OFL-Barlow.txt`. Inter ve Geist'in statik
+ağırlıkları Google Fonts'taki değişken fonttan `fontTools` ile üretildi (OFL
+değiştirilmiş sürüme izin verir; iki ailede de ayrılmış font adı yok).
 `Sony_Sketch_Bold_205.ttf` üçüncü taraf bir fonttur; dağıtım hakları skin
 lisansının kapsamı dışındadır.
 Kanal logoları (picon) skine dahil değildir; ayrı paket olarak
@@ -335,7 +354,9 @@ Kanal logoları (picon) skine dahil değildir; ayrı paket olarak
 
 A TiviMate-style 1080p skin for openATV / enigma2: translucent panels over the
 running video, white selection pills, rounded corners and progress bars, all
-drawn by the enigma2 engine itself — **no PNG assets at all**. Translucency uses
+drawn by the enigma2 engine itself — **no PNG assets at all**. The default
+typeface is Inter (static instances at `opsz=22`, `scale="92"`); Geist, Barlow
+and Sony Sketch are one click away in the bundled font picker plugin. Translucency uses
 flat alpha fills only (composited by the hardware), never software alpha
 blending.
 

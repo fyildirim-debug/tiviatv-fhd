@@ -5,7 +5,8 @@
 
 		Gereksinim: openATV 7.3+  (cornerRadius / gradient / itemCornerRadius destegi;
 		            7.2 ve altinda bu ozellikler YOK - koseler kare cikar)
-		Fontlar   : Barlow (SIL Open Font License) - bu klasorde
+		Fontlar   : fonts.xml'de; varsayilan Inter, ayrica Geist ve Barlow (hepsi SIL OFL)
+		            - bu klasorde. TiviATV Yazi Tipi eklentisi degistirir.
 	-->
 
 	<output id="0">

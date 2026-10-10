@@ -44,7 +44,7 @@ SCREENS = {
 	"messagebox": ("from Screens.MessageBox import MessageBox\n"
 	               "session.open(MessageBox, 'Kanal listesi kaydedilsin mi?\\nDegisiklikler kutuya yazilacak.', MessageBox.TYPE_YESNO)", [], 1.5),
 	"choicebox": ("from Screens.ChoiceBox import ChoiceBox\n"
-	              "session.open(ChoiceBox, title='Yazi tipi secin', list=[(n, n) for n in ('Barlow', 'Sony Sketch EF', 'DejaVu Sans', 'Liberation Sans', 'Roboto')])", [], 1.5),
+	              "session.open(ChoiceBox, title='Yazi tipi secin', list=[(n, n) for n in ('Inter   (4 agirlik)   -  etkin', 'Geist   (4 agirlik)', 'Barlow   (4 agirlik)', 'Sony_Sketch_Bold_205')])", [], 1.5),
 	"audioselection": ("ib.audioSelection()", [], 2),
 	"volume": ("from Components.VolumeControl import VolumeControl\nVolumeControl.instance.volUp()", [], 0.8),
 	"mute": ("from Components.VolumeControl import VolumeControl\nVolumeControl.instance.volMute()", [], 0.8),

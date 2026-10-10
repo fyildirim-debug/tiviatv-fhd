@@ -109,7 +109,7 @@ s = s.replace("<skin>\n", (
 
 for f in SRC.glob("*.ttf"):
     shutil.copy2(f, DST / f.name)
-for extra in ("OFL-Barlow.txt", "prev.png"):
+for extra in [f.name for f in SRC.glob("OFL-*.txt")] + ["prev.png"]:
     if (SRC / extra).exists():
         shutil.copy2(SRC / extra, DST / extra)
         if extra == "prev.png":

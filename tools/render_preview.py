@@ -11,6 +11,12 @@ SKIN = ROOT / "TiviAtv-FHD" / "skin.xml"
 OUT = ROOT / "preview.html"
 
 W, H = 1920, 1080
+
+# aktif yazi tipi fonts.xml'den: aile adi dosya adindan, olcek TM'nin scale'i
+FONTS = ET.parse(SKIN.parent / "fonts.xml").getroot().find("fonts")
+_tm = next(f for f in FONTS.findall("font") if f.get("name") == "TM")
+FONT = _tm.get("filename").rsplit(".", 1)[0].rsplit("-", 1)[0].replace("_", " ")
+FONT_SCALE = int(_tm.get("scale", "100")) / 100
 tree = ET.parse(SKIN)
 root = tree.getroot()
 
@@ -84,6 +90,11 @@ def pct(v, total):
 
 def fsize(px):
     return f"calc(100cqw * {px / W:.6f})"
+
+
+def tsize(px):
+    """yazi boyu: motor gibi fonts.xml olcegini uygular"""
+    return fsize(px * FONT_SCALE)
 
 
 def radius(el):
@@ -208,7 +219,7 @@ def render_el(el, screen, ox=0, oy=0):
     if font:
         fam, _, size = font.partition(";")
         weight = {"TM": 400, "TMM": 500, "TMB": 600, "TMX": 700}.get(fam, 400)
-        style.append(f"font-size:{fsize(num(size, 24))}")
+        style.append(f"font-size:{tsize(num(size, 24))}")
     style.append(f"font-weight:{weight}")
     style.append(f"justify-content:{ALIGN.get(el.get('halign', 'left'), 'flex-start')}")
     style.append(f"align-items:{VALIGN.get(el.get('valign', 'top'), 'flex-start')}")
@@ -387,5 +398,6 @@ for i, (nm, label, sub, note) in enumerate(SCREENS):
 TEMPLATE = open(Path(__file__).resolve().parent / "shell.html", encoding="utf-8").read()
 
 out = TEMPLATE.replace("<!--BOARDS-->", "\n".join(cards))
+out = out.replace("__FONTCSS__", FONT.replace(" ", "+") + ":wght@400;500;600;700").replace("__FONT__", FONT)
 open(OUT, "w", encoding="utf-8").write(out)
 print(f"yazildi: {OUT}  ({len(out)} bayt, {len(cards)} ekran)")

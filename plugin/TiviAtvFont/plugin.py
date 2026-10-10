@@ -31,6 +31,11 @@ SLOTS = (
 )
 WEIGHTS = ("Thin", "Light", "Book", "Regular", "Medium", "SemiBold", "DemiBold", "Bold", "Black", "Heavy")
 
+# Ayni piksel boyunda aileler farkli buyuklukte gorunur; skin olculeri dar bir
+# font (Sony Sketch) icin kuruldu. Genis / iri x-yukseklikli aileler kucultulur ki
+# yazilar kutularina sigsin. Listede olmayan aile 100.
+SCALE = {"Inter": 92, "Geist": 94}
+
 TEMPLATE = """<skin>
 \t<!-- TiviATV FHD  -  aktif yazi tipi seti
 \t     Bu dosyayi "TiviATV Yazi Tipi" eklentisi uretir; elle de duzenlenebilir.
@@ -69,6 +74,8 @@ def scanFamilies():
 				continue
 			if "italic" in filename.lower():  # arayuz icin italik varyantlar gereksiz
 				continue
+			if "icons" in filename.lower():  # enigma2icons gibi glif fontlari harf icermez
+				continue
 			family, weight = splitWeight(filename.rsplit(".", 1)[0])
 			families.setdefault(family, {}).setdefault(weight, filename)
 	return families
@@ -85,7 +92,7 @@ def fontsBlock(family, weights):
 				break
 		if filename is None:  # tek agirlikli aile
 			filename = sorted(weights.values())[0]
-		lines.append('\t\t<font filename="%s" name="%s" scale="100" />' % (filename, name))
+		lines.append('\t\t<font filename="%s" name="%s" scale="%d" />' % (filename, name, SCALE.get(family, 100)))
 	return "\t\t<!-- %s -->\n%s" % (family, "\n".join(lines))
 
 
