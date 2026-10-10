@@ -10,9 +10,15 @@ CACHE = ROOT / ".cache"
 CACHE.mkdir(exist_ok=True)
 
 # Motorun gercek attribute listesi openATV kaynagindan gelir.
+RAW = "https://raw.githubusercontent.com/openatv/enigma2/master/lib/python/"
 UPSTREAM = {
-    "skin.py": "https://raw.githubusercontent.com/openatv/enigma2/master/lib/python/skin.py",
-    "ServiceList.py": "https://raw.githubusercontent.com/openatv/enigma2/master/lib/python/Components/ServiceList.py",
+    "skin.py": RAW + "skin.py",
+    "ServiceList.py": RAW + "Components/ServiceList.py",
+    # kendi applySkin'ini yapan bilesenler (EPG listesi, zaman cetveli, ikon fontu)
+    "EpgList.py": RAW + "Components/EpgList.py",
+    "Pixmap.py": RAW + "Components/Pixmap.py",
+    "ScrollLabel.py": RAW + "Components/ScrollLabel.py",
+    "Timers.py": RAW + "Screens/Timers.py",
 }
 for fname, url in UPSTREAM.items():
     dest = CACHE / fname
@@ -20,15 +26,22 @@ for fname, url in UPSTREAM.items():
         print(f"indiriliyor: {fname}")
         urllib.request.urlretrieve(url, dest)
 SKINPY = CACHE / "skin.py"
-SVCLIST = CACHE / "ServiceList.py"
 
 errors, warns = [], []
 
 # ---- supported attributes straight out of the engine ----
 src = open(SKINPY, encoding="utf-8").read()
 supported = set(re.findall(r"^\tdef ([a-zA-Z]+)\(self, value\)", src, re.M))
-svc = open(SVCLIST, encoding="utf-8").read()
-supported |= set(re.findall(r"^\t\tdef ([a-zA-Z]+)\(value\)", svc, re.M))
+# applySkin icindeki ic fonksiyon adlari attribute adidir
+for fname in ("ServiceList.py", "Timers.py"):
+    comp = open(CACHE / fname, encoding="utf-8").read()
+    supported |= set(re.findall(r"^\t\tdef ([a-zA-Z]+)\(value\)", comp, re.M))
+for fname in ("EpgList.py", "Pixmap.py", "ScrollLabel.py"):
+    comp = open(CACHE / fname, encoding="utf-8").read()
+    supported |= set(re.findall(r'attrib(?:ute)? == "(\w+)"', comp))
+    supported |= set(re.findall(r'attributes(?:\.get\(|\[)"(\w+)"', comp))
+    for group in re.findall(r"attribute in \(([^)]*)\)", comp):
+        supported |= set(re.findall(r'"(\w+)"', group))
 # component-level attributes handled outside skin.py's AttributeParser
 supported |= {
     "name", "source", "render", "position", "size", "text", "pixmap", "pixmaps",
@@ -75,6 +88,8 @@ for part in parts:
         for a in tag.findall("alias"):
             fonts.add(a.get("name"))
 
+COLOR_LIST_ATTRS = {"iconColors"}  # her glif icin bir renk, virgullu
+
 HEX = re.compile(r"^#[0-9a-fA-F]{6}$|^#[0-9a-fA-F]{8}$")
 
 
@@ -105,7 +120,10 @@ for scr in screens:
                 continue
             if attr not in supported:
                 warns.append(f"{where}: bilinmeyen attribute {attr!r}")
-            if attr in COLOR_ATTRS and val:
+            if attr in COLOR_LIST_ATTRS and val:
+                for c in val.split(","):
+                    check_color(where, attr, c.strip())
+            elif attr in COLOR_ATTRS and val:
                 check_color(where, attr, val)
             if attr == "font" and val:
                 fam = val.split(";")[0]

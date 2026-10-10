@@ -42,7 +42,8 @@ TEMPLATE = """<skin>
 \t\t<!-- enigma2'nin bekledigi takma adlar -->
 \t\t<alias name="Body"       font="TM"  size="30" height="40" />
 \t\t<alias name="TextNormal" font="TM"  size="30" height="40" />
-\t\t<alias name="ChoiceList" font="TM"  size="30" height="48" />
+\t\t<alias name="ChoiceList" font="TM"  size="30" height="60" />
+\t\t<alias name="VirtualKeyboard" font="TM" size="34" height="76" />
 \t</fonts>
 </skin>
 """

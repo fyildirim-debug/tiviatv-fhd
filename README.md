@@ -20,14 +20,18 @@ Klasörü olduğu gibi kutuya kopyala:
 /usr/share/enigma2/TiviAtv-FHD/
 ```
 
-InfoBar'daki sinyal / akış hızı göstergesi bir converter kullanır, o da
-enigma2'nin converter dizinine gider:
+Skinin iki küçük converter'ı var, enigma2'nin converter dizinine gider:
 
 ```
-TiviAtv-FHD/converter/TiviAtvSignal.py  →  /usr/lib/enigma2/python/Components/Converter/
+TiviAtv-FHD/converter/*.py  →  /usr/lib/enigma2/python/Components/Converter/
 ```
 
-Kopyalanmazsa skin yine açılır, yalnız o alan boş kalır.
+| Dosya | Ne yapar |
+|---|---|
+| `TiviAtvSignal.py` | InfoBar / kanal listesindeki sinyal (SNR/AGC) ya da IPTV akış hızı |
+| `TiviAtvText.py` | Çözünürlük / codec / şifre rozetlerini boşken gizler (IPTV'de şifre rozeti hep boş hap olarak çiziliyordu) |
+
+Kopyalanmazsa skin yine açılır, yalnız o alanlar boş kalır.
 
 Sonra: **Menü → Ayarlar → Sistem → Kullanıcı arayüzü → Skin seçimi**
 
@@ -44,7 +48,9 @@ TiviMate görünümü için kanal listesini iki satırlı moda al —
 
 ## Ekranlar
 
-Hepsi bir Octagon SX88V2 4K üzerinde, openATV 8.0'da çekildi.
+InfoBar, kanal listesi, menü, ayarlar ve ses bir Octagon SX88V2 4K üzerinde,
+openATV 8.0'da çekildi; program rehberi, kanal menüsü ve klavye PC emülatöründen
+(örnek kanal listesi ve EPG ile, bkz. [Emülatörde test](#emülatörde-test)).
 
 ### InfoBar
 
@@ -63,7 +69,27 @@ hangi kaynak aktifse o görünür.
 
 ### Program rehberi
 
+Zaman çizelgesi: şu an yayında olan programlar koyu mavi, seçili blok vurgu
+renginde, kırmızı "şimdi" çizgisi. Renkler ve font motorun EPG listesine skin
+attribute'larıyla verilir (önceden motorun varsayılan yeşil/sarı bloklarıydı).
+
 ![EPG](docs/screenshots/epg-grid.jpg)
+
+Çoklu EPG: Şimdi / Sonraki / Daha sonra sekmeleri ve seçili programın kartı.
+
+![Çoklu EPG](docs/screenshots/epg-multi.jpg)
+
+### Kanal menüsü
+
+Kanal listesinde MENU: sağdan açılan çekmece.
+
+![Kanal menüsü](docs/screenshots/channel-menu.jpg)
+
+### Sanal klavye
+
+Alttan açılan sayfa; tuşlar PNG değil, motorun çizdiği kutular ve ikon fontu.
+
+![Klavye](docs/screenshots/keyboard.jpg)
 
 ### Menü
 
@@ -86,7 +112,9 @@ Tam boy sol panel, 14 satır kapasite.
 `EPGSelectionMulti` · `GraphMultiEPG` · `GraphMultiEPGList` · `EventView` ·
 `Menu` · `Setup` · `MessageBox` · `ChoiceBox` · `Volume` ·
 `Mute` · `NumberZap` · `AudioSelection` · `SkinSelection` · `PluginBrowser` ·
-`PackageAction` · `SimpleSummary`
+`PackageAction` · `ChannelContextMenu` · `InputBox` · `PinInput` · `PinInputPopup` ·
+`VirtualKeyBoard` · `Console` · `TextBox` · `Information` · `TimerEditList` ·
+`MoviePlayer` · `SimpleSummary`
 
 Ayrıca enigma2'nin standart renk adları (`window-bg`, `window-fg`, `key_red`,
 `grey` …) skin paletine eşlendi. Bunlar tanımsızken, skinde karşılığı olmayan
@@ -99,6 +127,26 @@ okunaksız kalıyordu.
 
 Burada tanımlı olmayan ekranlar openATV'nin kendi `skin_default.xml`'inden gelir,
 yani hiçbir ekran boş kalmaz.
+
+> `MessageBox` için `icon` widget'ı zorunlu: openATV'nin `skin.py`'si
+> (`MANDATORY_WIDGETS`) eksik widget'lı ekranı reddedip varsayılan pencereyi
+> açıyor. Yeni ekran eklerken bu listeye bak.
+
+### PNG'siz motor kontrolleri
+
+openATV 2026-09 itibarıyla bazı kontrolleri PNG yerine kendisi çizebiliyor;
+skin bunları `<parameters>` bloğundan açar:
+
+| Parametre / attribute | Etkisi |
+|---|---|
+| `EPGNativeControls` | Grafik EPG'deki "şimdi" çizgisi ve zaman çizgileri, çoklu EPG sekmeleri renkli etiket olur |
+| `VirtualKeyboardNative` | Sanal klavye tuşları yuvarlak köşeli kutu + `enigma2icons` glifi |
+| `ChoiceListNative` | ChoiceBox / kanal menüsü satırlarındaki numara ve madde ikonları |
+| `iconFont` / `iconGlyphs` | MessageBox ve oynatıcı durum ikonları font glifinden |
+
+Daha eski imajlar bu parametreleri yok sayar: tuşlar ve ikonlar
+`skin_default` grafikleriyle çizilir, zaman çizgileri için iki tanım
+`objectTypes` ile seçilir (Label ise renkli çizgi, Pixmap ise eski PNG).
 
 ## Özelleştirme
 
@@ -165,11 +213,36 @@ Depo kökünden çalıştırılır, hiçbirinde sabit yol yok.
 | `tools/render_preview.py` | `preview.html`'i üretir — ekranları skin.xml'in gerçek koordinat, renk ve yarıçaplarından tarayıcıda çizer. |
 | `tools/make_thumb.py` | Skin seçicideki `prev.png`'yi üretir. |
 | `tools/make_designer_copy.py` | OpenSkin Designer uyumlu kopya üretir (aşağıya bak). |
+| `tools/emulator/` | PC emülatöründe skin testi: örnek kanal/EPG, test yayını, tüm ekranların görüntüsü (aşağıya bak). |
 
 Gereksinim: Python 3.9+ ve `Pillow` (yalnız `make_thumb.py` için).
 
 ```bash
 pip install pillow
+```
+
+## Emülatörde test
+
+Kutuya gitmeden, PC'de derlenmiş OpenATV enigma2 (SDL2) üzerinde denenir.
+Emülatörün kendisi FY Sinema deposundaki `tools/e2pc/kur.sh` ile kurulur
+(`e2-arkaplan`, `e2-tus`, `e2-ekran` oradan gelir); bu klasör üstüne skin
+testine özel parçaları ekler:
+
+| Dosya | Ne yapar |
+|---|---|
+| `TiviAtvTest/` | Yalnız emülatöre kurulan eklenti: `/tmp/e2py.cmd`'deki Python kodunu enigma2'nin içinde çalıştırır, açılışta örnek EPG'yi yükler. Kutuya **kurulmaz**. |
+| `e2-py` | Bu eklentiye kod gönderir: `e2-py 'session.open(...)'` |
+| `demo_kanallar.py` | 16 kanallık örnek liste (4 Türksat 42E + 12 IPTV), EPG, picon ve test yayını üretir (enigma2 kapalıyken) |
+| `e2-yayin` | IPTV kanallarının çaldığı test yayını (`127.0.0.1:8099`, ffmpeg) |
+| `ekranlar.py` | Ekranları menüde gezinmeden tek tek açıp görüntüsünü alır |
+
+```bash
+ln -sfn $PWD/TiviAtv-FHD /usr/share/enigma2/TiviAtv-FHD
+ln -sf  $PWD/TiviAtv-FHD/converter/*.py /usr/lib/enigma2/python/Components/Converter/
+ln -sfn $PWD/tools/emulator/TiviAtvTest /usr/lib/enigma2/python/Plugins/Extensions/TiviAtvTest
+python3 tools/emulator/demo_kanallar.py && tools/emulator/e2-yayin && e2-arkaplan
+python3 tools/emulator/ekranlar.py                 # hepsi  -> .cache/ekranlar/
+python3 tools/emulator/ekranlar.py /tmp/ss menu epgselection
 ```
 
 ## OpenSkin Designer notları

@@ -13,6 +13,7 @@
 		<!-- enigma2'nin bekledigi takma adlar -->
 		<alias name="Body"       font="TM"  size="30" height="40" />
 		<alias name="TextNormal" font="TM"  size="30" height="40" />
-		<alias name="ChoiceList" font="TM"  size="30" height="48" />
+		<alias name="ChoiceList" font="TM"  size="30" height="60" />
+		<alias name="VirtualKeyboard" font="TM" size="34" height="76" />
 	</fonts>
 </skin>

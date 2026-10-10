@@ -354,8 +354,8 @@ SCREENS = [
      "Secili satir yuvarlak kosesini itemCornerRadiusSelected'dan, mavi dolgusunu "
      "itemGradientSelected'dan aliyor. Sag ustteki kutu Pig renderer ile gercek video."),
     ("GraphMultiEPG", "Zaman cizelgesi", "Coklu kanal EPG izgarasi",
-     "Alt kartta secili programin tam aciklamasi. Zaman cizgileri kutunun kendi "
-     "1px sistem grafigi."),
+     "Alt kartta secili programin tam aciklamasi. Zaman cizgileri ve 'simdi' "
+     "cizgisi motorun renkli etiketleri (EPGNativeControls)."),
     ("EventView", "Program detayi", "Tek programin genis gorunumu", ""),
     ("SecondInfoBar", "Ikinci bilgi cubugu", "InfoBar acikken tekrar OK", ""),
     ("Menu", "Ana menu", "Karartilmis arka plan uzerinde kart", ""),
