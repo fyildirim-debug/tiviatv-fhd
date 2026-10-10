@@ -20,75 +20,93 @@
 			DIKKAT: renk formati #AARRGGBB'dir ve AA = SEFFAFLIK.
 			00 = tamamen opak, FF = tamamen gorunmez. CSS'in tersi.
 		-->
-		<color name="bg"          value="#0a0a0c" />
-		<color name="surface"     value="#14141a" />
-		<color name="surface2"    value="#1c1c24" />
-		<color name="surface3"    value="#24242e" />
-		<color name="line"        value="#2c2c38" />
-		<color name="text"        value="#f5f6f8" />
-		<color name="textDim"     value="#9ba1ac" />
-		<color name="textFaint"   value="#6a707b" />
+		<color name="bg"          value="#0a0f13" />
+		<color name="surface"     value="#14181d" />
+		<color name="surface2"    value="#1b2026" />
+		<color name="surface3"    value="#25292f" />
+		<color name="line"        value="#2a2f36" />
+		<color name="text"        value="#f2f2f2" />
+		<color name="textDim"     value="#a7adb5" />
+		<color name="textFaint"   value="#6b727b" />
 		<color name="accent"      value="#3ea6ff" />
 		<color name="accentDeep"  value="#1f6fae" />
-		<color name="onAccent"    value="#04121e" />
+		<color name="onAccent"    value="#0a0f13" />
 		<color name="live"        value="#ff4d5a" />
 		<color name="ok"          value="#3ddc84" />
 		<color name="warn"        value="#ffb020" />
 		<color name="transparent" value="#ff000000" />
 
+		<!-- TiviMate dili: secim beyaz hap + koyu yazi; logolu listelerde ve EPG
+		     izgarasinda gri odak (beyaz hap beyaz logolari yutardi). -->
+		<color name="selBg"       value="#f2f2f2" />
+		<color name="selFg"       value="#0a0f13" />
+		<color name="focus"       value="#3a4048" />
+		<color name="focusHi"     value="#4a5059" />
+		<color name="cell"        value="#1b1f24" />
+		<color name="cellNow"     value="#262b32" />
+		<color name="track"       value="#3a3f46" />
+
+		<!-- Saydamlik: goruntu ustunde DUZ yari saydam dolgu. OSD pikselinin alfasi
+		     oldugu gibi yazilir, goruntuyle birlestirmeyi kutu donanimi yapar; OSD
+		     icinde yazilimla karistirma (gradyanda ",1" bayragi) kullanilmaz. -->
+		<color name="glass"       value="#330a0f13" />
+		<color name="glassSoft"   value="#660a0f13" />
+		<color name="card"        value="#261b2026" />
+		<color name="chip"        value="#3325292f" />
+
 		<!-- enigma2'nin standart renk adlari: skinde tanimlanmayan ekranlar
 		     (eklenti tarayici, paket listesi, ucuncu taraf eklentiler) bu adlari
 		     kullanir. Tanimsiz birakilirsa parseColor reddedip beyaza dusuyor. -->
-		<color name="foreground"                value="#14141a" />
-		<color name="background"                value="#0a0a0c" />
-		<color name="window-bg"                 value="#14141a" />
-		<color name="window-fg"                 value="#f5f6f8" />
-		<color name="window-frgrnd"             value="#f5f6f8" />
-		<color name="window-sel-bg"             value="#3ea6ff" />
-		<color name="window-sel-fg"             value="#04121e" />
-		<color name="menu-title-frgrnd"         value="#f5f6f8" />
-		<color name="menu-title-bkgrnd"         value="#1c1c24" />
-		<color name="menu-time-bkgrnd"          value="#1c1c24" />
-		<color name="menu-buttons-frgrnd"       value="#f5f6f8" />
-		<color name="menu-buttons-bkgrnd1"      value="#1c1c24" />
-		<color name="menu-buttons-bkgrnd2"      value="#24242e" />
-		<color name="fullscreen-topbar-frgrnd"  value="#f5f6f8" />
-		<color name="fullscreen-topbar-bkgrnd"  value="#14141a" />
-		<color name="fullscreen-buttons-bkgrnd" value="#14141a" />
-		<color name="infobar-frgrnd"            value="#f5f6f8" />
+		<color name="foreground"                value="#14181d" />
+		<color name="background"                value="#0a0f13" />
+		<color name="window-bg"                 value="#14181d" />
+		<color name="window-fg"                 value="#f2f2f2" />
+		<color name="window-frgrnd"             value="#f2f2f2" />
+		<color name="window-sel-bg"             value="#f2f2f2" />
+		<color name="window-sel-fg"             value="#0a0f13" />
+		<color name="menu-title-frgrnd"         value="#f2f2f2" />
+		<color name="menu-title-bkgrnd"         value="#1b2026" />
+		<color name="menu-time-bkgrnd"          value="#1b2026" />
+		<color name="menu-buttons-frgrnd"       value="#f2f2f2" />
+		<color name="menu-buttons-bkgrnd1"      value="#1b2026" />
+		<color name="menu-buttons-bkgrnd2"      value="#25292f" />
+		<color name="fullscreen-topbar-frgrnd"  value="#f2f2f2" />
+		<color name="fullscreen-topbar-bkgrnd"  value="#14181d" />
+		<color name="fullscreen-buttons-bkgrnd" value="#14181d" />
+		<color name="infobar-frgrnd"            value="#f2f2f2" />
 		<color name="infobar-frgrnd-on"         value="#3ddc84" />
-		<color name="infobar-bkgrnd"            value="#14141a" />
-		<color name="infobar_sunken"            value="#1c1c24" />
-		<color name="infobar_sunken_frgnd_dark" value="#9ba1ac" />
-		<color name="infobar_collab_back"       value="#1c1c24" />
+		<color name="infobar-bkgrnd"            value="#14181d" />
+		<color name="infobar_sunken"            value="#1b2026" />
+		<color name="infobar_sunken_frgnd_dark" value="#a7adb5" />
+		<color name="infobar_collab_back"       value="#1b2026" />
 		<color name="infobar_service_frgrnd"    value="#3ea6ff" />
 		<color name="infobar_tuner_rec"         value="#ff4d5a" />
 		<color name="event-frgrnd"              value="#3ea6ff" />
 		<color name="pig-channel-name"          value="#500a0a0c" />
-		<color name="secondBG"                  value="#14141a" />
+		<color name="secondBG"                  value="#14181d" />
 		<color name="secondFG"                  value="#3ea6ff" />
-		<color name="key_back"                  value="#24242e" />
-		<color name="key_text"                  value="#f5f6f8" />
+		<color name="key_back"                  value="#25292f" />
+		<color name="key_text"                  value="#f2f2f2" />
 		<color name="key_red"                   value="#3a1116" />
 		<color name="key_green"                 value="#0f3320" />
 		<color name="key_yellow"                value="#3a2c0d" />
 		<color name="key_blue"                  value="#102a44" />
-		<color name="black"                     value="#0a0a0c" />
-		<color name="white"                     value="#f5f6f8" />
-		<color name="grey"                      value="#9ba1ac" />
-		<color name="darkgrey"                  value="#2c2c38" />
-		<color name="verydarkgrey"              value="#1c1c24" />
-		<color name="dark"                      value="#14141a" />
+		<color name="black"                     value="#0a0f13" />
+		<color name="white"                     value="#f2f2f2" />
+		<color name="grey"                      value="#a7adb5" />
+		<color name="darkgrey"                  value="#2a2f36" />
+		<color name="verydarkgrey"              value="#1b2026" />
+		<color name="dark"                      value="#14181d" />
 		<color name="red"                       value="#ff4d5a" />
 		<color name="green"                     value="#3ddc84" />
 		<color name="blue"                      value="#3ea6ff" />
 		<color name="yellow"                    value="#ffb020" />
 		<color name="orange"                    value="#ffb020" />
-		<color name="transpBlack"               value="#800a0a0c" />
-		<color name="transpWhite"               value="#80f5f6f8" />
+		<color name="transpBlack"               value="#800a0f13" />
+		<color name="transpWhite"               value="#80f2f2f2" />
 
-		<color name="scrim"       value="#33000000" />
-		<color name="panelBg"     value="#140a0a0c" />
+		<color name="scrim"       value="#99000000" />
+		<color name="panelBg"     value="#330a0f13" />
 		<color name="redSoft"     value="#3a1116" />
 		<color name="greenSoft"   value="#0f3320" />
 		<color name="yellowSoft"  value="#3a2c0d" />
@@ -109,8 +127,8 @@
 		<parameter name="ChoicelistIcon" value="16,12,44,36" />
 		<parameter name="ChoicelistDash" value="0,0,1200,60" />
 		<parameter name="ChoicelistVerticalAlignment" value="*center" />
-		<parameter name="ChoiceListIcon_bullet" value="0xea3f,textFaint,onAccent" />
-		<parameter name="ChoiceListIcon_menu" value="0xe911,textDim,onAccent" />
+		<parameter name="ChoiceListIcon_bullet" value="0xea3f,textFaint,selFg" />
+		<parameter name="ChoiceListIcon_menu" value="0xe911,textDim,selFg" />
 		<parameter name="EPGNativeControls" value="1" />
 		<parameter name="EpgListSingle" value="90,270" />
 		<parameter name="EpgListMulti" value="300,200,150,30" />
@@ -118,7 +136,7 @@
 		<parameter name="VirtualKeyboardNative" value="1" />
 		<parameter name="VirtualKeyboard" value="96,76" />
 		<!-- zemin, secili, secili kenar, yazi, kirmizi, yesil, sari, mavi -->
-		<parameter name="VirtualKeyboardNativeColors" value="surface3,accentDeep,accent,text,live,ok,warn,accent" />
+		<parameter name="VirtualKeyboardNativeColors" value="surface3,focusHi,selBg,text,live,ok,warn,accent" />
 		<!-- bosluk, kose yaricapi, secili kenar kalinligi -->
 		<parameter name="VirtualKeyboardNativeGeometry" value="6,14,3" />
 		<!-- enigma2icons.ttf glifleri: backspace, delete, enter, exit, first, last,
@@ -131,8 +149,8 @@
 		<color name="LabelForeground"                    color="text" />
 		<color name="ListboxBackground"                  color="transparent" />
 		<color name="ListboxForeground"                  color="text" />
-		<color name="ListboxSelectedBackground"          color="accent" />
-		<color name="ListboxSelectedForeground"          color="onAccent" />
+		<color name="ListboxSelectedBackground"          color="selBg" />
+		<color name="ListboxSelectedForeground"          color="selFg" />
 		<color name="ListboxMarkedBackground"            color="live" />
 		<color name="ListboxMarkedForeground"            color="text" />
 		<color name="ListboxMarkedAndSelectedBackground" color="live" />
@@ -152,132 +170,124 @@
 	     ============================================================ -->
 	<screen name="InfoBar" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="InfoBar">
 
-		<!-- videodan cubuga yumusak gecis (seffaftan opaga gradient) -->
-		<eLabel position="0,590" size="1920,230" backgroundColor="#ff0a0a0c,#700a0a0c,vertical,1" zPosition="0" />
-		<eLabel position="0,820" size="1920,260" backgroundColor="#70141419,#4a0a0a0c,vertical,1" zPosition="0" />
-		<eLabel position="0,820" size="1920,3"   backgroundColor="accent"  zPosition="2" />
+		<!-- videodan alt banda: saydamdan koyuya. Karistirma bayragi yok: piksel
+		     alfasini oldugu gibi yazar, goruntuyle birlestirmeyi kutu donanimi yapar -->
+		<eLabel position="0,560" size="1920,520" backgroundColor="#ff0a0f13,#8c0a0f13,#140a0f13,vertical" zPosition="0" />
 
-		<!-- ust satir: numara / logo / kanal / saat -->
-		<widget source="session.CurrentService" render="ChannelNumber" position="68,840" size="150,64"
-		        font="TMX;52" foregroundColor="accent" transparent="1" halign="left" valign="center"
-		        noWrap="1" zPosition="2" />
-
-		<widget source="session.CurrentService" render="Picon" position="232,840" size="140,84"
+		<!-- logo karosu + numara / kanal -->
+		<eLabel position="68,834" size="228,128" backgroundColor="chip" cornerRadius="18" zPosition="1" />
+		<widget source="session.CurrentService" render="Picon" position="82,844" size="200,108"
 		        transparent="1" alphatest="blend" zPosition="2">
 			<convert type="ServiceName">Reference</convert>
 		</widget>
-
-		<widget source="session.CurrentService" render="Label" position="396,838" size="700,54"
+		<widget source="session.CurrentService" render="ChannelNumber" position="324,834" size="110,56"
+		        font="TMX;42" foregroundColor="textDim" transparent="1" halign="left" valign="center"
+		        noWrap="1" zPosition="2" />
+		<widget source="session.CurrentService" render="Label" position="434,834" size="900,56"
 		        font="TMB;44" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="2">
 			<convert type="ServiceName">Name</convert>
 		</widget>
 
-		<widget source="session.CurrentService" render="Label" position="396,894" size="600,30"
-		        font="TM;24" foregroundColor="textFaint" transparent="1" valign="center" noWrap="1" zPosition="2">
-			<convert type="ServiceName">Provider</convert>
+		<!-- simdiki program -->
+		<widget source="session.Event_Now" render="Label" position="324,892" size="1100,44"
+		        font="TM;34" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="2">
+			<convert type="EventName">Name</convert>
+		</widget>
+		<widget source="session.Event_Now" render="Label" position="324,940" size="240,34"
+		        font="TM;26" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="2">
+			<convert type="EventTime">Times</convert>
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="session.Event_Now" render="Label" position="572,940" size="160,34"
+		        font="TMB;24" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="2">
+			<convert type="EventTime">Remaining</convert>
+			<convert type="RemainingToText">Default</convert>
 		</widget>
 
-		<!-- sinyal: yuzde barin icinde (DVB) / akis hizi (IPTV) -->
-		<widget source="session.FrontendStatus" render="Label" position="1150,848" size="150,28" text=" "
-		        backgroundColor="line" cornerRadius="14" transparent="0" zPosition="2">
-			<convert type="TiviAtvSignal">IsDVB</convert>
-			<convert type="ConditionalShowHide" />
-		</widget>
-		<widget source="session.FrontendStatus" render="Progress" position="1150,848" size="150,28"
-		        foregroundColor="#003ea6ff,#001f6fae,horizontal" cornerRadius="14" borderWidth="0"
-		        transparent="1" zPosition="3">
-			<convert type="TiviAtvSignal">SNR</convert>
-		</widget>
-		<widget source="session.FrontendStatus" render="Label" position="1150,848" size="150,28"
-		        font="TMB;18" foregroundColor="text" transparent="1" halign="center" valign="center"
-		        noWrap="1" zPosition="4">
-			<convert type="TiviAtvSignal">SNRText</convert>
-		</widget>
-		<widget source="session.FrontendStatus" render="Label" position="1312,848" size="150,28" text=" "
-		        backgroundColor="line" cornerRadius="14" transparent="0" zPosition="2">
-			<convert type="TiviAtvSignal">IsDVB</convert>
-			<convert type="ConditionalShowHide" />
-		</widget>
-		<widget source="session.FrontendStatus" render="Progress" position="1312,848" size="150,28"
-		        foregroundColor="#003ea6ff,#001f6fae,horizontal" cornerRadius="14" borderWidth="0"
-		        transparent="1" zPosition="3">
-			<convert type="TiviAtvSignal">AGC</convert>
-		</widget>
-		<widget source="session.FrontendStatus" render="Label" position="1312,848" size="150,28"
-		        font="TMB;18" foregroundColor="text" transparent="1" halign="center" valign="center"
-		        noWrap="1" zPosition="4">
-			<convert type="TiviAtvSignal">AGCText</convert>
-		</widget>
-		<widget source="session.FrontendStatus" render="Label" position="1096,848" size="366,28"
-		        font="TMB;24" foregroundColor="textDim" transparent="1" halign="right" valign="center"
-		        noWrap="1" zPosition="4">
-			<convert type="TiviAtvSignal">Speed</convert>
-		</widget>
-
-		<!-- bilgi rozetleri -->
-		<widget source="session.CurrentService" render="Label" position="1024,888" size="160,36"
-		        font="TMB;20" foregroundColor="textDim" backgroundColor="surface3" cornerRadius="10"
+		<!-- bilgi rozetleri (bosken gizli) -->
+		<widget source="session.CurrentService" render="Label" position="744,940" size="170,34"
+		        font="TMB;19" foregroundColor="textDim" backgroundColor="chip" cornerRadius="10"
 		        halign="center" valign="center" noWrap="1" zPosition="2">
 			<convert type="PliExtraInfo">ResolutionString</convert>
 			<convert type="TiviAtvText" />
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.CurrentService" render="Label" position="1196,888" size="150,36"
-		        font="TMB;20" foregroundColor="textDim" backgroundColor="surface3" cornerRadius="10"
+		<widget source="session.CurrentService" render="Label" position="926,940" size="140,34"
+		        font="TMB;19" foregroundColor="textDim" backgroundColor="chip" cornerRadius="10"
 		        halign="center" valign="center" noWrap="1" zPosition="2">
 			<convert type="PliExtraInfo">VideoCodec</convert>
 			<convert type="TiviAtvText" />
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.CurrentService" render="Label" position="1358,888" size="145,36"
-		        font="TMB;20" foregroundColor="textDim" backgroundColor="surface3" cornerRadius="10"
+		<widget source="session.CurrentService" render="Label" position="1078,940" size="140,34"
+		        font="TMB;19" foregroundColor="textDim" backgroundColor="chip" cornerRadius="10"
 		        halign="center" valign="center" noWrap="1" zPosition="2">
 			<convert type="PliExtraInfo">CurrentCrypto</convert>
 			<convert type="TiviAtvText" />
 			<convert type="ConditionalShowHide" />
 		</widget>
 
-		<widget source="global.CurrentTime" render="Label" position="1520,832" size="332,66"
-		        font="TMX;58" foregroundColor="text" transparent="1" halign="right" valign="center" zPosition="2">
+		<!-- ilerleme: beyaz dolgu, koyu iz -->
+		<eLabel position="68,994" size="1784,6" backgroundColor="track" cornerRadius="3" zPosition="2" />
+		<widget source="session.Event_Now" render="Progress" position="68,994" size="1784,6"
+		        backgroundColor="track" foregroundColor="selBg" cornerRadius="3" borderWidth="0"
+		        transparent="1" zPosition="3">
+			<convert type="EventTime">Progress</convert>
+		</widget>
+
+		<!-- sonraki -->
+		<eLabel position="68,1018" size="136,36" text="SONRAKI" backgroundColor="chip" cornerRadius="18"
+		        font="TMB;19" foregroundColor="textDim" halign="center" valign="center" zPosition="2" />
+		<widget source="session.Event_Next" render="Label" position="220,1016" size="1000,40"
+		        font="TM;26" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="2">
+			<convert type="EventName">Name</convert>
+		</widget>
+
+		<!-- saat / tarih -->
+		<widget source="global.CurrentTime" render="Label" position="1500,830" size="352,70"
+		        font="TMX;62" foregroundColor="text" transparent="1" halign="right" valign="center" zPosition="2">
 			<convert type="ClockToText">Default</convert>
 		</widget>
-		<widget source="global.CurrentTime" render="Label" position="1520,898" size="332,30"
+		<widget source="global.CurrentTime" render="Label" position="1500,900" size="352,32"
 		        font="TM;24" foregroundColor="textDim" transparent="1" halign="right" valign="center" zPosition="2">
 			<convert type="ClockToText">Format:%d.%m.%Y</convert>
 		</widget>
 
-		<!-- simdiki program -->
-		<widget source="session.Event_Now" render="Label" position="68,950" size="1240,46"
-		        font="TM;34" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="2">
-			<convert type="EventName">Name</convert>
+		<!-- sinyal: yuzde barin icinde (DVB) / akis hizi (IPTV) -->
+		<widget source="session.FrontendStatus" render="Label" position="1540,1022" size="150,28" text=" "
+		        backgroundColor="track" cornerRadius="14" transparent="0" zPosition="2">
+			<convert type="TiviAtvSignal">IsDVB</convert>
+			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.Event_Now" render="Label" position="1380,954" size="472,38"
-		        font="TM;28" foregroundColor="textDim" transparent="1" halign="right" valign="center" noWrap="1" zPosition="2">
-			<convert type="EventTime">Times</convert>
-			<convert type="ClockToText">Default</convert>
+		<widget source="session.FrontendStatus" render="Progress" position="1540,1022" size="150,28"
+		        foregroundColor="#003ea6ff,#001f6fae,horizontal" cornerRadius="14" borderWidth="0"
+		        transparent="1" zPosition="3">
+			<convert type="TiviAtvSignal">SNR</convert>
 		</widget>
-
-		<!-- ilerleme cubugu -->
-		<eLabel position="68,1008" size="1784,8" backgroundColor="line" cornerRadius="4" zPosition="2" />
-		<widget source="session.Event_Now" render="Progress" position="68,1008" size="1784,8"
-		        backgroundColor="line" foregroundColor="#003ea6ff,#0068d0ff,horizontal"
-		        cornerRadius="4" borderWidth="0" transparent="1" zPosition="3">
-			<convert type="EventTime">Progress</convert>
+		<widget source="session.FrontendStatus" render="Label" position="1540,1022" size="150,28"
+		        font="TMB;18" foregroundColor="text" transparent="1" halign="center" valign="center"
+		        noWrap="1" zPosition="4">
+			<convert type="TiviAtvSignal">SNRText</convert>
 		</widget>
-
-		<!-- kalan sure + sonraki -->
-		<widget source="session.Event_Now" render="Label" position="1400,1024" size="452,38"
-		        font="TMB;26" foregroundColor="accent" transparent="1" halign="right" valign="center"
-		        noWrap="1" zPosition="2">
-			<convert type="EventTime">Remaining</convert>
-			<convert type="RemainingToText">Default</convert>
+		<widget source="session.FrontendStatus" render="Label" position="1702,1022" size="150,28" text=" "
+		        backgroundColor="track" cornerRadius="14" transparent="0" zPosition="2">
+			<convert type="TiviAtvSignal">IsDVB</convert>
+			<convert type="ConditionalShowHide" />
 		</widget>
-
-		<eLabel position="68,1026" size="136,34" text="SONRAKI" backgroundColor="surface3" cornerRadius="17"
-		        font="TMB;19" foregroundColor="textDim" halign="center" valign="center" zPosition="2" />
-		<widget source="session.Event_Next" render="Label" position="220,1022" size="1140,40"
-		        font="TM;26" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="2">
-			<convert type="EventName">Name</convert>
+		<widget source="session.FrontendStatus" render="Progress" position="1702,1022" size="150,28"
+		        foregroundColor="#003ea6ff,#001f6fae,horizontal" cornerRadius="14" borderWidth="0"
+		        transparent="1" zPosition="3">
+			<convert type="TiviAtvSignal">AGC</convert>
+		</widget>
+		<widget source="session.FrontendStatus" render="Label" position="1702,1022" size="150,28"
+		        font="TMB;18" foregroundColor="text" transparent="1" halign="center" valign="center"
+		        noWrap="1" zPosition="4">
+			<convert type="TiviAtvSignal">AGCText</convert>
+		</widget>
+		<widget source="session.FrontendStatus" render="Label" position="1486,1018" size="366,36"
+		        font="TMB;24" foregroundColor="textDim" transparent="1" halign="right" valign="center"
+		        noWrap="1" zPosition="4">
+			<convert type="TiviAtvSignal">Speed</convert>
 		</widget>
 	</screen>
 
@@ -285,15 +295,14 @@
 	     SECOND INFOBAR  -  program detayi
 	     ============================================================ -->
 	<screen name="SecondInfoBar" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="2. InfoBar">
-		<eLabel position="68,436" size="1784,340" backgroundColor="#001c1c24,#00141419,vertical" cornerRadius="20" zPosition="0" />
-		<eLabel position="68,436" size="6,340"    backgroundColor="accent"   cornerRadius="3;left" zPosition="1" />
+		<eLabel position="68,436" size="1784,340" backgroundColor="card" cornerRadius="28" zPosition="0" />
 
 		<widget source="session.Event_Now" render="Label" position="116,468" size="1700,50"
 		        font="TMB;36" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1">
 			<convert type="EventName">Name</convert>
 		</widget>
 		<widget source="session.Event_Now" render="Label" position="116,522" size="1000,32"
-		        font="TM;26" foregroundColor="accent" transparent="1" valign="center" noWrap="1" zPosition="1">
+		        font="TM;26" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="1">
 			<convert type="EventTime">Times</convert>
 			<convert type="ClockToText">Default</convert>
 		</widget>
@@ -308,172 +317,171 @@
 	</screen>
 
 	<!-- ============================================================
-	     KANAL LISTESI  -  TiviMate duzeni
-	     sol: liste  |  sag: canli onizleme + EPG karti
+	     KANAL LISTESI  -  TiviMate: liste soldaki yari saydam panelde,
+	     goruntu arkada tam ekran akmaya devam eder (PiG yok).
+	     Panel duz dolgu + saga dogru solan gradyan; karistirma yok.
 	     ============================================================ -->
 	<screen name="ChannelSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Kanallar">
-		<eLabel position="0,0"    size="1920,1080" backgroundColor="scrim"   zPosition="0" />
-		<eLabel position="0,0"    size="1060,1080" backgroundColor="panelBg" zPosition="0" />
-		<eLabel position="1058,0" size="2,1080"    backgroundColor="line"    zPosition="1" />
+		<eLabel position="0,0"    size="1000,1080" backgroundColor="glass" zPosition="0" />
+		<eLabel position="1000,0" size="440,1080"  backgroundColor="#330a0f13,#ff0a0f13,horizontal" zPosition="0" />
 
-		<widget source="Title" render="Label" position="48,40" size="700,56"
-		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="2" />
+		<widget source="Title" render="Label" position="64,36" size="880,60"
+		        font="TMB;38" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="2" />
 
-		<widget source="global.CurrentTime" render="Label" position="1560,38" size="320,58"
+		<widget name="list" position="40,116" size="940,860" transparent="1" zPosition="2"
+		        serviceItemHeight="86" serviceNameFont="TMB;32" serviceNumberFont="TM;28" serviceInfoFont="TM;24"
+		        itemCornerRadius="16" itemCornerRadiusSelected="16"
+		        backgroundColorSelected="focus" foregroundColorSelected="text"
+		        listMarginLeft="24" listMarginRight="24" fieldMargins="16"
+		        progressbarHeight="6" progressbarBorderWidth="0" progressBarWidth="130"
+		        colorEventProgressbar="selBg" colorEventProgressbarSelected="selBg"
+		        colorEventProgressbarBorder="track" colorEventProgressbarBorderSelected="track"
+		        colorServiceDescription="textDim" colorServiceDescriptionSelected="textDim"
+		        colorServiceRecorded="live" colorServiceRecording="live"
+		        foregroundColorServiceNotAvail="textFaint"
+		        separatorLineColor="line"
+		        scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarOffset="12" scrollbarRadius="3"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
+
+		<!-- renk tuslari -->
+		<widget source="key_red" render="Label"    position="64,1004"  size="212,48" backgroundColor="redSoft"    cornerRadius="24"
+		        font="TMB;22" foregroundColor="live"  halign="center" valign="center" transparent="0" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" render="Label"  position="288,1004" size="212,48" backgroundColor="greenSoft"  cornerRadius="24"
+		        font="TMB;22" foregroundColor="ok"    halign="center" valign="center" transparent="0" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="512,1004" size="212,48" backgroundColor="yellowSoft" cornerRadius="24"
+		        font="TMB;22" foregroundColor="warn"  halign="center" valign="center" transparent="0" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label"   position="736,1004" size="212,48" backgroundColor="blueSoft"   cornerRadius="24"
+		        font="TMB;22" foregroundColor="accent" halign="center" valign="center" transparent="0" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+
+		<!-- saat: goruntunun ustunde okunsun diye yari saydam kapsulde -->
+		<eLabel position="1572,36" size="284,104" backgroundColor="glassSoft" cornerRadius="28" zPosition="1" />
+		<widget source="global.CurrentTime" render="Label" position="1592,44" size="244,58"
 		        font="TMX;46" foregroundColor="text" transparent="1" halign="right" valign="center" zPosition="2">
 			<convert type="ClockToText">Default</convert>
 		</widget>
-		<widget source="global.CurrentTime" render="Label" position="1560,98" size="320,30"
-		        font="TM;24" foregroundColor="textDim" transparent="1" halign="right" valign="center" zPosition="2">
+		<widget source="global.CurrentTime" render="Label" position="1592,100" size="244,30"
+		        font="TM;22" foregroundColor="textDim" transparent="1" halign="right" valign="center" zPosition="2">
 			<convert type="ClockToText">Format:%d.%m.%Y</convert>
 		</widget>
 
+		<!-- secili kanalin programi -->
+		<eLabel position="1180,620" size="676,400" backgroundColor="card" cornerRadius="28" zPosition="1" />
+
+		<eLabel position="1220,652" size="112,34" text="SIMDI" backgroundColor="selBg" cornerRadius="17"
+		        font="TMB;19" foregroundColor="selFg" halign="center" valign="center" zPosition="2" />
 		<!-- sinyal (DVB) / akis hizi (IPTV) -->
-		<widget source="session.FrontendStatus" render="Label" position="1096,48" size="150,28" text=" "
-		        backgroundColor="line" cornerRadius="14" transparent="0" zPosition="2">
+		<widget source="session.FrontendStatus" render="Label" position="1518,655" size="150,28" text=" "
+		        backgroundColor="track" cornerRadius="14" transparent="0" zPosition="2">
 			<convert type="TiviAtvSignal">IsDVB</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.FrontendStatus" render="Progress" position="1096,48" size="150,28"
+		<widget source="session.FrontendStatus" render="Progress" position="1518,655" size="150,28"
 		        foregroundColor="#003ea6ff,#001f6fae,horizontal" cornerRadius="14" borderWidth="0"
 		        transparent="1" zPosition="3">
 			<convert type="TiviAtvSignal">SNR</convert>
 		</widget>
-		<widget source="session.FrontendStatus" render="Label" position="1096,48" size="150,28"
+		<widget source="session.FrontendStatus" render="Label" position="1518,655" size="150,28"
 		        font="TMB;18" foregroundColor="text" transparent="1" halign="center" valign="center"
 		        noWrap="1" zPosition="4">
 			<convert type="TiviAtvSignal">SNRText</convert>
 		</widget>
-		<widget source="session.FrontendStatus" render="Label" position="1258,48" size="150,28" text=" "
-		        backgroundColor="line" cornerRadius="14" transparent="0" zPosition="2">
+		<widget source="session.FrontendStatus" render="Label" position="1680,655" size="150,28" text=" "
+		        backgroundColor="track" cornerRadius="14" transparent="0" zPosition="2">
 			<convert type="TiviAtvSignal">IsDVB</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="session.FrontendStatus" render="Progress" position="1258,48" size="150,28"
+		<widget source="session.FrontendStatus" render="Progress" position="1680,655" size="150,28"
 		        foregroundColor="#003ea6ff,#001f6fae,horizontal" cornerRadius="14" borderWidth="0"
 		        transparent="1" zPosition="3">
 			<convert type="TiviAtvSignal">AGC</convert>
 		</widget>
-		<widget source="session.FrontendStatus" render="Label" position="1258,48" size="150,28"
+		<widget source="session.FrontendStatus" render="Label" position="1680,655" size="150,28"
 		        font="TMB;18" foregroundColor="text" transparent="1" halign="center" valign="center"
 		        noWrap="1" zPosition="4">
 			<convert type="TiviAtvSignal">AGCText</convert>
 		</widget>
-		<widget source="session.FrontendStatus" render="Label" position="1096,48" size="312,28"
+		<widget source="session.FrontendStatus" render="Label" position="1464,652" size="366,34"
 		        font="TMB;22" foregroundColor="textDim" transparent="1" halign="right" valign="center"
 		        noWrap="1" zPosition="4">
 			<convert type="TiviAtvSignal">Speed</convert>
 		</widget>
 
-		<widget name="list" position="44,150" size="972,820" transparent="1" zPosition="2"
-		        serviceItemHeight="76" serviceNameFont="TMB;32" serviceNumberFont="TM;28" serviceInfoFont="TM;24"
-		        itemCornerRadius="14" itemCornerRadiusSelected="14"
-		        itemGradientSelected="#003ea6ff,#001f6fae,vertical"
-		        itemSpacing="0,6" listMarginLeft="24" listMarginRight="24" fieldMargins="16"
-		        progressbarHeight="6" progressbarBorderWidth="0" progressBarWidth="130"
-		        colorEventProgressbar="accent" colorEventProgressbarSelected="onAccent"
-		        colorEventProgressbarBorder="line" colorEventProgressbarBorderSelected="line"
-		        colorServiceDescription="textDim" colorServiceDescriptionSelected="onAccent"
-		        colorServiceRecorded="live" colorServiceRecording="live"
-		        foregroundColorServiceNotAvail="textFaint"
-		        separatorLineColor="line"
-		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="14" scrollbarRadius="4"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" />
-
-		<!-- canli onizleme -->
-		<eLabel position="1096,142" size="784,448" backgroundColor="surface2" cornerRadius="18" zPosition="1" />
-		<widget source="session.VideoPicture" render="Pig" position="1104,150" size="768,432"
-		        zPosition="2" backgroundColor="transparent" />
-
-		<!-- EPG karti -->
-		<eLabel position="1096,622" size="784,396" backgroundColor="#001c1c24,#00141419,vertical" cornerRadius="18" zPosition="1" />
-
-		<eLabel position="1128,650" size="120,34" text="SIMDI" backgroundColor="accent" cornerRadius="17"
-		        font="TMB;19" foregroundColor="onAccent" halign="center" valign="center" zPosition="2" />
-		<widget source="ServiceEvent" render="Label" position="1128,694" size="720,44"
+		<widget source="ServiceEvent" render="Label" position="1220,696" size="610,44"
 		        font="TMB;32" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="2">
 			<convert type="EventName">Name</convert>
 		</widget>
-		<widget source="ServiceEvent" render="Label" position="1128,740" size="720,32"
+		<widget source="ServiceEvent" render="Label" position="1220,742" size="610,32"
 		        font="TM;24" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="2">
 			<convert type="EventTime">Times</convert>
 			<convert type="ClockToText">Default</convert>
 		</widget>
-		<eLabel position="1128,786" size="720,6" backgroundColor="line" cornerRadius="3" zPosition="2" />
-		<widget source="ServiceEvent" render="Progress" position="1128,786" size="720,6"
-		        backgroundColor="line" foregroundColor="accent" cornerRadius="3" borderWidth="0"
+		<eLabel position="1220,788" size="610,6" backgroundColor="track" cornerRadius="3" zPosition="2" />
+		<widget source="ServiceEvent" render="Progress" position="1220,788" size="610,6"
+		        backgroundColor="track" foregroundColor="selBg" cornerRadius="3" borderWidth="0"
 		        transparent="1" zPosition="3">
 			<convert type="EventTime">Progress</convert>
 		</widget>
 
-		<eLabel position="1128,814" size="136,34" text="SONRAKI" backgroundColor="surface3" cornerRadius="17"
+		<eLabel position="1220,816" size="136,34" text="SONRAKI" backgroundColor="chip" cornerRadius="17"
 		        font="TMB;19" foregroundColor="textDim" halign="center" valign="center" zPosition="2" />
-		<widget source="ServiceEvent" render="Label" position="1128,858" size="720,38"
-		        font="TM;28" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="2">
+		<widget source="ServiceEvent" render="Label" position="1370,814" size="460,38"
+		        font="TM;26" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="2">
 			<convert type="EventName">NextNameOnly</convert>
 		</widget>
-		<widget source="ServiceEvent" render="Label" position="1128,902" size="720,92"
+		<widget source="ServiceEvent" render="Label" position="1220,868" size="610,124"
 		        font="TM;24" foregroundColor="textFaint" transparent="1" zPosition="2">
 			<convert type="EventName">FullDescription</convert>
-		</widget>
-
-		<!-- renk tuslari -->
-		<widget source="key_red" render="Label"    position="48,1000"  size="228,52" backgroundColor="redSoft"    cornerRadius="26"
-		        font="TMB;24" foregroundColor="live"  halign="center" valign="center" transparent="0" zPosition="2">
-			<convert type="ConditionalShowHide" />
-		</widget>
-		<widget source="key_green" render="Label"  position="292,1000" size="228,52" backgroundColor="greenSoft"  cornerRadius="26"
-		        font="TMB;24" foregroundColor="ok"    halign="center" valign="center" transparent="0" zPosition="2">
-			<convert type="ConditionalShowHide" />
-		</widget>
-		<widget source="key_yellow" render="Label" position="536,1000" size="228,52" backgroundColor="yellowSoft" cornerRadius="26"
-		        font="TMB;24" foregroundColor="warn"  halign="center" valign="center" transparent="0" zPosition="2">
-			<convert type="ConditionalShowHide" />
-		</widget>
-		<widget source="key_blue" render="Label"   position="780,1000" size="228,52" backgroundColor="blueSoft"   cornerRadius="26"
-		        font="TMB;24" foregroundColor="accent" halign="center" valign="center" transparent="0" zPosition="2">
-			<convert type="ConditionalShowHide" />
 		</widget>
 	</screen>
 
 	<screen name="SimpleChannelSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Kanallar">
-		<eLabel position="0,0" size="1920,1080" backgroundColor="scrim"   zPosition="0" />
-		<eLabel position="0,0" size="1060,1080" backgroundColor="panelBg" zPosition="0" />
-		<widget source="Title" render="Label" position="48,40" size="900,56"
-		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="2" />
-		<widget name="list" position="44,150" size="972,820" transparent="1" zPosition="2"
+		<eLabel position="0,0"    size="1000,1080" backgroundColor="glass" zPosition="0" />
+		<eLabel position="1000,0" size="440,1080"  backgroundColor="#330a0f13,#ff0a0f13,horizontal" zPosition="0" />
+		<widget source="Title" render="Label" position="64,36" size="880,60"
+		        font="TMB;38" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="2" />
+		<widget name="list" position="40,116" size="940,860" transparent="1" zPosition="2"
 		        serviceNameFont="TMB;32" serviceNumberFont="TM;28" serviceInfoFont="TM;24"
-		        itemCornerRadiusSelected="14" itemGradientSelected="#003ea6ff,#001f6fae,vertical"
+		        itemCornerRadiusSelected="16" backgroundColorSelected="focus" foregroundColorSelected="text"
+		        colorServiceDescription="textDim" colorServiceDescriptionSelected="textDim"
 		        listMarginLeft="24" listMarginRight="24"
-		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="14" scrollbarRadius="4"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" />
+		        scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarOffset="12" scrollbarRadius="3"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 	</screen>
 
 	<screen name="ChannelSelectionRadio" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Radyo">
-		<eLabel position="0,0" size="1920,1080" backgroundColor="scrim"   zPosition="0" />
-		<eLabel position="0,0" size="1060,1080" backgroundColor="panelBg" zPosition="0" />
-		<widget source="Title" render="Label" position="48,40" size="900,56"
-		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="2" />
-		<widget name="list" position="44,150" size="972,820" transparent="1" zPosition="2"
+		<eLabel position="0,0"    size="1000,1080" backgroundColor="glass" zPosition="0" />
+		<eLabel position="1000,0" size="440,1080"  backgroundColor="#330a0f13,#ff0a0f13,horizontal" zPosition="0" />
+		<widget source="Title" render="Label" position="64,36" size="880,60"
+		        font="TMB;38" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="2" />
+		<widget name="list" position="40,116" size="940,860" transparent="1" zPosition="2"
 		        serviceNameFont="TMB;32" serviceNumberFont="TM;28" serviceInfoFont="TM;24"
-		        itemCornerRadiusSelected="14" itemGradientSelected="#003ea6ff,#001f6fae,vertical"
+		        itemCornerRadiusSelected="16" backgroundColorSelected="focus" foregroundColorSelected="text"
+		        colorServiceDescription="textDim" colorServiceDescriptionSelected="textDim"
 		        listMarginLeft="24" listMarginRight="24"
-		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="14" scrollbarRadius="4"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" />
-		<widget source="key_red" render="Label"    position="48,1000"  size="228,52" backgroundColor="redSoft"    cornerRadius="26"
-		        font="TMB;24" foregroundColor="live"   halign="center" valign="center" zPosition="2">
+		        scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarOffset="12" scrollbarRadius="3"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
+		<widget source="key_red" render="Label"    position="64,1004"  size="212,48" backgroundColor="redSoft"    cornerRadius="24"
+		        font="TMB;22" foregroundColor="live"   halign="center" valign="center" zPosition="2">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_green" render="Label"  position="292,1000" size="228,52" backgroundColor="greenSoft"  cornerRadius="26"
-		        font="TMB;24" foregroundColor="ok"     halign="center" valign="center" zPosition="2">
+		<widget source="key_green" render="Label"  position="288,1004" size="212,48" backgroundColor="greenSoft"  cornerRadius="24"
+		        font="TMB;22" foregroundColor="ok"     halign="center" valign="center" zPosition="2">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_yellow" render="Label" position="536,1000" size="228,52" backgroundColor="yellowSoft" cornerRadius="26"
-		        font="TMB;24" foregroundColor="warn"   halign="center" valign="center" zPosition="2">
+		<widget source="key_yellow" render="Label" position="512,1004" size="212,48" backgroundColor="yellowSoft" cornerRadius="24"
+		        font="TMB;22" foregroundColor="warn"   halign="center" valign="center" zPosition="2">
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="key_blue" render="Label"   position="780,1000" size="228,52" backgroundColor="blueSoft"   cornerRadius="26"
-		        font="TMB;24" foregroundColor="accent" halign="center" valign="center" zPosition="2">
+		<widget source="key_blue" render="Label"   position="736,1004" size="212,48" backgroundColor="blueSoft"   cornerRadius="24"
+		        font="TMB;22" foregroundColor="accent" halign="center" valign="center" zPosition="2">
 			<convert type="ConditionalShowHide" />
 		</widget>
 	</screen>
@@ -481,21 +489,21 @@
 	<!-- ============================================================
 	     EPG  -  tek kanal listesi
 	     ============================================================ -->
-	<screen name="EPGSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg" title="Program Rehberi">
+	<screen name="EPGSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="Program Rehberi">
 		<widget source="Title" render="Label" position="68,40" size="1100,58"
 		        font="TMB;42" foregroundColor="text" transparent="1" valign="center" noWrap="1" />
 		<widget source="global.CurrentTime" render="Label" position="1500,40" size="352,58"
-		        font="TMX;46" foregroundColor="accent" transparent="1" halign="right" valign="center">
+		        font="TMX;46" foregroundColor="text" transparent="1" halign="right" valign="center">
 			<convert type="ClockToText">Default</convert>
 		</widget>
 		<eLabel position="68,116" size="1784,2" backgroundColor="line" />
 
 		<widget name="list" position="68,146" size="1784,820" transparent="1"
 		        EventFontSingle="TM;30"
-		        itemCornerRadiusSelected="14" itemGradientSelected="#003ea6ff,#001f6fae,vertical"
+		        itemCornerRadiusSelected="14"
 		        separatorLineColor="line"
 		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" />
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 
 		<widget source="key_red" render="Label"    position="68,996"   size="240,52" backgroundColor="redSoft"    cornerRadius="26"
 		        font="TMB;24" foregroundColor="live"   halign="center" valign="center">
@@ -518,7 +526,7 @@
 	<!-- ============================================================
 	     GRAPH MULTI EPG  -  TiviMate zaman cizelgesi
 	     ============================================================ -->
-	<screen name="GraphMultiEPG" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg" title="Program Rehberi">
+	<screen name="GraphMultiEPG" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="Program Rehberi">
 		<widget source="key_red" render="Label"    position="68,36"  size="240,52" backgroundColor="redSoft"    cornerRadius="26"
 		        font="TMB;24" foregroundColor="live"   halign="center" valign="center">
 			<convert type="ConditionalShowHide" />
@@ -536,7 +544,7 @@
 			<convert type="ConditionalShowHide" />
 		</widget>
 		<widget source="global.CurrentTime" render="Label" position="1500,32" size="352,58"
-		        font="TMX;46" foregroundColor="accent" transparent="1" halign="right" valign="center">
+		        font="TMX;46" foregroundColor="text" transparent="1" halign="right" valign="center">
 			<convert type="ClockToText">Default</convert>
 		</widget>
 
@@ -546,22 +554,22 @@
 
 		<widget name="list" position="68,160" size="1784,600" transparent="1"
 		        ServiceFontGraphical="TMB;26" EntryFontGraphical="TM;24"
-		        ServiceForegroundColor="text" ServiceBackgroundColor="surface2"
-		        ServiceForegroundColorNow="onAccent" ServiceBackgroundColorNow="accent"
-		        ServiceBorderColor="bg" ServiceBorderWidth="2" ServiceNamePadding="16" ServiceNumberPadding="12"
-		        EntryForegroundColor="text" EntryBackgroundColor="surface"
-		        EntryForegroundColorSelected="onAccent" EntryBackgroundColorSelected="accent"
-		        EntryForegroundColorNow="text" EntryBackgroundColorNow="blueSoft"
-		        EntryForegroundColorNowSelected="onAccent" EntryBackgroundColorNowSelected="accent"
-		        EntryForegroundColorPast="textFaint" EntryBackgroundColorPast="surface"
-		        EntryForegroundColorPastSelected="onAccent" EntryBackgroundColorPastSelected="accentDeep"
-		        EntryBorderColor="bg" EventBorderWidth="2" EventNamePadding="12"
+		        ServiceForegroundColor="text" ServiceBackgroundColor="surface"
+		        ServiceForegroundColorNow="accent" ServiceBackgroundColorNow="surface2"
+		        ServiceBorderColor="bg" ServiceBorderWidth="3" ServiceNamePadding="16" ServiceNumberPadding="12"
+		        EntryForegroundColor="textDim" EntryBackgroundColor="cell"
+		        EntryForegroundColorSelected="text" EntryBackgroundColorSelected="focusHi"
+		        EntryForegroundColorNow="text" EntryBackgroundColorNow="cellNow"
+		        EntryForegroundColorNowSelected="text" EntryBackgroundColorNowSelected="focusHi"
+		        EntryForegroundColorPast="textFaint" EntryBackgroundColorPast="cell"
+		        EntryForegroundColorPastSelected="text" EntryBackgroundColorPastSelected="focus"
+		        EntryBorderColor="bg" EventBorderWidth="3" EventNamePadding="14"
 		        RecordForegroundColor="text" RecordBackgroundColor="redSoft"
 		        RecordForegroundColorSelected="text" RecordBackgroundColorSelected="live"
 		        ZapForegroundColor="text" ZapBackgroundColor="greenSoft"
 		        ZapForegroundColorSelected="onAccent" ZapBackgroundColorSelected="ok"
 		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" />
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 
 		<!-- zaman cizgileri: kutuda hazir gelen 1px sistem grafikleri -->
 		<widget name="timeline0" position="68,160" size="2,600" backgroundColor="line" zPosition="1"
@@ -594,14 +602,13 @@
 		        alphatest="on" zPosition="2" objectTypes="timeline_now,Pixmap" />
 
 		<!-- secili program karti -->
-		<eLabel position="68,790" size="1784,244" backgroundColor="#001c1c24,#00141419,vertical" cornerRadius="18" />
-		<eLabel position="68,790" size="6,244"    backgroundColor="accent"   cornerRadius="3;left" zPosition="1" />
+		<eLabel position="68,790" size="1784,244" backgroundColor="card" cornerRadius="18" />
 		<widget source="Event" render="Label" position="116,816" size="1500,46"
 		        font="TMB;34" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1">
 			<convert type="EventName">Name</convert>
 		</widget>
 		<widget source="Event" render="Label" position="116,866" size="700,34"
-		        font="TM;26" foregroundColor="accent" transparent="1" valign="center" noWrap="1" zPosition="1">
+		        font="TM;26" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="1">
 			<convert type="EventTime">Times</convert>
 			<convert type="ClockToText">Default</convert>
 		</widget>
@@ -611,7 +618,7 @@
 		</widget>
 	</screen>
 
-	<screen name="GraphicalEPG" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg" title="Program Rehberi">
+	<screen name="GraphicalEPG" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="Program Rehberi">
 		<widget source="key_red" render="Label"    position="68,36"  size="240,52" backgroundColor="redSoft"    cornerRadius="26"
 		        font="TMB;24" foregroundColor="live"   halign="center" valign="center">
 			<convert type="ConditionalShowHide" />
@@ -629,7 +636,7 @@
 			<convert type="ConditionalShowHide" />
 		</widget>
 		<widget source="global.CurrentTime" render="Label" position="1500,32" size="352,58"
-		        font="TMX;46" foregroundColor="accent" transparent="1" halign="right" valign="center">
+		        font="TMX;46" foregroundColor="text" transparent="1" halign="right" valign="center">
 			<convert type="ClockToText">Default</convert>
 		</widget>
 
@@ -639,42 +646,41 @@
 
 		<widget name="list" position="68,160" size="1784,600" transparent="1"
 		        ServiceFontGraphical="TMB;26" EntryFontGraphical="TM;24"
-		        ServiceForegroundColor="text" ServiceBackgroundColor="surface2"
-		        ServiceForegroundColorNow="onAccent" ServiceBackgroundColorNow="accent"
-		        ServiceBorderColor="bg" ServiceBorderWidth="2" ServiceNamePadding="16" ServiceNumberPadding="12"
-		        EntryForegroundColor="text" EntryBackgroundColor="surface"
-		        EntryForegroundColorSelected="onAccent" EntryBackgroundColorSelected="accent"
-		        EntryForegroundColorNow="text" EntryBackgroundColorNow="blueSoft"
-		        EntryForegroundColorNowSelected="onAccent" EntryBackgroundColorNowSelected="accent"
-		        EntryForegroundColorPast="textFaint" EntryBackgroundColorPast="surface"
-		        EntryForegroundColorPastSelected="onAccent" EntryBackgroundColorPastSelected="accentDeep"
-		        EntryBorderColor="bg" EventBorderWidth="2" EventNamePadding="12"
+		        ServiceForegroundColor="text" ServiceBackgroundColor="surface"
+		        ServiceForegroundColorNow="accent" ServiceBackgroundColorNow="surface2"
+		        ServiceBorderColor="bg" ServiceBorderWidth="3" ServiceNamePadding="16" ServiceNumberPadding="12"
+		        EntryForegroundColor="textDim" EntryBackgroundColor="cell"
+		        EntryForegroundColorSelected="text" EntryBackgroundColorSelected="focusHi"
+		        EntryForegroundColorNow="text" EntryBackgroundColorNow="cellNow"
+		        EntryForegroundColorNowSelected="text" EntryBackgroundColorNowSelected="focusHi"
+		        EntryForegroundColorPast="textFaint" EntryBackgroundColorPast="cell"
+		        EntryForegroundColorPastSelected="text" EntryBackgroundColorPastSelected="focus"
+		        EntryBorderColor="bg" EventBorderWidth="3" EventNamePadding="14"
 		        RecordForegroundColor="text" RecordBackgroundColor="redSoft"
 		        RecordForegroundColorSelected="text" RecordBackgroundColorSelected="live"
 		        ZapForegroundColor="text" ZapBackgroundColor="greenSoft"
 		        ZapForegroundColorSelected="onAccent" ZapBackgroundColorSelected="ok"
 		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" />
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 
 		<widget name="lab1" position="68,160" size="1784,600" font="TMB;34" foregroundColor="textDim"
 		        transparent="1" halign="center" valign="center" zPosition="4" />
 		<widget name="bouquetlist" position="68,160" size="1784,600" transparent="1" zPosition="3"
 		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" />
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 		<widget name="timeline_now" position="68,158" size="4,604" backgroundColor="live" zPosition="2"
 		        objectTypes="timeline_now,Label" />
 		<widget name="timeline_now" position="68,158" size="19,604" pixmap="skin_default/timeline-now.png"
 		        alphatest="on" zPosition="2" objectTypes="timeline_now,Pixmap" />
 
 		<!-- secili program karti -->
-		<eLabel position="68,790" size="1784,244" backgroundColor="#001c1c24,#00141419,vertical" cornerRadius="18" />
-		<eLabel position="68,790" size="6,244"    backgroundColor="accent"   cornerRadius="3;left" zPosition="1" />
+		<eLabel position="68,790" size="1784,244" backgroundColor="card" cornerRadius="18" />
 		<widget source="Event" render="Label" position="116,816" size="1500,46"
 		        font="TMB;34" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1">
 			<convert type="EventName">Name</convert>
 		</widget>
 		<widget source="Event" render="Label" position="116,866" size="700,34"
-		        font="TM;26" foregroundColor="accent" transparent="1" valign="center" noWrap="1" zPosition="1">
+		        font="TM;26" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="1">
 			<convert type="EventTime">Times</convert>
 			<convert type="ClockToText">Default</convert>
 		</widget>
@@ -684,7 +690,7 @@
 		</widget>
 	</screen>
 
-	<screen name="GraphicalEPGPIG" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg" title="Program Rehberi">
+	<screen name="GraphicalEPGPIG" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="Program Rehberi">
 		<widget source="key_red" render="Label"    position="68,36"  size="240,52" backgroundColor="redSoft"    cornerRadius="26"
 		        font="TMB;24" foregroundColor="live"   halign="center" valign="center">
 			<convert type="ConditionalShowHide" />
@@ -702,7 +708,7 @@
 			<convert type="ConditionalShowHide" />
 		</widget>
 		<widget source="global.CurrentTime" render="Label" position="1500,32" size="352,58"
-		        font="TMX;46" foregroundColor="accent" transparent="1" halign="right" valign="center">
+		        font="TMX;46" foregroundColor="text" transparent="1" halign="right" valign="center">
 			<convert type="ClockToText">Default</convert>
 		</widget>
 
@@ -712,42 +718,41 @@
 
 		<widget name="list" position="68,160" size="1784,600" transparent="1"
 		        ServiceFontGraphical="TMB;26" EntryFontGraphical="TM;24"
-		        ServiceForegroundColor="text" ServiceBackgroundColor="surface2"
-		        ServiceForegroundColorNow="onAccent" ServiceBackgroundColorNow="accent"
-		        ServiceBorderColor="bg" ServiceBorderWidth="2" ServiceNamePadding="16" ServiceNumberPadding="12"
-		        EntryForegroundColor="text" EntryBackgroundColor="surface"
-		        EntryForegroundColorSelected="onAccent" EntryBackgroundColorSelected="accent"
-		        EntryForegroundColorNow="text" EntryBackgroundColorNow="blueSoft"
-		        EntryForegroundColorNowSelected="onAccent" EntryBackgroundColorNowSelected="accent"
-		        EntryForegroundColorPast="textFaint" EntryBackgroundColorPast="surface"
-		        EntryForegroundColorPastSelected="onAccent" EntryBackgroundColorPastSelected="accentDeep"
-		        EntryBorderColor="bg" EventBorderWidth="2" EventNamePadding="12"
+		        ServiceForegroundColor="text" ServiceBackgroundColor="surface"
+		        ServiceForegroundColorNow="accent" ServiceBackgroundColorNow="surface2"
+		        ServiceBorderColor="bg" ServiceBorderWidth="3" ServiceNamePadding="16" ServiceNumberPadding="12"
+		        EntryForegroundColor="textDim" EntryBackgroundColor="cell"
+		        EntryForegroundColorSelected="text" EntryBackgroundColorSelected="focusHi"
+		        EntryForegroundColorNow="text" EntryBackgroundColorNow="cellNow"
+		        EntryForegroundColorNowSelected="text" EntryBackgroundColorNowSelected="focusHi"
+		        EntryForegroundColorPast="textFaint" EntryBackgroundColorPast="cell"
+		        EntryForegroundColorPastSelected="text" EntryBackgroundColorPastSelected="focus"
+		        EntryBorderColor="bg" EventBorderWidth="3" EventNamePadding="14"
 		        RecordForegroundColor="text" RecordBackgroundColor="redSoft"
 		        RecordForegroundColorSelected="text" RecordBackgroundColorSelected="live"
 		        ZapForegroundColor="text" ZapBackgroundColor="greenSoft"
 		        ZapForegroundColorSelected="onAccent" ZapBackgroundColorSelected="ok"
 		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" />
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 
 		<widget name="lab1" position="68,160" size="1784,600" font="TMB;34" foregroundColor="textDim"
 		        transparent="1" halign="center" valign="center" zPosition="4" />
 		<widget name="bouquetlist" position="68,160" size="1784,600" transparent="1" zPosition="3"
 		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" />
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 		<widget name="timeline_now" position="68,158" size="4,604" backgroundColor="live" zPosition="2"
 		        objectTypes="timeline_now,Label" />
 		<widget name="timeline_now" position="68,158" size="19,604" pixmap="skin_default/timeline-now.png"
 		        alphatest="on" zPosition="2" objectTypes="timeline_now,Pixmap" />
 
 		<!-- secili program karti -->
-		<eLabel position="68,790" size="1360,244" backgroundColor="#001c1c24,#00141419,vertical" cornerRadius="18" />
-		<eLabel position="68,790" size="6,244"    backgroundColor="accent"   cornerRadius="3;left" zPosition="1" />
+		<eLabel position="68,790" size="1360,244" backgroundColor="card" cornerRadius="18" />
 		<widget source="Event" render="Label" position="116,816" size="1280,46"
 		        font="TMB;34" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1">
 			<convert type="EventName">Name</convert>
 		</widget>
 		<widget source="Event" render="Label" position="116,866" size="700,34"
-		        font="TM;26" foregroundColor="accent" transparent="1" valign="center" noWrap="1" zPosition="1">
+		        font="TM;26" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="1">
 			<convert type="EventTime">Times</convert>
 			<convert type="ClockToText">Default</convert>
 		</widget>
@@ -760,7 +765,7 @@
 		        zPosition="2" backgroundColor="transparent" />
 	</screen>
 
-	<screen name="GraphMultiEPGList" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg" title="Program Rehberi">
+	<screen name="GraphMultiEPGList" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="Program Rehberi">
 		<widget source="key_red" render="Label"    position="68,36"  size="240,52" backgroundColor="redSoft"    cornerRadius="26"
 		        font="TMB;24" foregroundColor="live"   halign="center" valign="center">
 			<convert type="ConditionalShowHide" />
@@ -781,22 +786,22 @@
 		<eLabel position="68,152" size="1784,2" backgroundColor="line" zPosition="1" />
 		<widget name="list" position="68,160" size="1784,860" transparent="1"
 		        ServiceFontGraphical="TMB;26" EntryFontGraphical="TM;24"
-		        ServiceForegroundColor="text" ServiceBackgroundColor="surface2"
-		        ServiceForegroundColorNow="onAccent" ServiceBackgroundColorNow="accent"
-		        ServiceBorderColor="bg" ServiceBorderWidth="2" ServiceNamePadding="16" ServiceNumberPadding="12"
-		        EntryForegroundColor="text" EntryBackgroundColor="surface"
-		        EntryForegroundColorSelected="onAccent" EntryBackgroundColorSelected="accent"
-		        EntryForegroundColorNow="text" EntryBackgroundColorNow="blueSoft"
-		        EntryForegroundColorNowSelected="onAccent" EntryBackgroundColorNowSelected="accent"
-		        EntryForegroundColorPast="textFaint" EntryBackgroundColorPast="surface"
-		        EntryForegroundColorPastSelected="onAccent" EntryBackgroundColorPastSelected="accentDeep"
-		        EntryBorderColor="bg" EventBorderWidth="2" EventNamePadding="12"
+		        ServiceForegroundColor="text" ServiceBackgroundColor="surface"
+		        ServiceForegroundColorNow="accent" ServiceBackgroundColorNow="surface2"
+		        ServiceBorderColor="bg" ServiceBorderWidth="3" ServiceNamePadding="16" ServiceNumberPadding="12"
+		        EntryForegroundColor="textDim" EntryBackgroundColor="cell"
+		        EntryForegroundColorSelected="text" EntryBackgroundColorSelected="focusHi"
+		        EntryForegroundColorNow="text" EntryBackgroundColorNow="cellNow"
+		        EntryForegroundColorNowSelected="text" EntryBackgroundColorNowSelected="focusHi"
+		        EntryForegroundColorPast="textFaint" EntryBackgroundColorPast="cell"
+		        EntryForegroundColorPastSelected="text" EntryBackgroundColorPastSelected="focus"
+		        EntryBorderColor="bg" EventBorderWidth="3" EventNamePadding="14"
 		        RecordForegroundColor="text" RecordBackgroundColor="redSoft"
 		        RecordForegroundColorSelected="text" RecordBackgroundColorSelected="live"
 		        ZapForegroundColor="text" ZapBackgroundColor="greenSoft"
 		        ZapForegroundColorSelected="onAccent" ZapBackgroundColorSelected="ok"
 		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" />
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 		<widget name="timeline0" position="68,160" size="2,860" backgroundColor="line" zPosition="1"
 		        objectTypes="timeline0,Label" />
 		<widget name="timeline0" position="68,160" size="1,860" pixmap="skin_default/timeline.png" zPosition="1"
@@ -832,7 +837,7 @@
 	     Sekme zeminleri EPGNativeControls ile renkli Label olur; eski
 	     imajlarda Pixmap'tir ve gorunmez, yazilar yine kalir.
 	     ============================================================ -->
-	<screen name="EPGSelectionMulti" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg" title="Program Rehberi">
+	<screen name="EPGSelectionMulti" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="Program Rehberi">
 		<widget source="key_red" render="Label"    position="68,36"  size="240,52" backgroundColor="redSoft"    cornerRadius="26"
 		        font="TMB;24" foregroundColor="live"   halign="center" valign="center">
 			<convert type="ConditionalShowHide" />
@@ -850,17 +855,17 @@
 			<convert type="ConditionalShowHide" />
 		</widget>
 		<widget source="global.CurrentTime" render="Label" position="1500,32" size="352,58"
-		        font="TMX;46" foregroundColor="accent" transparent="1" halign="right" valign="center">
+		        font="TMX;46" foregroundColor="text" transparent="1" halign="right" valign="center">
 			<convert type="ClockToText">Default</convert>
 		</widget>
 
 		<!-- sekmeler -->
-		<widget name="now_button"      position="68,112"  size="200,48" backgroundColor="surface3"   cornerRadius="24" zPosition="1" />
-		<widget name="now_button_sel"  position="68,112"  size="200,48" backgroundColor="accentDeep" cornerRadius="24" zPosition="1" />
-		<widget name="next_button"     position="280,112" size="200,48" backgroundColor="surface3"   cornerRadius="24" zPosition="1" />
-		<widget name="next_button_sel" position="280,112" size="200,48" backgroundColor="accentDeep" cornerRadius="24" zPosition="1" />
-		<widget name="more_button"     position="492,112" size="240,48" backgroundColor="surface3"   cornerRadius="24" zPosition="1" />
-		<widget name="more_button_sel" position="492,112" size="240,48" backgroundColor="accentDeep" cornerRadius="24" zPosition="1" />
+		<widget name="now_button"      position="68,112"  size="200,48" backgroundColor="cell"       cornerRadius="24" zPosition="1" />
+		<widget name="now_button_sel"  position="68,112"  size="200,48" backgroundColor="focusHi"    cornerRadius="24" zPosition="1" />
+		<widget name="next_button"     position="280,112" size="200,48" backgroundColor="cell"       cornerRadius="24" zPosition="1" />
+		<widget name="next_button_sel" position="280,112" size="200,48" backgroundColor="focusHi"    cornerRadius="24" zPosition="1" />
+		<widget name="more_button"     position="492,112" size="240,48" backgroundColor="cell"       cornerRadius="24" zPosition="1" />
+		<widget name="more_button_sel" position="492,112" size="240,48" backgroundColor="focusHi"    cornerRadius="24" zPosition="1" />
 		<widget name="now_text"  position="68,112"  size="200,48" text="SIMDI"      font="TMB;22" foregroundColor="text"
 		        halign="center" valign="center" transparent="1" zPosition="2" />
 		<widget name="next_text" position="280,112" size="200,48" text="SONRAKI"    font="TMB;22" foregroundColor="text"
@@ -872,22 +877,21 @@
 		<eLabel position="68,176" size="1784,2" backgroundColor="line" zPosition="1" />
 
 		<widget name="list" position="68,190" size="1784,576" transparent="1" zPosition="1"
-		        EventFontMulti="TM;28" itemCornerRadiusSelected="14" itemGradientSelected="#003ea6ff,#001f6fae,vertical"
+		        EventFontMulti="TM;28" itemCornerRadiusSelected="14"
 		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" />
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 		<widget name="bouquetlist" position="68,190" size="1784,576" transparent="1" zPosition="3"
 		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" />
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 
 		<!-- secili program karti -->
-		<eLabel position="68,790" size="1784,244" backgroundColor="#001c1c24,#00141419,vertical" cornerRadius="18" />
-		<eLabel position="68,790" size="6,244"    backgroundColor="accent"   cornerRadius="3;left" zPosition="1" />
+		<eLabel position="68,790" size="1784,244" backgroundColor="card" cornerRadius="18" />
 		<widget source="Event" render="Label" position="116,816" size="1500,46"
 		        font="TMB;34" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1">
 			<convert type="EventName">Name</convert>
 		</widget>
 		<widget source="Event" render="Label" position="116,866" size="700,34"
-		        font="TM;26" foregroundColor="accent" transparent="1" valign="center" noWrap="1" zPosition="1">
+		        font="TM;26" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="1">
 			<convert type="EventTime">Times</convert>
 			<convert type="ClockToText">Default</convert>
 		</widget>
@@ -900,14 +904,13 @@
 	<!-- ============================================================
 	     PROGRAM DETAYI
 	     ============================================================ -->
-	<screen name="EventView" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg" title="Program Detayi">
+	<screen name="EventView" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="Program Detayi">
 		<widget source="Title" render="Label" position="68,44" size="1784,58"
 		        font="TMB;42" foregroundColor="text" transparent="1" valign="center" noWrap="1" />
-		<eLabel position="68,120" size="120,5" backgroundColor="accent" cornerRadius="3" />
 
 		<!-- ScrollLabel'in kapsayicisina zPosition uygulanmiyor (yalniz ic
 		     etiketlere gider); ayni z'deki panel metni orter, panel -1'de -->
-		<eLabel position="68,160" size="1784,700" backgroundColor="#001c1c24,#00141419,vertical" cornerRadius="20" zPosition="-1" />
+		<eLabel position="68,160" size="1784,700" backgroundColor="card" cornerRadius="20" zPosition="-1" />
 
 		<!-- EventViewEPGSelect ikisini de verir (epg_description basligi da tekrarlar),
 		     EventViewSimple yalniz epg_description'i: ust uste binmesinler -->
@@ -915,7 +918,7 @@
 		        foregroundColor="text" transparent="1" conditional="FullDescription" />
 		<widget name="epg_description" position="116,196" size="1688,628" font="TM;30"
 		        foregroundColor="text" transparent="1" excludes="FullDescription" />
-		<widget name="datetime" position="68,888" size="500,42" font="TMB;28" foregroundColor="accent"
+		<widget name="datetime" position="68,888" size="500,42" font="TMB;28" foregroundColor="textDim"
 		        transparent="1" valign="center" />
 		<widget name="duration" position="588,888" size="300,42" font="TM;28" foregroundColor="textDim"
 		        transparent="1" valign="center" />
@@ -944,23 +947,21 @@
 	     MENU / AYARLAR
 	     ============================================================ -->
 	<screen name="Menu" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Menu">
-		<eLabel position="0,0"   size="1920,1080" backgroundColor="scrim"   zPosition="0" />
-		<eLabel position="0,0"   size="760,1080"  backgroundColor="panelBg" zPosition="0" />
-		<eLabel position="758,0" size="2,1080"    backgroundColor="line"    zPosition="1" />
+		<eLabel position="0,0"   size="720,1080" backgroundColor="glass" zPosition="0" />
+		<eLabel position="720,0" size="360,1080" backgroundColor="#330a0f13,#ff0a0f13,horizontal" zPosition="0" />
 
-		<widget source="Title" render="Label" position="60,36" size="640,58"
+		<widget source="Title" render="Label" position="64,40" size="600,60"
 		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
-		<eLabel position="60,104" size="100,5" backgroundColor="accent" cornerRadius="3" zPosition="1" />
 
-		<widget source="menu" render="Listbox" position="44,128" size="672,896" transparent="1" zPosition="1"
-		        itemHeight="64" itemAlignment="leftMiddle" font="TM;32" itemCornerRadiusSelected="14"
-		        itemGradientSelected="#003ea6ff,#001f6fae,vertical" padding="24,12,24,0"
-		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line">
+		<widget source="menu" render="Listbox" position="40,124" size="640,868" transparent="1" zPosition="1"
+		        itemHeight="62" itemAlignment="leftMiddle" font="TM;32" itemCornerRadiusSelected="16"
+		        padding="24,12,24,0"
+		        scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarOffset="12" scrollbarRadius="3"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track">
 			<convert type="StringList" />
 		</widget>
 
-		<widget source="global.CurrentTime" render="Label" position="400,1016" size="316,40"
+		<widget source="global.CurrentTime" render="Label" position="364,1012" size="316,40"
 		        font="TM;26" foregroundColor="textFaint" transparent="1" halign="right" valign="center" zPosition="1">
 			<convert type="ClockToText">Default</convert>
 		</widget>
@@ -968,17 +969,15 @@
 
 	<screen name="Setup" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Ayarlar">
 		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
-		<eLabel position="240,90"  size="1440,900"  backgroundColor="#001c1c24,#00141419,vertical" cornerRadius="24" zPosition="0" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
 
 		<widget source="Title" render="Label" position="296,134" size="1328,58"
 		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
-		<eLabel position="296,202" size="100,5" backgroundColor="accent" cornerRadius="3" zPosition="1" />
 
 		<widget name="config" position="296,246" size="1328,562" transparent="1" zPosition="1"
-		        itemHeight="64" itemAlignment="leftMiddle" font="TM;30" itemCornerRadiusSelected="14"
-		        itemGradientSelected="#003ea6ff,#001f6fae,vertical" padding="24,12,24,0" enableWrapAround="1"
+		        itemHeight="64" itemAlignment="leftMiddle" font="TM;30" itemCornerRadiusSelected="14" padding="24,12,24,0" enableWrapAround="1"
 		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" />
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 
 		<eLabel position="296,828" size="1328,2" backgroundColor="line" zPosition="1" />
 		<widget name="description" position="296,844" size="1328,64" font="TM;26" foregroundColor="textDim"
@@ -998,17 +997,15 @@
 	     ============================================================ -->
 	<screen name="SkinSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Arayuz Secimi">
 		<eLabel position="0,0"    size="1920,1080" backgroundColor="scrim" zPosition="0" />
-		<eLabel position="240,90" size="1440,900"  backgroundColor="#001c1c24,#00141419,vertical" cornerRadius="24" zPosition="0" />
+		<eLabel position="240,90" size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
 
 		<widget source="Title" render="Label" position="296,134" size="1328,58"
 		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
-		<eLabel position="296,202" size="100,5" backgroundColor="accent" cornerRadius="3" zPosition="1" />
 
 		<widget name="config" position="296,246" size="820,562" transparent="1" zPosition="1"
-		        itemHeight="64" itemAlignment="leftMiddle" font="TM;30" itemCornerRadiusSelected="14"
-		        itemGradientSelected="#003ea6ff,#001f6fae,vertical" padding="24,12,24,0" enableWrapAround="1"
+		        itemHeight="64" itemAlignment="leftMiddle" font="TM;30" itemCornerRadiusSelected="14" padding="24,12,24,0" enableWrapAround="1"
 		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" />
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 
 		<!-- secili arayuzun onizlemesi -->
 		<eLabel position="1156,246" size="468,340" backgroundColor="surface2" cornerRadius="18" zPosition="1" />
@@ -1026,8 +1023,7 @@
 
 	<screen name="MessageBox" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Mesaj">
 		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
-		<eLabel position="510,330" size="900,420"   backgroundColor="#001c1c24,#00141419,vertical" cornerRadius="24" zPosition="0" />
-		<eLabel position="510,330" size="900,6"     backgroundColor="accent" cornerRadius="3;top" zPosition="1" />
+		<eLabel position="510,330" size="900,420"   backgroundColor="card" cornerRadius="24" zPosition="0" />
 
 		<!-- icon zorunlu (skin.py MANDATORY_WIDGETS): yoksa bu ekran reddedilir,
 		     varsayilan kucuk pencere acilir. Ikon fontu: soru, bilgi, uyari, hata, mesaj -->
@@ -1037,27 +1033,23 @@
 		<widget name="text" position="652,386" size="698,180" font="TM;30" foregroundColor="text"
 		        backgroundColor="surface2" transparent="1" zPosition="1" />
 		<widget name="list" position="570,586" size="780,132" transparent="1" zPosition="1"
-		        itemHeight="60" itemAlignment="leftMiddle" font="TM;30" itemCornerRadiusSelected="14"
-		        itemGradientSelected="#003ea6ff,#001f6fae,vertical" padding="24,12,24,0"
+		        itemHeight="60" itemAlignment="leftMiddle" font="TM;30" itemCornerRadiusSelected="14" padding="24,12,24,0"
 		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarRadius="4"
-		        scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" />
+		        scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 	</screen>
 
 	<screen name="ChoiceBox" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Secim">
 		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
-		<eLabel position="510,190" size="900,700"   backgroundColor="#001c1c24,#00141419,vertical" cornerRadius="24" zPosition="0" />
-		<eLabel position="510,190" size="900,6"     backgroundColor="accent" cornerRadius="3;top" zPosition="1" />
+		<eLabel position="510,190" size="900,700"   backgroundColor="card" cornerRadius="24" zPosition="0" />
 
 		<widget source="Title" render="Label" position="570,226" size="780,52" font="TMB;36"
 		        foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
-		<eLabel position="570,286" size="100,5" backgroundColor="accent" cornerRadius="3" zPosition="1" />
 		<widget name="text" position="570,304" size="780,60" font="TM;26" foregroundColor="textDim"
 		        backgroundColor="surface2" transparent="1" valign="center" zPosition="1" />
 		<widget name="list" position="570,380" size="780,480" transparent="1" zPosition="1"
-		        itemHeight="60" itemAlignment="leftMiddle" font="TM;30" itemCornerRadiusSelected="14"
-		        itemGradientSelected="#003ea6ff,#001f6fae,vertical" padding="24,12,24,0"
+		        itemHeight="60" itemAlignment="leftMiddle" font="TM;30" itemCornerRadiusSelected="14" padding="24,12,24,0"
 		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" />
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 	</screen>
 
 	<!-- ============================================================
@@ -1076,13 +1068,12 @@
 	     ============================================================ -->
 	<screen name="PluginBrowser" title="Eklentiler" position="center,center" size="1040,595"
 	        resolution="1280,720" backgroundColor="transparent" flags="wfNoBorder">
-		<eLabel position="0,0" size="e,e" backgroundColor="surface" cornerRadius="18" zPosition="-1" />
+		<eLabel position="0,0" size="e,e" backgroundColor="card" cornerRadius="24" zPosition="-1" />
 
 		<widget source="pluginList" render="Listbox" position="20,20" size="1000,450" conditional="pluginList"
 		        listOrientation="vertical" transparent="1" itemCornerRadiusSelected="10"
-		        itemGradientSelected="#003ea6ff,#001f6fae,vertical"
 		        scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarOffset="10" scrollbarRadius="3"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line">
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track">
 			<convert type="TemplatedMultiContent">
 				{
 				"template":
@@ -1099,15 +1090,14 @@
 
 		<widget source="pluginGrid" render="Listbox" position="20,20" size="1000,448" conditional="pluginGrid"
 		        listOrientation="grid" transparent="1" itemCornerRadiusSelected="10"
-		        itemGradientSelected="#003ea6ff,#001f6fae,vertical"
 		        scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarOffset="10" scrollbarRadius="3"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line">
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track">
 			<convert type="TemplatedMultiContent">
 				{
 				"template":
 					[
 					MultiContentEntryText(pos=(0, 0), size=(195, 110), font=0),
-					MultiContentEntryText(pos=(4, 4), size=(187, 102), font=0, backcolor=0x001c1c24),
+					MultiContentEntryText(pos=(4, 4), size=(187, 102), font=0, backcolor=0x001b2026, backcolor_sel=0x00f2f2f2),
 					MultiContentEntryPixmapAlphaBlend(pos=(45, 14), size=(100, 40), png=3, flags=BT_SCALE),
 					MultiContentEntryText(pos=(5, 58), size=(185, 45), font=0, flags=RT_VALIGN_CENTER | RT_HALIGN_CENTER | RT_WRAP, text=1)
 					],
@@ -1156,12 +1146,12 @@
 
 	<screen name="PackageAction" title="Paketler" position="center,center" size="940,645"
 	        resolution="1280,720" backgroundColor="transparent" flags="wfNoBorder">
-		<eLabel position="0,0" size="e,e" backgroundColor="surface" cornerRadius="18" zPosition="-1" />
+		<eLabel position="0,0" size="e,e" backgroundColor="card" cornerRadius="24" zPosition="-1" />
 
 		<widget source="plugins" render="Listbox" position="20,20" size="900,500" transparent="1"
-		        itemCornerRadiusSelected="10" itemGradientSelected="#003ea6ff,#001f6fae,vertical"
+		        itemCornerRadiusSelected="10"
 		        scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarOffset="10" scrollbarRadius="3"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line">
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track">
 			<convert type="TemplatedMultiContent">
 				{
 				"template":
@@ -1170,7 +1160,7 @@
 					MultiContentEntryText(pos=(70, 0), size=(810, 50), font=0, flags=RT_VALIGN_CENTER, text=2),
 					MultiContentEntryText(pos=(70, 2), size=(530, 25), font=1, flags=RT_VALIGN_CENTER, text=3),
 					MultiContentEntryText(pos=(610, 2), size=(220, 25), font=1, flags=RT_VALIGN_CENTER, text=5),
-					MultiContentEntryText(pos=(70, 28), size=(760, 20), font=2, flags=RT_VALIGN_CENTER, text=4, color=0x009ba1ac),
+					MultiContentEntryText(pos=(70, 28), size=(760, 20), font=2, flags=RT_VALIGN_CENTER, text=4, color=0x00a7adb5),
 					MultiContentEntryPixmapAlphaBlend(pos=(840, 1), size=(48, 48), png=7, flags=BT_SCALE)
 					],
 				"fonts": [parseFont("TM;25"), parseFont("TM;20"), parseFont("TM;16")],
@@ -1207,17 +1197,15 @@
 
 	<screen name="AudioSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Ses">
 		<eLabel position="0,0" size="1920,1080" backgroundColor="scrim" zPosition="0" />
-		<eLabel position="410,190" size="1100,700" backgroundColor="#001c1c24,#00141419,vertical" cornerRadius="24" zPosition="0" />
+		<eLabel position="410,190" size="1100,700" backgroundColor="card" cornerRadius="24" zPosition="0" />
 
 		<widget source="Title" render="Label" position="466,234" size="988,58"
 		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
-		<eLabel position="466,302" size="100,5" backgroundColor="accent" cornerRadius="3" zPosition="1" />
 
 		<widget name="config" position="520,346" size="934,240" transparent="1" zPosition="1"
-		        itemHeight="48" itemAlignment="leftMiddle" font="TM;28" itemCornerRadiusSelected="12"
-		        itemGradientSelected="#003ea6ff,#001f6fae,vertical" padding="20,10,20,0"
+		        itemHeight="48" itemAlignment="leftMiddle" font="TM;28" itemCornerRadiusSelected="12" padding="20,10,20,0"
 		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="14" scrollbarRadius="4"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" />
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 
 		<eLabel position="470,360" size="22,22" backgroundColor="live" cornerRadius="11" zPosition="1" />
 		<eLabel position="470,408" size="22,22" backgroundColor="ok" cornerRadius="11" zPosition="1" />
@@ -1226,9 +1214,9 @@
 		<eLabel position="466,606" size="988,2" backgroundColor="line" zPosition="1" />
 
 		<widget source="streams" render="Listbox" position="450,626" size="1020,180" transparent="1" zPosition="1"
-		        itemCornerRadiusSelected="12" itemGradientSelected="#003ea6ff,#001f6fae,vertical"
+		        itemCornerRadiusSelected="12"
 		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="14" scrollbarRadius="4"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line">
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track">
 			<convert type="TemplatedMultiContent">
 				{"templates":
 					{"default": (48, [
@@ -1255,12 +1243,12 @@
 	</screen>
 
 	<screen name="Volume" position="center,900" size="720,80" flags="wfNoBorder" backgroundColor="transparent" title="Ses" zPosition="1">
-		<eLabel position="0,0" size="720,80" backgroundColor="#001c1c24,#00141419,vertical" cornerRadius="40" />
+		<eLabel position="0,0" size="720,80" backgroundColor="card" cornerRadius="40" />
 		<eLabel position="36,0" size="64,80" text="-" font="TMB;44" foregroundColor="textDim"
 		        backgroundColor="surface2" transparent="1" halign="center" valign="center" zPosition="1" />
-		<eLabel position="120,36" size="480,8" backgroundColor="line" cornerRadius="4" zPosition="1" />
+		<eLabel position="120,36" size="480,8" backgroundColor="track" cornerRadius="4" zPosition="1" />
 		<widget name="Volume" position="120,36" size="480,8" backgroundColor="line"
-		        foregroundColor="#003ea6ff,#0068d0ff,horizontal" cornerRadius="4" borderWidth="0"
+		        foregroundColor="selBg" cornerRadius="4" borderWidth="0"
 		        transparent="1" zPosition="2" />
 		<eLabel position="620,0" size="64,80" text="+" font="TMB;44" foregroundColor="textDim"
 		        backgroundColor="surface2" transparent="1" halign="center" valign="center" zPosition="1" />
@@ -1273,8 +1261,7 @@
 	</screen>
 
 	<screen name="NumberZap" position="center,center" size="820,150" flags="wfNoBorder" backgroundColor="transparent" title="Kanal No">
-		<eLabel position="0,0" size="820,150" backgroundColor="#001c1c24,#00141419,vertical" cornerRadius="24" />
-		<eLabel position="0,0" size="6,150"   backgroundColor="accent"   cornerRadius="3;left" zPosition="1" />
+		<eLabel position="0,0" size="820,150" backgroundColor="card" cornerRadius="24" />
 		<widget name="number" position="48,25" size="200,100" font="TMX;72" foregroundColor="accent"
 		        backgroundColor="surface2" transparent="1" halign="right" valign="center" zPosition="1" />
 		<widget name="servicename" position="276,25" size="500,100" font="TM;34" foregroundColor="text"
@@ -1288,18 +1275,16 @@
 	     ============================================================ -->
 	<screen name="ChannelContextMenu" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Kanal Menusu">
 		<eLabel position="0,0"    size="1920,1080" backgroundColor="scrim" zPosition="0" />
-		<eLabel position="1180,0" size="740,1080"  backgroundColor="#001c1c24,#00141419,vertical" zPosition="0" />
+		<eLabel position="1180,0" size="740,1080"  backgroundColor="card" zPosition="0" />
 		<eLabel position="1180,0" size="2,1080"    backgroundColor="line" zPosition="1" />
 
 		<widget source="Title" render="Label" position="1228,40" size="644,56" font="TMB;34"
 		        foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
-		<eLabel position="1228,104" size="100,5" backgroundColor="accent" cornerRadius="3" zPosition="1" />
 
 		<widget name="menu" position="1212,136" size="676,840" transparent="1" zPosition="1"
 		        itemHeight="60" font="TM;30" itemCornerRadiusSelected="14"
-		        itemGradientSelected="#003ea6ff,#001f6fae,vertical"
 		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="14" scrollbarRadius="4"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" />
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 
 		<widget source="key_red" render="Label" position="1228,1000" size="210,52" backgroundColor="redSoft" cornerRadius="26"
 		        font="TMB;24" foregroundColor="live" halign="center" valign="center" zPosition="1">
@@ -1316,8 +1301,7 @@
 	     ============================================================ -->
 	<screen name="InputBox" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Giris">
 		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
-		<eLabel position="510,360" size="900,340"   backgroundColor="#001c1c24,#00141419,vertical" cornerRadius="24" zPosition="0" />
-		<eLabel position="510,360" size="900,6"     backgroundColor="accent" cornerRadius="3;top" zPosition="1" />
+		<eLabel position="510,360" size="900,340"   backgroundColor="card" cornerRadius="24" zPosition="0" />
 
 		<widget source="Title" render="Label" position="570,396" size="780,52" font="TMB;36"
 		        foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
@@ -1331,8 +1315,7 @@
 	<!-- PinInput ve servisli hali PinInputPopup ayni duzeni kullanir -->
 	<screen name="TiviAtvPinPanel" position="0,0" size="1920,1080">
 		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
-		<eLabel position="560,330" size="800,420"   backgroundColor="#001c1c24,#00141419,vertical" cornerRadius="24" zPosition="0" />
-		<eLabel position="560,330" size="800,6"     backgroundColor="accent" cornerRadius="3;top" zPosition="1" />
+		<eLabel position="560,330" size="800,420"   backgroundColor="card" cornerRadius="24" zPosition="0" />
 
 		<widget source="Title" render="Label" position="620,366" size="680,52" font="TMB;36"
 		        foregroundColor="text" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
@@ -1364,8 +1347,7 @@
 	     ============================================================ -->
 	<screen name="VirtualKeyBoard" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Klavye" zPosition="99">
 		<eLabel position="0,0"   size="1920,1080" backgroundColor="scrim" zPosition="0" />
-		<eLabel position="0,500" size="1920,580"  backgroundColor="#001c1c24,#00141419,vertical" cornerRadius="28;topLeft,topRight" zPosition="0" />
-		<eLabel position="0,500" size="1920,3"    backgroundColor="accent" zPosition="1" />
+		<eLabel position="0,500" size="1920,580"  backgroundColor="card" cornerRadius="28;topLeft,topRight" zPosition="0" />
 
 		<widget name="prompt" position="288,524" size="900,48" font="TMB;32" foregroundColor="text"
 		        transparent="1" valign="center" noWrap="1" zPosition="1" />
@@ -1387,15 +1369,14 @@
 	     ============================================================ -->
 	<screen name="Console" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Konsol">
 		<eLabel position="0,0"    size="1920,1080" backgroundColor="scrim" zPosition="-2" />
-		<eLabel position="240,90" size="1440,900"  backgroundColor="#001c1c24,#00141419,vertical" cornerRadius="24" zPosition="-1" />
+		<eLabel position="240,90" size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="-1" />
 
 		<widget source="Title" render="Label" position="296,134" size="1328,58" font="TMB;40"
 		        foregroundColor="text" transparent="1" valign="center" noWrap="1" />
-		<eLabel position="296,202" size="100,5" backgroundColor="accent" cornerRadius="3" />
 
 		<widget name="text" position="296,236" size="1328,660" font="TM;24" foregroundColor="text" transparent="1"
 		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" />
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 
 		<widget source="key_red" render="Label" position="296,914" size="228,52" backgroundColor="redSoft" cornerRadius="26"
 		        font="TMB;24" foregroundColor="live" halign="center" valign="center">
@@ -1413,15 +1394,14 @@
 
 	<screen name="TextBox" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Metin">
 		<eLabel position="0,0"    size="1920,1080" backgroundColor="scrim" zPosition="-2" />
-		<eLabel position="240,90" size="1440,900"  backgroundColor="#001c1c24,#00141419,vertical" cornerRadius="24" zPosition="-1" />
+		<eLabel position="240,90" size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="-1" />
 
 		<widget source="Title" render="Label" position="296,134" size="1328,58" font="TMB;40"
 		        foregroundColor="text" transparent="1" valign="center" noWrap="1" />
-		<eLabel position="296,202" size="100,5" backgroundColor="accent" cornerRadius="3" />
 
 		<widget name="text" position="296,236" size="1328,660" font="TM;28" foregroundColor="text" transparent="1"
 		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" />
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 
 		<widget source="key_red" render="Label" position="296,914" size="228,52" backgroundColor="redSoft" cornerRadius="26"
 		        font="TMB;24" foregroundColor="live" halign="center" valign="center">
@@ -1432,15 +1412,14 @@
 	<!-- Bilgi > Alici / Ag / Bellek / Tuner ... hepsi "Information" adini paylasir -->
 	<screen name="Information" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Bilgi">
 		<eLabel position="0,0"    size="1920,1080" backgroundColor="scrim" zPosition="-2" />
-		<eLabel position="240,90" size="1440,900"  backgroundColor="#001c1c24,#00141419,vertical" cornerRadius="24" zPosition="-1" />
+		<eLabel position="240,90" size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="-1" />
 
 		<widget source="Title" render="Label" position="296,134" size="1328,58" font="TMB;40"
 		        foregroundColor="text" transparent="1" valign="center" noWrap="1" />
-		<eLabel position="296,202" size="100,5" backgroundColor="accent" cornerRadius="3" />
 
 		<widget name="information" position="296,236" size="1328,660" font="TM;26" foregroundColor="text" transparent="1"
 		        splitPosition="560" scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" />
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 
 		<widget source="key_red" render="Label" position="296,914" size="228,52" backgroundColor="redSoft" cornerRadius="26"
 		        font="TMB;24" foregroundColor="live" halign="center" valign="center" conditional="key_red">
@@ -1472,11 +1451,11 @@
 	     ZAMANLAYICILAR  -  RecordTimerOverview / TimerEditList
 	     itemHeight = topHeight + bottomHeight + ayirici (2 px)
 	     ============================================================ -->
-	<screen name="TimerEditList" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg" title="Zamanlayicilar">
+	<screen name="TimerEditList" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="Zamanlayicilar">
 		<widget source="Title" render="Label" position="68,40" size="1100,58"
 		        font="TMB;42" foregroundColor="text" transparent="1" valign="center" noWrap="1" />
 		<widget source="global.CurrentTime" render="Label" position="1500,40" size="352,58"
-		        font="TMX;46" foregroundColor="accent" transparent="1" halign="right" valign="center">
+		        font="TMX;46" foregroundColor="text" transparent="1" halign="right" valign="center">
 			<convert type="ClockToText">Default</convert>
 		</widget>
 		<eLabel position="68,116" size="1784,2" backgroundColor="line" />
@@ -1484,13 +1463,12 @@
 		<widget name="timerlist" position="68,146" size="1100,820" transparent="1"
 		        timerNameFont="TMB;30" statusFont="TM;24" detailFont="TM;24"
 		        itemHeight="92" topHeight="45" bottomHeight="45" indent="24" iconMargin="12" satPosLeft="320"
-		        itemCornerRadiusSelected="14" itemGradientSelected="#003ea6ff,#001f6fae,vertical"
+		        itemCornerRadiusSelected="14"
 		        scrollbarMode="showOnDemand" scrollbarWidth="8" scrollbarOffset="16" scrollbarRadius="4"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="accent" scrollbarBackgroundColor="line" />
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 
 		<!-- secili zamanlayicinin programi -->
-		<eLabel position="1200,146" size="652,820" backgroundColor="#001c1c24,#00141419,vertical" cornerRadius="18" />
-		<eLabel position="1200,146" size="6,820"   backgroundColor="accent" cornerRadius="3;left" zPosition="1" />
+		<eLabel position="1200,146" size="652,820" backgroundColor="card" cornerRadius="18" />
 		<widget source="Service" render="Label" position="1240,174" size="580,36"
 		        font="TM;26" foregroundColor="accent" transparent="1" valign="center" noWrap="1" zPosition="1">
 			<convert type="ServiceName">Name</convert>
@@ -1537,9 +1515,7 @@
 	     ServicePosition'dan. Durum ikonu enigma2icons fontundan.
 	     ============================================================ -->
 	<screen name="MoviePlayer" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Oynatici">
-		<eLabel position="0,590" size="1920,230" backgroundColor="#ff0a0a0c,#700a0a0c,vertical,1" zPosition="0" />
-		<eLabel position="0,820" size="1920,260" backgroundColor="#70141419,#4a0a0a0c,vertical,1" zPosition="0" />
-		<eLabel position="0,820" size="1920,3"   backgroundColor="accent" zPosition="2" />
+		<eLabel position="0,560" size="1920,520" backgroundColor="#ff0a0f13,#8c0a0f13,#140a0f13,vertical" zPosition="0" />
 
 		<!-- oynat, duraklat, durdur, ileri, geri, yavas, bos; ilk durum degisikligine
 		     kadar bos kalmasin diye baslangic glifi (oynat) text ile -->
@@ -1571,9 +1547,9 @@
 		        font="TMB;28" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="2">
 			<convert type="ServicePosition">Position,ShowHours</convert>
 		</widget>
-		<eLabel position="280,1002" size="1360,8" backgroundColor="line" cornerRadius="4" zPosition="2" />
+		<eLabel position="280,1002" size="1360,8" backgroundColor="track" cornerRadius="4" zPosition="2" />
 		<widget source="session.CurrentService" render="Progress" position="280,1002" size="1360,8"
-		        backgroundColor="line" foregroundColor="#003ea6ff,#0068d0ff,horizontal"
+		        backgroundColor="track" foregroundColor="selBg"
 		        cornerRadius="4" borderWidth="0" transparent="1" zPosition="3">
 			<convert type="ServicePosition">Position</convert>
 		</widget>
@@ -1586,8 +1562,7 @@
 	<!-- Oynatici durumu (oynat / duraklat / ileri sarma hizi): varsayilan ayarda
 	     bilgi cubugundan ayri, bu kucuk pencerede gosterilir -->
 	<screen name="PVRState" position="68,56" size="232,96" flags="wfNoBorder" backgroundColor="transparent" zPosition="2" title="Durum">
-		<eLabel position="0,0" size="232,96" backgroundColor="#001c1c24,#00141419,vertical" cornerRadius="24" />
-		<eLabel position="0,0" size="6,96"   backgroundColor="accent" cornerRadius="3;left" zPosition="1" />
+		<eLabel position="0,0" size="232,96" backgroundColor="card" cornerRadius="24" />
 		<widget name="statusicon" position="22,12" size="72,72" iconFont="enigma2icons;60" text="&#xea0e;"
 		        iconGlyphs="0xea0e,0xea0f,0xea12,0xea14,0xea17,0xe974" foregroundColor="accent"
 		        halign="center" valign="center" transparent="1" zPosition="1" />

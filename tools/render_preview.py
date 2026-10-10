@@ -349,10 +349,10 @@ def render_screen(name, backdrop=True):
 SCREENS = [
     ("InfoBar", "InfoBar", "Alt bilgi cubugu - zap sonrasi ve OK tusunda",
      "Kanal numarasi, picon, program, ilerleme cubugu ve sonraki yayin. "
-     "Videodan cubuga gecis seffaftan opaga bir gradient - PNG degil."),
-    ("ChannelSelection", "Kanal listesi", "TiviMate duzeni - liste solda, canli goruntu sagda",
-     "Secili satir yuvarlak kosesini itemCornerRadiusSelected'dan, mavi dolgusunu "
-     "itemGradientSelected'dan aliyor. Sag ustteki kutu Pig renderer ile gercek video."),
+     "Videodan cubuga gecis saydamdan koyuya, karistirmasiz bir gradyan - PNG degil."),
+    ("ChannelSelection", "Kanal listesi", "TiviMate duzeni - yayin arkada akar, liste solda",
+     "Liste yari saydam panelde (duz dolgu + saga solan gradyan, karistirma yok). Secili "
+     "satir gri odak (backgroundColorSelected); sag altta secili kanalin karti."),
     ("GraphMultiEPG", "Zaman cizelgesi", "Coklu kanal EPG izgarasi",
      "Alt kartta secili programin tam aciklamasi. Zaman cizgileri ve 'simdi' "
      "cizgisi motorun renkli etiketleri (EPGNativeControls)."),

@@ -101,13 +101,16 @@ def write_settings(first_ref):
 	path = ETC / "settings"
 	keep = [l for l in path.read_text(encoding="utf-8").splitlines() if l and not l.startswith((
 		"config.usage.servicelist_twolines=", "config.usage.serviceitems_per_page_twolines=",
-		"config.tv.lastservice=", "config.tv.lastroot=", "config.skin.primary_skin="))]
+		"config.tv.lastservice=", "config.tv.lastroot=", "config.skin.primary_skin=",
+		"config.channelSelection.showPicon=", "config.usage.service_icon_enable="))]
 	root = '1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "bouquets.tv" ORDER BY bouquet;' \
 	       '1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "userbouquet.favourites.tv" ORDER BY bouquet;'
 	keep += [
 		"config.skin.primary_skin=TiviAtv-FHD/skin.xml",
 		"config.usage.servicelist_twolines=true",
 		"config.usage.serviceitems_per_page_twolines=10",
+		"config.channelSelection.showPicon=true",  # kutudaki gibi listede logo
+		"config.usage.service_icon_enable=true",   # iki satirli (klasik) liste icin
 		"config.tv.lastroot=" + root,
 		"config.tv.lastservice=" + first_ref,
 	]

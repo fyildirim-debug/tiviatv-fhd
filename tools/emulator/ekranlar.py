@@ -1,19 +1,25 @@
 #!/usr/bin/env python3
 # Emulatorde ekranlari tek tek acip goruntusunu alir (enigma2 calisirken).
 #
-#   python3 tools/emulator/ekranlar.py [klasor] [ekran ...]
+#   python3 tools/emulator/ekranlar.py [--kare video.jpg] [klasor] [ekran ...]
 #
 # Ekranlar menude gezinmeden TiviAtvTest kancasiyla (e2-py) dogrudan acilir,
 # goruntu e2-ekran ile enigma2'nin kendi cerceve belleginden alinir. Her
 # ekrandan sonra InfoBar'a donulur. Ekran adi verilmezse hepsi cekilir.
+# --kare: OSD saydam yerlerine alfasiyla konan "yayin" karesi; kutuda OSD'yi
+# goruntu katmaninin ustune donanim birlestirir, emulatorde video yok.
 import subprocess
 import sys
 import time
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-OUT = Path(sys.argv[1]) if len(sys.argv) > 1 else HERE.parents[1] / ".cache" / "ekranlar"
-ONLY = set(sys.argv[2:])
+ARGS = sys.argv[1:]
+KARE = []
+if ARGS[:1] == ["--kare"]:
+	KARE, ARGS = [str(Path(ARGS[1]).resolve())], ARGS[2:]
+OUT = Path(ARGS[0]) if ARGS else HERE.parents[1] / ".cache" / "ekranlar"
+ONLY = set(ARGS[1:])
 
 IB = "from Screens.InfoBar import InfoBar\nib = InfoBar.instance\n"
 
@@ -120,7 +126,7 @@ def main():
 			subprocess.run(["e2-tus", "-b", "0.8"] + keys)
 		time.sleep(wait)
 		cur = run("out(session.current_dialog.__class__.__name__, getattr(session.current_dialog, 'skinName', ''))").splitlines()
-		subprocess.run(["e2-ekran", name, str(OUT)], capture_output=True)
+		subprocess.run(["e2-ekran", name, str(OUT)] + KARE, capture_output=True)
 		print("%-20s %s" % (name, cur[1] if len(cur) > 1 else "?"))
 	close_all()
 

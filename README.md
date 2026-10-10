@@ -1,8 +1,9 @@
 # TiviATV FHD
 
-TiviMate düzeninde, 1920×1080 openATV / enigma2 skini.
-Yuvarlak köşeler, gradientler, ilerleme çubukları ve seçim vurgusu — hepsi
-enigma2'nin kendi çizim motoruyla, **tek bir PNG kullanılmadan**.
+TiviMate düzeninde ve görünümünde, 1920×1080 openATV / enigma2 skini.
+Yayın arkada akarken yarı saydam paneller, beyaz seçim hapları, yuvarlak
+köşeler ve ilerleme çubukları — hepsi enigma2'nin kendi çizim motoruyla,
+**tek bir PNG kullanılmadan**.
 
 ![önizleme](TiviAtv-FHD/prev.png)
 
@@ -48,30 +49,35 @@ TiviMate görünümü için kanal listesini iki satırlı moda al —
 
 ## Ekranlar
 
-InfoBar, kanal listesi, menü, ayarlar ve ses bir Octagon SX88V2 4K üzerinde,
-openATV 8.0'da çekildi; program rehberi, kanal menüsü ve klavye PC emülatöründen
-(örnek kanal listesi ve EPG ile, bkz. [Emülatörde test](#emülatörde-test)).
+Görüntüler PC emülatöründen (örnek kanal listesi, EPG ve picon ile, bkz.
+[Emülatörde test](#emülatörde-test)). Emülatörde video oynamadığı için OSD,
+kutudaki donanım birleştirmesi gibi alfasıyla örnek bir yayın karesinin üstüne
+konuldu (kare: Unsplash, Vienna Reyes).
 
 ### InfoBar
 
-Saydam alt bant, kanal logosu, çift satır program bilgisi. Sağ üstte uydu
-kanalında SNR/AGC yüzdeleri, IPTV'de akış hızı — ikisi de aynı alanı paylaşır,
-hangi kaynak aktifse o görünür.
+Yayından koyuya solan alt bant, logo karosu, numara + kanal, program, saat
+aralığı ve kalan süre, boşken gizlenen rozetler, beyaz ilerleme çizgisi. Sağ
+altta uydu kanalında SNR/AGC yüzdeleri, IPTV'de akış hızı — ikisi de aynı alanı
+paylaşır, hangi kaynak aktifse o görünür.
 
 ![InfoBar](docs/screenshots/infobar.jpg)
 
 ### Kanal listesi
 
-İki satırlı servis listesi, picon, ilerleme çubuğu; sağda canlı önizleme ve
-şimdi/sonraki kartı.
+TiviMate'teki gibi yayın durmadan tam ekran arkada akar (PiG kutusu yok):
+solda yarı saydam panelde iki satırlı liste, picon ve ilerleme; seçili kanal
+gri odakla (beyaz hap beyaz logoları yutardı). Sağ altta seçili kanalın
+şimdi/sonraki kartı, sağ üstte saat.
 
 ![Kanal listesi](docs/screenshots/channelselection.jpg)
 
 ### Program rehberi
 
-Zaman çizelgesi: şu an yayında olan programlar koyu mavi, seçili blok vurgu
-renginde, kırmızı "şimdi" çizgisi. Renkler ve font motorun EPG listesine skin
-attribute'larıyla verilir (önceden motorun varsayılan yeşil/sarı bloklarıydı).
+Zaman çizelgesi: yarı saydam zemin, TiviMate gibi gri hücreler; şu an yayında
+olanlar bir ton açık, seçili hücre açık gri, kırmızı "şimdi" çizgisi, izlenen
+kanalın adı mavi. Renkler ve font motorun EPG listesine skin attribute'larıyla
+verilir (önceden motorun varsayılan yeşil/sarı bloklarıydı).
 
 ![EPG](docs/screenshots/epg-grid.jpg)
 
@@ -93,7 +99,7 @@ Alttan açılan sayfa; tuşlar PNG değil, motorun çizdiği kutular ve ikon fon
 
 ### Menü
 
-Tam boy sol panel, 14 satır kapasite.
+Yayın üstünde sağa doğru solan yarı saydam sol panel, beyaz seçim hapı.
 
 ![Menü](docs/screenshots/menu.jpg)
 
@@ -169,6 +175,24 @@ virgül görürse `parseGradient`'e gider:
 
 Sözdizimi: `başlangıç[,orta],bitiş,vertical|horizontal[,alphaBlend]`
 
+### Saydamlık
+
+Paneller yayının üstünde **düz yarı saydam dolgu**: enigma2 dolgunun alfasını
+piksele olduğu gibi yazar, OSD'yi görüntü katmanıyla birleştirmeyi kutunun
+donanımı yapar — ek CPU yükü yok. Gradyanın sonundaki `alphaBlend` (`,1`)
+bayrağı ise her pikseli CPU'da alttakiyle karıştırır; grafik hızlandırması
+olmayan kutularda (ör. Octagon SX88V2) geniş alanda kullanılmaz. Solmalar
+bayraksız gradyandır.
+
+Saydamlık renkleri `<colors>`'ta: `glass` (panel, %80 opak), `glassSoft`
+(saat kapsülü), `card` (diyalog / kart), `chip` (rozet), `scrim` (diyalog
+arkası karartma). Seçim: `selBg` / `selFg` (beyaz hap), `focus` / `focusHi`
+(gri odak).
+
+> Pencereler üst üste binerken de karıştırma yok: üstteki pencerenin pikseli
+> alttakinin yerine geçer. Yarı saydam bir kartın arkasından alttaki ekran
+> değil, yayın görünür.
+
 ### Yuvarlak köşeler
 
 ```xml
@@ -211,7 +235,7 @@ Depo kökünden çalıştırılır, hiçbirinde sabit yol yok.
 |---|---|
 | `tools/lint_skin.py` | Skini openATV'nin **gerçek** attribute listesine karşı denetler — `skin.py` ve `ServiceList.py`'yi upstream'den indirip parse eder. Tanımsız renk/font, ekran dışına taşan eleman, bilinmeyen attribute yakalar. |
 | `tools/render_preview.py` | `preview.html`'i üretir — ekranları skin.xml'in gerçek koordinat, renk ve yarıçaplarından tarayıcıda çizer. |
-| `tools/make_thumb.py` | Skin seçicideki `prev.png`'yi üretir. |
+| `tools/make_thumb.py` | Skin seçicideki `prev.png`'yi emülatörün kanal listesi görüntüsünden üretir. |
 | `tools/make_designer_copy.py` | OpenSkin Designer uyumlu kopya üretir (aşağıya bak). |
 | `tools/emulator/` | PC emülatöründe skin testi: örnek kanal/EPG, test yayını, tüm ekranların görüntüsü (aşağıya bak). |
 
@@ -243,6 +267,7 @@ ln -sfn $PWD/tools/emulator/TiviAtvTest /usr/lib/enigma2/python/Plugins/Extensio
 python3 tools/emulator/demo_kanallar.py && tools/emulator/e2-yayin && e2-arkaplan
 python3 tools/emulator/ekranlar.py                 # hepsi  -> .cache/ekranlar/
 python3 tools/emulator/ekranlar.py /tmp/ss menu epgselection
+python3 tools/emulator/ekranlar.py --kare kare.jpg /tmp/ss    # OSD'yi örnek yayın karesine bindir
 ```
 
 ## OpenSkin Designer notları
@@ -278,9 +303,11 @@ Kanal logoları (picon) skine dahil değildir; ayrı paket olarak
 
 ## In English
 
-A TiviMate-style 1080p skin for openATV / enigma2. Rounded corners, gradients,
-progress bars and selection highlights are drawn by the enigma2 engine itself —
-**no PNG assets at all**.
+A TiviMate-style 1080p skin for openATV / enigma2: translucent panels over the
+running video, white selection pills, rounded corners and progress bars, all
+drawn by the enigma2 engine itself — **no PNG assets at all**. Translucency uses
+flat alpha fills only (composited by the hardware), never software alpha
+blending.
 
 Needs openATV **7.3+** — that is when `cornerRadius`, gradients and
 `itemCornerRadiusSelected` landed in the engine.
