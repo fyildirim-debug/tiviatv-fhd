@@ -45,15 +45,35 @@ COLOR_ATTRS = {a for a in supported if "olor" in a} | {"itemGradient", "itemGrad
 tree = ET.parse(SKIN)
 root = tree.getroot()
 
+
+# <include filename="..."/> enigma2'de skin klasorune gore cozulur ve ayni
+# skin gibi yuklenir (skin.py loadSkin). Font/renk tanimlari oradan da gelir.
+def skin_parts(node, base, seen):
+    yield node
+    for inc in node.findall("include"):
+        fname = inc.get("filename", "")
+        path = (base / fname).resolve()
+        if not fname or path in seen:
+            continue
+        if not path.exists():
+            errors.append(f"<include>: dosya yok -> {fname!r}")
+            continue
+        seen.add(path)
+        yield from skin_parts(ET.parse(path).getroot(), path.parent, seen)
+
+
+parts = list(skin_parts(root, SKIN.parent, {SKIN.resolve()}))
+
 colors, gradients, fonts = set(), set(), set()
-for tag in root.findall("colors"):
-    for c in tag.findall("color"):
-        (gradients if "," in c.get("value", "") else colors).add(c.get("name"))
-for tag in root.findall("fonts"):
-    for f in tag.findall("font"):
-        fonts.add(f.get("name"))
-    for a in tag.findall("alias"):
-        fonts.add(a.get("name"))
+for part in parts:
+    for tag in part.findall("colors"):
+        for c in tag.findall("color"):
+            (gradients if "," in c.get("value", "") else colors).add(c.get("name"))
+    for tag in part.findall("fonts"):
+        for f in tag.findall("font"):
+            fonts.add(f.get("name"))
+        for a in tag.findall("alias"):
+            fonts.add(a.get("name"))
 
 HEX = re.compile(r"^#[0-9a-fA-F]{6}$|^#[0-9a-fA-F]{8}$")
 
@@ -73,7 +93,7 @@ def check_color(where, attr, val):
     errors.append(f"{where}: {attr} bilinmeyen renk -> {val!r}")
 
 
-screens = root.findall("screen")
+screens = [s for part in parts for s in part.findall("screen")]
 for scr in screens:
     sname = scr.get("name", "?")
     for el in scr.iter():

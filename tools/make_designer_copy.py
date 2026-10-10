@@ -33,6 +33,16 @@ DST = Path(args.designer) / "skins" / NAME
 DST.mkdir(parents=True, exist_ok=True)
 s = (SRC / "skin.xml").read_text(encoding="utf-8")
 
+
+# designer <include> bilmiyor: dahil edilen dosyanin <skin> govdesi yerine konur
+def inline_include(m):
+    inc = (SRC / m.group(1)).read_text(encoding="utf-8")
+    body = re.search(r"<skin>(.*)</skin>", inc, re.S)
+    return body.group(1).strip("\n") if body else ""
+
+
+s = re.sub(r'^[ \t]*<include filename="([^"]+)"\s*/>', inline_include, s, flags=re.M)
+
 HEX = re.compile(r"^#[0-9a-fA-F]{6}$|^#[0-9a-fA-F]{8}$")
 colors = dict(re.findall(r'<color name="([^"]+)"\s+value="(#[0-9a-fA-F]{6,8})"', s))
 
@@ -70,8 +80,10 @@ s, n_attr = re.subn(r'\b(\w*[Cc]olor\w*|itemGradient\w*)="(#[^"]*,[^"]*)"',
                     lambda m: f'{m.group(1)}="{flatten(m.group(2)) or "#000000"}"', s)
 
 # skin klasorundeki fontlar -> designer'in kendi skins/ klasorune esledigi mutlak yol
-s = re.sub(r'filename="(Barlow-[^"]+\.ttf)"',
-           lambda m: f'filename="/usr/share/enigma2/{NAME}/{m.group(1)}"', s)
+skin_fonts = {f.name for f in SRC.glob("*.ttf")}
+s = re.sub(r'filename="([^"/]+\.ttf)"',
+           lambda m: f'filename="/usr/share/enigma2/{NAME}/{m.group(1)}"'
+           if m.group(1) in skin_fonts else m.group(0), s)
 
 n_alias = len(re.findall(r'<alias\b', s))
 s = re.sub(r'^[ \t]*<alias\b[^>]*/>[ \t]*\r?\n', "", s, flags=re.M)
@@ -95,7 +107,7 @@ s = s.replace("<skin>\n", (
 
 (DST / "skin.xml").write_text(s, encoding="utf-8")
 
-for f in SRC.glob("Barlow-*.ttf"):
+for f in SRC.glob("*.ttf"):
     shutil.copy2(f, DST / f.name)
 for extra in ("OFL-Barlow.txt", "prev.png"):
     if (SRC / extra).exists():
