@@ -84,7 +84,7 @@ still opens; only the signal, badge and softcam (ECM) fields stay empty.
 | Converter | What it does |
 |---|---|
 | `TiviAtvSignal.py` | Signal (SNR/AGC) or IPTV stream rate in the infobar and channel list |
-| `TiviAtvText.py` | Hides the resolution / codec / crypto badges while they are empty (on IPTV the crypto badge used to show as an empty pill) |
+| `TiviAtvText.py` | Hides the resolution / codec / crypto badges while they are empty (on IPTV the crypto badge used to show as an empty pill); `Blank` mode for the key chips' background and dot |
 | `TiviAtvEcm.py` | Softcam ECM info (OSCam, CCcam …) from `/tmp/ecm.info` in the infobar, only on encrypted channels — see [Softcam (ECM) info](#softcam-ecm-info) |
 | `TiviAtvEpg.py` | The channel list's optional EPG panel: the next programmes of the selected channel and primetime — see [TiviATV Settings](#tiviatv-settings) |
 | `TiviAtvScroll.py` (renderer) | A label that slowly scrolls text that doesn't fit (the channel list description) |
@@ -281,6 +281,10 @@ others are picked in the **TiviATV Font** plugin (see [Font](#font)).
 <td><img src="docs/screenshots/multiboot.jpg" alt="MultiBoot Manager"><br>MultiBoot Manager (sample slots)</td>
 <td><img src="docs/screenshots/skin-setup.jpg" alt="Skin setup"><br>"Setup - TiviAtv-FHD" (openATV's AtileHD)</td>
 </tr>
+<tr>
+<td><img src="docs/screenshots/video-enhancement.jpg" alt="Video enhancement setup"><br>Video enhancement setup</td>
+<td><img src="docs/screenshots/video-enhancement-preview.jpg" alt="Video enhancement preview"><br>Video enhancement: adjusting a value</td>
+</tr>
 </table>
 
 ## Skinned screens
@@ -293,7 +297,8 @@ others are picked in the **TiviATV Font** plugin (see [Font](#font)).
 `PackageAction` · `ChannelContextMenu` · `InputBox` · `PinInput` · `PinInputPopup` ·
 `VirtualKeyBoard` · `Console` · `TextBox` · `Information` · `TimerEditList` ·
 `MoviePlayer` · `PVRState` · `ButtonSetup` · `ButtonSetupSelect` · `InputDeviceSelection` ·
-`LocaleSelection` · `MultiBootManager` · `KexecInit` · `AtileHD_Config` · `SubtitleDisplay` · `TiviAtvSettings` ·
+`LocaleSelection` · `MultiBootManager` · `KexecInit` · `AtileHD_Config` · `VideoEnhancementSetup` ·
+`VideoEnhancementPreview` · `SubtitleDisplay` · `TiviAtvSettings` ·
 `SimpleSummary`
 
 EMC: `EMCSelection` · `EMCSelectionOwn` · `EnhancedMovieCenterMenu` · `MovieMenu` ·
@@ -324,9 +329,10 @@ actually creates, so one skin serves both images:
   creates many of them as `Button` (a GUI widget), and some older screens use
   `Label`. Binding a `Button` as a source with `ConditionalShowHide` throws in
   OpenViX's `skin.py`, and the loader then skips **the rest of the screen**. Each
-  key therefore comes twice: for `StaticText` / `Boolean` a chip label (its text
-  drawn in the chip colour, so invisible), the text label after the dot and the
-  dot, all with `objectTypes="key_red,StaticText,Boolean"`; and for `Button` / `Label` an
+  key therefore comes twice: for `StaticText` / `Boolean` a chip label, the text
+  label after the dot and the dot, all with `objectTypes="key_red,StaticText,Boolean"`
+  (the chip and the dot pass through `<convert type="TiviAtvText">Blank</convert>`:
+  no text of their own, but they still hide with the key); and for `Button` / `Label` an
   `eLabel` chip, a `name="key_red"` label that starts after the dot (OpenViX's
   `Button` ignores `textOffset`) and an `eLabel` dot, all with
   `objectTypes="key_red,Button,Label"`. Exactly one set is drawn. Neither set
@@ -584,6 +590,17 @@ python tools/make_designer_copy.py
 ```
 
 ## Changelog
+
+**1.0.7**
+- Fixes 1.0.6: the colour key chips showed a dark copy of their label at the
+  left edge. The chip background and the dot no longer draw any text, and the
+  dots are round again.
+- Video enhancement setup (Setup › Video) showed no window: openATV has no
+  built-in design for it. It now opens on the settings card, and the window
+  for adjusting a value is a small card at the bottom so the picture stays
+  visible.
+- Plugin and package screens: round dots and pill-shaped chips (corner radii
+  are not scaled with the screen's 720p coordinates).
 
 **1.0.6**
 - Volume and mute moved up, above the infobar band: while zapping, their round

@@ -84,7 +84,7 @@ boş kalır.
 | Converter | Ne yapar |
 |---|---|
 | `TiviAtvSignal.py` | Sinyal (SNR/AGC) ya da IPTV akış hızı |
-| `TiviAtvText.py` | Çözünürlük / codec / şifre rozetlerini boşken gizler |
+| `TiviAtvText.py` | Çözünürlük / codec / şifre rozetlerini boşken gizler; tuş çipinin zemini ve noktası için `Blank` kipi |
 | `TiviAtvEcm.py` | `/tmp/ecm.info`'dan softcam ECM bilgisi (OSCam, CCcam …), yalnız şifreli kanalda — bkz. [Softcam (ECM) bilgisi](#softcam-ecm-bilgisi) |
 | `TiviAtvEpg.py` | Kanal listesinin isteğe bağlı EPG paneli: seçili kanalın sıradaki programları ve primetime — bkz. [TiviATV Settings](#tiviatv-settings) |
 | `TiviAtvScroll.py` (renderer) | Sığmayan metni yavaşça kaydıran etiket (kanal listesi açıklaması) |
@@ -273,6 +273,10 @@ Tipi** eklentisinden seçilir (bkz. [Font](#font)).
 <td><img src="docs/screenshots/multiboot.jpg" alt="MultiBoot Manager"><br>MultiBoot Manager (örnek yuvalar)</td>
 <td><img src="docs/screenshots/skin-setup.jpg" alt="Skin ayarı"><br>"Setup - TiviAtv-FHD" (openATV'nin AtileHD'si)</td>
 </tr>
+<tr>
+<td><img src="docs/screenshots/video-enhancement.jpg" alt="Video iyileştirme"><br>Video iyileştirme ayarları</td>
+<td><img src="docs/screenshots/video-enhancement-preview.jpg" alt="Video iyileştirme önizleme"><br>Video iyileştirme: değer ayarlama</td>
+</tr>
 </table>
 
 ## Tanımlı ekranlar
@@ -285,7 +289,8 @@ Tipi** eklentisinden seçilir (bkz. [Font](#font)).
 `PackageAction` · `ChannelContextMenu` · `InputBox` · `PinInput` · `PinInputPopup` ·
 `VirtualKeyBoard` · `Console` · `TextBox` · `Information` · `TimerEditList` ·
 `MoviePlayer` · `PVRState` · `ButtonSetup` · `ButtonSetupSelect` · `InputDeviceSelection` ·
-`LocaleSelection` · `MultiBootManager` · `KexecInit` · `AtileHD_Config` · `SubtitleDisplay` · `TiviAtvSettings` ·
+`LocaleSelection` · `MultiBootManager` · `KexecInit` · `AtileHD_Config` · `VideoEnhancementSetup` ·
+`VideoEnhancementPreview` · `SubtitleDisplay` · `TiviAtvSettings` ·
 `SimpleSummary`
 
 EMC: `EMCSelection` · `EMCSelectionOwn` · `EnhancedMovieCenterMenu` · `MovieMenu` ·
@@ -317,8 +322,10 @@ böylece tek skin iki imaja da yeter:
   `Label` olarak. `Button`'ı `ConditionalShowHide` ile kaynak diye bağlamak
   OpenViX'in `skin.py`'sinde hata fırlatır ve yükleyici **ekranın geri
   kalanını** atlar. Bu yüzden her tuş iki kez var: `StaticText` / `Boolean` için
-  çip etiketi (yazısı çip renginde, görünmez), noktadan sonra başlayan yazı
-  etiketi ve nokta, hepsi `objectTypes="key_red,StaticText,Boolean"` ile;
+  çip etiketi, noktadan sonra başlayan yazı etiketi ve nokta, hepsi
+  `objectTypes="key_red,StaticText,Boolean"` ile (çip ve nokta
+  `<convert type="TiviAtvText">Blank</convert>`'ten geçer: kendi yazısını çizmez
+  ama tuşla birlikte gizlenir);
   `Button` / `Label` için
   `eLabel` çip, noktadan sonra başlayan `name="key_red"` etiketi (OpenViX'in
   `Button`'ı `textOffset`'i yok sayar) ve `eLabel` nokta, hepsi
@@ -569,6 +576,16 @@ python tools/make_designer_copy.py
 ```
 
 ## Sürüm notları
+
+**1.0.7**
+- 1.0.6 düzeltmesi: renk tuşu çiplerinin sol kenarında yazının koyu bir kopyası
+  görünüyordu. Çip zemini ve nokta artık hiç yazı çizmiyor, noktalar yine
+  yuvarlak.
+- Video iyileştirme ayarı (Kurulum › Video) pencere açmıyordu: openATV'de bu
+  ekranın gömülü tasarımı yok. Artık ayar kartında açılıyor; değer ayarlama
+  penceresi görüntü açık kalsın diye altta küçük bir kart.
+- Eklenti ve paket ekranları: yuvarlak noktalar, hap biçimli çipler (köşe
+  yarıçapı ekranın 720p koordinatlarıyla ölçeklenmiyor).
 
 **1.0.6**
 - Ses ve sessiz göstergesi bilgi çubuğu bandının üstüne taşındı: kanal
