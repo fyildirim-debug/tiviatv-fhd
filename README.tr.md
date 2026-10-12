@@ -65,25 +65,29 @@ opkg install /tmp/enigma2-plugin-skins-tiviatv-fhd_*_all.ipk
 
 **Paketsiz:** `TiviAtv-FHD/` klasörünü `/usr/share/enigma2/` altına,
 `TiviAtv-FHD/converter/*.py` dosyalarını converter dizinine,
+`TiviAtv-FHD/renderer/*.py` dosyalarını renderer dizinine,
 `plugin/TiviAtvFont/` klasörünü eklenti dizinine kopyala. Converter'lar
 kopyalanmazsa skin yine açılır, yalnız sinyal, rozet ve softcam (ECM) alanları
 boş kalır.
 
 ### Paket içeriği
 
-`enigma2-plugin-skins-tiviatv-fhd` üç yere kurar:
+`enigma2-plugin-skins-tiviatv-fhd` dört yere kurar:
 
 | Yer | İçerik |
 |---|---|
 | `/usr/share/enigma2/TiviAtv-FHD/` | skin, `fonts.xml`, yazı tipleri, lisanslar, önizleme |
-| `/usr/lib/enigma2/python/Components/Converter/` | `TiviAtvSignal.py`, `TiviAtvText.py`, `TiviAtvEcm.py` |
-| `/usr/lib/enigma2/python/Plugins/Extensions/TiviAtvFont/` | yazı tipi seçici |
+| `/usr/lib/enigma2/python/Components/Converter/` | `TiviAtvSignal.py`, `TiviAtvText.py`, `TiviAtvEcm.py`, `TiviAtvEpg.py` |
+| `/usr/lib/enigma2/python/Components/Renderer/` | `TiviAtvScroll.py` |
+| `/usr/lib/enigma2/python/Plugins/Extensions/TiviAtvFont/` | **TiviATV Font** (yazı tipi) ve **TiviATV Settings** |
 
 | Converter | Ne yapar |
 |---|---|
 | `TiviAtvSignal.py` | Sinyal (SNR/AGC) ya da IPTV akış hızı |
 | `TiviAtvText.py` | Çözünürlük / codec / şifre rozetlerini boşken gizler |
 | `TiviAtvEcm.py` | `/tmp/ecm.info`'dan softcam ECM bilgisi (OSCam, CCcam …), yalnız şifreli kanalda — bkz. [Softcam (ECM) bilgisi](#softcam-ecm-bilgisi) |
+| `TiviAtvEpg.py` | Kanal listesinin isteğe bağlı EPG paneli: seçili kanalın sıradaki programları ve primetime — bkz. [TiviATV Settings](#tiviatv-settings) |
+| `TiviAtvScroll.py` (renderer) | Sığmayan metni yavaşça kaydıran etiket (kanal listesi açıklaması) |
 
 `fonts.xml` paketin yapılandırma dosyasıdır: değiştirdiysen opkg onu ezmez,
 kurulum betiği yeni sürümün şablonunu alıp senin seçtiğin dört font satırını
@@ -125,6 +129,13 @@ gri odakla (beyaz hap beyaz logoları yutardı). Sağ altta seçili kanalın
 şimdi/sonraki kartı, sağ üstte saat.
 
 ![Kanal listesi](docs/screenshots/channelselection.jpg)
+
+**TiviATV Settings › Kanal listesi: sıradaki programlar** açıkken kartın
+üstündeki panel NOW ve NEXT'ten sonraki beş programı ve primetime'daki
+programı (varsayılan 20:15) gösterir. Karta sığmayan açıklama yavaşça kayar,
+sonra baştan başlar.
+
+![EPG panelli kanal listesi](docs/screenshots/channelselection-epg.jpg)
 
 ### Program rehberi
 
@@ -205,6 +216,13 @@ Geçen / kalan süre ince çizginin iki ucunda; duraklatınca sol üstte durum h
 
 ![Oynatıcı](docs/screenshots/player.jpg)
 
+### Enhanced Movie Center (EMC)
+
+EMC'nin film listesi, ayarları, menüsü ve oynatıcısı skinli: solda mini TV ve
+kaydın bilgisi, sağda liste; tuşlar ve kartlar diğer ekranlarla aynı.
+
+![EMC film listesi](docs/screenshots/emc.jpg)
+
 ### Renk tuşları
 
 Doygun renkli haplar yerine koyu cam çip + renkli nokta + beyaz yazı. Nokta,
@@ -245,6 +263,10 @@ Tipi** eklentisinden seçilir (bkz. [Font](#font)).
 <td><img src="docs/screenshots/input-devices.jpg" alt="Giriş aygıtları"><br>Giriş aygıtları</td>
 <td><img src="docs/screenshots/locale.jpg" alt="Dil / bölge"><br>Dil / bölge</td>
 </tr>
+<tr>
+<td><img src="docs/screenshots/emc-setup.jpg" alt="EMC ayarları"><br>EMC ayarları</td>
+<td><img src="docs/screenshots/tiviatv-settings.jpg" alt="TiviATV Settings"><br>TiviATV Settings</td>
+</tr>
 </table>
 
 ## Tanımlı ekranlar
@@ -257,7 +279,10 @@ Tipi** eklentisinden seçilir (bkz. [Font](#font)).
 `PackageAction` · `ChannelContextMenu` · `InputBox` · `PinInput` · `PinInputPopup` ·
 `VirtualKeyBoard` · `Console` · `TextBox` · `Information` · `TimerEditList` ·
 `MoviePlayer` · `PVRState` · `ButtonSetup` · `ButtonSetupSelect` · `InputDeviceSelection` ·
-`LocaleSelection` · `SimpleSummary`
+`LocaleSelection` · `SubtitleDisplay` · `TiviAtvSettings` · `SimpleSummary`
+
+EMC: `EMCSelection` · `EMCSelectionOwn` · `EnhancedMovieCenterMenu` · `MovieMenu` ·
+`EMCMediaCenter` · `EMCMediaCenterOwn`
 
 Ayrıca enigma2'nin standart renk adları (`window-bg`, `window-fg`, `key_red`,
 `grey` …) skin paletine eşlendi. Bunlar tanımsızken, skinde karşılığı olmayan
@@ -285,9 +310,10 @@ böylece tek skin iki imaja da yeter:
   `Label` olarak. `Button`'ı `ConditionalShowHide` ile kaynak diye bağlamak
   OpenViX'in `skin.py`'sinde hata fırlatır ve yükleyici **ekranın geri
   kalanını** atlar. Bu yüzden her tuş iki kez var: kaynak çipi
-  `objectTypes="key_red,StaticText,Boolean"` ile, `name="key_red"` çipi ve
-  `eLabel` noktası `objectTypes="key_red,Button,Label"` ile. İkisinden yalnız
-  biri çizilir.
+  `objectTypes="key_red,StaticText,Boolean"` ile; `Button` / `Label` için
+  `eLabel` çip, noktadan sonra başlayan `name="key_red"` etiketi (OpenViX'in
+  `Button`'ı `textOffset`'i yok sayar) ve `eLabel` nokta, hepsi
+  `objectTypes="key_red,Button,Label"` ile. İkisinden yalnız biri çizilir.
 - **Eklenti tarayıcısı.** openATV 8 `pluginList` / `pluginGrid` şablonlarını
   doldurur; OpenViX `list` adlı widget'ı arar ve klasik `PluginList`'i ona
   çizer. Skinde ikisi de var; imajda olmayanı `conditional` atlar. Klasik
@@ -384,9 +410,37 @@ Irdeto 0604  ·  my_reader  ·  newcamd  ·  1 hop  ·  0.214 s
   paylaşılıyorsa sunucu adresini gizler (`•••`).
 - Softcam sistem adını yazmazsa CAID'den bulunur; ECM süresi softcam saniye de
   yazsa milisaniye de yazsa saniye olarak gösterilir.
+- Uzun okuyucu / sunucu adları 24 karaktere kısalır; yine sığmayan satır `…`
+  ile biter — baş (sistem ve CAID) hep görünür.
+
+![Kısaltılmış uzun sunucu adı](docs/screenshots/infobar-ecm-long.jpg)
 
 Widget `InfoBar` ekranında durur (`<convert type="TiviAtvEcm" />`); her etiket
 gibi taşınabilir, biçimi değiştirilebilir.
+
+### TiviATV Settings
+
+**Menü › Kurulum › Kullanım & Arayüz › TiviATV Settings** (eklenti
+tarayıcısında da). Değişiklikler hemen uygulanır, arayüz yeniden başlamaz:
+
+| Seçenek | Varsayılan | Ne yapar |
+|---|---|---|
+| Kanal listesi: sıradaki programlar | Hayır | Program kartının üstünde panel: NOW ve NEXT'ten sonraki 5 program |
+| Primetime | 20:15 | O saatteki program (bugün; bittiyse yarın) panelin altında; Kapalı satırı gizler |
+| Uzun açıklamaları kaydır | Evet | Kanal listesi açıklaması sığmazsa kayar |
+
+Değerler `config.plugins.TiviAtv`'de durur; panelin widget'ları onları
+`TiviAtvEpg` converter'ıyla okur, böylece skinde panel serbestçe taşınabilir.
+
+### Altyazılar
+
+DVB, teletekst ve metin altyazıları `SubtitleDisplay` penceresine çizilir. Skin
+onu `size="e,e"` ile tanımlar; pencere OSD ne boyuttaysa (720p, 1080p, 4K, 8K)
+tamamını kaplar. (openATV'nin varsayılan tanımı 1280×720; 1080p skinde
+altyazıyı ekranın ortasına düşürüyordu.) Konum ve boyut enigma2'nin kendi
+altyazı ayarlarından gelir.
+
+![Görüntünün altında altyazı](docs/screenshots/subtitles.jpg)
 
 ### Yuvarlak köşeler
 
@@ -476,6 +530,7 @@ testine özel parçaları ekler:
 ```bash
 ln -sfn $PWD/TiviAtv-FHD /usr/share/enigma2/TiviAtv-FHD
 ln -sf  $PWD/TiviAtv-FHD/converter/*.py /usr/lib/enigma2/python/Components/Converter/
+ln -sf  $PWD/TiviAtv-FHD/renderer/*.py /usr/lib/enigma2/python/Components/Renderer/
 ln -sfn $PWD/tools/emulator/TiviAtvTest /usr/lib/enigma2/python/Plugins/Extensions/TiviAtvTest
 python3 tools/emulator/demo_kanallar.py && tools/emulator/e2-yayin && e2-arkaplan
 python3 tools/emulator/ekranlar.py                 # hepsi  -> .cache/ekranlar/
@@ -504,6 +559,18 @@ python tools/make_designer_copy.py
 ```
 
 ## Sürüm notları
+
+**1.0.4**
+- Altyazılar: DVB ve teletekst altyazıları ekranın ortasında çıkıyordu;
+  altyazı penceresi artık her çözünürlükte OSD'nin tamamını kaplar.
+- Enhanced Movie Center: film listesi, ayarlar, menü ve oynatıcı skinlendi.
+  Skinde karşılığı olmayan ekranlarda (EMC ayar sayfası gibi) listeler artık
+  pencerede saydam delik açmıyor.
+- Kanal listesi: sıradaki 5 program ve primetime'lı isteğe bağlı EPG paneli,
+  uzun açıklamalar kayıyor — TiviATV Font'un yanında yeni **TiviATV Settings**.
+- Softcam satırı: uzun okuyucu / sunucu adı artık satırın başını görünmez
+  yapmıyor.
+- OpenViX: renk tuşu yazıları artık renkli noktanın altına girmiyor.
 
 **1.0.3**
 - OpenViX: eklenti tarayıcısı boş geliyordu — klasik `list` widget'ına çizer,

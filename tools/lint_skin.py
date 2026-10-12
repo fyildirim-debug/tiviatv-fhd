@@ -55,6 +55,19 @@ COLOR_ATTRS = {a for a in supported if "olor" in a} | {"itemGradient", "itemGrad
     "itemGradientMarked", "itemGradientMarkedAndSelected", "backgroundGradient",
     "backgroundGradientSelected", "scrollbarBackgroundGradient", "scrollbarForegroundGradient"}
 
+# ucuncu parti bilesenlerin kendi applySkin'inde okunan attribute'lar.
+# EMC MovieCenter: Cool* sayi / font / boyut (CoolTitleColor gibi adlar da 0/1
+# bayragi, renk degil), *Color'lar renk.
+EMC_COLORS = {"TitleColor", "DateColor", "DefaultColor", "BackColor", "BackColorSel", "FrontColorSel",
+    "UnwatchedColor", "WatchingColor", "FinishedColor", "RecordingColor"}
+supported |= EMC_COLORS | {"CoolFont", "CoolSelectFont", "CoolDateFont", "CoolDirPos", "CoolMoviePos",
+    "CoolMovieHPos", "CoolMovieSize", "CoolMoviePiconPos", "CoolMoviePiconSize", "CoolIconHPos", "CoolIconPos",
+    "CoolIconSize", "CoolFolderSize", "CoolTitleColor", "CoolDatePos", "CoolDateHPos", "CoolDateWidth",
+    "CoolDateColor", "CoolHighlightColor", "CoolTimePos", "CoolCSWidth", "CoolCSPos", "CoolDirInfoWidth",
+    "CoolSelNumTxtWidth", "CoolProgressPos", "CoolProgressHPos", "CoolBarPos", "CoolBarHPos", "CoolBarSize",
+    "CoolBarSizeSa", "CoolPiconPos", "CoolPiconHPos", "CoolPiconWidth", "CoolPiconHeight"}
+COLOR_ATTRS |= EMC_COLORS
+
 tree = ET.parse(SKIN)
 root = tree.getroot()
 

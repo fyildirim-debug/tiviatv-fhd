@@ -21,6 +21,7 @@ from Components.Element import cached
 
 ECM_INFO = "/tmp/ecm.info"
 ADDRESS = r"\d{1,3}(\.\d{1,3}){3}|\w[\w-]*(\.[\w-]+)+|:\d{2,5}\b"  # IP, alan adi, :port
+SOURCE_MAX, PROTOCOL_MAX = 24, 16  # uzun okuyucu / sunucu adi satirin basini itmesin
 
 # CAID ust bayti -> sistem adi (ecm.info'da "system:" satiri yoksa)
 SYSTEMS = {
@@ -61,6 +62,10 @@ def readEcmInfo():
 	return info
 
 
+def shorten(text, limit):
+	return text if len(text) <= limit else text[:limit - 1].rstrip(" .:-_") + "…"
+
+
 def ecmText(info, hideServer=False):
 	"""ecm.info sozlugunden tek satir; bilgi yoksa bos."""
 	if not info:
@@ -81,6 +86,7 @@ def ecmText(info, hideServer=False):
 	protocol = info.get("protocol") or info.get("using") or ""
 	if protocol.lower() == source.lower():
 		protocol = ""
+	source, protocol = shorten(source, SOURCE_MAX), shorten(protocol, PROTOCOL_MAX)
 	hops = info.get("hops", "").strip()
 	hops = ("%s hop" % hops if hops == "1" else "%s hops" % hops) if hops.isdigit() and hops != "0" else ""
 	seconds = info.get("ecm time", "").split()

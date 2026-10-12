@@ -1,4 +1,4 @@
-# TiviATV FHD  -  yazi tipi secici
+# TiviATV FHD  -  yazi tipi secici ve skin ayarlari
 #
 # Skin klasorundeki ve /usr/share/fonts altindaki yazi tiplerini listeler,
 # secileni TiviAtv-FHD/fonts.xml'e yazar. skin.xml bu dosyayi <include> ile
@@ -8,13 +8,23 @@
 # Secim listesi enigma2'nin ChoiceBox ekranidir; gorunumu tamamen skin.xml'deki
 # <screen name="ChoiceBox"> tanimindan gelir - eklentinin icinde gomulu skin yok.
 #
+# "TiviATV Settings": kanal listesinin EPG paneli (siradaki programlar,
+# primetime) ve uzun aciklamalarin kaymasi. Ayarlar config.plugins.TiviAtv'de;
+# tanimlari TiviAtvEpg converter'inda, skin onlari aninda uygular.
+#
 # Kurulum: /usr/lib/enigma2/python/Plugins/Extensions/TiviAtvFont/
 
 from os import listdir, path
 
+from Components.ActionMap import ActionMap
+from Components.ConfigList import ConfigListScreen
+from Components.config import getConfigListEntry
+from Components.Label import Label
+from Components.Sources.StaticText import StaticText
 from Plugins.Plugin import PluginDescriptor
 from Screens.ChoiceBox import ChoiceBox
 from Screens.MessageBox import MessageBox
+from Screens.Screen import Screen
 from Screens.Standby import TryQuitMainloop
 from Tools.BoundFunction import boundFunction
 
@@ -68,6 +78,16 @@ TURKISH = {
 	"GUI typeface": "Arayüz yazı tipi",
 	"%d weights": "%d ağırlık",
 	"active": "etkin",
+	"TiviATV Settings": "TiviATV Ayarları",
+	"Channel list and description options": "Kanal listesi ve açıklama seçenekleri",
+	"Channel list: upcoming programmes": "Kanal listesi: sıradaki programlar",
+	"Primetime": "Primetime",
+	"Scroll long descriptions": "Uzun açıklamaları kaydır",
+	"Shows the 5 programmes after NOW and NEXT of the selected channel above the programme card.": "Seçili kanalın NOW ve NEXT'ten sonraki 5 programını program kartının üstünde gösterir.",
+	"Adds the programme at this time (today, or tomorrow once it is over) to the list.": "Bu saatteki programı (bugün; bittiyse yarın) listeye ekler.",
+	"Descriptions that do not fit slowly scroll up, then start again.": "Sığmayan açıklamalar yavaşça yukarı kayar, sonra baştan başlar.",
+	"Cancel": "İptal",
+	"Save": "Kaydet",
 }
 
 
@@ -189,10 +209,52 @@ def main(session, **kwargs):
 		selection=names.index(current) if current in names else 0)
 
 
+class TiviAtvSettings(ConfigListScreen, Screen):
+	"""Gorunumu skin.xml'deki <screen name="TiviAtvSettings">; yoksa Setup."""
+
+	def __init__(self, session):
+		Screen.__init__(self, session)
+		self.skinName = ["TiviAtvSettings", "Setup"]
+		self.setTitle(tr("TiviATV Settings"))
+		from Components.Converter.TiviAtvEpg import settings
+		options = settings()
+		self.help = {}
+		entries = []
+		for label, item, text in (
+			("Channel list: upcoming programmes", options.epgPanel, "Shows the 5 programmes after NOW and NEXT of the selected channel above the programme card."),
+			("Primetime", options.primetime, "Adds the programme at this time (today, or tomorrow once it is over) to the list."),
+			("Scroll long descriptions", options.scroll, "Descriptions that do not fit slowly scroll up, then start again."),
+		):
+			entries.append(getConfigListEntry(tr(label), item))
+			self.help[tr(label)] = tr(text)
+		self["description"] = Label()
+		self["key_red"] = StaticText(tr("Cancel"))
+		self["key_green"] = StaticText(tr("Save"))
+		ConfigListScreen.__init__(self, entries, session=session)
+		self["actions"] = ActionMap(["SetupActions", "ColorActions"], {
+			"cancel": self.keyCancel,
+			"red": self.keyCancel,
+			"save": self.keySave,
+			"green": self.keySave,
+			"ok": self.keySave,
+		}, -2)
+		self["config"].onSelectionChanged.append(self.describe)
+		self.onLayoutFinish.append(self.describe)
+
+	def describe(self):
+		current = self["config"].getCurrent()
+		self["description"].setText(self.help.get(current[0], "") if current else "")
+
+
+def settingsMain(session, **kwargs):
+	session.open(TiviAtvSettings)
+
+
 def menuHook(menuid, **kwargs):
 	# menu.xml: "Usage & GUI" menusunun key'i "system"
 	if menuid == "system":
-		return [(tr("TiviATV Font"), main, "tiviatv_font", 10)]
+		return [(tr("TiviATV Font"), main, "tiviatv_font", 10),
+		        (tr("TiviATV Settings"), settingsMain, "tiviatv_settings", 11)]
 	return []
 
 
@@ -200,6 +262,8 @@ def Plugins(**kwargs):
 	return [
 		PluginDescriptor(name=tr("TiviATV Font"), description=tr("Choose the skin typeface"),
 		                 where=PluginDescriptor.WHERE_PLUGINMENU, icon=None, fnc=main),
+		PluginDescriptor(name=tr("TiviATV Settings"), description=tr("Channel list and description options"),
+		                 where=PluginDescriptor.WHERE_PLUGINMENU, icon=None, fnc=settingsMain),
 		PluginDescriptor(name=tr("TiviATV Font"), description=tr("Choose the skin typeface"),
 		                 where=PluginDescriptor.WHERE_MENU, fnc=menuHook),
 	]

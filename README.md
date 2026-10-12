@@ -65,25 +65,29 @@ opkg install /tmp/enigma2-plugin-skins-tiviatv-fhd_*_all.ipk
 ```
 
 **Without the package:** copy `TiviAtv-FHD/` to `/usr/share/enigma2/`,
-`TiviAtv-FHD/converter/*.py` to the converter directory and
+`TiviAtv-FHD/converter/*.py` to the converter directory,
+`TiviAtv-FHD/renderer/*.py` to the renderer directory and
 `plugin/TiviAtvFont/` to the plugin directory. Without the converters the skin
 still opens; only the signal, badge and softcam (ECM) fields stay empty.
 
 ### Package contents
 
-`enigma2-plugin-skins-tiviatv-fhd` installs to three places:
+`enigma2-plugin-skins-tiviatv-fhd` installs to four places:
 
 | Path | Contents |
 |---|---|
 | `/usr/share/enigma2/TiviAtv-FHD/` | skin, `fonts.xml`, typefaces, licenses, preview |
-| `/usr/lib/enigma2/python/Components/Converter/` | `TiviAtvSignal.py`, `TiviAtvText.py`, `TiviAtvEcm.py` |
-| `/usr/lib/enigma2/python/Plugins/Extensions/TiviAtvFont/` | font picker |
+| `/usr/lib/enigma2/python/Components/Converter/` | `TiviAtvSignal.py`, `TiviAtvText.py`, `TiviAtvEcm.py`, `TiviAtvEpg.py` |
+| `/usr/lib/enigma2/python/Components/Renderer/` | `TiviAtvScroll.py` |
+| `/usr/lib/enigma2/python/Plugins/Extensions/TiviAtvFont/` | **TiviATV Font** (typeface) and **TiviATV Settings** |
 
 | Converter | What it does |
 |---|---|
 | `TiviAtvSignal.py` | Signal (SNR/AGC) or IPTV stream rate in the infobar and channel list |
 | `TiviAtvText.py` | Hides the resolution / codec / crypto badges while they are empty (on IPTV the crypto badge used to show as an empty pill) |
 | `TiviAtvEcm.py` | Softcam ECM info (OSCam, CCcam …) from `/tmp/ecm.info` in the infobar, only on encrypted channels — see [Softcam (ECM) info](#softcam-ecm-info) |
+| `TiviAtvEpg.py` | The channel list's optional EPG panel: the next programmes of the selected channel and primetime — see [TiviATV Settings](#tiviatv-settings) |
+| `TiviAtvScroll.py` (renderer) | A label that slowly scrolls text that doesn't fit (the channel list description) |
 
 `fonts.xml` is the package's conffile: if you changed it, opkg keeps your copy
 and the install script merges your four font lines into the new version's
@@ -127,6 +131,13 @@ logos). Bottom right is the now/next card of the selected channel, top right
 the clock.
 
 ![Channel list](docs/screenshots/channelselection.jpg)
+
+With **TiviATV Settings › Channel list: upcoming programmes** a panel above the
+card lists the five programmes after NOW and NEXT, plus the programme at
+primetime (20:15 by default). A description that doesn't fit the card scrolls
+slowly, then starts again.
+
+![Channel list with the EPG panel](docs/screenshots/channelselection-epg.jpg)
 
 ### TV guide
 
@@ -212,6 +223,14 @@ pill top left (`PVRState`).
 
 ![Player](docs/screenshots/player.jpg)
 
+### Enhanced Movie Center (EMC)
+
+EMC's movie list, settings, menu and player are skinned: mini TV and the
+recording's details on the left, the list on the right, the same keys and
+cards as everywhere else.
+
+![EMC movie list](docs/screenshots/emc.jpg)
+
 ### Colour keys
 
 Instead of saturated coloured pills: a dark glass chip + coloured dot + white
@@ -252,6 +271,10 @@ others are picked in the **TiviATV Font** plugin (see [Font](#font)).
 <td><img src="docs/screenshots/input-devices.jpg" alt="Input devices"><br>Input devices</td>
 <td><img src="docs/screenshots/locale.jpg" alt="Locale / language"><br>Locale / language</td>
 </tr>
+<tr>
+<td><img src="docs/screenshots/emc-setup.jpg" alt="EMC settings"><br>EMC settings</td>
+<td><img src="docs/screenshots/tiviatv-settings.jpg" alt="TiviATV Settings"><br>TiviATV Settings</td>
+</tr>
 </table>
 
 ## Skinned screens
@@ -264,7 +287,10 @@ others are picked in the **TiviATV Font** plugin (see [Font](#font)).
 `PackageAction` · `ChannelContextMenu` · `InputBox` · `PinInput` · `PinInputPopup` ·
 `VirtualKeyBoard` · `Console` · `TextBox` · `Information` · `TimerEditList` ·
 `MoviePlayer` · `PVRState` · `ButtonSetup` · `ButtonSetupSelect` · `InputDeviceSelection` ·
-`LocaleSelection` · `SimpleSummary`
+`LocaleSelection` · `SubtitleDisplay` · `TiviAtvSettings` · `SimpleSummary`
+
+EMC: `EMCSelection` · `EMCSelectionOwn` · `EnhancedMovieCenterMenu` · `MovieMenu` ·
+`EMCMediaCenter` · `EMCMediaCenterOwn`
 
 enigma2's standard colour names (`window-bg`, `window-fg`, `key_red`, `grey` …)
 are also mapped to the skin palette. While they were undefined, every screen
@@ -292,9 +318,10 @@ actually creates, so one skin serves both images:
   `Label`. Binding a `Button` as a source with `ConditionalShowHide` throws in
   OpenViX's `skin.py`, and the loader then skips **the rest of the screen**. Each
   key therefore comes twice: the source chip with
-  `objectTypes="key_red,StaticText,Boolean"`, and a `name="key_red"` chip plus an
-  `eLabel` dot with `objectTypes="key_red,Button,Label"`. Exactly one set is
-  drawn.
+  `objectTypes="key_red,StaticText,Boolean"`, and for `Button` / `Label` an
+  `eLabel` chip, a `name="key_red"` label that starts after the dot (OpenViX's
+  `Button` ignores `textOffset`) and an `eLabel` dot, all with
+  `objectTypes="key_red,Button,Label"`. Exactly one set is drawn.
 - **Plugin browser.** openATV 8 fills `pluginList` / `pluginGrid` (templates);
   OpenViX looks for a widget called `list` and draws the classic `PluginList`
   into it. The skin has both; `conditional` skips the one the image lacks. The
@@ -393,9 +420,39 @@ Irdeto 0604  ·  my_reader  ·  newcamd  ·  1 hop  ·  0.214 s
 - The system name comes from the CAID when the softcam doesn't write one, and
   the ECM time is shown in seconds whether the softcam writes seconds or
   milliseconds.
+- Long reader / server names are shortened to 24 characters, and a line that
+  still doesn't fit ends with `…` — the start (system and CAID) always stays
+  visible.
+
+![Long server name, shortened](docs/screenshots/infobar-ecm-long.jpg)
 
 The widget sits in the `InfoBar` screen (`<convert type="TiviAtvEcm" />`), so it
 can be moved or restyled like any other label.
+
+### TiviATV Settings
+
+**Menu › Setup › Usage & GUI › TiviATV Settings** (also in the plugin
+browser). Changes apply at once, no GUI restart:
+
+| Option | Default | What it does |
+|---|---|---|
+| Channel list: upcoming programmes | No | Panel above the programme card: the 5 programmes after NOW and NEXT |
+| Primetime | 20:15 | The programme on at that time (today, or tomorrow once it is over) at the bottom of the panel; Off hides the row |
+| Scroll long descriptions | Yes | The channel list description scrolls when it doesn't fit |
+
+The values are stored in `config.plugins.TiviAtv`; the panel's widgets read
+them through the `TiviAtvEpg` converter, so a skin edit can move or restyle
+the panel freely.
+
+### Subtitles
+
+DVB, teletext and text subtitles are drawn into the `SubtitleDisplay` window.
+The skin defines it as `size="e,e"`, so it always covers the whole OSD —
+720p, 1080p, 4K or 8K. (openATV's default definition is 1280×720, which on a
+1080p skin put the subtitles in the middle of the screen.) Position and size
+come from enigma2's own subtitle settings.
+
+![Subtitles at the bottom of the picture](docs/screenshots/subtitles.jpg)
 
 ### Rounded corners
 
@@ -488,6 +545,7 @@ parts specific to skin testing:
 ```bash
 ln -sfn $PWD/TiviAtv-FHD /usr/share/enigma2/TiviAtv-FHD
 ln -sf  $PWD/TiviAtv-FHD/converter/*.py /usr/lib/enigma2/python/Components/Converter/
+ln -sf  $PWD/TiviAtv-FHD/renderer/*.py /usr/lib/enigma2/python/Components/Renderer/
 ln -sfn $PWD/tools/emulator/TiviAtvTest /usr/lib/enigma2/python/Plugins/Extensions/TiviAtvTest
 python3 tools/emulator/demo_kanallar.py && tools/emulator/e2-yayin && e2-arkaplan
 python3 tools/emulator/ekranlar.py                 # all  -> .cache/ekranlar/
@@ -517,6 +575,19 @@ python tools/make_designer_copy.py
 ```
 
 ## Changelog
+
+**1.0.4**
+- Subtitles: DVB and teletext subtitles were in the middle of the screen; the
+  subtitle window now covers the whole OSD at any resolution.
+- Enhanced Movie Center: movie list, settings, menu and player skinned. On
+  screens the skin doesn't define (EMC's settings page was one), lists no longer
+  punch a transparent hole into the window.
+- Channel list: optional EPG panel with the next 5 programmes and primetime,
+  and long descriptions scroll — **TiviATV Settings**, a new entry next to
+  TiviATV Font.
+- Softcam line: long reader / server names no longer push the start of the
+  line out of view.
+- OpenViX: colour key labels no longer run under the coloured dot.
 
 **1.0.3**
 - OpenViX: the plugin browser was empty — it draws into a classic `list`

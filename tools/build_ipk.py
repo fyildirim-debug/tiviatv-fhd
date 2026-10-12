@@ -1,4 +1,4 @@
-# TiviATV FHD kurulum paketi (.ipk) uretir: skin, converter'lar ve yazi tipi
+# TiviATV FHD kurulum paketi (.ipk) uretir: skin, converter / renderer'lar ve yazi tipi
 # eklentisi tek pakette. Surum depo kokundeki VERSION dosyasindan okunur.
 # Cikti: dist/<paket>_<surum>_all.ipk (+ .sha256); eski surumun dosyalari silinir.
 #
@@ -35,6 +35,8 @@ for name in ("LICENSE", "NOTICE"):
 	LAYOUT["usr/share/enigma2/TiviAtv-FHD/" + name] = ROOT / name
 for f in sorted((SKIN / "converter").glob("*.py")):
 	LAYOUT[E2PY + "/Components/Converter/" + f.name] = f
+for f in sorted((SKIN / "renderer").glob("*.py")):
+	LAYOUT[E2PY + "/Components/Renderer/" + f.name] = f
 for f in sorted((ROOT / "plugin" / "TiviAtvFont").glob("*.py")):
 	LAYOUT[E2PY + "/Plugins/Extensions/TiviAtvFont/" + f.name] = f
 
@@ -65,6 +67,7 @@ echo ""
 echo "TiviATV FHD installed."
 echo "  Skin    : Menu > Setup > Usage & GUI > Skin Settings"
 echo "  Typeface: Menu > Setup > Usage & GUI > TiviATV Font"
+echo "  Options : Menu > Setup > Usage & GUI > TiviATV Settings"
 echo "If the skin is already active, the new version loads when the GUI restarts."
 exit 0
 """
@@ -76,9 +79,8 @@ case "$1" in
 	remove|purge)
 		rm -rf "$PKG_ROOT/usr/share/enigma2/TiviAtv-FHD" \\
 		       "$PKG_ROOT/usr/lib/enigma2/python/Plugins/Extensions/TiviAtvFont"
-		rm -f "$PKG_ROOT"/usr/lib/enigma2/python/Components/Converter/__pycache__/TiviAtvSignal.* \\
-		      "$PKG_ROOT"/usr/lib/enigma2/python/Components/Converter/__pycache__/TiviAtvText.* \\
-		      "$PKG_ROOT"/usr/lib/enigma2/python/Components/Converter/__pycache__/TiviAtvEcm.*
+		rm -f "$PKG_ROOT"/usr/lib/enigma2/python/Components/Converter/__pycache__/TiviAtv*.* \\
+		      "$PKG_ROOT"/usr/lib/enigma2/python/Components/Renderer/__pycache__/TiviAtv*.*
 		echo "TiviATV FHD removed. If it was the active skin, the GUI returns to the default skin when it restarts."
 		;;
 esac
