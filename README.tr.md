@@ -267,6 +267,10 @@ Tipi** eklentisinden seçilir (bkz. [Font](#font)).
 <td><img src="docs/screenshots/emc-setup.jpg" alt="EMC ayarları"><br>EMC ayarları</td>
 <td><img src="docs/screenshots/tiviatv-settings.jpg" alt="TiviATV Settings"><br>TiviATV Settings</td>
 </tr>
+<tr>
+<td><img src="docs/screenshots/multiboot.jpg" alt="MultiBoot Manager"><br>MultiBoot Manager (örnek yuvalar)</td>
+<td></td>
+</tr>
 </table>
 
 ## Tanımlı ekranlar
@@ -279,7 +283,8 @@ Tipi** eklentisinden seçilir (bkz. [Font](#font)).
 `PackageAction` · `ChannelContextMenu` · `InputBox` · `PinInput` · `PinInputPopup` ·
 `VirtualKeyBoard` · `Console` · `TextBox` · `Information` · `TimerEditList` ·
 `MoviePlayer` · `PVRState` · `ButtonSetup` · `ButtonSetupSelect` · `InputDeviceSelection` ·
-`LocaleSelection` · `SubtitleDisplay` · `TiviAtvSettings` · `SimpleSummary`
+`LocaleSelection` · `MultiBootManager` · `KexecInit` · `SubtitleDisplay` · `TiviAtvSettings` ·
+`SimpleSummary`
 
 EMC: `EMCSelection` · `EMCSelectionOwn` · `EnhancedMovieCenterMenu` · `MovieMenu` ·
 `EMCMediaCenter` · `EMCMediaCenterOwn`
@@ -559,6 +564,10 @@ python tools/make_designer_copy.py
 ```
 
 ## Sürüm notları
+
+**1.0.5**
+- MultiBoot Manager (Bekleme / Yeniden başlat) ve Kexec / Chkroot kurulum
+  penceresi, renk tuşu çipli büyük yarı saydam ayar kartını kullanıyor.
 
 **1.0.4**
 - Altyazılar: DVB ve teletekst altyazıları ekranın ortasında çıkıyordu;

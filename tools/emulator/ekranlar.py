@@ -92,6 +92,14 @@ SCREENS = {
 	                 "ref = eServiceReference(4097, 0, '/opt/tivitest/kanal.ts')\nref.setName('Late Movie: The Last Train')\n"
 	                 "session.open(MoviePlayer, ref)",
 	                 "session.current_dialog.pauseService()"], [], 3),  # durum ikonu: duraklat
+	# Bekleme / Yeniden baslat > MultiBoot Manager (emulatorde yuva yok: liste yukleniyor / bos)
+	"multibootmanager": (["from Screens.MultiBootManager import MultiBootManager\nsession.open(MultiBootManager)",
+	                      "from Components.ChoiceList import ChoiceEntryComponent\nd = session.current_dialog\n"
+	                      "d['slotlist'].setList([ChoiceEntryComponent('', (text, n)) for n, text in enumerate(("
+	                      "'Slot 1:  openATV 7.6 (2026-10-10)  -  Current', 'Slot 2:  OpenViX 6.7.012 (2026-09-28)', "
+	                      "'Slot 3:  OpenPLi 9.1 (2026-08-14)', 'Slot 4:  Empty slot'), 1)])\n"
+	                      "d['key_green'].setText(_('Reboot'))\nd['key_yellow'].setText(_('Delete'))\nd['key_info'].setText(_('INFO'))"], [], 2),
+	"kexecinit": ("from Screens.MultiBootManager import KexecInit\nsession.open(KexecInit)", [], 2),
 	# Kurulum > Kullanim & Arayuz altindaki ayar ekranlari
 	"buttonsetup": ("from Screens.ButtonSetup import ButtonSetup\nsession.open(ButtonSetup)", [], 1.5),
 	"buttonsetupselect": (["from Screens.ButtonSetup import ButtonSetup\nsession.open(ButtonSetup)",

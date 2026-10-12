@@ -275,6 +275,10 @@ others are picked in the **TiviATV Font** plugin (see [Font](#font)).
 <td><img src="docs/screenshots/emc-setup.jpg" alt="EMC settings"><br>EMC settings</td>
 <td><img src="docs/screenshots/tiviatv-settings.jpg" alt="TiviATV Settings"><br>TiviATV Settings</td>
 </tr>
+<tr>
+<td><img src="docs/screenshots/multiboot.jpg" alt="MultiBoot Manager"><br>MultiBoot Manager (sample slots)</td>
+<td></td>
+</tr>
 </table>
 
 ## Skinned screens
@@ -287,7 +291,8 @@ others are picked in the **TiviATV Font** plugin (see [Font](#font)).
 `PackageAction` · `ChannelContextMenu` · `InputBox` · `PinInput` · `PinInputPopup` ·
 `VirtualKeyBoard` · `Console` · `TextBox` · `Information` · `TimerEditList` ·
 `MoviePlayer` · `PVRState` · `ButtonSetup` · `ButtonSetupSelect` · `InputDeviceSelection` ·
-`LocaleSelection` · `SubtitleDisplay` · `TiviAtvSettings` · `SimpleSummary`
+`LocaleSelection` · `MultiBootManager` · `KexecInit` · `SubtitleDisplay` · `TiviAtvSettings` ·
+`SimpleSummary`
 
 EMC: `EMCSelection` · `EMCSelectionOwn` · `EnhancedMovieCenterMenu` · `MovieMenu` ·
 `EMCMediaCenter` · `EMCMediaCenterOwn`
@@ -575,6 +580,10 @@ python tools/make_designer_copy.py
 ```
 
 ## Changelog
+
+**1.0.5**
+- MultiBoot Manager (Standby / Restart) and its Kexec / Chkroot set-up window
+  use the large translucent settings card with colour key chips.
 
 **1.0.4**
 - Subtitles: DVB and teletext subtitles were in the middle of the screen; the
