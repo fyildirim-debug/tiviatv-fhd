@@ -400,7 +400,7 @@
 		<!-- secili kanalin programi -->
 		<eLabel position="1180,620" size="676,400" backgroundColor="card" cornerRadius="28" zPosition="1" />
 
-		<eLabel position="1220,652" size="112,34" text="NOW" backgroundColor="selBg" cornerRadius="17"
+		<eLabel position="1220,652" size="136,34" text="NOW" backgroundColor="selBg" cornerRadius="17"
 		        font="TMB;19" foregroundColor="selFg" halign="center" valign="center" zPosition="2" />
 		<!-- sinyal (DVB) / akis hizi (IPTV) -->
 		<widget source="session.FrontendStatus" render="Label" position="1518,655" size="150,28" text=" "
@@ -1396,13 +1396,12 @@
 		        transparent="1" halign="right" valign="center" zPosition="1" />
 	</screen>
 
-	<screen name="Mute" position="center,904" size="236,76" flags="wfNoBorder" backgroundColor="transparent" title="Mute" zPosition="1">
-		<eLabel position="0,0" size="236,76" backgroundColor="card" widgetBorderWidth="2" widgetBorderColor="edge" cornerRadius="38" />
+	<!-- yalniz simge: her dilde anlasilir, ceviri uzunlugu sorunu yok (de: "Stummschaltung") -->
+	<screen name="Mute" position="center,904" size="76,76" flags="wfNoBorder" backgroundColor="transparent" title="Mute" zPosition="1">
+		<eLabel position="0,0" size="76,76" backgroundColor="card" widgetBorderWidth="2" widgetBorderColor="edge" cornerRadius="38" />
 		<!-- enigma2icons: volume_off -->
-		<eLabel position="22,0" size="60,76" text="&#xe900;" font="enigma2icons;38" foregroundColor="live"
+		<eLabel position="0,0" size="76,76" text="&#xe900;" font="enigma2icons;38" foregroundColor="live"
 		        transparent="1" halign="center" valign="center" zPosition="1" />
-		<eLabel position="88,0" size="128,76" text="Mute" font="TMB;24" foregroundColor="text"
-		        transparent="1" halign="left" valign="center" zPosition="1" />
 	</screen>
 
 	<screen name="NumberZap" position="center,center" size="860,160" flags="wfNoBorder" backgroundColor="transparent" title="Channel number">

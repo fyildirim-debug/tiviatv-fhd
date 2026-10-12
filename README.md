@@ -41,9 +41,9 @@ so the corners come out square.
 
 **Update:** run the same command again. Your font choice is kept.
 
-**Language:** the skin's labels (NOW, NEXT, Mute …), screen titles and the
+**Language:** the skin's labels (NOW, NEXT, LATER), screen titles and the
 font picker are in English and follow the box's GUI language where enigma2 has
-a translation — on a Turkish GUI they show as ŞİMDİ, SONRA, Sessiz, and the
+a translation — on a Turkish GUI NOW / NEXT show as ŞİMDİ / SONRA, and the
 font picker and signal percentages are Turkish too.
 
 **Remove:**
@@ -179,7 +179,8 @@ The plugin browser in a grid, with colour key chips at the bottom.
 ### Volume
 
 A thin-edged pill at the bottom: speaker glyph (`enigma2icons`), the same fill
-as the progress lines, and the level. When muted, a red glyph and "Mute".
+as the progress lines, and the level. When muted, a round chip with just a red
+muted-speaker glyph — no text, so it reads the same in every language.
 
 ![Volume](docs/screenshots/volume.jpg)
 
@@ -444,9 +445,10 @@ python tools/make_designer_copy.py
 ## Changelog
 
 **1.0.1**
-- Everything shown on the box is in English: labels (NOW, NEXT, LATER, Mute),
+- Everything shown on the box is in English: labels (NOW, NEXT, LATER),
   screen titles, the font picker (now **TiviATV Font**), the installer and the
-  package messages. Labels and titles follow the box's GUI language through
+  package messages. The mute indicator is an icon-only chip (no text to
+  translate), and the NOW chip fits longer translations such as MAINTENANT. Labels and titles follow the box's GUI language through
   enigma2's own translations; the font picker and the signal percentages
   (86% / %86) switch to Turkish on a Turkish GUI.
 - Screenshots retaken with English sample data.

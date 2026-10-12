@@ -40,9 +40,9 @@ köşeler kare çıkar.
 
 **Güncellemek:** aynı komutu yeniden çalıştır. Yazı tipi seçimin korunur.
 
-**Dil:** skinin yazıları (NOW, NEXT, Mute …), ekran başlıkları ve yazı tipi
+**Dil:** skinin yazıları (NOW, NEXT, LATER), ekran başlıkları ve yazı tipi
 seçici İngilizcedir; kutunun arayüz dili Türkçeyse enigma2'nin çevirisiyle
-ŞİMDİ, SONRA, Sessiz olarak görünür, yazı tipi seçici ve sinyal yüzdeleri de
+NOW / NEXT, ŞİMDİ / SONRA olarak görünür; yazı tipi seçici ve sinyal yüzdeleri de
 Türkçeleşir.
 
 **Kaldırmak:**
@@ -172,7 +172,8 @@ Izgara düzeninde eklenti tarayıcı, altta renk tuşu çipleri.
 ### Ses
 
 Altta ince kenarlı hap: hoparlör glifi (`enigma2icons`), ince süre çizgisiyle
-aynı dolgu, sayı. Sessizde kırmızı glif ve "Sessiz" (İngilizce arayüzde "Mute").
+aynı dolgu, sayı. Sessizde yalnız kırmızı, üstü çizili hoparlör simgesi olan
+yuvarlak çip; yazı yok, her dilde aynı okunur.
 
 ![Ses](docs/screenshots/volume.jpg)
 
@@ -430,9 +431,10 @@ python tools/make_designer_copy.py
 ## Sürüm notları
 
 **1.0.1**
-- Kutuda görünen her şey İngilizce: etiketler (NOW, NEXT, LATER, Mute), ekran
+- Kutuda görünen her şey İngilizce: etiketler (NOW, NEXT, LATER), ekran
   başlıkları, yazı tipi seçici (artık **TiviATV Font**), kurulum betiği ve
-  paket mesajları. Etiketler ve başlıklar enigma2'nin kendi çevirisiyle kutunun
+  paket mesajları. Sessiz göstergesi yalnız simgeli bir çip (çevrilecek yazı
+  yok); NOW çipi MAINTENANT gibi uzun çevirilere de yetiyor. Etiketler ve başlıklar enigma2'nin kendi çevirisiyle kutunun
   arayüz diline uyar; yazı tipi seçici ve sinyal yüzdeleri (86% / %86) Türkçe
   arayüzde Türkçeleşir.
 - Ekran görüntüleri İngilizce örnek verilerle yeniden çekildi.
