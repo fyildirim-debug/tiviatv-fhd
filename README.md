@@ -304,6 +304,8 @@ actually creates, so one skin serves both images:
 - Screens OpenViX names differently (for example its language selection) fall
   back to the image's own design.
 
+![Plugin browser with the classic list and Button keys](docs/screenshots/plugins-classic.jpg)
+
 `python3 tools/emulator/ekranlar.py <dir> pluginbrowser-vix` opens the same
 skin screen the way OpenViX does (classic list, `Button` keys) in the openATV
 emulator.

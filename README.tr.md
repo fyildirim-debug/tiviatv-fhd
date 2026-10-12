@@ -297,6 +297,8 @@ böylece tek skin iki imaja da yeter:
 - OpenViX'te adı farklı olan ekranlar (ör. dil seçimi) imajın kendi tasarımıyla
   açılır.
 
+![Klasik liste ve Button tuşlarla eklenti tarayıcısı](docs/screenshots/plugins-classic.jpg)
+
 `python3 tools/emulator/ekranlar.py <klasör> pluginbrowser-vix` aynı skin
 ekranını OpenViX'in açtığı gibi (klasik liste, `Button` tuşlar) openATV
 emülatöründe açar.
