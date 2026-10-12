@@ -195,8 +195,10 @@ Izgara düzeninde eklenti tarayıcı, altta renk tuşu çipleri.
 
 ### Ses
 
-Altta ince kenarlı hap: hoparlör glifi (`enigma2icons`), ince süre çizgisiyle
-aynı dolgu, sayı. Sessizde yalnız kırmızı, üstü çizili hoparlör simgesi olan
+Bilgi çubuğu bandının üstünde ince kenarlı hap: hoparlör glifi
+(`enigma2icons`), ince süre çizgisiyle aynı dolgu, sayı. Bilgi çubuğunun neredeyse
+hiçbir şey çizmediği yerde durur; üst üste binen pencereler karışmadığı için daha
+aşağıda hapın saydam köşeleri kanal değiştirirken bilgi çubuğunu keserdi. Sessizde yalnız kırmızı, üstü çizili hoparlör simgesi olan
 yuvarlak çip; yazı yok, her dilde aynı okunur.
 
 ![Ses](docs/screenshots/volume.jpg)
@@ -269,7 +271,7 @@ Tipi** eklentisinden seçilir (bkz. [Font](#font)).
 </tr>
 <tr>
 <td><img src="docs/screenshots/multiboot.jpg" alt="MultiBoot Manager"><br>MultiBoot Manager (örnek yuvalar)</td>
-<td></td>
+<td><img src="docs/screenshots/skin-setup.jpg" alt="Skin ayarı"><br>"Setup - TiviAtv-FHD" (openATV'nin AtileHD'si)</td>
 </tr>
 </table>
 
@@ -283,7 +285,7 @@ Tipi** eklentisinden seçilir (bkz. [Font](#font)).
 `PackageAction` · `ChannelContextMenu` · `InputBox` · `PinInput` · `PinInputPopup` ·
 `VirtualKeyBoard` · `Console` · `TextBox` · `Information` · `TimerEditList` ·
 `MoviePlayer` · `PVRState` · `ButtonSetup` · `ButtonSetupSelect` · `InputDeviceSelection` ·
-`LocaleSelection` · `MultiBootManager` · `KexecInit` · `SubtitleDisplay` · `TiviAtvSettings` ·
+`LocaleSelection` · `MultiBootManager` · `KexecInit` · `AtileHD_Config` · `SubtitleDisplay` · `TiviAtvSettings` ·
 `SimpleSummary`
 
 EMC: `EMCSelection` · `EMCSelectionOwn` · `EnhancedMovieCenterMenu` · `MovieMenu` ·
@@ -314,11 +316,14 @@ böylece tek skin iki imaja da yeter:
   kurar; OpenViX çoğunu `Button` (GUI widget'ı) olarak, bazı eski ekranlar da
   `Label` olarak. `Button`'ı `ConditionalShowHide` ile kaynak diye bağlamak
   OpenViX'in `skin.py`'sinde hata fırlatır ve yükleyici **ekranın geri
-  kalanını** atlar. Bu yüzden her tuş iki kez var: kaynak çipi
-  `objectTypes="key_red,StaticText,Boolean"` ile; `Button` / `Label` için
+  kalanını** atlar. Bu yüzden her tuş iki kez var: `StaticText` / `Boolean` için
+  çip etiketi (yazısı çip renginde, görünmez), noktadan sonra başlayan yazı
+  etiketi ve nokta, hepsi `objectTypes="key_red,StaticText,Boolean"` ile;
+  `Button` / `Label` için
   `eLabel` çip, noktadan sonra başlayan `name="key_red"` etiketi (OpenViX'in
   `Button`'ı `textOffset`'i yok sayar) ve `eLabel` nokta, hepsi
-  `objectTypes="key_red,Button,Label"` ile. İkisinden yalnız biri çizilir.
+  `objectTypes="key_red,Button,Label"` ile. İkisinden yalnız biri çizilir. İki
+  set de OpenViX'in desteklemediği `padding`'i kullanmaz.
 - **Eklenti tarayıcısı.** openATV 8 `pluginList` / `pluginGrid` şablonlarını
   doldurur; OpenViX `list` adlı widget'ı arar ve klasik `PluginList`'i ona
   çizer. Skinde ikisi de var; imajda olmayanı `conditional` atlar. Klasik
@@ -564,6 +569,15 @@ python tools/make_designer_copy.py
 ```
 
 ## Sürüm notları
+
+**1.0.6**
+- Ses ve sessiz göstergesi bilgi çubuğu bandının üstüne taşındı: kanal
+  değiştirirken yuvarlak köşeleri artık bilgi çubuğunu kesmiyor.
+- OpenViX: renk tuşu yazıları her ekranda noktadan sonra başlıyor (çipler
+  OpenViX'in desteklemediği `padding`'e dayanmıyor) — TiviATV Settings dahil.
+- openATV'nin "Setup - TiviAtv-FHD" ekranı (AtileHD) skinlendi; `foreground`
+  renk adı açık yazı rengi oldu, bu ekranın ve onu kullanan diğer eklentilerin
+  tuş yazıları okunuyor.
 
 **1.0.5**
 - MultiBoot Manager (Bekleme / Yeniden başlat) ve Kexec / Chkroot kurulum

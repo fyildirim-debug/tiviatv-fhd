@@ -100,6 +100,9 @@ SCREENS = {
 	                      "'Slot 3:  OpenPLi 9.1 (2026-08-14)', 'Slot 4:  Empty slot'), 1)])\n"
 	                      "d['key_green'].setText(_('Reboot'))\nd['key_yellow'].setText(_('Delete'))\nd['key_info'].setText(_('INFO'))"], [], 2),
 	"kexecinit": ("from Screens.MultiBootManager import KexecInit\nsession.open(KexecInit)", [], 2),
+	# Kullanim & Arayuz > "Setup - TiviAtv-FHD" (openATV'nin AtileHD eklentisi) ve TiviATV Settings
+	"atilehd": ("from Plugins.Extensions.AtileHD.plugin import AtileHD_Config\nsession.open(AtileHD_Config)", [], 2),
+	"tiviatvsettings": ("from Plugins.Extensions.TiviAtvFont.plugin import TiviAtvSettings\nsession.open(TiviAtvSettings)", [], 2),
 	# Kurulum > Kullanim & Arayuz altindaki ayar ekranlari
 	"buttonsetup": ("from Screens.ButtonSetup import ButtonSetup\nsession.open(ButtonSetup)", [], 1.5),
 	"buttonsetupselect": (["from Screens.ButtonSetup import ButtonSetup\nsession.open(ButtonSetup)",

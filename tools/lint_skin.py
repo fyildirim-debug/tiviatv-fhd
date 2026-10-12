@@ -131,6 +131,9 @@ for scr in screens:
         where = f"[{sname}] <{el.tag}>"
         if el is scr:
             where = f"[{sname}] <screen>"
+        # adi / kaynagi / addon'u olmayan widget'i skin.py SkinError ile atlar
+        if el.tag == "widget" and not (el.get("name") or el.get("source") or el.get("addon")):
+            errors.append(f"{where}: widget'in name / source / addon'u yok (atlanir)")
         for attr, val in el.attrib.items():
             if el.tag == "convert" or el.tag == "applet":
                 continue

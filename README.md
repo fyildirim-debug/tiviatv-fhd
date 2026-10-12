@@ -201,8 +201,10 @@ The plugin browser in a grid, with colour key chips at the bottom.
 
 ### Volume
 
-A thin-edged pill at the bottom: speaker glyph (`enigma2icons`), the same fill
-as the progress lines, and the level. When muted, a round chip with just a red
+A thin-edged pill above the infobar band: speaker glyph (`enigma2icons`), the
+same fill as the progress lines, and the level. It sits where the infobar draws
+almost nothing, because overlapping windows don't blend: lower down, the pill's
+transparent corners would cut holes into the infobar while zapping. When muted, a round chip with just a red
 muted-speaker glyph — no text, so it reads the same in every language.
 
 ![Volume](docs/screenshots/volume.jpg)
@@ -277,7 +279,7 @@ others are picked in the **TiviATV Font** plugin (see [Font](#font)).
 </tr>
 <tr>
 <td><img src="docs/screenshots/multiboot.jpg" alt="MultiBoot Manager"><br>MultiBoot Manager (sample slots)</td>
-<td></td>
+<td><img src="docs/screenshots/skin-setup.jpg" alt="Skin setup"><br>"Setup - TiviAtv-FHD" (openATV's AtileHD)</td>
 </tr>
 </table>
 
@@ -291,7 +293,7 @@ others are picked in the **TiviATV Font** plugin (see [Font](#font)).
 `PackageAction` · `ChannelContextMenu` · `InputBox` · `PinInput` · `PinInputPopup` ·
 `VirtualKeyBoard` · `Console` · `TextBox` · `Information` · `TimerEditList` ·
 `MoviePlayer` · `PVRState` · `ButtonSetup` · `ButtonSetupSelect` · `InputDeviceSelection` ·
-`LocaleSelection` · `MultiBootManager` · `KexecInit` · `SubtitleDisplay` · `TiviAtvSettings` ·
+`LocaleSelection` · `MultiBootManager` · `KexecInit` · `AtileHD_Config` · `SubtitleDisplay` · `TiviAtvSettings` ·
 `SimpleSummary`
 
 EMC: `EMCSelection` · `EMCSelectionOwn` · `EnhancedMovieCenterMenu` · `MovieMenu` ·
@@ -322,11 +324,13 @@ actually creates, so one skin serves both images:
   creates many of them as `Button` (a GUI widget), and some older screens use
   `Label`. Binding a `Button` as a source with `ConditionalShowHide` throws in
   OpenViX's `skin.py`, and the loader then skips **the rest of the screen**. Each
-  key therefore comes twice: the source chip with
-  `objectTypes="key_red,StaticText,Boolean"`, and for `Button` / `Label` an
+  key therefore comes twice: for `StaticText` / `Boolean` a chip label (its text
+  drawn in the chip colour, so invisible), the text label after the dot and the
+  dot, all with `objectTypes="key_red,StaticText,Boolean"`; and for `Button` / `Label` an
   `eLabel` chip, a `name="key_red"` label that starts after the dot (OpenViX's
   `Button` ignores `textOffset`) and an `eLabel` dot, all with
-  `objectTypes="key_red,Button,Label"`. Exactly one set is drawn.
+  `objectTypes="key_red,Button,Label"`. Exactly one set is drawn. Neither set
+  uses `padding`, which OpenViX doesn't support.
 - **Plugin browser.** openATV 8 fills `pluginList` / `pluginGrid` (templates);
   OpenViX looks for a widget called `list` and draws the classic `PluginList`
   into it. The skin has both; `conditional` skips the one the image lacks. The
@@ -580,6 +584,15 @@ python tools/make_designer_copy.py
 ```
 
 ## Changelog
+
+**1.0.6**
+- Volume and mute moved up, above the infobar band: while zapping, their round
+  corners no longer cut into the infobar.
+- OpenViX: colour key labels start after the dot on every screen (the chips no
+  longer rely on `padding`, which OpenViX ignores) — TiviATV Settings included.
+- openATV's "Setup - TiviAtv-FHD" screen (AtileHD) skinned; the colour name
+  `foreground` is the light text colour, so its key labels — and those of other
+  plugins using it — are readable.
 
 **1.0.5**
 - MultiBoot Manager (Standby / Restart) and its Kexec / Chkroot set-up window
