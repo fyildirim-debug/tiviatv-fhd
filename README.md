@@ -1,72 +1,21 @@
 # TiviATV FHD
 
-TiviMate düzeninde ve görünümünde, 1920×1080 openATV / enigma2 skini.
-Yayın arkada akarken yarı saydam paneller, beyaz seçim hapları, yuvarlak
-köşeler, ince ilerleme çizgileri ve Inter yazı tipi — hepsi enigma2'nin kendi
-çizim motoruyla, **tek bir PNG kullanılmadan**.
+A TiviMate-style 1920×1080 skin for openATV / enigma2. Translucent panels over
+the running picture, white selection pills, rounded corners, thin progress
+lines and the Inter typeface — all drawn by the enigma2 engine itself, **without
+a single PNG**.
 
-![TiviATV FHD: kanal listesi, program rehberi, InfoBar, çoklu EPG](docs/screenshots/hero.jpg)
+![TiviATV FHD: channel list, TV guide, infobar, multi EPG](docs/screenshots/hero.jpg)
 
-**Kurulum:** [Türkçe](#türkçe) · **Installation:** [English](#english) ·
-**Ekranlar / Screenshots:** [aşağıda / below](#ekranlar--screenshots) ·
-**About:** [In English](#in-english)
+**Türkçe:** [README.tr.md](README.tr.md) · [Installation](#installation) · [Screenshots](#screenshots)
 
-## Gereksinim
+## Requirements
 
-openATV **7.3+**. `cornerRadius`, gradient ve `itemCornerRadiusSelected`
-enigma2 motoruna 7.3 ile girdi; 7.2 ve altındaki dallarda bu tanımlar yok,
-köşeler kare çıkar.
+openATV **7.3+**. `cornerRadius`, gradients and `itemCornerRadiusSelected`
+landed in the enigma2 engine with 7.3; branches 7.2 and older don't have them,
+so the corners come out square.
 
-## Kurulum / Installation
-
-[Türkçe](#türkçe) · [English](#english)
-
-### Türkçe
-
-1. **Kutuya bağlan.** Bilgisayardan telnet ya da SSH ile (`ssh root@<kutu-ip>`).
-   Kutunun IP adresi ağ ayarlarında yazar.
-2. **Kur.** Şu komutu yapıştır:
-
-   ```sh
-   wget -qO- https://raw.githubusercontent.com/fyildirim-debug/tiviatv-fhd/main/installer.sh | sh
-   ```
-
-   Betik son paketi indirir, sha256 ile doğrular ve `opkg` ile kurar.
-3. **Skini seç.** **Menü → Kurulum → Kullanım & Kullanıcı Arayüzü → Arayüz
-   Ayarları** → `TiviAtv-FHD`, **YEŞİL** tuşla etkinleştir; arayüz yeniden başlar.
-4. **Kanal listesini TiviMate düzenine al.** **Menü → Kurulum → Kullanım &
-   Kullanıcı Arayüzü → Kanal Seçim Ayarları**:
-   - "Kanal listesinde her giriş için iki satır göster" = **Evet**
-   - "Kanal listesi satır sayısı" = **10**
-
-   Satır yüksekliği skinden değil bu sayıdan gelir (liste yüksekliği ÷ satır
-   sayısı); satırlar sık ya da seyrek görünürse sayıyı değiştir.
-5. **Yazı tipi (isteğe bağlı).** Aynı menüde **TiviATV Yazı Tipi**: Inter
-   (varsayılan), Geist, Barlow ya da kutudaki başka bir font.
-
-**Güncellemek:** aynı komutu yeniden çalıştır. Yazı tipi seçimin korunur.
-
-**Kaldırmak:**
-
-```sh
-opkg remove enigma2-plugin-skins-tiviatv-fhd
-```
-
-**İnternetsiz / elle:** [`dist/`](dist/) altındaki `.ipk`'yi FTP ya da SCP ile
-kutunun `/tmp` klasörüne at, sonra:
-
-```sh
-opkg install /tmp/enigma2-plugin-skins-tiviatv-fhd_*_all.ipk
-```
-
-**Paketsiz:** `TiviAtv-FHD/` klasörünü `/usr/share/enigma2/` altına,
-`TiviAtv-FHD/converter/*.py` dosyalarını converter dizinine,
-`plugin/TiviAtvFont/` klasörünü eklenti dizinine kopyala. Converter'lar
-kopyalanmazsa skin yine açılır, yalnız sinyal ve rozet alanları boş kalır.
-
-### English
-
-Requires openATV **7.3+**.
+## Installation
 
 1. **Connect to the box** over telnet or SSH (`ssh root@<box-ip>`). The box IP
    is shown in its network settings.
@@ -110,177 +59,176 @@ opkg install /tmp/enigma2-plugin-skins-tiviatv-fhd_*_all.ipk
 `plugin/TiviAtvFont/` to the plugin directory. Without the converters the skin
 still opens; only the signal and badge fields stay empty.
 
-### Paket içeriği / Package contents
+### Package contents
 
-`enigma2-plugin-skins-tiviatv-fhd` üç yere kurar / installs to three places:
+`enigma2-plugin-skins-tiviatv-fhd` installs to three places:
 
-| Yer / Path | İçerik / Contents |
+| Path | Contents |
 |---|---|
-| `/usr/share/enigma2/TiviAtv-FHD/` | skin, `fonts.xml`, yazı tipleri / typefaces, lisanslar / licenses, önizleme / preview |
+| `/usr/share/enigma2/TiviAtv-FHD/` | skin, `fonts.xml`, typefaces, licenses, preview |
 | `/usr/lib/enigma2/python/Components/Converter/` | `TiviAtvSignal.py`, `TiviAtvText.py` |
-| `/usr/lib/enigma2/python/Plugins/Extensions/TiviAtvFont/` | yazı tipi seçici / font picker |
+| `/usr/lib/enigma2/python/Plugins/Extensions/TiviAtvFont/` | font picker |
 
-| Converter | Ne yapar / What it does |
+| Converter | What it does |
 |---|---|
-| `TiviAtvSignal.py` | Sinyal (SNR/AGC) ya da IPTV akış hızı / signal (SNR/AGC) or IPTV stream rate |
-| `TiviAtvText.py` | Çözünürlük / codec / şifre rozetlerini boşken gizler / hides empty resolution, codec and crypto badges |
+| `TiviAtvSignal.py` | Signal (SNR/AGC) or IPTV stream rate in the infobar and channel list |
+| `TiviAtvText.py` | Hides the resolution / codec / crypto badges while they are empty (on IPTV the crypto badge used to show as an empty pill) |
 
-`fonts.xml` paketin yapılandırma dosyasıdır: değiştirdiysen opkg onu ezmez,
-kurulum betiği yeni sürümün şablonunu alıp senin seçtiğin dört font satırını
-içine koyar (yeni eklenen font tanımları eksik kalmasın diye).
-*`fonts.xml` is a conffile: if you changed it, opkg keeps it and the install
-script merges your four font lines into the new template, so fonts added in
-later versions are not missing.*
+`fonts.xml` is the package's conffile: if you changed it, opkg keeps your copy
+and the install script merges your four font lines into the new version's
+template, so font definitions added in later versions are never missing.
 
-## Ekranlar / Screenshots
+## Screenshots
 
-Görüntüler PC emülatöründen (örnek kanal listesi, EPG ve picon ile, bkz.
-[Emülatörde test](#emülatörde-test)). Emülatörde video oynamadığı için OSD,
-kutudaki donanım birleştirmesi gibi alfasıyla örnek bir yayın karesinin üstüne
-konuldu (kare: Unsplash, Vienna Reyes).
-*Captured in the PC emulator; the OSD is composited over a sample frame by its
-alpha, the way the box hardware does it.*
+Captured in the PC emulator with a sample channel list, EPG and picons (see
+[Testing in the emulator](#testing-in-the-emulator)). The emulator plays no
+video, so the OSD is laid over a sample broadcast frame by its alpha, the way
+the box hardware composites it (frame: Unsplash, Vienna Reyes).
 
-### InfoBar
+### Infobar
 
-Yayından koyuya solan alt bant, ince kenarlı logo karosu, numara çipi + kanal,
-program, kalan süre ve boşken gizlenen rozetler. Süre çizgisi başlangıç ve bitiş
-saatinin arasında 4 px'lik ince bir hat: dolgu sönük arduvazdan parlak beyaza
-akar, ucu hep en parlak yer. Sağ
-altta uydu kanalında SNR/AGC yüzdeleri, IPTV'de akış hızı — ikisi de aynı alanı
-paylaşır, hangi kaynak aktifse o görünür.
+A bottom band that fades from the picture into dark, a thin-edged logo tile,
+number chip + channel, programme, remaining time and badges that hide while
+empty. The progress line is a 4 px hairline between the start and end times:
+the fill flows from muted slate to bright white, so its tip is always the
+brightest point. Bottom right shows SNR/AGC percentages on a satellite channel
+and the stream rate on IPTV — both share the same spot, whichever source is
+active is shown.
 
-![InfoBar](docs/screenshots/infobar.jpg)
+![Infobar](docs/screenshots/infobar.jpg)
 
-İkinci bilgi çubuğu (InfoBar açıkken OK): programın tam açıklaması ve türü.
-*Second infobar: full description and genre.*
+Second infobar (OK while the infobar is open): the full description and genre.
 
-![İkinci bilgi çubuğu](docs/screenshots/second-infobar.jpg)
+![Second infobar](docs/screenshots/second-infobar.jpg)
 
-### Kanal listesi · Channel list
+### Channel list
 
-TiviMate'teki gibi yayın durmadan tam ekran arkada akar (PiG kutusu yok):
-solda yarı saydam panelde iki satırlı liste, picon ve ilerleme; seçili kanal
-gri odakla (beyaz hap beyaz logoları yutardı). Sağ altta seçili kanalın
-şimdi/sonraki kartı, sağ üstte saat.
+As in TiviMate, the picture keeps playing full screen behind it (no PiG box):
+a two-line list with picons and progress in a translucent panel on the left;
+the selected channel gets a grey focus (a white pill would swallow white
+logos). Bottom right is the now/next card of the selected channel, top right
+the clock.
 
-![Kanal listesi](docs/screenshots/channelselection.jpg)
+![Channel list](docs/screenshots/channelselection.jpg)
 
-### Program rehberi · TV guide
+### TV guide
 
-Zaman çizelgesi: yarı saydam zemin, TiviMate gibi gri hücreler; şu an yayında
-olanlar bir ton açık, seçili hücre açık gri, kırmızı "şimdi" çizgisi, izlenen
-kanalın adı mavi. Renkler ve font motorun EPG listesine skin attribute'larıyla
-verilir (önceden motorun varsayılan yeşil/sarı bloklarıydı).
+Timeline: translucent background and TiviMate-like grey cells; what is on now
+is one shade lighter, the selected cell light grey, a red "now" line, and the
+name of the channel you are watching in blue. Colours and font are passed to
+the engine's EPG list through skin attributes (it used to show the engine's
+default green/yellow blocks).
 
 ![EPG](docs/screenshots/epg-grid.jpg)
 
-Çoklu EPG: Şimdi / Sonraki / Daha sonra sekmeleri ve seçili programın kartı.
+Multi EPG: Now / Next / Later tabs and a card for the selected programme.
 
-![Çoklu EPG](docs/screenshots/epg-multi.jpg)
+![Multi EPG](docs/screenshots/epg-multi.jpg)
 
-Tek kanal EPG ve program detayı (benzer yayınlarla).
-*Single-channel EPG and event details with similar broadcasts.*
-
-<table>
-<tr>
-<td width="50%"><img src="docs/screenshots/epg-single.jpg" alt="Tek kanal EPG"></td>
-<td width="50%"><img src="docs/screenshots/event-view.jpg" alt="Program detayı"></td>
-</tr>
-</table>
-
-### Kanal menüsü · Channel menu
-
-Kanal listesinde MENU: sağdan açılan çekmece.
-
-![Kanal menüsü](docs/screenshots/channel-menu.jpg)
-
-### Sanal klavye · Virtual keyboard
-
-Alttan açılan sayfa; tuşlar PNG değil, motorun çizdiği kutular ve ikon fontu.
-
-![Klavye](docs/screenshots/keyboard.jpg)
-
-### Menü · Menu
-
-Yayın üstünde sağa doğru solan yarı saydam sol panel, beyaz seçim hapı.
-
-![Menü](docs/screenshots/menu.jpg)
-
-### Ayarlar · Settings
-
-![Ayarlar](docs/screenshots/setup.jpg)
-
-### Zamanlayıcılar · Timers
-
-Kayıt listesi beyaz seçim hapıyla; sağda seçili programın kartı.
-
-![Zamanlayıcılar](docs/screenshots/timers.jpg)
-
-### Eklentiler · Plugins
-
-Izgara düzeninde eklenti tarayıcı, altta renk tuşu çipleri.
-
-![Eklentiler](docs/screenshots/plugins.jpg)
-
-### Ses · Volume
-
-Altta ince kenarlı hap: hoparlör glifi (`enigma2icons`), ince süre çizgisiyle
-aynı dolgu, sayı. Sessizde kırmızı glif ve "SESSIZ".
-
-![Ses](docs/screenshots/volume.jpg)
-
-### Numara ile kanal · Number zap
-
-Numara kendi karosunda, kanal adı yanında. Kullanım ayarlarında numara zap
-logosu açıksa picon sağda çerçevesiz görünür (motor o zaman `NumberZapPicon`
-adını arar, aynı tasarım o adla da tanımlı).
-
-![Numara zap](docs/screenshots/numberzap.jpg)
-
-### Oynatıcı · Player
-
-Geçen / kalan süre ince çizginin iki ucunda; duraklatınca sol üstte durum hapı
-(`PVRState`).
-
-![Oynatıcı](docs/screenshots/player.jpg)
-
-### Renk tuşları · Colour keys
-
-Doygun renkli haplar yerine koyu cam çip + renkli nokta + beyaz yazı. Nokta,
-tuşla aynı kaynağa bağlı ayrı bir etiket; tuş boşken ikisi birlikte gizlenir.
-(Görüntülerdeki alt satırlar.)
-
-### Yazı tipleri · Typefaces
-
-Aynı InfoBar dört yazı tipiyle. Varsayılan Inter; diğerleri **TiviATV Yazı
-Tipi** eklentisinden seçilir (bkz. [Font](#font)).
-*The same infobar in the four bundled typefaces; Inter is the default.*
-
-![Yazı tipleri](docs/screenshots/fonts.jpg)
-
-### Diğer ekranlar · More screens
+Single-channel EPG and event details with similar broadcasts.
 
 <table>
 <tr>
-<td width="50%"><img src="docs/screenshots/messagebox.jpg" alt="Onay kutusu"><br>Onay kutusu · <i>Message box</i></td>
-<td width="50%"><img src="docs/screenshots/inputbox.jpg" alt="Giriş kutusu"><br>Giriş kutusu · <i>Input box</i></td>
-</tr>
-<tr>
-<td><img src="docs/screenshots/pin.jpg" alt="PIN"><br>Ebeveyn kilidi PIN · <i>Parental PIN</i></td>
-<td><img src="docs/screenshots/mute.jpg" alt="Sessiz"><br>Sessiz · <i>Mute</i></td>
-</tr>
-<tr>
-<td><img src="docs/screenshots/console.jpg" alt="Konsol"><br>Konsol (paket kurulumu) · <i>Console</i></td>
-<td><img src="docs/screenshots/information.jpg" alt="Bilgi"><br>İmaj bilgisi · <i>Information</i></td>
-</tr>
-<tr>
-<td><img src="docs/screenshots/skin-settings.jpg" alt="Arayüz ayarları"><br>Arayüz ayarları (skin seçimi) · <i>Skin settings</i></td>
-<td><img src="docs/screenshots/font-picker.jpg" alt="Yazı tipi seçici"><br>Yazı tipi seçici · <i>Font picker</i></td>
+<td width="50%"><img src="docs/screenshots/epg-single.jpg" alt="Single-channel EPG"></td>
+<td width="50%"><img src="docs/screenshots/event-view.jpg" alt="Event details"></td>
 </tr>
 </table>
 
-## Tanımlı ekranlar
+### Channel menu
+
+MENU in the channel list: a drawer that slides in from the right.
+
+![Channel menu](docs/screenshots/channel-menu.jpg)
+
+### Virtual keyboard
+
+A sheet that opens from the bottom; the keys are not PNGs but boxes drawn by
+the engine plus an icon font.
+
+![Keyboard](docs/screenshots/keyboard.jpg)
+
+### Menu
+
+A translucent left panel that fades to the right over the picture, with a
+white selection pill.
+
+![Menu](docs/screenshots/menu.jpg)
+
+### Settings
+
+![Settings](docs/screenshots/setup.jpg)
+
+### Timers
+
+The recording list with a white selection pill; the card of the selected
+programme on the right.
+
+![Timers](docs/screenshots/timers.jpg)
+
+### Plugins
+
+The plugin browser in a grid, with colour key chips at the bottom.
+
+![Plugins](docs/screenshots/plugins.jpg)
+
+### Volume
+
+A thin-edged pill at the bottom: speaker glyph (`enigma2icons`), the same fill
+as the progress lines, and the level. When muted, a red glyph and "SESSIZ".
+
+![Volume](docs/screenshots/volume.jpg)
+
+### Number zap
+
+The number sits in its own tile, the channel name next to it. If the number
+zap picon is enabled in the usage settings, the picon shows on the right
+without a frame (the engine then looks for `NumberZapPicon`; the same design is
+defined under that name too).
+
+![Number zap](docs/screenshots/numberzap.jpg)
+
+### Player
+
+Elapsed and remaining time at both ends of the thin line; when paused, a status
+pill top left (`PVRState`).
+
+![Player](docs/screenshots/player.jpg)
+
+### Colour keys
+
+Instead of saturated coloured pills: a dark glass chip + coloured dot + white
+text. The dot is a separate label bound to the same source as the key, so both
+hide together when the key is empty. (The bottom rows in the screenshots.)
+
+### Typefaces
+
+The same infobar in the four bundled typefaces. Inter is the default; the
+others are picked in the **TiviATV Yazi Tipi** plugin (see [Font](#font)).
+
+![Typefaces](docs/screenshots/fonts.jpg)
+
+### More screens
+
+<table>
+<tr>
+<td width="50%"><img src="docs/screenshots/messagebox.jpg" alt="Message box"><br>Message box</td>
+<td width="50%"><img src="docs/screenshots/inputbox.jpg" alt="Input box"><br>Input box</td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/pin.jpg" alt="Parental PIN"><br>Parental PIN</td>
+<td><img src="docs/screenshots/mute.jpg" alt="Mute"><br>Mute</td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/console.jpg" alt="Console"><br>Console (package install)</td>
+<td><img src="docs/screenshots/information.jpg" alt="Information"><br>Image information</td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/skin-settings.jpg" alt="Skin settings"><br>Skin settings</td>
+<td><img src="docs/screenshots/font-picker.jpg" alt="Font picker"><br>Font picker</td>
+</tr>
+</table>
+
+## Skinned screens
 
 `InfoBar` · `SecondInfoBar` · `ChannelSelection` · `SimpleChannelSelection` ·
 `ChannelSelectionRadio` · `EPGSelection` · `GraphicalEPG` · `GraphicalEPGPIG` ·
@@ -291,232 +239,212 @@ Tipi** eklentisinden seçilir (bkz. [Font](#font)).
 `VirtualKeyBoard` · `Console` · `TextBox` · `Information` · `TimerEditList` ·
 `MoviePlayer` · `PVRState` · `SimpleSummary`
 
-Ayrıca enigma2'nin standart renk adları (`window-bg`, `window-fg`, `key_red`,
-`grey` …) skin paletine eşlendi. Bunlar tanımsızken, skinde karşılığı olmayan
-her ekran — üçüncü taraf eklentiler dahil — `parseColor` hatasına düşüp
-okunaksız kalıyordu.
+enigma2's standard colour names (`window-bg`, `window-fg`, `key_red`, `grey` …)
+are also mapped to the skin palette. While they were undefined, every screen
+without a counterpart in the skin — third-party plugins included — ran into a
+`parseColor` error and ended up unreadable.
 
-> EPG ekranlarının adı openATV 8 ile değişti: `GraphMultiEPG` yerine
-> `GraphicalEPG` / `GraphicalEPGPIG` / `EPGSelectionMulti` aranıyor. Eski adlar
-> 7.3–7.5 dalları için duruyor.
+> The EPG screen names changed with openATV 8: `GraphicalEPG` /
+> `GraphicalEPGPIG` / `EPGSelectionMulti` are looked up instead of
+> `GraphMultiEPG`. The old names stay for the 7.3–7.5 branches.
 
-Burada tanımlı olmayan ekranlar openATV'nin kendi `skin_default.xml`'inden gelir,
-yani hiçbir ekran boş kalmaz.
+Screens not defined here come from openATV's own `skin_default.xml`, so no
+screen is ever left blank.
 
-> `MessageBox` için `icon` widget'ı zorunlu: openATV'nin `skin.py`'si
-> (`MANDATORY_WIDGETS`) eksik widget'lı ekranı reddedip varsayılan pencereyi
-> açıyor. Yeni ekran eklerken bu listeye bak.
+> `MessageBox` requires an `icon` widget: openATV's `skin.py`
+> (`MANDATORY_WIDGETS`) rejects a screen with missing widgets and opens the
+> default window instead. Check that list when adding a new screen.
 
-### PNG'siz motor kontrolleri
+### PNG-free engine controls
 
-openATV 2026-09 itibarıyla bazı kontrolleri PNG yerine kendisi çizebiliyor;
-skin bunları `<parameters>` bloğundan açar:
+Since 2026-09, openATV can draw some controls itself instead of using PNGs; the
+skin turns them on in its `<parameters>` block:
 
-| Parametre / attribute | Etkisi |
+| Parameter / attribute | Effect |
 |---|---|
-| `EPGNativeControls` | Grafik EPG'deki "şimdi" çizgisi ve zaman çizgileri, çoklu EPG sekmeleri renkli etiket olur |
-| `VirtualKeyboardNative` | Sanal klavye tuşları yuvarlak köşeli kutu + `enigma2icons` glifi |
-| `ChoiceListNative` | ChoiceBox / kanal menüsü satırlarındaki numara ve madde ikonları |
-| `iconFont` / `iconGlyphs` | MessageBox ve oynatıcı durum ikonları font glifinden |
+| `EPGNativeControls` | The "now" line and time lines in the graphical EPG and the multi EPG tabs become coloured labels |
+| `VirtualKeyboardNative` | Virtual keyboard keys become rounded boxes + an `enigma2icons` glyph |
+| `ChoiceListNative` | Number and bullet icons in ChoiceBox / channel menu rows |
+| `iconFont` / `iconGlyphs` | MessageBox and player status icons from a font glyph |
 
-Daha eski imajlar bu parametreleri yok sayar: tuşlar ve ikonlar
-`skin_default` grafikleriyle çizilir, zaman çizgileri için iki tanım
-`objectTypes` ile seçilir (Label ise renkli çizgi, Pixmap ise eski PNG).
+Older images ignore these parameters: keys and icons are drawn with the
+`skin_default` graphics, and two definitions for the time lines are picked with
+`objectTypes` (a coloured line for a Label, the old PNG for a Pixmap).
 
-## Özelleştirme
+## Customisation
 
-### Renkler
+### Colours
 
-Tek yerden değişir — `TiviAtv-FHD/skin.xml` başındaki `<colors>` bloğu.
+Changed in one place — the `<colors>` block at the top of
+`TiviAtv-FHD/skin.xml`.
 
-> **Alfa terstir.** Format `#AARRGGBB` ama `AA` = *şeffaflık*:
-> `00` tamamen opak, `FF` tamamen görünmez. CSS'ten alışkın olanın en sık
-> düştüğü tuzak.
+> **Alpha is inverted.** The format is `#AARRGGBB`, but `AA` = *transparency*:
+> `00` is fully opaque, `FF` fully invisible. The trap people coming from CSS
+> fall into most often.
 
-Gradient, `<colors>` bloğunda **tanımlanamaz** — `parseColor` orada yalnız
-`#aarrggbb` kabul eder, virgüllü değer sessizce beyaza düşer. Gradient doğrudan
-elemanın attribute'una yazılır; `backgroundColor` / `foregroundColor` değerinde
-virgül görürse `parseGradient`'e gider:
+Gradients **cannot** be defined in the `<colors>` block — `parseColor` only
+accepts `#aarrggbb` there, and a comma-separated value silently falls back to
+white. A gradient is written straight into the element's attribute; when
+`backgroundColor` / `foregroundColor` contains a comma, it goes to
+`parseGradient`:
 
 ```xml
 <eLabel backgroundColor="#001c1c24,#00141419,vertical" />
 ```
 
-Sözdizimi: `başlangıç[,orta],bitiş,vertical|horizontal[,alphaBlend]`
+Syntax: `start[,middle],end,vertical|horizontal[,alphaBlend]`
 
-### Saydamlık
+### Translucency
 
-Paneller yayının üstünde **düz yarı saydam dolgu**: enigma2 dolgunun alfasını
-piksele olduğu gibi yazar, OSD'yi görüntü katmanıyla birleştirmeyi kutunun
-donanımı yapar — ek CPU yükü yok. Gradyanın sonundaki `alphaBlend` (`,1`)
-bayrağı ise her pikseli CPU'da alttakiyle karıştırır; grafik hızlandırması
-olmayan kutularda (ör. Octagon SX88V2) geniş alanda kullanılmaz. Solmalar
-bayraksız gradyandır.
+The panels over the picture are **flat translucent fills**: enigma2 writes the
+fill's alpha into the pixel as is, and the box hardware composites the OSD
+with the video layer — no extra CPU load. The `alphaBlend` flag at the end of a
+gradient (`,1`), on the other hand, blends every pixel with what's below it on
+the CPU; on boxes without graphics acceleration (e.g. Octagon SX88V2) it is not
+used over large areas. Fades are gradients without the flag.
 
-Saydamlık renkleri `<colors>`'ta: `glass` (panel, %80 opak), `glassSoft`
-(saat kapsülü), `card` (diyalog / kart), `chip` (rozet), `scrim` (diyalog
-arkası karartma). Seçim: `selBg` / `selFg` (beyaz hap), `focus` / `focusHi`
-(gri odak). Çizgiler: `track` (ilerleme ve kaydırma çubuğu zemini), `edge`
-(kart ve çiplerin 2 px kenarı).
+The translucent colours live in `<colors>`: `glass` (panel, 80 % opaque),
+`glassSoft` (clock capsule), `card` (dialog / card), `chip` (badge), `scrim`
+(dimming behind dialogs). Selection: `selBg` / `selFg` (white pill), `focus` /
+`focusHi` (grey focus). Lines: `track` (background of progress and scroll
+bars), `edge` (the 2 px edge of cards and chips).
 
-> Kutu kenarı `eLabel`'da `widgetBorderWidth` / `widgetBorderColor` ile
-> çizilir. `borderWidth` / `borderColor` orada yazının dış çizgisidir
-> (`elabel.h`); `lint_skin.py` bunu uyarır.
+> On an `eLabel`, a box edge is drawn with `widgetBorderWidth` /
+> `widgetBorderColor`. `borderWidth` / `borderColor` there is the outline of the
+> text (`elabel.h`); `lint_skin.py` warns about it.
 
-> Pencereler üst üste binerken de karıştırma yok: üstteki pencerenin pikseli
-> alttakinin yerine geçer. Yarı saydam bir kartın arkasından alttaki ekran
-> değil, yayın görünür.
+> Overlapping windows don't blend either: the top window's pixel replaces the
+> one below. Behind a translucent card you see the picture, not the screen
+> underneath.
 
-### Yuvarlak köşeler
+### Rounded corners
 
 ```xml
-cornerRadius="24"                   <!-- dört köşe -->
-cornerRadius="3;left"               <!-- sadece sol -->
-cornerRadius="30;topLeft,topRight"  <!-- seçili köşeler -->
+cornerRadius="24"                   <!-- all four corners -->
+cornerRadius="3;left"               <!-- left only -->
+cornerRadius="30;topLeft,topRight"  <!-- selected corners -->
 ```
 
-Geçerli köşe adları: `topLeft` `topRight` `top` `bottomLeft` `bottomRight`
+Valid corner names: `topLeft` `topRight` `top` `bottomLeft` `bottomRight`
 `bottom` `left` `right`
 
 ### Font
 
-Varsayılan yazı tipi **Inter**: ekran arayüzleri için çizilmiş, iri x-yüksekliği
-sayesinde uzaktan okunan, Türkçe karakterleri eksiksiz bir grotesk. Klasörde
-dört ağırlık var (Regular / Medium / SemiBold / Bold → `TM` / `TMM` / `TMB` /
-`TMX`); değişken fonttan `opsz=22` kesimiyle statik üretildi — metin kesiminin
-(14) rahat aralığıyla başlık kesiminin (32) sıkılığı arasında. Seçicide ikinci
-modern seçenek **Geist**, ayrıca Barlow ve eski Sony Sketch durur.
+The default typeface is **Inter**: a grotesque drawn for screen interfaces,
+readable from a distance thanks to its large x-height, with complete Turkish
+characters. The folder has four weights (Regular / Medium / SemiBold / Bold →
+`TM` / `TMM` / `TMB` / `TMX`), made static from the variable font at
+`opsz=22` — between the comfortable spacing of the text cut (14) and the
+tightness of the display cut (32). The second modern option in the picker is
+**Geist**, plus Barlow and the old Sony Sketch.
 
-Skin ölçüleri dar bir font için kurulduğundan geniş aileler `fonts.xml`'de
-küçültülür: Inter `scale="92"`, Geist `scale="94"` (motor punto × scale / 100
-uygular). Eklenti bir aile seçerken bu ölçeği kendisi yazar.
+The skin's measurements were laid out for a narrow font, so wider families are
+scaled down in `fonts.xml`: Inter `scale="92"`, Geist `scale="94"` (the engine
+applies size × scale / 100). The plugin writes this scale itself when it picks
+a family.
 
-Aktif yazı tipi `skin.xml`'de değil, ayrı bir `fonts.xml` dosyasında durur;
-`skin.xml` onu `<include filename="fonts.xml" />` ile yükler. Skinde geçen font
-adları (`TM` / `TMM` / `TMB` / `TMX`) hiç değişmez, sadece hangi `.ttf`
-dosyasına baktıkları değişir.
+The active typeface is not in `skin.xml` but in a separate `fonts.xml`, which
+`skin.xml` loads with `<include filename="fonts.xml" />`. The font names used in
+the skin (`TM` / `TMM` / `TMB` / `TMX`) never change, only the `.ttf` files they
+point to.
 
-Kutu üstünden değiştirmek için paketle gelen eklentiyi aç: **Menü → Kurulum →
-Kullanım & Kullanıcı Arayüzü → TiviATV Yazı Tipi** altında, skin klasöründeki ve `/usr/share/fonts` altındaki yazı tipleri
-listelenir; seçilen aile `fonts.xml`'e yazılır ve arayüz yeniden başlatılır.
-Aynı ailenin birden çok ağırlığı varsa (örneğin Inter'in dördü) dört slot
-otomatik eşleşir, tek ağırlıklı bir font seçilirse dördü de ona bakar.
-`enigma2icons` gibi glif fontları listeye girmez.
+To change it on the box, open the plugin that comes with the package: **Menu →
+Setup → Usage & GUI → TiviATV Yazi Tipi** lists the fonts in the skin folder
+and under `/usr/share/fonts`; the chosen family is written to `fonts.xml` and
+the GUI restarts. If a family has several weights (like Inter's four), the four
+slots are matched automatically; a single-weight font is used for all four.
+Glyph fonts such as `enigma2icons` are not listed.
 
-![Yazı tipi seçici](docs/screenshots/font-picker.jpg)
+![Font picker](docs/screenshots/font-picker.jpg)
 
-Seçim listesi enigma2'nin `ChoiceBox` ekranıdır — görünümü bu skinin
-`<screen name="ChoiceBox">` tanımından gelir, eklentinin içinde gömülü skin
-yoktur. `fonts.xml` elle de düzenlenebilir.
+The list is enigma2's `ChoiceBox` screen — its look comes from this skin's
+`<screen name="ChoiceBox">`, the plugin has no embedded skin. `fonts.xml` can
+also be edited by hand.
 
-## Araçlar
+## Tools
 
-Depo kökünden çalıştırılır, hiçbirinde sabit yol yok.
+Run from the repository root; none of them has a hard-coded path.
 
-| Betik | Ne yapar |
+| Script | What it does |
 |---|---|
-| `tools/lint_skin.py` | Skini openATV'nin **gerçek** attribute listesine karşı denetler — `skin.py` ve `ServiceList.py`'yi upstream'den indirip parse eder. Tanımsız renk/font, ekran dışına taşan eleman, bilinmeyen attribute, `eLabel`'da kutu kenarı sanılan yazı kenarını yakalar. |
-| `tools/render_preview.py` | `preview.html`'i üretir — ekranları skin.xml'in gerçek koordinat, renk ve yarıçaplarından tarayıcıda çizer. |
-| `tools/make_thumb.py` | Skin seçicideki `prev.png`'yi emülatörün kanal listesi görüntüsünden üretir. |
-| `tools/build_ipk.py` | Kurulum paketini (`dist/*.ipk` + `.sha256`) üretir; önce lint, Python derlemesi ve `fonts.xml` denetimi. Aynı kaynaktan aynı paket çıkar. |
-| `tools/make_fonts.py` | Inter ve Geist'in statik ağırlıklarını Google Fonts'taki değişken fonttan üretir (enigma2 değişken fontta ağırlık seçemez). |
-| `tools/make_designer_copy.py` | OpenSkin Designer uyumlu kopya üretir (aşağıya bak). |
-| `tools/emulator/` | PC emülatöründe skin testi: örnek kanal/EPG, test yayını, tüm ekranların görüntüsü (aşağıya bak). |
+| `tools/lint_skin.py` | Checks the skin against openATV's **real** attribute list — downloads `skin.py` and `ServiceList.py` from upstream and parses them. Catches undefined colours/fonts, elements that overflow the screen, unknown attributes, and a text outline mistaken for a box edge on an `eLabel`. |
+| `tools/render_preview.py` | Builds `preview.html` — draws the screens in the browser from skin.xml's real coordinates, colours and radii. |
+| `tools/make_thumb.py` | Builds the skin selector's `prev.png` from the emulator's channel list screenshot. |
+| `tools/build_ipk.py` | Builds the installation package (`dist/*.ipk` + `.sha256`); runs lint, a Python compile and a `fonts.xml` check first. The same sources always give the same package. |
+| `tools/make_fonts.py` | Makes Inter's and Geist's static weights from the variable fonts on Google Fonts (enigma2 can't pick a weight in a variable font). |
+| `tools/make_designer_copy.py` | Builds an OpenSkin Designer compatible copy (see below). |
+| `tools/emulator/` | Skin testing in the PC emulator: sample channels/EPG, a test stream, screenshots of every screen (see below). |
 
-Gereksinim: Python 3.9+, `Pillow` (`make_thumb.py`) ve `fonttools`
+Requirements: Python 3.9+, `Pillow` (`make_thumb.py`) and `fonttools`
 (`make_fonts.py`).
 
 ```bash
 pip install pillow fonttools
 ```
 
-### Sürüm çıkarma
+### Releasing
 
-1. `VERSION`'ı artır, değişikliklerle birlikte commit et.
-2. `python3 tools/build_ipk.py` → `dist/` altında yeni paket (eskisi silinir).
-3. `dist/`'i commit edip `main`'e push et; `installer.sh` sürümü `VERSION`'dan
-   okuduğu için kutular bir sonraki çalıştırmada yeni paketi alır.
+1. Bump `VERSION` and commit it with the changes.
+2. `python3 tools/build_ipk.py` → a new package under `dist/` (the old one is
+   removed).
+3. Commit `dist/` and push to `main`; `installer.sh` reads the version from
+   `VERSION`, so boxes get the new package the next time they run it.
 
-## Emülatörde test
+## Testing in the emulator
 
-Kutuya gitmeden, PC'de derlenmiş OpenATV enigma2 (SDL2) üzerinde denenir.
-Emülatörün kendisi FY Sinema deposundaki `tools/e2pc/kur.sh` ile kurulur
-(`e2-arkaplan`, `e2-tus`, `e2-ekran` oradan gelir); bu klasör üstüne skin
-testine özel parçaları ekler:
+Tested without a box, on OpenATV enigma2 built for the PC (SDL2). The emulator
+itself is set up with `tools/e2pc/kur.sh` from the FY Sinema repository
+(`e2-arkaplan`, `e2-tus` and `e2-ekran` come from there); this folder adds the
+parts specific to skin testing:
 
-| Dosya | Ne yapar |
+| File | What it does |
 |---|---|
-| `TiviAtvTest/` | Yalnız emülatöre kurulan eklenti: `/tmp/e2py.cmd`'deki Python kodunu enigma2'nin içinde çalıştırır, açılışta örnek EPG'yi yükler. Kutuya **kurulmaz**. |
-| `e2-py` | Bu eklentiye kod gönderir: `e2-py 'session.open(...)'` |
-| `demo_kanallar.py` | 16 kanallık örnek liste (4 Türksat 42E + 12 IPTV), EPG, picon ve test yayını üretir (enigma2 kapalıyken) |
-| `e2-yayin` | IPTV kanallarının çaldığı test yayını (`127.0.0.1:8099`, ffmpeg) |
-| `ekranlar.py` | Ekranları menüde gezinmeden tek tek açıp görüntüsünü alır |
+| `TiviAtvTest/` | A plugin installed only in the emulator: runs the Python code in `/tmp/e2py.cmd` inside enigma2 and loads the sample EPG at startup. It is **not** installed on the box. |
+| `e2-py` | Sends code to that plugin: `e2-py 'session.open(...)'` |
+| `demo_kanallar.py` | Writes a 16-channel sample list (4 Türksat 42E + 12 IPTV), EPG, picons and a test stream (with enigma2 stopped) |
+| `e2-yayin` | The test stream the IPTV channels play (`127.0.0.1:8099`, ffmpeg) |
+| `ekranlar.py` | Opens the screens one by one without navigating the menus and takes their screenshots |
 
 ```bash
 ln -sfn $PWD/TiviAtv-FHD /usr/share/enigma2/TiviAtv-FHD
 ln -sf  $PWD/TiviAtv-FHD/converter/*.py /usr/lib/enigma2/python/Components/Converter/
 ln -sfn $PWD/tools/emulator/TiviAtvTest /usr/lib/enigma2/python/Plugins/Extensions/TiviAtvTest
 python3 tools/emulator/demo_kanallar.py && tools/emulator/e2-yayin && e2-arkaplan
-python3 tools/emulator/ekranlar.py                 # hepsi  -> .cache/ekranlar/
+python3 tools/emulator/ekranlar.py                 # all  -> .cache/ekranlar/
 python3 tools/emulator/ekranlar.py /tmp/ss menu epgselection
-python3 tools/emulator/ekranlar.py --kare kare.jpg /tmp/ss    # OSD'yi örnek yayın karesine bindir
+python3 tools/emulator/ekranlar.py --kare frame.jpg /tmp/ss   # lay the OSD over a sample frame
 ```
 
-## OpenSkin Designer notları
+## OpenSkin Designer notes
 
-[OpenSkin Designer](https://github.com/iMaxxx/OpenSkin-Designer) 2014'ten ve
-skini olduğu gibi açamaz. `tools/make_designer_copy.py` uyumlu bir kopya üretir:
+[OpenSkin Designer](https://github.com/iMaxxx/OpenSkin-Designer) dates from
+2014 and can't open the skin as is. `tools/make_designer_copy.py` builds a
+compatible copy:
 
-| Sorun | Neden | Kopyada |
+| Problem | Why | In the copy |
 |---|---|---|
-| `<alias>` | `cDataBase.initFonts` `<fonts>` altındaki **her** çocuk düğümden `filename` okuyor, düğüm adı filtresi yok → `NullReferenceException` | kaldırılır |
-| Blok içi XML yorumları | Yorum düğümünde hiç attribute yok, aynı çökme | kaldırılır |
-| Gradient renk değerleri | `#a,#b,vertical` renk olarak ayrıştırılamaz | iki durağın ortalaması alınır |
-| `<windowstyle>` içindeki `listbox`/`label`/`configList`/`scrolllabel` | Çalışan örnek skinlerde yok, `name` attribute'u yok | kaldırılır |
+| `<alias>` | `cDataBase.initFonts` reads `filename` from **every** child of `<fonts>`, with no node name filter → `NullReferenceException` | removed |
+| XML comments inside blocks | A comment node has no attributes, same crash | removed |
+| Gradient colour values | `#a,#b,vertical` can't be parsed as a colour | the average of the two stops |
+| `listbox`/`label`/`configList`/`scrolllabel` inside `<windowstyle>` | Not in the working sample skins, no `name` attribute | removed |
 
-`cornerRadius` string'i programın binary'sinde hiç geçmiyor — skin tasarımcıda
-**her zaman kare köşeli** görünür. Yuvarlaklık yalnız kutuda, enigma2 çizerken
-ortaya çıkar.
+The string `cornerRadius` doesn't appear anywhere in the program's binary — the
+skin **always shows square corners** in the designer. The rounding only appears
+on the box, when enigma2 draws it.
 
 ```bash
 python tools/make_designer_copy.py
 ```
 
-## Lisans
+## License
 
-Skin dosyaları MIT ile — bkz. [LICENSE](LICENSE).
-Inter, Geist ve Barlow fontları SIL Open Font License 1.1 altındadır, ayrıntılar
-`OFL-Inter.txt`, `OFL-Geist.txt`, `OFL-Barlow.txt`. Inter ve Geist'in statik
-ağırlıkları Google Fonts'taki değişken fonttan `fontTools` ile üretildi (OFL
-değiştirilmiş sürüme izin verir; iki ailede de ayrılmış font adı yok).
-`Sony_Sketch_Bold_205.ttf` üçüncü taraf bir fonttur; dağıtım hakları skin
-lisansının kapsamı dışındadır.
-Kanal logoları (picon) skine dahil değildir; ayrı paket olarak
-`/usr/share/enigma2/picon/` altına kurulur.
-
----
-
-## In English
-
-A TiviMate-style 1080p skin for openATV / enigma2: translucent panels over the
-running video, white selection pills, rounded corners and progress bars, all
-drawn by the enigma2 engine itself — **no PNG assets at all**. The default
-typeface is Inter (static instances at `opsz=22`, `scale="92"`); Geist, Barlow
-and Sony Sketch are one click away in the bundled font picker plugin. Translucency uses
-flat alpha fills only (composited by the hardware), never software alpha
-blending.
-
-Needs openATV **7.3+** — that is when `cornerRadius`, gradients and
-`itemCornerRadiusSelected` landed in the engine.
-
-Installation: see [English install steps](#english) above. Screenshots of
-every screen, with bilingual headings, are in
-[Ekranlar / Screenshots](#ekranlar--screenshots).
-
-Progress lines are 4 px hairlines between the start and end times, filled
-with a slate-to-white gradient; colour keys are dark glass chips with a
-coloured dot.
-
-The `tools/` scripts lint the skin against the engine's real attribute list,
-render `preview.html` from `skin.xml` and build the thumbnail from an emulator
-capture.
+Skin files are MIT — see [LICENSE](LICENSE).
+The Inter, Geist and Barlow typefaces are under the SIL Open Font License 1.1,
+see `OFL-Inter.txt`, `OFL-Geist.txt`, `OFL-Barlow.txt`. Inter's and Geist's
+static weights were made from the variable fonts on Google Fonts with
+`fontTools` (the OFL allows modified versions; neither family has a Reserved
+Font Name).
+`Sony_Sketch_Bold_205.ttf` is a third-party font; its distribution rights are
+outside the scope of the skin's license.
+Channel logos (picons) are not included in the skin; they are installed
+separately under `/usr/share/enigma2/picon/`.
