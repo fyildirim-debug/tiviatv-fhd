@@ -35,10 +35,15 @@ köşeler kare çıkar.
 
    Satır yüksekliği skinden değil bu sayıdan gelir (liste yüksekliği ÷ satır
    sayısı); satırlar sık ya da seyrek görünürse sayıyı değiştir.
-5. **Yazı tipi (isteğe bağlı).** Aynı menüde **TiviATV Yazı Tipi**: Inter
+5. **Yazı tipi (isteğe bağlı).** Aynı menüde **TiviATV Yazı Tipi** (İngilizce arayüzde *TiviATV Font*): Inter
    (varsayılan), Geist, Barlow ya da kutudaki başka bir font.
 
 **Güncellemek:** aynı komutu yeniden çalıştır. Yazı tipi seçimin korunur.
+
+**Dil:** skinin yazıları (NOW, NEXT, Mute …), ekran başlıkları ve yazı tipi
+seçici İngilizcedir; kutunun arayüz dili Türkçeyse enigma2'nin çevirisiyle
+ŞİMDİ, SONRA, Sessiz olarak görünür, yazı tipi seçici ve sinyal yüzdeleri de
+Türkçeleşir.
 
 **Kaldırmak:**
 
@@ -167,7 +172,7 @@ Izgara düzeninde eklenti tarayıcı, altta renk tuşu çipleri.
 ### Ses
 
 Altta ince kenarlı hap: hoparlör glifi (`enigma2icons`), ince süre çizgisiyle
-aynı dolgu, sayı. Sessizde kırmızı glif ve "SESSIZ".
+aynı dolgu, sayı. Sessizde kırmızı glif ve "Sessiz" (İngilizce arayüzde "Mute").
 
 ![Ses](docs/screenshots/volume.jpg)
 
@@ -421,6 +426,23 @@ ortaya çıkar.
 ```bash
 python tools/make_designer_copy.py
 ```
+
+## Sürüm notları
+
+**1.0.1**
+- Kutuda görünen her şey İngilizce: etiketler (NOW, NEXT, LATER, Mute), ekran
+  başlıkları, yazı tipi seçici (artık **TiviATV Font**), kurulum betiği ve
+  paket mesajları. Etiketler ve başlıklar enigma2'nin kendi çevirisiyle kutunun
+  arayüz diline uyar; yazı tipi seçici ve sinyal yüzdeleri (86% / %86) Türkçe
+  arayüzde Türkçeleşir.
+- Ekran görüntüleri İngilizce örnek verilerle yeniden çekildi.
+
+**1.0.0**
+- Kurulum paketi olarak ilk sürüm: tek komutla kurulum; skin, iki converter ve
+  yazı tipi seçiciyi içeren opkg paketi.
+- Varsayılan yazı tipi Inter; ayrıca Geist, Barlow ve Sony Sketch.
+- İnce süre çizgileri, renk tuşu çipleri, kenarlı kartlar; yarı saydam
+  panellerle TiviMate düzeni.
 
 ## Lisans
 

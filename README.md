@@ -36,10 +36,15 @@ so the corners come out square.
 
    Row height comes from this number (list height ÷ rows), not from the skin;
    change it if rows look too tight or too loose.
-5. **Typeface (optional).** **TiviATV Yazi Tipi** in the same menu: Inter
+5. **Typeface (optional).** **TiviATV Font** in the same menu: Inter
    (default), Geist, Barlow or any other font on the box.
 
 **Update:** run the same command again. Your font choice is kept.
+
+**Language:** the skin's labels (NOW, NEXT, Mute …), screen titles and the
+font picker are in English and follow the box's GUI language where enigma2 has
+a translation — on a Turkish GUI they show as ŞİMDİ, SONRA, Sessiz, and the
+font picker and signal percentages are Turkish too.
 
 **Remove:**
 
@@ -174,7 +179,7 @@ The plugin browser in a grid, with colour key chips at the bottom.
 ### Volume
 
 A thin-edged pill at the bottom: speaker glyph (`enigma2icons`), the same fill
-as the progress lines, and the level. When muted, a red glyph and "SESSIZ".
+as the progress lines, and the level. When muted, a red glyph and "Mute".
 
 ![Volume](docs/screenshots/volume.jpg)
 
@@ -203,7 +208,7 @@ hide together when the key is empty. (The bottom rows in the screenshots.)
 ### Typefaces
 
 The same infobar in the four bundled typefaces. Inter is the default; the
-others are picked in the **TiviATV Yazi Tipi** plugin (see [Font](#font)).
+others are picked in the **TiviATV Font** plugin (see [Font](#font)).
 
 ![Typefaces](docs/screenshots/fonts.jpg)
 
@@ -349,7 +354,7 @@ the skin (`TM` / `TMM` / `TMB` / `TMX`) never change, only the `.ttf` files they
 point to.
 
 To change it on the box, open the plugin that comes with the package: **Menu →
-Setup → Usage & GUI → TiviATV Yazi Tipi** lists the fonts in the skin folder
+Setup → Usage & GUI → TiviATV Font** lists the fonts in the skin folder
 and under `/usr/share/fonts`; the chosen family is written to `fonts.xml` and
 the GUI restarts. If a family has several weights (like Inter's four), the four
 slots are matched automatically; a single-weight font is used for all four.
@@ -435,6 +440,23 @@ on the box, when enigma2 draws it.
 ```bash
 python tools/make_designer_copy.py
 ```
+
+## Changelog
+
+**1.0.1**
+- Everything shown on the box is in English: labels (NOW, NEXT, LATER, Mute),
+  screen titles, the font picker (now **TiviATV Font**), the installer and the
+  package messages. Labels and titles follow the box's GUI language through
+  enigma2's own translations; the font picker and the signal percentages
+  (86% / %86) switch to Turkish on a Turkish GUI.
+- Screenshots retaken with English sample data.
+
+**1.0.0**
+- First release as an installable package: one-line installer, opkg package
+  with the skin, two converters and the font picker.
+- Inter as the default typeface, plus Geist, Barlow and Sony Sketch.
+- Thin progress lines, colour key chips, edged cards; TiviMate layout with
+  translucent panels.
 
 ## License
 

@@ -1,16 +1,16 @@
 <skin>
-	<!-- TiviATV FHD  -  aktif yazi tipi seti
-	     Bu dosyayi "TiviATV Yazi Tipi" eklentisi uretir; elle de duzenlenebilir.
-	     skin.xml bunu <include> ile yukler, font adlari hep ayni kalir. -->
+	<!-- TiviATV FHD  -  active typeface set
+	     Written by the "TiviATV Font" plugin; can also be edited by hand.
+	     skin.xml loads it with <include>; the font names never change. -->
 	<fonts>
 		<!-- Inter -->
 		<font filename="Inter-Regular.ttf" name="TM" scale="92" />
 		<font filename="Inter-Medium.ttf" name="TMM" scale="92" />
 		<font filename="Inter-SemiBold.ttf" name="TMB" scale="92" />
 		<font filename="Inter-Bold.ttf" name="TMX" scale="92" />
-		<!-- kutuda hazir gelen fontlar (VFD ve yedek icin) -->
+		<!-- font that comes with the box (VFD and fallback) -->
 		<font filename="nmsbd.ttf"  name="Regular" scale="100" />
-		<!-- enigma2'nin bekledigi takma adlar -->
+		<!-- aliases enigma2 expects -->
 		<alias name="Body"       font="TM"  size="30" height="40" />
 		<alias name="TextNormal" font="TM"  size="30" height="40" />
 		<alias name="ChoiceList" font="TM"  size="30" height="60" />

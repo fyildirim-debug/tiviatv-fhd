@@ -6,7 +6,7 @@
 		Gereksinim: openATV 7.3+  (cornerRadius / gradient / itemCornerRadius destegi;
 		            7.2 ve altinda bu ozellikler YOK - koseler kare cikar)
 		Fontlar   : fonts.xml'de; varsayilan Inter, ayrica Geist ve Barlow (hepsi SIL OFL)
-		            - bu klasorde. TiviATV Yazi Tipi eklentisi degistirir.
+		            - bu klasorde. TiviATV Font eklentisi degistirir.
 	-->
 
 	<output id="0">
@@ -244,7 +244,7 @@
 		</widget>
 
 		<!-- sonraki: baslangic saati + ad -->
-		<eLabel position="68,1028" size="136,34" text="SONRAKI" backgroundColor="chip" widgetBorderWidth="2" widgetBorderColor="edge"
+		<eLabel position="68,1028" size="136,34" text="NEXT" backgroundColor="chip" widgetBorderWidth="2" widgetBorderColor="edge"
 		        cornerRadius="17" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="2" />
 		<widget source="session.Event_Next" render="Label" position="222,1026" size="92,38"
 		        font="TMB;24" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="2">
@@ -307,7 +307,7 @@
 	<!-- ============================================================
 	     SECOND INFOBAR  -  program detayi
 	     ============================================================ -->
-	<screen name="SecondInfoBar" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="2. InfoBar">
+	<screen name="SecondInfoBar" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Second InfoBar">
 		<eLabel position="68,436" size="1784,340" backgroundColor="card" cornerRadius="28" zPosition="0" />
 
 		<widget source="session.Event_Now" render="Label" position="116,468" size="1700,50"
@@ -334,7 +334,7 @@
 	     goruntu arkada tam ekran akmaya devam eder (PiG yok).
 	     Panel duz dolgu + saga dogru solan gradyan; karistirma yok.
 	     ============================================================ -->
-	<screen name="ChannelSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Kanallar">
+	<screen name="ChannelSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Channel Selection">
 		<eLabel position="0,0"    size="1000,1080" backgroundColor="glass" zPosition="0" />
 		<eLabel position="1000,0" size="440,1080"  backgroundColor="#330a0f13,#ff0a0f13,horizontal" zPosition="0" />
 
@@ -400,7 +400,7 @@
 		<!-- secili kanalin programi -->
 		<eLabel position="1180,620" size="676,400" backgroundColor="card" cornerRadius="28" zPosition="1" />
 
-		<eLabel position="1220,652" size="112,34" text="SIMDI" backgroundColor="selBg" cornerRadius="17"
+		<eLabel position="1220,652" size="112,34" text="NOW" backgroundColor="selBg" cornerRadius="17"
 		        font="TMB;19" foregroundColor="selFg" halign="center" valign="center" zPosition="2" />
 		<!-- sinyal (DVB) / akis hizi (IPTV) -->
 		<widget source="session.FrontendStatus" render="Label" position="1518,655" size="150,28" text=" "
@@ -455,7 +455,7 @@
 			<convert type="EventTime">Progress</convert>
 		</widget>
 
-		<eLabel position="1220,816" size="136,34" text="SONRAKI" backgroundColor="chip" widgetBorderWidth="2" widgetBorderColor="edge" cornerRadius="17"
+		<eLabel position="1220,816" size="136,34" text="NEXT" backgroundColor="chip" widgetBorderWidth="2" widgetBorderColor="edge" cornerRadius="17"
 		        font="TMB;19" foregroundColor="textDim" halign="center" valign="center" zPosition="2" />
 		<widget source="ServiceEvent" render="Label" position="1370,814" size="460,38"
 		        font="TM;26" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="2">
@@ -467,7 +467,7 @@
 		</widget>
 	</screen>
 
-	<screen name="SimpleChannelSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Kanallar">
+	<screen name="SimpleChannelSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Channel Selection">
 		<eLabel position="0,0"    size="1000,1080" backgroundColor="glass" zPosition="0" />
 		<eLabel position="1000,0" size="440,1080"  backgroundColor="#330a0f13,#ff0a0f13,horizontal" zPosition="0" />
 		<widget source="Title" render="Label" position="64,36" size="880,60"
@@ -484,7 +484,7 @@
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 	</screen>
 
-	<screen name="ChannelSelectionRadio" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Radyo">
+	<screen name="ChannelSelectionRadio" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Radio">
 		<eLabel position="0,0"    size="1000,1080" backgroundColor="glass" zPosition="0" />
 		<eLabel position="1000,0" size="440,1080"  backgroundColor="#330a0f13,#ff0a0f13,horizontal" zPosition="0" />
 		<widget source="Title" render="Label" position="64,36" size="880,60"
@@ -532,7 +532,7 @@
 	<!-- ============================================================
 	     EPG  -  tek kanal listesi
 	     ============================================================ -->
-	<screen name="EPGSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="Program Rehberi">
+	<screen name="EPGSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="EPG">
 		<widget source="Title" render="Label" position="68,40" size="1100,58"
 		        font="TMB;42" foregroundColor="text" transparent="1" valign="center" noWrap="1" />
 		<widget source="global.CurrentTime" render="Label" position="1500,40" size="352,58"
@@ -581,7 +581,7 @@
 	<!-- ============================================================
 	     GRAPH MULTI EPG  -  TiviMate zaman cizelgesi
 	     ============================================================ -->
-	<screen name="GraphMultiEPG" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="Program Rehberi">
+	<screen name="GraphMultiEPG" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="EPG">
 		<widget source="key_red" render="Label" position="68,36" size="240,52" backgroundColor="chip" cornerRadius="26"
 		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
 			<convert type="ConditionalShowHide" />
@@ -685,7 +685,7 @@
 		</widget>
 	</screen>
 
-	<screen name="GraphicalEPG" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="Program Rehberi">
+	<screen name="GraphicalEPG" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="EPG">
 		<widget source="key_red" render="Label" position="68,36" size="240,52" backgroundColor="chip" cornerRadius="26"
 		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
 			<convert type="ConditionalShowHide" />
@@ -769,7 +769,7 @@
 		</widget>
 	</screen>
 
-	<screen name="GraphicalEPGPIG" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="Program Rehberi">
+	<screen name="GraphicalEPGPIG" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="EPG">
 		<widget source="key_red" render="Label" position="68,36" size="240,52" backgroundColor="chip" cornerRadius="26"
 		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
 			<convert type="ConditionalShowHide" />
@@ -856,7 +856,7 @@
 		        zPosition="2" backgroundColor="transparent" />
 	</screen>
 
-	<screen name="GraphMultiEPGList" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="Program Rehberi">
+	<screen name="GraphMultiEPGList" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="EPG">
 		<widget source="key_red" render="Label" position="68,36" size="240,52" backgroundColor="chip" cornerRadius="26"
 		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
 			<convert type="ConditionalShowHide" />
@@ -940,7 +940,7 @@
 	     Sekme zeminleri EPGNativeControls ile renkli Label olur; eski
 	     imajlarda Pixmap'tir ve gorunmez, yazilar yine kalir.
 	     ============================================================ -->
-	<screen name="EPGSelectionMulti" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="Program Rehberi">
+	<screen name="EPGSelectionMulti" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="EPG">
 		<widget source="key_red" render="Label" position="68,36" size="240,52" backgroundColor="chip" cornerRadius="26"
 		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="0">
 			<convert type="ConditionalShowHide" />
@@ -981,11 +981,11 @@
 		<widget name="next_button_sel" position="280,112" size="200,48" backgroundColor="focusHi"    cornerRadius="24" zPosition="1" />
 		<widget name="more_button"     position="492,112" size="240,48" backgroundColor="cell"       cornerRadius="24" zPosition="1" />
 		<widget name="more_button_sel" position="492,112" size="240,48" backgroundColor="focusHi"    cornerRadius="24" zPosition="1" />
-		<widget name="now_text"  position="68,112"  size="200,48" text="SIMDI"      font="TMB;22" foregroundColor="text"
+		<widget name="now_text"  position="68,112"  size="200,48" text="NOW"      font="TMB;22" foregroundColor="text"
 		        halign="center" valign="center" transparent="1" zPosition="2" />
-		<widget name="next_text" position="280,112" size="200,48" text="SONRAKI"    font="TMB;22" foregroundColor="text"
+		<widget name="next_text" position="280,112" size="200,48" text="NEXT"    font="TMB;22" foregroundColor="text"
 		        halign="center" valign="center" transparent="1" zPosition="2" />
-		<widget name="more_text" position="492,112" size="240,48" text="DAHA SONRA" font="TMB;22" foregroundColor="text"
+		<widget name="more_text" position="492,112" size="240,48" text="LATER" font="TMB;22" foregroundColor="text"
 		        halign="center" valign="center" transparent="1" zPosition="2" />
 		<widget name="date" position="1352,112" size="500,48" font="TM;28" foregroundColor="textDim"
 		        halign="right" valign="center" transparent="1" zPosition="1" />
@@ -1019,7 +1019,7 @@
 	<!-- ============================================================
 	     PROGRAM DETAYI
 	     ============================================================ -->
-	<screen name="EventView" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="Program Detayi">
+	<screen name="EventView" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="Event View">
 		<widget source="Title" render="Label" position="68,44" size="1784,58"
 		        font="TMB;42" foregroundColor="text" transparent="1" valign="center" noWrap="1" />
 
@@ -1094,7 +1094,7 @@
 		</widget>
 	</screen>
 
-	<screen name="Setup" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Ayarlar">
+	<screen name="Setup" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Setup">
 		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
 		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
 
@@ -1122,7 +1122,7 @@
 	     SKINSELECTION  -  arayuz secimi
 	     Setup duzeni + sagda secili skinin onizlemesi
 	     ============================================================ -->
-	<screen name="SkinSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Arayuz Secimi">
+	<screen name="SkinSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Skin Selection">
 		<eLabel position="0,0"    size="1920,1080" backgroundColor="scrim" zPosition="0" />
 		<eLabel position="240,90" size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
 
@@ -1148,7 +1148,7 @@
 		        transparent="1" alphatest="on" zPosition="1" />
 	</screen>
 
-	<screen name="MessageBox" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Mesaj">
+	<screen name="MessageBox" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Message">
 		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
 		<eLabel position="510,330" size="900,420"   backgroundColor="card" cornerRadius="24" zPosition="0" />
 
@@ -1165,7 +1165,7 @@
 		        scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 	</screen>
 
-	<screen name="ChoiceBox" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Secim">
+	<screen name="ChoiceBox" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Select">
 		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
 		<eLabel position="510,190" size="900,700"   backgroundColor="card" cornerRadius="24" zPosition="0" />
 
@@ -1193,7 +1193,7 @@
 	     panel, yuvarlak kose ve skin fontlari eklendi. resolution="1280,720"
 	     ile koordinatlar 1080p'ye motor tarafindan olceklenir.
 	     ============================================================ -->
-	<screen name="PluginBrowser" title="Eklentiler" position="center,center" size="1040,595"
+	<screen name="PluginBrowser" title="Plugins" position="center,center" size="1040,595"
 	        resolution="1280,720" backgroundColor="transparent" flags="wfNoBorder">
 		<eLabel position="0,0" size="e,e" backgroundColor="card" cornerRadius="24" zPosition="-1" />
 
@@ -1279,7 +1279,7 @@
 		</widget>
 	</screen>
 
-	<screen name="PackageAction" title="Paketler" position="center,center" size="940,645"
+	<screen name="PackageAction" title="Packages" position="center,center" size="940,645"
 	        resolution="1280,720" backgroundColor="transparent" flags="wfNoBorder">
 		<eLabel position="0,0" size="e,e" backgroundColor="card" cornerRadius="24" zPosition="-1" />
 
@@ -1336,7 +1336,7 @@
 		</widget>
 	</screen>
 
-	<screen name="AudioSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Ses">
+	<screen name="AudioSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Audio">
 		<eLabel position="0,0" size="1920,1080" backgroundColor="scrim" zPosition="0" />
 		<eLabel position="410,190" size="1100,700" backgroundColor="card" cornerRadius="24" zPosition="0" />
 
@@ -1383,7 +1383,7 @@
 
 	</screen>
 
-	<screen name="Volume" position="center,904" size="720,76" flags="wfNoBorder" backgroundColor="transparent" title="Ses" zPosition="1">
+	<screen name="Volume" position="center,904" size="720,76" flags="wfNoBorder" backgroundColor="transparent" title="Volume" zPosition="1">
 		<eLabel position="0,0" size="720,76" backgroundColor="card" widgetBorderWidth="2" widgetBorderColor="edge" cornerRadius="38" />
 		<!-- enigma2icons: volume_up -->
 		<eLabel position="26,0" size="60,76" text="&#xe901;" font="enigma2icons;38" foregroundColor="text"
@@ -1396,16 +1396,16 @@
 		        transparent="1" halign="right" valign="center" zPosition="1" />
 	</screen>
 
-	<screen name="Mute" position="center,904" size="236,76" flags="wfNoBorder" backgroundColor="transparent" title="Sessiz" zPosition="1">
+	<screen name="Mute" position="center,904" size="236,76" flags="wfNoBorder" backgroundColor="transparent" title="Mute" zPosition="1">
 		<eLabel position="0,0" size="236,76" backgroundColor="card" widgetBorderWidth="2" widgetBorderColor="edge" cornerRadius="38" />
 		<!-- enigma2icons: volume_off -->
 		<eLabel position="22,0" size="60,76" text="&#xe900;" font="enigma2icons;38" foregroundColor="live"
 		        transparent="1" halign="center" valign="center" zPosition="1" />
-		<eLabel position="88,0" size="128,76" text="SESSIZ" font="TMB;24" foregroundColor="text"
+		<eLabel position="88,0" size="128,76" text="Mute" font="TMB;24" foregroundColor="text"
 		        transparent="1" halign="left" valign="center" zPosition="1" />
 	</screen>
 
-	<screen name="NumberZap" position="center,center" size="860,160" flags="wfNoBorder" backgroundColor="transparent" title="Kanal No">
+	<screen name="NumberZap" position="center,center" size="860,160" flags="wfNoBorder" backgroundColor="transparent" title="Channel number">
 		<eLabel position="0,0" size="860,160" backgroundColor="card" widgetBorderWidth="2" widgetBorderColor="edge" cornerRadius="32" />
 		<!-- numara kendi karosunda; logo (Kullanim > numara zap logosu acikken) sagda, cercevesiz -->
 		<widget name="number" position="24,24" size="196,112" font="TMX;72" foregroundColor="text" backgroundColor="chip"
@@ -1419,7 +1419,7 @@
 
 	<!-- "numara zap logosu" acikken motor skinName'i ["NumberZapPicon", "NumberZapWithName"]
 	     yapar ve NumberZap'e geri donmez; ayni tasarim bu adla da var -->
-	<screen name="NumberZapPicon" position="center,center" size="860,160" flags="wfNoBorder" backgroundColor="transparent" title="Kanal No">
+	<screen name="NumberZapPicon" position="center,center" size="860,160" flags="wfNoBorder" backgroundColor="transparent" title="Channel number">
 		<eLabel position="0,0" size="860,160" backgroundColor="card" widgetBorderWidth="2" widgetBorderColor="edge" cornerRadius="32" />
 		<widget name="number" position="24,24" size="196,112" font="TMX;72" foregroundColor="text" backgroundColor="chip"
 		        widgetBorderWidth="2" widgetBorderColor="edge" cornerRadius="18" halign="center" valign="center" zPosition="1" />
@@ -1435,7 +1435,7 @@
 	     skin_default'taki 560 px'lik pencere 720p satir yuksekligiyle
 	     (itemHeight 30) geliyordu.
 	     ============================================================ -->
-	<screen name="ChannelContextMenu" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Kanal Menusu">
+	<screen name="ChannelContextMenu" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Channel Context Menu">
 		<eLabel position="0,0"    size="1920,1080" backgroundColor="scrim" zPosition="0" />
 		<eLabel position="1180,0" size="740,1080"  backgroundColor="card" zPosition="0" />
 		<eLabel position="1180,0" size="2,1080"    backgroundColor="line" zPosition="1" />
@@ -1467,7 +1467,7 @@
 	<!-- ============================================================
 	     METIN / PIN GIRISI
 	     ============================================================ -->
-	<screen name="InputBox" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Giris">
+	<screen name="InputBox" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Input">
 		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
 		<eLabel position="510,360" size="900,340"   backgroundColor="card" cornerRadius="24" zPosition="0" />
 
@@ -1513,7 +1513,7 @@
 	     Eski imajlar parametreyi yok sayar ve skin_default tus
 	     grafiklerini kullanir.
 	     ============================================================ -->
-	<screen name="VirtualKeyBoard" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Klavye" zPosition="99">
+	<screen name="VirtualKeyBoard" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Keyboard" zPosition="99">
 		<eLabel position="0,0"   size="1920,1080" backgroundColor="scrim" zPosition="0" />
 		<eLabel position="0,500" size="1920,580"  backgroundColor="card" cornerRadius="28;topLeft,topRight" zPosition="0" />
 
@@ -1535,7 +1535,7 @@
 	     Metin alani ScrollLabel: kapsayicisina zPosition uygulanmadigi
 	     icin zeminler -1 ve -2'de.
 	     ============================================================ -->
-	<screen name="Console" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Konsol">
+	<screen name="Console" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Console">
 		<eLabel position="0,0"    size="1920,1080" backgroundColor="scrim" zPosition="-2" />
 		<eLabel position="240,90" size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="-1" />
 
@@ -1569,7 +1569,7 @@
 		</widget>
 	</screen>
 
-	<screen name="TextBox" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Metin">
+	<screen name="TextBox" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Text">
 		<eLabel position="0,0"    size="1920,1080" backgroundColor="scrim" zPosition="-2" />
 		<eLabel position="240,90" size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="-1" />
 
@@ -1590,7 +1590,7 @@
 	</screen>
 
 	<!-- Bilgi > Alici / Ag / Bellek / Tuner ... hepsi "Information" adini paylasir -->
-	<screen name="Information" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Bilgi">
+	<screen name="Information" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Information">
 		<eLabel position="0,0"    size="1920,1080" backgroundColor="scrim" zPosition="-2" />
 		<eLabel position="240,90" size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="-1" />
 
@@ -1643,7 +1643,7 @@
 	     ZAMANLAYICILAR  -  RecordTimerOverview / TimerEditList
 	     itemHeight = topHeight + bottomHeight + ayirici (2 px)
 	     ============================================================ -->
-	<screen name="TimerEditList" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="Zamanlayicilar">
+	<screen name="TimerEditList" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="glass" title="Timers">
 		<widget source="Title" render="Label" position="68,40" size="1100,58"
 		        font="TMB;42" foregroundColor="text" transparent="1" valign="center" noWrap="1" />
 		<widget source="global.CurrentTime" render="Label" position="1500,40" size="352,58"
@@ -1718,7 +1718,7 @@
 	     InfoBar ile ayni alt bant; konum, kalan sure ve ilerleme
 	     ServicePosition'dan. Durum ikonu enigma2icons fontundan.
 	     ============================================================ -->
-	<screen name="MoviePlayer" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Oynatici">
+	<screen name="MoviePlayer" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Player">
 		<eLabel position="0,560" size="1920,520" backgroundColor="#ff0a0f13,#8c0a0f13,#140a0f13,vertical" zPosition="0" />
 
 		<!-- oynat, duraklat, durdur, ileri, geri, yavas, bos; ilk durum degisikligine
@@ -1765,7 +1765,7 @@
 
 	<!-- Oynatici durumu (oynat / duraklat / ileri sarma hizi): varsayilan ayarda
 	     bilgi cubugundan ayri, bu kucuk pencerede gosterilir -->
-	<screen name="PVRState" position="68,56" size="200,80" flags="wfNoBorder" backgroundColor="transparent" zPosition="2" title="Durum">
+	<screen name="PVRState" position="68,56" size="200,80" flags="wfNoBorder" backgroundColor="transparent" zPosition="2" title="Status">
 		<eLabel position="0,0" size="200,80" backgroundColor="card" widgetBorderWidth="2" widgetBorderColor="edge" cornerRadius="40" />
 		<widget name="statusicon" position="18,8" size="64,64" iconFont="enigma2icons;44" text="&#xea0e;"
 		        iconGlyphs="0xea0e,0xea0f,0xea12,0xea14,0xea17,0xe974" foregroundColor="text"

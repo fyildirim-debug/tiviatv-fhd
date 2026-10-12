@@ -6,11 +6,11 @@
 # Skinde kullanilan tipler:
 #   SNR      -> Progress icin deger (0-100)
 #   AGC      -> Progress icin deger (0-100)
-#   SNRText  -> "%86"        (IPTV'de bos)
-#   AGCText  -> "%76"        (IPTV'de bos)
+#   SNRText  -> "86%"        (IPTV'de bos; Turkce arayuzde "%86")
+#   AGCText  -> "76%"        (IPTV'de bos)
 #   Speed    -> "3.76 Mb/s"  (DVB'de bos)
 #   IsDVB    -> ConditionalShowHide icin bool
-#   (argumansiz) -> "SNR %86  ·  AGC %76" ya da "3.76 Mb/s"
+#   (argumansiz) -> "SNR 86%  ·  AGC 76%" ya da "3.76 Mb/s"
 #
 # Kurulum: /usr/lib/enigma2/python/Components/Converter/TiviAtvSignal.py
 
@@ -21,6 +21,25 @@ from Components.Converter.Poll import Poll
 from Components.Element import cached
 
 NET_PREFIXES = ("eth", "wlan", "ra", "wifi")
+
+
+def turkish():
+	"""Arayuz dili Turkce mi: openATV 7+ International, eskisinde Language."""
+	try:
+		from Components.International import international
+		return international.getLocale().lower().startswith("tr")
+	except Exception:
+		pass
+	try:
+		from Components.Language import language
+		return language.getLanguage().lower().startswith("tr")
+	except Exception:
+		return False
+
+
+def pct(value):
+	"""Yuzde: Ingilizce "86%", Turkce arayuzde "%86"."""
+	return ("%%%d" if turkish() else "%d%%") % value
 
 SUMMARY, SNR, AGC, SNR_TEXT, AGC_TEXT, SPEED, IS_DVB = range(7)
 
@@ -84,10 +103,10 @@ class TiviAtvSignal(Poll, Converter, object):
 	def getText(self):
 		snr = self.percent("snr")
 		if self.mode == SNR_TEXT:
-			return "" if snr is None else "%%%d" % snr
+			return "" if snr is None else pct(snr)
 		if self.mode == AGC_TEXT:
 			agc = self.percent("agc")
-			return "" if snr is None or agc is None else "%%%d" % agc
+			return "" if snr is None or agc is None else pct(agc)
 		if self.mode == SPEED:
 			if snr is not None:
 				return ""
@@ -95,7 +114,7 @@ class TiviAtvSignal(Poll, Converter, object):
 			return "" if speed is None else "%.2f Mb/s" % speed
 		if self.mode == SUMMARY:
 			if snr is not None:
-				return "SNR %%%d  ·  AGC %%%d" % (snr, self.percent("agc") or 0)
+				return "SNR %s  ·  AGC %s" % (pct(snr), pct(self.percent("agc") or 0))
 			speed = self.netSpeed()
 			return "" if speed is None else "%.2f Mb/s" % speed
 		return ""

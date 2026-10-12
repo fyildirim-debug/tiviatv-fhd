@@ -42,9 +42,9 @@ SCREENS = {
 	"setup": ("from Screens.Setup import Setup\nsession.open(Setup, 'ChannelSelection')", [], 1.5),
 	"skinselection": ("from Screens.SkinSelection import SkinSelection\nsession.open(SkinSelection)", [], 2),
 	"messagebox": ("from Screens.MessageBox import MessageBox\n"
-	               "session.open(MessageBox, 'Kanal listesi kaydedilsin mi?\\nDegisiklikler kutuya yazilacak.', MessageBox.TYPE_YESNO)", [], 1.5),
+	               "session.open(MessageBox, 'Save the channel list?\\nChanges will be written to the box.', MessageBox.TYPE_YESNO)", [], 1.5),
 	"choicebox": ("from Screens.ChoiceBox import ChoiceBox\n"
-	              "session.open(ChoiceBox, title='Yazi tipi secin', list=[(n, n) for n in ('Inter   (4 agirlik)   -  etkin', 'Geist   (4 agirlik)', 'Barlow   (4 agirlik)', 'Sony_Sketch_Bold_205')])", [], 1.5),
+	              "session.open(ChoiceBox, title='GUI typeface', list=[(n, n) for n in ('Inter   (4 weights)   -  active', 'Geist   (4 weights)', 'Barlow   (4 weights)', 'Sony_Sketch_Bold_205')])", [], 1.5),
 	"audioselection": ("ib.audioSelection()", [], 2),
 	"volume": ("from Components.VolumeControl import VolumeControl\nVolumeControl.instance.volUp()", [], 0.8),
 	"mute": ("from Components.VolumeControl import VolumeControl\nVolumeControl.instance.volMute()", [], 0.8),
@@ -52,24 +52,24 @@ SCREENS = {
 	"numberzap": ("from Screens.InfoBarGenerics import NumberZap\nfrom Components.config import config\nconfig.usage.numzappicon.value = True\nsession.open(NumberZap, 7, ib.searchNumber)", [], 0.6),
 	"pluginbrowser": ("from Screens.PluginBrowser import PluginBrowser\nsession.open(PluginBrowser)", [], 2),
 	# skinde henuz olmayan, sik acilan ekranlar
-	"inputbox": ("from Screens.InputBox import InputBox\nsession.open(InputBox, title='Kanal adini girin', text='Kanal D')", [], 1.5),
-	"pininput": ("from Screens.InputBox import PinInput\nfrom Components.config import config\nsession.open(PinInput, pinList=[1234], triesEntry=config.ParentalControl.retries.servicepin, title='PIN kodunu girin', windowTitle='Ebeveyn kilidi')", [], 1.5),
-	"virtualkeyboard": ("from Screens.VirtualKeyBoard import VirtualKeyBoard\nsession.open(VirtualKeyBoard, title='Ara', text='mavi liman')", [], 2),
+	"inputbox": ("from Screens.InputBox import InputBox\nsession.open(InputBox, title='Enter the channel name', text='Kanal D')", [], 1.5),
+	"pininput": ("from Screens.InputBox import PinInput\nfrom Components.config import config\nsession.open(PinInput, pinList=[1234], triesEntry=config.ParentalControl.retries.servicepin, title='Enter your PIN', windowTitle='Parental control')", [], 1.5),
+	"virtualkeyboard": ("from Screens.VirtualKeyBoard import VirtualKeyBoard\nsession.open(VirtualKeyBoard, title='Search', text='blue harbour')", [], 2),
 	"timereditlist": ("from RecordTimer import RecordTimerEntry\nfrom ServiceReference import ServiceReference\n"
 	                  "from time import time\nrt = session.nav.RecordTimer\n"
 	                  "if not rt.timer_list:\n"
-	                  "\tfor i, (ref, name) in enumerate((('1:0:1:100:1:1:1A40000:0:0:0:', 'Ana Haber Bulteni'), ('1:0:1:102:1:1:1A40000:0:0:0:', 'Gece Sinemasi: Son Tren'))):\n"
+	                  "\tfor i, (ref, name) in enumerate((('1:0:1:100:1:1:1A40000:0:0:0:', 'Evening News'), ('1:0:1:102:1:1:1A40000:0:0:0:', 'Late Movie: The Last Train'))):\n"
 	                  "\t\tt = int(time()) + 3600 * (i + 1)\n"
-	                  "\t\trt.record(RecordTimerEntry(ServiceReference(ref), t, t + 3000, name, 'Ornek zamanlayici', None))\n"
+	                  "\t\trt.record(RecordTimerEntry(ServiceReference(ref), t, t + 3000, name, 'Sample timer', None))\n"
 	                  "from Screens.TimerEdit import TimerEditList\nsession.open(TimerEditList)", [], 2),
-	"console": ("from Screens.Console import Console\nsession.open(Console, title='Paket kuruluyor', cmdlist=['echo opkg update; echo Downloading feed...; echo Updated source; echo Paket kuruldu.'])", [], 3),
-	"textbox": ("from Screens.TextBox import TextBox\nsession.open(TextBox, text=open('/etc/image-version').read() * 6, title='Imaj bilgisi', skinName='TextBox')", [], 1.5),
+	"console": ("from Screens.Console import Console\nsession.open(Console, title='Installing package', cmdlist=['echo opkg update; echo Downloading feed...; echo Updated source; echo Package installed.'])", [], 3),
+	"textbox": ("from Screens.TextBox import TextBox\nsession.open(TextBox, text=open('/etc/image-version').read() * 6, title='Image information', skinName='TextBox')", [], 1.5),
 	# skinName verilmezse TextBox ['None', 'TextBox'] listesi kurar; openATV skin.py
 	# bu listeyi loglarken (", ".join) coker ve ekran widget'siz kalir (upstream hatasi)
 	"information": ("from Screens.Information import InformationDistribution\nsession.open(InformationDistribution)", [], 3),
 	"movieselection": ("from Screens.MovieSelection import MovieSelection\nsession.open(MovieSelection)", [], 3),
 	"movieplayer": (["from Screens.InfoBar import MoviePlayer\nfrom enigma import eServiceReference\n"
-	                 "ref = eServiceReference(4097, 0, '/opt/tivitest/kanal.ts')\nref.setName('Gece Sinemasi: Son Tren')\n"
+	                 "ref = eServiceReference(4097, 0, '/opt/tivitest/kanal.ts')\nref.setName('Late Movie: The Last Train')\n"
 	                 "session.open(MoviePlayer, ref)",
 	                 "session.current_dialog.pauseService()"], [], 3),  # durum ikonu: duraklat
 	"helpmenu": ("ib.showHelp() if hasattr(ib, 'showHelp') else None", [], 1.5),
@@ -89,8 +89,8 @@ CLEANUP = IB + """
 if ib.secondInfoBarScreen: ib.secondInfoBarScreen.hide()
 from Components.VolumeControl import VolumeControl
 v = VolumeControl.instance
+if v.volctrl.isMuted(): v.volMute()  # once sesi ac: volMute ses cubugunu yeniden gosterir
 v.volumeDialog.hide(); v.muteDialog.hide()
-if v.volctrl.isMuted(): v.volMute()
 ib.hide()
 """
 

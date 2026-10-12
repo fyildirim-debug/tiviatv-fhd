@@ -62,10 +62,10 @@ if [ -f "$D/fonts.xml-opkg" ]; then
 	rm -f "$D/fonts.xml-opkg" "$D/fonts.xml.yeni"
 fi
 echo ""
-echo "TiviATV FHD kuruldu."
-echo "  Skin     : Menu > Kurulum > Kullanim & Kullanici Arayuzu > Arayuz Ayarlari"
-echo "  Yazi tipi: Menu > Kurulum > Kullanim & Kullanici Arayuzu > TiviATV Yazi Tipi"
-echo "Skin zaten etkinse yeni surum arayuz yeniden baslayinca yuklenir."
+echo "TiviATV FHD installed."
+echo "  Skin    : Menu > Setup > Usage & GUI > Skin Settings"
+echo "  Typeface: Menu > Setup > Usage & GUI > TiviATV Font"
+echo "If the skin is already active, the new version loads when the GUI restarts."
 exit 0
 """
 
@@ -78,7 +78,7 @@ case "$1" in
 		       "$PKG_ROOT/usr/lib/enigma2/python/Plugins/Extensions/TiviAtvFont"
 		rm -f "$PKG_ROOT"/usr/lib/enigma2/python/Components/Converter/__pycache__/TiviAtvSignal.* \\
 		      "$PKG_ROOT"/usr/lib/enigma2/python/Components/Converter/__pycache__/TiviAtvText.*
-		echo "TiviATV FHD kaldirildi. Etkin skin buysa arayuz yeniden baslayinca varsayilan skine doner."
+		echo "TiviATV FHD removed. If it was the active skin, the GUI returns to the default skin when it restarts."
 		;;
 esac
 exit 0
@@ -168,7 +168,7 @@ def main():
 	control = "\n".join([
 		"Package: " + PKG,
 		"Version: " + ver,
-		"Description: TiviATV FHD - TiviMate tarzi 1920x1080 openATV skini (PNG'siz, Inter yazi tipi)",
+		"Description: TiviATV FHD - TiviMate-style 1920x1080 skin for openATV, without PNGs (Inter typeface)",
 		"Section: skins",
 		"Priority: optional",
 		"Maintainer: Furkan YILDIRIM",

@@ -46,16 +46,16 @@ CHANNELS = [
 
 # baslik, kisa aciklama, uzun aciklama, dakika, tur (DVB content nibble)
 SHOWS = [
-	("Sabah Kusagi", "Gunaydin Turkiye", "Gundem, hava durumu ve konuk sohbetleriyle canli sabah programi.", 90, 0x10),
-	("Ana Haber Bulteni", "Gunun onemli gelismeleri", "Yurt ici ve yurt disindan son dakika haberleri, ekonomi ve spor.", 60, 0x20),
-	("Belgesel: Anadolu'nun Kuslari", "Doga belgeseli", "Goc yollarindaki sulak alanlarda dort mevsim boyunca cekilen belgesel.", 50, 0x90),
-	("Super Lig Ozeti", "Haftanin tum golleri", "Haftanin maclarindan goller, pozisyonlar ve yorumlar.", 45, 0x40),
-	("Gece Sinemasi: Son Tren", "Gerilim, 2019", "Bir kis gecesi son trene binen yabancilarin hikayesi. Yonetmen: A. Kaya.", 110, 0x10),
-	("Mutfak Atolyesi", "Ev yemekleri", "Sefler ozel tariflerini adim adim anlatiyor.", 40, 0xa0),
-	("Ekonomi Masasi", "Piyasalarda gun sonu", "Borsa, doviz ve emtia piyasalarinda gunun degerlendirmesi.", 30, 0x20),
-	("Cizgi Dunyasi", "Cocuk programi", "Okul oncesi cocuklar icin egitici cizgi filmler.", 25, 0x50),
-	("Dizi: Mavi Liman", "12. Bolum", "Liman kasabasinda iki ailenin yillardir suren rekabeti yeni bir sir ile alevleniyor.", 120, 0x10),
-	("Teknoloji Gundemi", "Haftanin yenilikleri", "Yeni cihazlar, yazilimlar ve bilim dunyasindan haberler.", 35, 0x90),
+	("Morning Show", "Good morning", "Live morning programme with the news, weather and studio guests.", 90, 0x10),
+	("Evening News", "Today's headlines", "The latest national and world news, business and sport.", 60, 0x20),
+	("Documentary: Birds of Anatolia", "Nature documentary", "Filmed over four seasons in the wetlands along the migration routes.", 50, 0x90),
+	("Super League Highlights", "All the goals of the week", "Goals, chances and analysis from this week's matches.", 45, 0x40),
+	("Late Movie: The Last Train", "Thriller, 2019", "Strangers board the last train on a winter night. Director: A. Kaya.", 110, 0x10),
+	("Kitchen Workshop", "Home cooking", "Chefs walk through their favourite recipes step by step.", 40, 0xa0),
+	("Business Desk", "Markets at the close", "The day's review of stocks, currencies and commodities.", 30, 0x20),
+	("Cartoon World", "For kids", "Educational cartoons for preschool children.", 25, 0x50),
+	("Series: Blue Harbour", "Episode 12", "A new secret rekindles the long rivalry between two families in a harbour town.", 120, 0x10),
+	("Tech Today", "This week's news", "New devices, software and news from the world of science.", 35, 0x90),
 ]
 
 
@@ -91,7 +91,7 @@ def write_lists():
 		"#NAME User - Bouquets (TV)\n"
 		"#SERVICE 1:7:1:0:0:0:0:0:0:0:FROM BOUQUET \"userbouquet.favourites.tv\" ORDER BY bouquet\n",
 		encoding="utf-8")
-	(ETC / "userbouquet.favourites.tv").write_text("#NAME Favoriler (TV)\n" + "".join(bouquet), encoding="utf-8")
+	(ETC / "userbouquet.favourites.tv").write_text("#NAME Favourites (TV)\n" + "".join(bouquet), encoding="utf-8")
 	(ETC / "tiviatv-demo-epg.json").write_text(json.dumps(epg, ensure_ascii=False, indent=1), encoding="utf-8")
 	# acilis kanali: ilk IPTV kanali (uydu kanallari emulatorde calmaz)
 	return next(b for b in bouquet if b.startswith("#SERVICE 4097")).split(" ", 1)[1].strip()

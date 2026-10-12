@@ -37,14 +37,14 @@ WEIGHTS = ("Thin", "Light", "Book", "Regular", "Medium", "SemiBold", "DemiBold",
 SCALE = {"Inter": 92, "Geist": 94}
 
 TEMPLATE = """<skin>
-\t<!-- TiviATV FHD  -  aktif yazi tipi seti
-\t     Bu dosyayi "TiviATV Yazi Tipi" eklentisi uretir; elle de duzenlenebilir.
-\t     skin.xml bunu <include> ile yukler, font adlari hep ayni kalir. -->
+\t<!-- TiviATV FHD  -  active typeface set
+\t     Written by the "TiviATV Font" plugin; can also be edited by hand.
+\t     skin.xml loads it with <include>; the font names never change. -->
 \t<fonts>
 %s
-\t\t<!-- kutuda hazir gelen fontlar (VFD ve yedek icin) -->
+\t\t<!-- font that comes with the box (VFD and fallback) -->
 \t\t<font filename="nmsbd.ttf"  name="Regular" scale="100" />
-\t\t<!-- enigma2'nin bekledigi takma adlar -->
+\t\t<!-- aliases enigma2 expects -->
 \t\t<alias name="Body"       font="TM"  size="30" height="40" />
 \t\t<alias name="TextNormal" font="TM"  size="30" height="40" />
 \t\t<alias name="ChoiceList" font="TM"  size="30" height="60" />
@@ -52,6 +52,39 @@ TEMPLATE = """<skin>
 \t</fonts>
 </skin>
 """
+
+
+# Metinler Ingilizce; kutunun arayuz dili Turkceyse Turkcesi gosterilir
+# (skin.xml'deki yazilar da enigma2'nin cevirisiyle ayni sekilde Turkcelesir).
+TURKISH = {
+	"TiviATV Font": "TiviATV Yazı Tipi",
+	"Choose the skin typeface": "Skin yazı tipini seç",
+	"Could not write fonts.xml: %s": "fonts.xml yazılamadı: %s",
+	"Typeface: %s": "Yazı tipi: %s",
+	"Restart the GUI now?": "Arayüz şimdi yeniden başlatılsın mı?",
+	"No fonts found.": "Yazı tipi bulunamadı.",
+	"GUI typeface": "Arayüz yazı tipi",
+	"%d weights": "%d ağırlık",
+	"active": "etkin",
+}
+
+
+def turkish():
+	"""Arayuz dili Turkce mi: openATV 7+ International, eskisinde Language."""
+	try:
+		from Components.International import international
+		return international.getLocale().lower().startswith("tr")
+	except Exception:
+		pass
+	try:
+		from Components.Language import language
+		return language.getLanguage().lower().startswith("tr")
+	except Exception:
+		return False
+
+
+def tr(text):
+	return TURKISH.get(text, text) if turkish() else _(text)
 
 
 def splitWeight(base):
@@ -121,11 +154,11 @@ def chosen(session, families, answer):
 		with open(FONTS_XML, "w") as handle:
 			handle.write(TEMPLATE % fontsBlock(family, families[family]))
 	except OSError as err:
-		session.open(MessageBox, _("fonts.xml yazilamadi: %s") % err, MessageBox.TYPE_ERROR, timeout=8)
+		session.open(MessageBox, tr("Could not write fonts.xml: %s") % err, MessageBox.TYPE_ERROR, timeout=8)
 		return
 	session.openWithCallback(
 		boundFunction(restartAsked, session), MessageBox,
-		(_("Yazi tipi: %s") % family) + "\n\n" + _("Arayuz simdi yeniden baslatilsin mi?"),
+		(tr("Typeface: %s") % family) + "\n\n" + tr("Restart the GUI now?"),
 		MessageBox.TYPE_YESNO)
 
 
@@ -137,34 +170,34 @@ def restartAsked(session, answer):
 def main(session, **kwargs):
 	families = scanFamilies()
 	if not families:
-		session.open(MessageBox, _("Yazi tipi bulunamadi."), MessageBox.TYPE_ERROR, timeout=5)
+		session.open(MessageBox, tr("No fonts found."), MessageBox.TYPE_ERROR, timeout=5)
 		return
 	names = sorted(families.keys(), key=str.lower)
 	current = currentFamily(families)
 	entries = []
 	for name in names:
 		count = len(families[name])
-		label = name if count == 1 else "%s   (%d agirlik)" % (name, count)
+		label = name if count == 1 else "%s   (%s)" % (name, tr("%d weights") % count)
 		if name == current:
-			label = label + "   -  etkin"
+			label = label + "   -  " + tr("active")
 		entries.append((label, name))
 	session.openWithCallback(
 		boundFunction(chosen, session, families), ChoiceBox,
-		title=_("Arayuz yazi tipi"), list=entries,
+		title=tr("GUI typeface"), list=entries,
 		selection=names.index(current) if current in names else 0)
 
 
 def menuHook(menuid, **kwargs):
 	# menu.xml: "Usage & GUI" menusunun key'i "system"
 	if menuid == "system":
-		return [(_("TiviATV Yazi Tipi"), main, "tiviatv_font", 10)]
+		return [(tr("TiviATV Font"), main, "tiviatv_font", 10)]
 	return []
 
 
 def Plugins(**kwargs):
 	return [
-		PluginDescriptor(name=_("TiviATV Yazi Tipi"), description=_("Skin yazi tipini sec"),
+		PluginDescriptor(name=tr("TiviATV Font"), description=tr("Choose the skin typeface"),
 		                 where=PluginDescriptor.WHERE_PLUGINMENU, icon=None, fnc=main),
-		PluginDescriptor(name=_("TiviATV Yazi Tipi"), description=_("Skin yazi tipini sec"),
+		PluginDescriptor(name=tr("TiviATV Font"), description=tr("Choose the skin typeface"),
 		                 where=PluginDescriptor.WHERE_MENU, fnc=menuHook),
 	]
