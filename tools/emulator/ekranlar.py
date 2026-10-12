@@ -51,6 +51,26 @@ SCREENS = {
 	# InfoBar.keyNumberGlobal oynatilan akis sarilabiliyorsa sarar; ekran dogrudan acilir
 	"numberzap": ("from Screens.InfoBarGenerics import NumberZap\nfrom Components.config import config\nconfig.usage.numzappicon.value = True\nsession.open(NumberZap, 7, ib.searchNumber)", [], 0.6),
 	"pluginbrowser": ("from Screens.PluginBrowser import PluginBrowser\nsession.open(PluginBrowser)", [], 2),
+	# OpenViX benzetimi: ayni skin ekrani, klasik PluginList (name="list") ve
+	# Button renk tuslari (objectTypes ile secilen ikinci tus seti)
+	"pluginbrowser-vix": ("from Screens.Screen import Screen\nfrom Components.ActionMap import ActionMap\n"
+	                      "from Components.Button import Button\nfrom Components.PluginComponent import plugins\n"
+	                      "from Components.PluginList import PluginList, PluginEntryComponent\nfrom Plugins.Plugin import PluginDescriptor\n"
+	                      "class VixPluginBrowser(Screen):\n"
+	                      "\tdef __init__(self, session):\n"
+	                      "\t\tScreen.__init__(self, session)\n"
+	                      "\t\tself.skinName = 'PluginBrowser'\n"
+	                      "\t\tself.setTitle('Plugin Browser')\n"
+	                      "\t\tself['key_red'] = Button('Remove plugins')\n"
+	                      "\t\tself['key_green'] = Button('Download plugins')\n"
+	                      "\t\tself['key_yellow'] = Button('User installed plugins')\n"
+	                      "\t\tself['list'] = PluginList([])\n"
+	                      "\t\tself['actions'] = ActionMap(['OkCancelActions'], {'ok': self.close, 'cancel': self.close})\n"
+	                      "\t\tself.onLayoutFinish.append(self.fill)\n"
+	                      "\tdef fill(self):\n"
+	                      "\t\twidth = self['list'].instance.size().width()\n"
+	                      "\t\tself['list'].setList([PluginEntryComponent(p, width) for p in plugins.getPlugins(PluginDescriptor.WHERE_PLUGINMENU)])\n"
+	                      "session.open(VixPluginBrowser)", [], 2),
 	# skinde henuz olmayan, sik acilan ekranlar
 	"inputbox": ("from Screens.InputBox import InputBox\nsession.open(InputBox, title='Enter the channel name', text='Kanal D')", [], 1.5),
 	"pininput": ("from Screens.InputBox import PinInput\nfrom Components.config import config\nsession.open(PinInput, pinList=[1234], triesEntry=config.ParentalControl.retries.servicepin, title='Enter your PIN', windowTitle='Parental control')", [], 1.5),

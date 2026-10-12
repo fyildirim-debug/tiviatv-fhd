@@ -15,6 +15,11 @@ openATV **7.3+**. `cornerRadius`, gradient ve `itemCornerRadiusSelected`
 enigma2 motoruna 7.3 ile girdi; 7.2 ve altındaki dallarda bu tanımlar yok,
 köşeler kare çıkar.
 
+**OpenViX:** openATV'de geliştirilip test edildi; motoru yeni (yuvarlak köşeli)
+OpenViX imajları da yükler. OpenViX ekranlarının openATV'den ayrıldığı yerler —
+`Button` olarak kurulan renk tuşları, klasik eklenti listesi — için skinde ayrı
+karşılıklar var (bkz. [Diğer imajlar](#diğer-imajlar-openvix)).
+
 ## Kurulum
 
 1. **Kutuya bağlan.** Bilgisayardan telnet ya da SSH ile (`ssh root@<kutu-ip>`).
@@ -270,6 +275,32 @@ yani hiçbir ekran boş kalmaz.
 > (`MANDATORY_WIDGETS`) eksik widget'lı ekranı reddedip varsayılan pencereyi
 > açıyor. Yeni ekran eklerken bu listeye bak.
 
+### Diğer imajlar (OpenViX)
+
+Her widget, yüklenirken ekranın gerçekten kurduğu bileşenin türüne göre seçilir;
+böylece tek skin iki imaja da yeter:
+
+- **Renk tuşları.** openATV `key_red` … tuşlarını `StaticText` (kaynak) olarak
+  kurar; OpenViX çoğunu `Button` (GUI widget'ı) olarak, bazı eski ekranlar da
+  `Label` olarak. `Button`'ı `ConditionalShowHide` ile kaynak diye bağlamak
+  OpenViX'in `skin.py`'sinde hata fırlatır ve yükleyici **ekranın geri
+  kalanını** atlar. Bu yüzden her tuş iki kez var: kaynak çipi
+  `objectTypes="key_red,StaticText,Boolean"` ile, `name="key_red"` çipi ve
+  `eLabel` noktası `objectTypes="key_red,Button,Label"` ile. İkisinden yalnız
+  biri çizilir.
+- **Eklenti tarayıcısı.** openATV 8 `pluginList` / `pluginGrid` şablonlarını
+  doldurur; OpenViX `list` adlı widget'ı arar ve klasik `PluginList`'i ona
+  çizer. Skinde ikisi de var; imajda olmayanı `conditional` atlar. Klasik
+  satırlar `PluginBrowserName` / `PluginBrowserDescr` / `PluginBrowserIcon`
+  parametreleri ve `PluginBrowser0` / `PluginBrowser1` font takma adlarıyla
+  boyutlanır.
+- OpenViX'te adı farklı olan ekranlar (ör. dil seçimi) imajın kendi tasarımıyla
+  açılır.
+
+`python3 tools/emulator/ekranlar.py <klasör> pluginbrowser-vix` aynı skin
+ekranını OpenViX'in açtığı gibi (klasik liste, `Button` tuşlar) openATV
+emülatöründe açar.
+
 ### PNG'siz motor kontrolleri
 
 openATV 2026-09 itibarıyla bazı kontrolleri PNG yerine kendisi çizebiliyor;
@@ -471,6 +502,12 @@ python tools/make_designer_copy.py
 ```
 
 ## Sürüm notları
+
+**1.0.3**
+- OpenViX: eklenti tarayıcısı boş geliyordu — klasik `list` widget'ına çizer,
+  skinde artık o da var. `Button` / `Label` olarak kurulan renk tuşları
+  (OpenViX kanal listesi, EPG, olay bilgisi, eklentiler …) kendi çiplerini
+  alır; önceden ekranın geri kalanının yüklenmesini durduruyorlardı.
 
 **1.0.2**
 - InfoBar'da softcam ECM bilgisi (OSCam, CCcam …), yalnız şifreli kanalda:

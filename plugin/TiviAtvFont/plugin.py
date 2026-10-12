@@ -49,6 +49,8 @@ TEMPLATE = """<skin>
 \t\t<alias name="TextNormal" font="TM"  size="30" height="40" />
 \t\t<alias name="ChoiceList" font="TM"  size="30" height="60" />
 \t\t<alias name="VirtualKeyboard" font="TM" size="34" height="76" />
+\t\t<alias name="PluginBrowser0" font="TM" size="30" height="75" />
+\t\t<alias name="PluginBrowser1" font="TM" size="22" height="28" />
 \t</fonts>
 </skin>
 """

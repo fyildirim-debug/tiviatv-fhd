@@ -15,6 +15,11 @@ openATV **7.3+**. `cornerRadius`, gradients and `itemCornerRadiusSelected`
 landed in the enigma2 engine with 7.3; branches 7.2 and older don't have them,
 so the corners come out square.
 
+**OpenViX:** developed and tested on openATV, but OpenViX images with a recent
+engine (rounded corners) also load it. The parts where OpenViX's screens differ
+from openATV — colour keys created as `Button`, the classic plugin list — have
+their own variants in the skin (see [Other images](#other-images-openvix)).
+
 ## Installation
 
 1. **Connect to the box** over telnet or SSH (`ssh root@<box-ip>`). The box IP
@@ -277,6 +282,32 @@ screen is ever left blank.
 > (`MANDATORY_WIDGETS`) rejects a screen with missing widgets and opens the
 > default window instead. Check that list when adding a new screen.
 
+### Other images (OpenViX)
+
+Every widget is chosen at load time by the type of the component the screen
+actually creates, so one skin serves both images:
+
+- **Colour keys.** openATV creates `key_red` … as `StaticText` (a source); OpenViX
+  creates many of them as `Button` (a GUI widget), and some older screens use
+  `Label`. Binding a `Button` as a source with `ConditionalShowHide` throws in
+  OpenViX's `skin.py`, and the loader then skips **the rest of the screen**. Each
+  key therefore comes twice: the source chip with
+  `objectTypes="key_red,StaticText,Boolean"`, and a `name="key_red"` chip plus an
+  `eLabel` dot with `objectTypes="key_red,Button,Label"`. Exactly one set is
+  drawn.
+- **Plugin browser.** openATV 8 fills `pluginList` / `pluginGrid` (templates);
+  OpenViX looks for a widget called `list` and draws the classic `PluginList`
+  into it. The skin has both; `conditional` skips the one the image lacks. The
+  classic rows are sized by the `PluginBrowserName` / `PluginBrowserDescr` /
+  `PluginBrowserIcon` parameters and the `PluginBrowser0` / `PluginBrowser1`
+  font aliases.
+- Screens OpenViX names differently (for example its language selection) fall
+  back to the image's own design.
+
+`python3 tools/emulator/ekranlar.py <dir> pluginbrowser-vix` opens the same
+skin screen the way OpenViX does (classic list, `Button` keys) in the openATV
+emulator.
+
 ### PNG-free engine controls
 
 Since 2026-09, openATV can draw some controls itself instead of using PNGs; the
@@ -484,6 +515,12 @@ python tools/make_designer_copy.py
 ```
 
 ## Changelog
+
+**1.0.3**
+- OpenViX: the plugin browser was empty — it draws into a classic `list`
+  widget, which the skin now has. Colour keys created as `Button` / `Label`
+  (OpenViX channel list, EPG, event view, plugins …) get their own chips;
+  before, they stopped the rest of the screen from loading.
 
 **1.0.2**
 - Softcam ECM info in the infobar (OSCam, CCcam …), on encrypted channels only:
