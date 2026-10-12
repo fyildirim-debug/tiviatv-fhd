@@ -255,6 +255,11 @@
 		        font="TM;26" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="2">
 			<convert type="EventName">Name</convert>
 		</widget>
+		<!-- softcam ECM bilgisi (OSCam vb., /tmp/ecm.info): yalniz sifreli kanalda -->
+		<widget source="session.CurrentService" render="Label" position="1340,1026" size="512,38"
+		        font="TM;22" foregroundColor="textDim" transparent="1" halign="right" valign="center" noWrap="1" zPosition="2">
+			<convert type="TiviAtvEcm" />
+		</widget>
 
 		<!-- saat / tarih -->
 		<widget source="global.CurrentTime" render="Label" position="1500,826" size="352,70"
@@ -1122,6 +1127,193 @@
 	     SKINSELECTION  -  arayuz secimi
 	     Setup duzeni + sagda secili skinin onizlemesi
 	     ============================================================ -->
+	<!-- ============================================================
+	     Kurulum > Kullanim & Arayuz: kisayol tuslari, giris aygitlari,
+	     dil. Setup gibi: karartilmis yayin ustunde buyuk yari saydam kart.
+	     ============================================================ -->
+	<screen name="ButtonSetup" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Hotkey Settings">
+		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
+		<widget source="Title" render="Label" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<eLabel position="296,226" size="640,44" text="Button" font="TMB;24" foregroundColor="textDim"
+		        transparent="1" valign="center" zPosition="1" />
+		<widget name="list" position="296,282" size="640,540" transparent="1" zPosition="1"
+		        itemHeight="60" itemAlignment="leftMiddle" font="TM;30" itemCornerRadiusSelected="14" padding="24,12,24,0"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
+		<eLabel position="966,226" size="2,596" backgroundColor="line" zPosition="1" />
+		<eLabel position="998,226" size="626,44" text="Assigned functions" font="TMB;24" foregroundColor="textDim"
+		        transparent="1" valign="center" zPosition="1" />
+		<widget name="choosen" position="998,282" size="626,540" foregroundColor="textDim" transparent="1" zPosition="1"
+		        itemHeight="60" itemAlignment="leftMiddle" font="TM;30" itemCornerRadiusSelected="14" padding="24,12,24,0"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
+		<eLabel position="296,838" size="1328,2" backgroundColor="line" zPosition="1" />
+		<widget name="description" position="296,846" size="1328,60" font="TM;24" foregroundColor="textDim"
+		        transparent="1" valign="center" zPosition="1" />
+		<widget source="key_red" render="Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_red" render="Label" position="318,933" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+	</screen>
+
+	<screen name="ButtonSetupSelect" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Hotkey Settings">
+		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
+		<widget source="Title" render="Label" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<eLabel position="296,226" size="640,44" text="Functions" font="TMB;24" foregroundColor="textDim"
+		        transparent="1" valign="center" zPosition="1" />
+		<widget name="list" position="296,282" size="640,540" transparent="1" zPosition="1"
+		        itemHeight="60" itemAlignment="leftMiddle" font="TM;30" itemCornerRadiusSelected="14" padding="24,12,24,0"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
+		<eLabel position="966,226" size="2,596" backgroundColor="line" zPosition="1" />
+		<eLabel position="998,226" size="626,44" text="Assigned functions" font="TMB;24" foregroundColor="textDim"
+		        transparent="1" valign="center" zPosition="1" />
+		<widget name="choosen" position="998,282" size="626,540" foregroundColor="textDim" transparent="1" zPosition="1"
+		        itemHeight="60" itemAlignment="leftMiddle" font="TM;30" itemCornerRadiusSelected="14" padding="24,12,24,0"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
+		<eLabel position="296,838" size="1328,2" backgroundColor="line" zPosition="1" />
+		<widget name="description" position="296,846" size="1328,60" font="TM;20" foregroundColor="textDim"
+		        transparent="1" valign="center" zPosition="1" />
+		<widget source="key_red" render="Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_red" render="Label" position="318,933" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" render="Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" render="Label" position="562,933" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+	</screen>
+
+	<screen name="InputDeviceSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Input Devices">
+		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
+		<widget source="Title" render="Label" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<!-- aygit, aciklama, simge, ayirici: simge skin_default'tan (icons/input_*.png) -->
+		<widget source="list" render="Listbox" position="296,226" size="1328,596" transparent="1" zPosition="1"
+		        itemCornerRadiusSelected="14" enableWrapAround="1"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track">
+			<convert type="TemplatedMultiContent">
+				{"template": [
+					MultiContentEntryPixmapAlphaBlend(pos = (24, 16), size = (48, 48), png = 2),
+					MultiContentEntryText(pos = (96, 0), size = (1200, 80), font = 0, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 1),
+				],
+				"fonts": [gFont("TM", 30)],
+				"itemHeight": 80
+				}
+			</convert>
+		</widget>
+		<eLabel position="296,838" size="1328,2" backgroundColor="line" zPosition="1" />
+		<widget source="introduction" render="Label" position="296,846" size="1328,60" font="TM;24" foregroundColor="textDim"
+		        transparent="1" valign="center" zPosition="1" />
+		<widget source="key_red" render="Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_red" render="Label" position="318,933" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" render="Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" render="Label" position="562,933" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="784,914" size="228,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="806,933" size="14,14" backgroundColor="warn" foregroundColor="warn" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label" position="1028,914" size="228,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" render="Label" position="1050,933" size="14,14" backgroundColor="accent" foregroundColor="accent" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+	</screen>
+
+	<screen name="LocaleSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Locale / Language">
+		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
+		<widget source="Title" render="Label" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<!-- durum simgeleri (indirilebilir / kurulu / kullanimda) listeye resim olarak girer: skin_default -->
+		<widget name="icons" position="0,0" size="49,19" pixmaps="icons/menu_download.png,icons/menu_off.png,icons/menu_on.png" alphatest="blend" />
+		<!-- bayrak, yerel ad, Ingilizce ad, yerel kod, paket, durum simgesi -->
+		<widget source="locales" render="Listbox" position="296,226" size="1328,600" transparent="1" zPosition="1"
+		        itemCornerRadiusSelected="14" enableWrapAround="1"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track">
+			<convert type="TemplatedMultiContent">
+				{"template": [
+					MultiContentEntryPixmapAlphaBlend(pos = (24, 15), size = (60, 30), flags = BT_SCALE, png = 0),
+					MultiContentEntryText(pos = (108, 0), size = (480, 60), font = 0, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 1),
+					MultiContentEntryText(pos = (600, 0), size = (440, 60), font = 0, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 2),
+					MultiContentEntryText(pos = (1052, 0), size = (150, 60), font = 1, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 4),
+					MultiContentEntryPixmapAlphaBlend(pos = (1228, 20), size = (49, 19), flags = BT_SCALE, png = 5),
+				],
+				"fonts": [gFont("TM", 30), gFont("TM", 24)],
+				"itemHeight": 60
+				}
+			</convert>
+		</widget>
+		<eLabel position="296,838" size="1328,2" backgroundColor="line" zPosition="1" />
+		<widget source="description" render="Label" position="296,846" size="1328,60" font="TM;24" foregroundColor="textDim"
+		        transparent="1" valign="center" zPosition="1" />
+		<widget source="key_red" render="Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_red" render="Label" position="318,933" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" render="Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" render="Label" position="562,933" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="784,914" size="228,52" backgroundColor="chip" cornerRadius="26"
+		        font="TMB;24" foregroundColor="text" halign="left" valign="center" padding="48,0,14,0" noWrap="1" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" render="Label" position="806,933" size="14,14" backgroundColor="warn" foregroundColor="warn" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_menu" render="Label" position="1334,917" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_info" render="Label" position="1434,917" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_help" render="Label" position="1534,917" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+	</screen>
+
 	<screen name="SkinSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Skin Selection">
 		<eLabel position="0,0"    size="1920,1080" backgroundColor="scrim" zPosition="0" />
 		<eLabel position="240,90" size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />

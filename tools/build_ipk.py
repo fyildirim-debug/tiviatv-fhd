@@ -1,4 +1,4 @@
-# TiviATV FHD kurulum paketi (.ipk) uretir: skin, iki converter ve yazi tipi
+# TiviATV FHD kurulum paketi (.ipk) uretir: skin, converter'lar ve yazi tipi
 # eklentisi tek pakette. Surum depo kokundeki VERSION dosyasindan okunur.
 # Cikti: dist/<paket>_<surum>_all.ipk (+ .sha256); eski surumun dosyalari silinir.
 #
@@ -77,7 +77,8 @@ case "$1" in
 		rm -rf "$PKG_ROOT/usr/share/enigma2/TiviAtv-FHD" \\
 		       "$PKG_ROOT/usr/lib/enigma2/python/Plugins/Extensions/TiviAtvFont"
 		rm -f "$PKG_ROOT"/usr/lib/enigma2/python/Components/Converter/__pycache__/TiviAtvSignal.* \\
-		      "$PKG_ROOT"/usr/lib/enigma2/python/Components/Converter/__pycache__/TiviAtvText.*
+		      "$PKG_ROOT"/usr/lib/enigma2/python/Components/Converter/__pycache__/TiviAtvText.* \\
+		      "$PKG_ROOT"/usr/lib/enigma2/python/Components/Converter/__pycache__/TiviAtvEcm.*
 		echo "TiviATV FHD removed. If it was the active skin, the GUI returns to the default skin when it restarts."
 		;;
 esac

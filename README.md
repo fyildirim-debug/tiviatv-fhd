@@ -62,7 +62,7 @@ opkg install /tmp/enigma2-plugin-skins-tiviatv-fhd_*_all.ipk
 **Without the package:** copy `TiviAtv-FHD/` to `/usr/share/enigma2/`,
 `TiviAtv-FHD/converter/*.py` to the converter directory and
 `plugin/TiviAtvFont/` to the plugin directory. Without the converters the skin
-still opens; only the signal and badge fields stay empty.
+still opens; only the signal, badge and softcam (ECM) fields stay empty.
 
 ### Package contents
 
@@ -71,13 +71,14 @@ still opens; only the signal and badge fields stay empty.
 | Path | Contents |
 |---|---|
 | `/usr/share/enigma2/TiviAtv-FHD/` | skin, `fonts.xml`, typefaces, licenses, preview |
-| `/usr/lib/enigma2/python/Components/Converter/` | `TiviAtvSignal.py`, `TiviAtvText.py` |
+| `/usr/lib/enigma2/python/Components/Converter/` | `TiviAtvSignal.py`, `TiviAtvText.py`, `TiviAtvEcm.py` |
 | `/usr/lib/enigma2/python/Plugins/Extensions/TiviAtvFont/` | font picker |
 
 | Converter | What it does |
 |---|---|
 | `TiviAtvSignal.py` | Signal (SNR/AGC) or IPTV stream rate in the infobar and channel list |
 | `TiviAtvText.py` | Hides the resolution / codec / crypto badges while they are empty (on IPTV the crypto badge used to show as an empty pill) |
+| `TiviAtvEcm.py` | Softcam ECM info (OSCam, CCcam …) from `/tmp/ecm.info` in the infobar, only on encrypted channels — see [Softcam (ECM) info](#softcam-ecm-info) |
 
 `fonts.xml` is the package's conffile: if you changed it, opkg keeps your copy
 and the install script merges your four font lines into the new version's
@@ -101,6 +102,12 @@ and the stream rate on IPTV — both share the same spot, whichever source is
 active is shown.
 
 ![Infobar](docs/screenshots/infobar.jpg)
+
+On an encrypted channel the bottom right of the next-programme row shows what
+the softcam is decoding with: system and CAID, reader, protocol, hops and ECM
+time (see [Softcam (ECM) info](#softcam-ecm-info)).
+
+![Infobar with OSCam ECM info](docs/screenshots/infobar-ecm.jpg)
 
 Second infobar (OK while the infobar is open): the full description and genre.
 
@@ -232,6 +239,14 @@ others are picked in the **TiviATV Font** plugin (see [Font](#font)).
 <td><img src="docs/screenshots/skin-settings.jpg" alt="Skin settings"><br>Skin settings</td>
 <td><img src="docs/screenshots/font-picker.jpg" alt="Font picker"><br>Font picker</td>
 </tr>
+<tr>
+<td><img src="docs/screenshots/hotkey-settings.jpg" alt="Hotkey settings"><br>Hotkey settings</td>
+<td><img src="docs/screenshots/hotkey-functions.jpg" alt="Hotkey functions"><br>Hotkey settings: choosing a function</td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/input-devices.jpg" alt="Input devices"><br>Input devices</td>
+<td><img src="docs/screenshots/locale.jpg" alt="Locale / language"><br>Locale / language</td>
+</tr>
 </table>
 
 ## Skinned screens
@@ -243,7 +258,8 @@ others are picked in the **TiviATV Font** plugin (see [Font](#font)).
 `Mute` · `NumberZap` · `NumberZapPicon` · `AudioSelection` · `SkinSelection` · `PluginBrowser` ·
 `PackageAction` · `ChannelContextMenu` · `InputBox` · `PinInput` · `PinInputPopup` ·
 `VirtualKeyBoard` · `Console` · `TextBox` · `Information` · `TimerEditList` ·
-`MoviePlayer` · `PVRState` · `SimpleSummary`
+`MoviePlayer` · `PVRState` · `ButtonSetup` · `ButtonSetupSelect` · `InputDeviceSelection` ·
+`LocaleSelection` · `SimpleSummary`
 
 enigma2's standard colour names (`window-bg`, `window-fg`, `key_red`, `grey` …)
 are also mapped to the skin palette. While they were undefined, every screen
@@ -322,6 +338,31 @@ bars), `edge` (the 2 px edge of cards and chips).
 > Overlapping windows don't blend either: the top window's pixel replaces the
 > one below. Behind a translucent card you see the picture, not the screen
 > underneath.
+
+### Softcam (ECM) info
+
+The infobar shows the softcam's ECM info by itself — there is nothing to set
+up in the skin. OSCam (and most other softcams) write `/tmp/ecm.info` for the
+channel being decoded; the `TiviAtvEcm` converter reads it once a second, and
+only when the file changes:
+
+```
+Irdeto 0604  ·  my_reader  ·  newcamd  ·  1 hop  ·  0.214 s
+```
+
+- It appears only on **encrypted** channels, and only while the softcam has
+  written `/tmp/ecm.info`. On free-to-air channels the corner stays empty.
+- It follows **Menu › Setup › Usage & GUI › OSD Settings › Show crypto info in
+  InfoBar**: `Off` hides it, `One line` / `Two lines` show it (the default is
+  on; the item is listed at the *Expert* setup level).
+- **Hide softcam servername** in the same screen hides the server address
+  (`•••`) when the card is shared over the network.
+- The system name comes from the CAID when the softcam doesn't write one, and
+  the ECM time is shown in seconds whether the softcam writes seconds or
+  milliseconds.
+
+The widget sits in the `InfoBar` screen (`<convert type="TiviAtvEcm" />`), so it
+can be moved or restyled like any other label.
 
 ### Rounded corners
 
@@ -443,6 +484,14 @@ python tools/make_designer_copy.py
 ```
 
 ## Changelog
+
+**1.0.2**
+- Softcam ECM info in the infobar (OSCam, CCcam …), on encrypted channels only:
+  system + CAID, reader, protocol, hops and ECM time from `/tmp/ecm.info`
+  (new `TiviAtvEcm` converter). See [Softcam (ECM) info](#softcam-ecm-info).
+- Hotkey settings, input devices and locale / language screens restyled:
+  large translucent cards like the other settings screens, colour key chips,
+  flags and status icons in the language list.
 
 **1.0.1**
 - Everything shown on the box is in English: labels (NOW, NEXT, LATER),

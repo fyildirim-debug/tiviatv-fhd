@@ -72,6 +72,18 @@ SCREENS = {
 	                 "ref = eServiceReference(4097, 0, '/opt/tivitest/kanal.ts')\nref.setName('Late Movie: The Last Train')\n"
 	                 "session.open(MoviePlayer, ref)",
 	                 "session.current_dialog.pauseService()"], [], 3),  # durum ikonu: duraklat
+	# Kurulum > Kullanim & Arayuz altindaki ayar ekranlari
+	"buttonsetup": ("from Screens.ButtonSetup import ButtonSetup\nsession.open(ButtonSetup)", [], 1.5),
+	"buttonsetupselect": (["from Screens.ButtonSetup import ButtonSetup\nsession.open(ButtonSetup)",
+	                       "from Screens.ButtonSetup import ButtonSetupSelect\n"
+	                       "session.open(ButtonSetupSelect, session.current_dialog['list'].getCurrent())"], [], 1.5),
+	# emulatorde giris aygiti yok: goruntu icin listeye kutudakine benzer ornek satirlar konur
+	"inputdevices": (["from Screens.InputDeviceSetup import InputDeviceSelection\nsession.open(InputDeviceSelection)",
+	                  "from Tools.LoadPixmap import LoadPixmap\nfrom Tools.Directories import resolveFilename, SCOPE_GUISKIN\n"
+	                  "px = lambda n: LoadPixmap(resolveFilename(SCOPE_GUISKIN, 'icons/%s.png' % n))\n"
+	                  "session.current_dialog['list'].setList([('event0', 'Advanced remote control', px('input_rcnew-configured'), None), "
+	                  "('event1', 'Front panel buttons', px('input_rcnew'), None), ('event2', 'USB keyboard', px('input_keyboard'), None)])"], [], 1.5),
+	"localeselection": ("from Screens.LocaleSelection import LocaleSelection\nsession.open(LocaleSelection)", [], 2),
 	"helpmenu": ("ib.showHelp() if hasattr(ib, 'showHelp') else None", [], 1.5),
 }
 

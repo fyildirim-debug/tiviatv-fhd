@@ -61,7 +61,8 @@ opkg install /tmp/enigma2-plugin-skins-tiviatv-fhd_*_all.ipk
 **Paketsiz:** `TiviAtv-FHD/` klasörünü `/usr/share/enigma2/` altına,
 `TiviAtv-FHD/converter/*.py` dosyalarını converter dizinine,
 `plugin/TiviAtvFont/` klasörünü eklenti dizinine kopyala. Converter'lar
-kopyalanmazsa skin yine açılır, yalnız sinyal ve rozet alanları boş kalır.
+kopyalanmazsa skin yine açılır, yalnız sinyal, rozet ve softcam (ECM) alanları
+boş kalır.
 
 ### Paket içeriği
 
@@ -70,13 +71,14 @@ kopyalanmazsa skin yine açılır, yalnız sinyal ve rozet alanları boş kalır
 | Yer | İçerik |
 |---|---|
 | `/usr/share/enigma2/TiviAtv-FHD/` | skin, `fonts.xml`, yazı tipleri, lisanslar, önizleme |
-| `/usr/lib/enigma2/python/Components/Converter/` | `TiviAtvSignal.py`, `TiviAtvText.py` |
+| `/usr/lib/enigma2/python/Components/Converter/` | `TiviAtvSignal.py`, `TiviAtvText.py`, `TiviAtvEcm.py` |
 | `/usr/lib/enigma2/python/Plugins/Extensions/TiviAtvFont/` | yazı tipi seçici |
 
 | Converter | Ne yapar |
 |---|---|
 | `TiviAtvSignal.py` | Sinyal (SNR/AGC) ya da IPTV akış hızı |
 | `TiviAtvText.py` | Çözünürlük / codec / şifre rozetlerini boşken gizler |
+| `TiviAtvEcm.py` | `/tmp/ecm.info`'dan softcam ECM bilgisi (OSCam, CCcam …), yalnız şifreli kanalda — bkz. [Softcam (ECM) bilgisi](#softcam-ecm-bilgisi) |
 
 `fonts.xml` paketin yapılandırma dosyasıdır: değiştirdiysen opkg onu ezmez,
 kurulum betiği yeni sürümün şablonunu alıp senin seçtiğin dört font satırını
@@ -99,6 +101,12 @@ altta uydu kanalında SNR/AGC yüzdeleri, IPTV'de akış hızı — ikisi de ayn
 paylaşır, hangi kaynak aktifse o görünür.
 
 ![InfoBar](docs/screenshots/infobar.jpg)
+
+Şifreli kanalda sonraki program satırının sağında softcam'in neyle açtığı
+görünür: sistem ve CAID, okuyucu, protokol, hop ve ECM süresi (bkz.
+[Softcam (ECM) bilgisi](#softcam-ecm-bilgisi)).
+
+![OSCam ECM bilgili InfoBar](docs/screenshots/infobar-ecm.jpg)
 
 İkinci bilgi çubuğu (InfoBar açıkken OK): programın tam açıklaması ve türü.
 
@@ -224,6 +232,14 @@ Tipi** eklentisinden seçilir (bkz. [Font](#font)).
 <td><img src="docs/screenshots/skin-settings.jpg" alt="Arayüz ayarları"><br>Arayüz ayarları (skin seçimi)</td>
 <td><img src="docs/screenshots/font-picker.jpg" alt="Yazı tipi seçici"><br>Yazı tipi seçici</td>
 </tr>
+<tr>
+<td><img src="docs/screenshots/hotkey-settings.jpg" alt="Kısayol tuşları"><br>Kısayol tuşu ayarları</td>
+<td><img src="docs/screenshots/hotkey-functions.jpg" alt="Kısayol işlevleri"><br>Kısayol tuşu ayarları: işlev seçimi</td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/input-devices.jpg" alt="Giriş aygıtları"><br>Giriş aygıtları</td>
+<td><img src="docs/screenshots/locale.jpg" alt="Dil / bölge"><br>Dil / bölge</td>
+</tr>
 </table>
 
 ## Tanımlı ekranlar
@@ -235,7 +251,8 @@ Tipi** eklentisinden seçilir (bkz. [Font](#font)).
 `Mute` · `NumberZap` · `NumberZapPicon` · `AudioSelection` · `SkinSelection` · `PluginBrowser` ·
 `PackageAction` · `ChannelContextMenu` · `InputBox` · `PinInput` · `PinInputPopup` ·
 `VirtualKeyBoard` · `Console` · `TextBox` · `Information` · `TimerEditList` ·
-`MoviePlayer` · `PVRState` · `SimpleSummary`
+`MoviePlayer` · `PVRState` · `ButtonSetup` · `ButtonSetupSelect` · `InputDeviceSelection` ·
+`LocaleSelection` · `SimpleSummary`
 
 Ayrıca enigma2'nin standart renk adları (`window-bg`, `window-fg`, `key_red`,
 `grey` …) skin paletine eşlendi. Bunlar tanımsızken, skinde karşılığı olmayan
@@ -312,6 +329,31 @@ arkası karartma). Seçim: `selBg` / `selFg` (beyaz hap), `focus` / `focusHi`
 > Pencereler üst üste binerken de karıştırma yok: üstteki pencerenin pikseli
 > alttakinin yerine geçer. Yarı saydam bir kartın arkasından alttaki ekran
 > değil, yayın görünür.
+
+### Softcam (ECM) bilgisi
+
+InfoBar softcam'in ECM bilgisini kendiliğinden gösterir — skinde ayarlanacak bir
+şey yok. OSCam (ve çoğu softcam) açtığı kanal için `/tmp/ecm.info` yazar;
+`TiviAtvEcm` converter'ı onu saniyede bir, yalnız dosya değişince okur:
+
+```
+Irdeto 0604  ·  my_reader  ·  newcamd  ·  1 hop  ·  0.214 s
+```
+
+- Yalnız **şifreli** kanalda ve softcam `/tmp/ecm.info`'yu yazmışken görünür;
+  şifresiz kanalda o köşe boş kalır.
+- **Menü › Kurulum › Kullanım & Kullanıcı Arayüzü › Ekranda Gösterim (OSD)
+  Ayarları › Bilgi Çubuğunda şifreleme bilgisini göster** ayarına uyar
+  (İngilizce arayüzde *Show crypto info in InfoBar*): `Kapalı` gizler,
+  `Tek satır` / `İki satır` gösterir (varsayılan açık; madde *Uzman* kurulum
+  seviyesinde listelenir).
+- Aynı ekrandaki **Softcam sunucu adını gizle**, kart ağ üzerinden
+  paylaşılıyorsa sunucu adresini gizler (`•••`).
+- Softcam sistem adını yazmazsa CAID'den bulunur; ECM süresi softcam saniye de
+  yazsa milisaniye de yazsa saniye olarak gösterilir.
+
+Widget `InfoBar` ekranında durur (`<convert type="TiviAtvEcm" />`); her etiket
+gibi taşınabilir, biçimi değiştirilebilir.
 
 ### Yuvarlak köşeler
 
@@ -429,6 +471,14 @@ python tools/make_designer_copy.py
 ```
 
 ## Sürüm notları
+
+**1.0.2**
+- InfoBar'da softcam ECM bilgisi (OSCam, CCcam …), yalnız şifreli kanalda:
+  `/tmp/ecm.info`'dan sistem + CAID, okuyucu, protokol, hop ve ECM süresi
+  (yeni `TiviAtvEcm` converter'ı). Bkz. [Softcam (ECM) bilgisi](#softcam-ecm-bilgisi).
+- Kısayol tuşu ayarları, giriş aygıtları ve dil / bölge ekranları yenilendi:
+  diğer ayar ekranları gibi büyük yarı saydam kartlar, renk tuşu çipleri, dil
+  listesinde bayraklar ve durum simgeleri.
 
 **1.0.1**
 - Kutuda görünen her şey İngilizce: etiketler (NOW, NEXT, LATER), ekran
