@@ -328,7 +328,7 @@ others are picked in the **TiviATV Font** plugin (see [Font](#font)).
 </tr>
 <tr>
 <td><img src="docs/screenshots/bluetooth.jpg" alt="Bluetooth Devices Manager"><br>Bluetooth Devices Manager</td>
-<td></td>
+<td><img src="docs/screenshots/softcam.jpg" alt="Softcam settings"><br>Softcam settings</td>
 </tr>
 </table>
 
@@ -344,7 +344,7 @@ others are picked in the **TiviATV Font** plugin (see [Font](#font)).
 `MoviePlayer` · `PVRState` · `ButtonSetup` · `ButtonSetupSelect` · `InputDeviceSelection` ·
 `LocaleSelection` · `MultiBootManager` · `KexecInit` · `AtileHD_Config` · `VideoEnhancementSetup` ·
 `VideoEnhancementPreview` · `SubtitleDisplay` · `TiviAtvSettings` ·
-`QuickMenu` · `SoftwareUpdate` · `AtileHD_About` · `AtileHDScreens` · `HistoryZapSelector` · `LocationBox` ·
+`QuickMenu` · `SoftwareUpdate` · `AtileHD_About` · `AtileHDScreens` · `HistoryZapSelector` · `LocationBox` · `SoftcamSetup` ·
 `SimpleSummary`
 
 EMC: `EMCSelection` · `EMCSelectionOwn` · `EnhancedMovieCenterMenu` · `MovieMenu` ·
@@ -643,6 +643,13 @@ python tools/make_designer_copy.py
 ```
 
 ## Changelog
+
+**1.0.9**
+- Softcam Settings (blue key › Softcam) has its own screen: the softcam list
+  plus an ECM info panel for the running cam. Up to 1.0.7 this screen showed
+  no colour keys, so it wasn't clear how to apply, stop or restart a cam:
+  pick the cam with LEFT / RIGHT and press GREEN (Save) to switch to it;
+  choosing "None" stops it, YELLOW restarts it, BLUE shows OSCam / CCcam info.
 
 **1.0.8**
 - Infobar: the crypto badge showed "Invalid type" on satellite channels (it

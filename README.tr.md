@@ -319,7 +319,7 @@ Tipi** eklentisinden seçilir (bkz. [Font](#font)).
 </tr>
 <tr>
 <td><img src="docs/screenshots/bluetooth.jpg" alt="Bluetooth Devices Manager"><br>Bluetooth Devices Manager</td>
-<td></td>
+<td><img src="docs/screenshots/softcam.jpg" alt="Softcam ayarları"><br>Softcam ayarları</td>
 </tr>
 </table>
 
@@ -335,7 +335,7 @@ Tipi** eklentisinden seçilir (bkz. [Font](#font)).
 `MoviePlayer` · `PVRState` · `ButtonSetup` · `ButtonSetupSelect` · `InputDeviceSelection` ·
 `LocaleSelection` · `MultiBootManager` · `KexecInit` · `AtileHD_Config` · `VideoEnhancementSetup` ·
 `VideoEnhancementPreview` · `SubtitleDisplay` · `TiviAtvSettings` ·
-`QuickMenu` · `SoftwareUpdate` · `AtileHD_About` · `AtileHDScreens` · `HistoryZapSelector` · `LocationBox` ·
+`QuickMenu` · `SoftwareUpdate` · `AtileHD_About` · `AtileHDScreens` · `HistoryZapSelector` · `LocationBox` · `SoftcamSetup` ·
 `SimpleSummary`
 
 EMC: `EMCSelection` · `EMCSelectionOwn` · `EnhancedMovieCenterMenu` · `MovieMenu` ·
@@ -628,6 +628,14 @@ python tools/make_designer_copy.py
 ```
 
 ## Sürüm notları
+
+**1.0.9**
+- Softcam Ayarları (mavi tuş › Softcam) kendi ekranına kavuştu: softcam
+  listesi ve çalışan cam'in ECM bilgisi. 1.0.7'ye kadar bu ekranda renk
+  tuşları görünmüyordu; cam'in nasıl uygulanacağı, durdurulacağı ya da yeniden
+  başlatılacağı belli değildi: cam'i SOL / SAĞ ile seç, YEŞİL (Kaydet) ile
+  geç; "None" seçilirse durur, SARI yeniden başlatır, MAVİ OSCam / CCcam
+  bilgisini açar.
 
 **1.0.8**
 - Bilgi çubuğu: şifre rozeti uydu kanallarında "Invalid type" yazıyordu

@@ -235,6 +235,8 @@ SCREENS = {
 	                       "session.open(OAWeatherOverview)", [], 1.5),
 	# FileList parametreleri skinlenmemis dizin secicide de gecerli
 	"locationbox": ("from Screens.LocationBox import LocationBox\nsession.open(LocationBox, text='Choose a directory', currDir='/usr/share/enigma2/')", [], 2),
+	# mavi tus > Softcam > Softcam Settings (emulatorde /etc/init.d/softcam.* ornek betikleri ve /tmp/ecm.info gerekir)
+	"softcamsetup": ("from Screens.SoftcamSetup import SoftcamSetup\nsession.open(SoftcamSetup)", [], 2),
 	"tiviatvsettings": ("from Plugins.Extensions.TiviAtvFont.plugin import TiviAtvSettings\nsession.open(TiviAtvSettings)", [], 2),
 	# Kurulum > Kullanim & Arayuz altindaki ayar ekranlari
 	"buttonsetup": ("from Screens.ButtonSetup import ButtonSetup\nsession.open(ButtonSetup)", [], 1.5),
