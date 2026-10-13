@@ -61,6 +61,10 @@ TEMPLATE = """<skin>
 \t\t<alias name="VirtualKeyboard" font="TM" size="34" height="76" />
 \t\t<alias name="PluginBrowser0" font="TM" size="30" height="75" />
 \t\t<alias name="PluginBrowser1" font="TM" size="22" height="28" />
+\t\t<alias name="FileList" font="TM" size="28" height="56" />
+\t\t<alias name="FileListMulti" font="TM" size="28" height="56" />
+\t\t<alias name="FileListIcons" font="enigma2icons" size="30" height="36" />
+\t\t<alias name="PlayList" font="TM" size="26" height="48" />
 \t</fonts>
 </skin>
 """

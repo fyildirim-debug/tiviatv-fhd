@@ -127,7 +127,11 @@ def check_color(where, attr, val):
 screens = [s for part in parts for s in part.findall("screen")]
 for scr in screens:
     sname = scr.get("name", "?")
+    # <templates> (openATV Listbox sablonu) ogeleri widget attribute'u degil
+    skip = {id(t) for tmpl in scr.iter("templates") for t in tmpl.iter()}
     for el in scr.iter():
+        if id(el) in skip:
+            continue
         where = f"[{sname}] <{el.tag}>"
         if el is scr:
             where = f"[{sname}] <screen>"
@@ -173,6 +177,14 @@ for scr in screens:
                     errors.append(
                         f"[{sname}] <{el.tag} {el.get('name') or el.get('source') or ''}>: "
                         f"ekran disina tasiyor {x}+{w}x{y}+{h} > {sw}x{sh}")
+
+# AtileHD_About'taki surum yazisi VERSION ile ayni olmali
+VERSION = (ROOT / "VERSION").read_text(encoding="utf-8").strip()
+for scr in screens:
+    if scr.get("name") == "AtileHD_About":
+        shown = [el.get("text", "") for el in scr.iter("eLabel") if el.get("text", "").startswith("Version ")]
+        if shown != ["Version " + VERSION]:
+            errors.append(f"[AtileHD_About] surum yazisi {shown} != VERSION {VERSION!r}")
 
 print(f"XML gecerli. {len(screens)} ekran, {len(colors)} duz renk, {len(gradients)} gradient, {len(fonts)} font.")
 print(f"Motorun destekledigi attribute sayisi: {len(supported)}")

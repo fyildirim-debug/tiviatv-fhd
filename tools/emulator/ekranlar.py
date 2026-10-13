@@ -102,6 +102,139 @@ SCREENS = {
 	"kexecinit": ("from Screens.MultiBootManager import KexecInit\nsession.open(KexecInit)", [], 2),
 	# Kullanim & Arayuz > "Setup - TiviAtv-FHD" (openATV'nin AtileHD eklentisi) ve TiviATV Settings
 	"atilehd": ("from Plugins.Extensions.AtileHD.plugin import AtileHD_Config\nsession.open(AtileHD_Config)", [], 2),
+	# AtileHD_Config'in "pro" acikken sari tusu ve mavi "About" tusu
+	"atilehd-pro": ("from Plugins.Extensions.AtileHD.plugin import AtileHD_Config\nscr = session.open(AtileHD_Config)\n"
+	                "scr.myAtileHD_active.value = True\nscr.createConfigList()", [], 2),
+	"atilehd-about": (["from Plugins.Extensions.AtileHD.plugin import AtileHD_Config\nsession.open(AtileHD_Config)",
+	                   "session.current_dialog.about()"], [], 1.5),
+	"atilehd-screens": (["from Plugins.Extensions.AtileHD.plugin import AtileHD_Config\nsession.open(AtileHD_Config)",
+	                     "from Plugins.Extensions.AtileHD.plugin import AtileHDScreens\nsession.open(AtileHDScreens)"], [], 1.5),
+	# mavi tus: hizli menu; yazilim guncelleme (besleme yoksa durum "unavailable")
+	"quickmenu": ("from Screens.QuickMenu import QuickMenu\nsession.open(QuickMenu)", [], 2),
+	"softwareupdate": ("from Screens.SoftwareUpdate import SoftwareUpdate\nsession.open(SoftwareUpdate)", [], 4),
+	# File Commander ve alt ekranlari
+	"filecommander": ("from Plugins.Extensions.FileCommander.plugin import FileCommander\nsession.open(FileCommander, '/usr/share/enigma2/', '/etc/enigma2/')", ["Down", "Down", "Down", "Down", "Down", "Down", "Down", "Down", "Down", "Down"], 1.5),
+	"filecommander-menu": (["from Plugins.Extensions.FileCommander.plugin import FileCommander\nsession.open(FileCommander, '/usr/share/enigma2/', '/etc/enigma2/')",
+	                        "session.current_dialog.keyMenu()"], [], 1.5),
+	"filecommander-data": (["from Plugins.Extensions.FileCommander.plugin import FileCommander\nsession.open(FileCommander, '/usr/share/enigma2/', '/etc/enigma2/')",
+	                        "from Plugins.Extensions.FileCommander.plugin import FileCommanderData\nsession.open(FileCommanderData, {'Title': 'Information', 'Data': ['Name:\\tskin.xml', 'Size:\\t212 KB', 'Owner:\\troot', 'Modified:\\t13.10.2026 02:14']})"], [], 1.5),
+	"filecommander-viewer": (["from Plugins.Extensions.FileCommander.plugin import FileCommander\nsession.open(FileCommander, '/usr/share/enigma2/', '/etc/enigma2/')",
+	                          "from Plugins.Extensions.FileCommander.plugin import FileCommanderFileViewer\nsession.open(FileCommanderFileViewer, '/etc/enigma2/settings', isText=True)"], [], 1.5),
+	"filecommander-editor": (["from Plugins.Extensions.FileCommander.plugin import FileCommander\nsession.open(FileCommander, '/usr/share/enigma2/', '/etc/enigma2/')",
+	                          "from Plugins.Extensions.FileCommander.plugin import FileCommanderTextEditor\nsession.open(FileCommanderTextEditor, '/etc/enigma2/settings')"], [], 1.5),
+	# eklentiler: Media Player, Picture Player, Programmlisten-Updater, gecmis zaplama
+	"mediaplayer": ("from Plugins.Extensions.MediaPlayer.plugin import MediaPlayer\nsession.open(MediaPlayer)", [], 2.5),
+	"picshow": ("from Plugins.Extensions.PicturePlayer.ui import picshow\nfrom Components.config import config\n"
+	            "config.pic.lastDir.value = '/home/user/tiviatv-fhd/docs/screenshots/'\nsession.open(picshow)", [], 3),
+	"pic-exif": ("from Plugins.Extensions.PicturePlayer.ui import Pic_Exif\n"
+	             "session.open(Pic_Exif, ['/media/hdd/pictures/holiday-042.jpg', '0230', 'Canon', 'EOS R6', '2026:08:14 18:42:07', '6000/4000', 'No', 'Normal', '', 'Pattern', 'Manual', 'Daylight', '', '400', '300', '300', 'inch', '', '1/250', '0', '', '', 'f/4.0'])", [], 1.5),
+	"programmlisten": ("from Plugins.Extensions.ProgrammlistenUpdater.plugin import PUMainScreen\nsession.open(PUMainScreen)", [], 4),
+	"historyzap": ("from enigma import eServiceCenter\nfrom Screens.ChannelSelection import HistoryZapSelector\n"
+	               "refs = eServiceCenter.getInstance().list(ib.servicelist.getRoot()).getContent('R', True)[:6]\n"
+	               "session.open(HistoryZapSelector, refs, 0, 1)", [], 1.5),
+	# Bluetooth ve hava durumu eklentileri emulatorde kurulu degil: ayni ekran
+	# adi ve widget adlariyla benzetim (OAWeather'in kendi converter'i yok,
+	# session.OAWeather'li widget'lar atlanir; duzen ve liste sablonu gorunur)
+	"bluetooth": ("from Screens.Screen import Screen\nfrom Components.ActionMap import ActionMap\n"
+	              "from Components.Sources.StaticText import StaticText\nfrom Components.Label import Label\nfrom Components.MenuList import MenuList\n"
+	              "class BluetoothDevicesManager(Screen):\n"
+	              "\tdef __init__(self, session):\n"
+	              "\t\tScreen.__init__(self, session)\n"
+	              "\t\tself.setTitle('Bluetooth Devices Manager')\n"
+	              "\t\tfor k, t in (('red', 'Exit'), ('green', 'Scan'), ('yellow', 'Disconnect'), ('blue', 'Audio Off')): self['key_' + k] = StaticText(t)\n"
+	              "\t\tself['devicelist'] = MenuList([('JBL Flip 5 / Connected / Audio', ''), ('Logitech K400 / Not connected', ''), ('Xbox Wireless Controller / Not connected', '')])\n"
+	              "\t\tself['ConnStatus'] = Label('Connection with:\\nJBL Flip 5')\n"
+	              "\t\tself['actions'] = ActionMap(['OkCancelActions'], {'cancel': self.close}, -1)\n"
+	              "session.open(BluetoothDevicesManager)", [], 1.5),
+	"bluetooth-vu": ("from Screens.Screen import Screen\nfrom Components.ActionMap import ActionMap\n"
+	                 "from Components.Label import Label\nfrom Components.MenuList import MenuList\n"
+	                 "class BluetoothDevicesManager(Screen):\n"
+	                 "\tdef __init__(self, session):\n"
+	                 "\t\tScreen.__init__(self, session)\n"
+	                 "\t\tself.setTitle('Bluetooth Setup')\n"
+	                 "\t\tfor k, t in (('red', 'Exit'), ('green', ' '), ('yellow', 'Connect'), ('blue', 'Scan')): self['key_' + k] = Label(t)\n"
+	                 "\t\tself['devicelist'] = MenuList([('Vu+ Bluetooth RCU / Not connected', '')])\n"
+	                 "\t\tself['ConnStatus'] = Label('Not connected to any device')\n"
+	                 "\t\tself['actions'] = ActionMap(['OkCancelActions'], {'cancel': self.close}, -1)\n"
+	                 "session.open(BluetoothDevicesManager)", [], 1.5),
+	"msnweather": ("from Screens.Screen import Screen\nfrom Components.ActionMap import ActionMap\n"
+	               "from Components.Sources.StaticText import StaticText\nfrom Components.Pixmap import Pixmap\n"
+	               "class MSNWeatherPlugin(Screen):\n"
+	               "\tdef __init__(self, session):\n"
+	               "\t\tScreen.__init__(self, session)\n"
+	               "\t\tself.setTitle('Weather Plugin')\n"
+	               "\t\tfor k, t in (('caption', 'Istanbul, TR'), ('currentTemp', '18°C'), ('condition', 'Partly cloudy'), ('wind_condition', 'Wind: 14 km/h NE'),\n"
+	               "\t\t             ('humidity', 'Humidity: 64 %'), ('observationtime', 'Observation time: 14:20'), ('observationpoint', 'Observation point: Istanbul'),\n"
+	               "\t\t             ('feelsliketemp', 'Feels like 17°C'), ('statustext', '')): self[k] = StaticText(t)\n"
+	               "\t\tdays = (('Tue', '14. Oct', 19, 12, 'Sunny'), ('Wed', '15. Oct', 17, 11, 'Showers'), ('Thu', '16. Oct', 16, 10, 'Rain'), ('Fri', '17. Oct', 18, 11, 'Cloudy'), ('Sat', '18. Oct', 20, 12, 'Sunny'))\n"
+	               "\t\tfor i, (d, dt, hi, lo, tx) in enumerate(days):\n"
+	               "\t\t\tself['weekday%d' % (i + 1)] = StaticText('%s\\n%s' % (d, dt))\n"
+	               "\t\t\tself['weekday%d_temp' % (i + 1)] = StaticText('%d°C|%d°C\\n%s' % (hi, lo, tx))\n"
+	               "\t\t\tself['weekday%d_icon' % (i + 1)] = Pixmap()\n"
+	               "\t\tself['currenticon'] = Pixmap()\n"
+	               "\t\tself['actions'] = ActionMap(['OkCancelActions'], {'cancel': self.close}, -1)\n"
+	               "session.open(MSNWeatherPlugin)", [], 1.5),
+	"oaweather-favorites": ("from Screens.Screen import Screen\nfrom Components.ActionMap import ActionMap\n"
+	                        "from Components.Sources.StaticText import StaticText\nfrom Components.Sources.List import List\n"
+	                        "class OAWeatherFavorites(Screen):\n"
+	                        "\tdef __init__(self, session):\n"
+	                        "\t\tScreen.__init__(self, session)\n"
+	                        "\t\tself.setTitle('Weather Favorites')\n"
+	                        "\t\tself['headline'] = StaticText('Manage your favorites')\n"
+	                        "\t\tfor k, t in (('red', 'Delete'), ('green', 'Save'), ('yellow', 'Edit'), ('blue', 'Add')): self['key_' + k] = StaticText(t)\n"
+	                        "\t\tself['favoriteList'] = List([('Istanbul, TR', '[lon=28.97835, lat=41.08218]'), ('Ankara, TR', '[lon=32.85427, lat=39.91987]'), ('Hamburg, DE', '[lon=10.00065, lat=53.55034]')])\n"
+	                        "\t\tself['actions'] = ActionMap(['OkCancelActions'], {'cancel': self.close}, -1)\n"
+	                        "session.open(OAWeatherFavorites)", [], 1.5),
+	"oaweather-detail": ("from Screens.Screen import Screen\nfrom Components.ActionMap import ActionMap\n"
+	                      "from Components.Sources.StaticText import StaticText\nfrom Components.Sources.List import List\n"
+	                      "from Components.Label import Label\nfrom Components.Pixmap import Pixmap\n"
+	                      "class OAWeatherDetailview(Screen):\n"
+	                      "\tdef __init__(self, session):\n"
+	                      "\t\tScreen.__init__(self, session)\n"
+	                      "\t\tself.setTitle('Weather Plugin Detailview')\n"
+	                      "\t\tfor k, t in (('red', 'Exit'), ('green', 'Chose favorite'), ('yellow', 'Previous favorite'), ('blue', 'Next favorite'), ('channel', 'Day +/-'), ('info', 'Details +/-'), ('ok', 'Glass')): self['key_' + k] = StaticText(t)\n"
+	                      "\t\tfor k, t in (('sunrise', '07:21'), ('sunset', '18:34'), ('moonrise', '22:10'), ('moonset', '13:02'), ('version', ''), ('statustext', '')): self[k] = StaticText(t)\n"
+	                      "\t\tself['update'] = Label('Update')\n\t\tself['currdatetime'] = Label('Today 13 Oct')\n"
+	                      "\t\tself['moonrisepix'] = Pixmap()\n\t\tself['moonsetpix'] = Pixmap()\n"
+	                      "\t\trows = []\n"
+	                      "\t\tfor h, t, f, hu, pr, ws, wd, g, uv, ps, vi, sd in (('14:00 h', '18 °C', '17 °C', '64 %', '10 %', '14 km/h', 'NE', '28 km/h', '3', '1016 mbar', '24 km', 'Partly cloudy'),\n"
+	                      "\t\t        ('15:00 h', '18 °C', '17 °C', '62 %', '10 %', '15 km/h', 'NE', '30 km/h', '2', '1016 mbar', '24 km', 'Partly cloudy'),\n"
+	                      "\t\t        ('16:00 h', '17 °C', '16 °C', '66 %', '20 %', '13 km/h', 'E', '26 km/h', '1', '1015 mbar', '20 km', 'Cloudy'),\n"
+	                      "\t\t        ('17:00 h', '16 °C', '15 °C', '70 %', '40 %', '12 km/h', 'E', '24 km/h', '0', '1015 mbar', '16 km', 'Light rain showers'),\n"
+	                      "\t\t        ('18:00 h', '15 °C', '14 °C', '75 %', '60 %', '11 km/h', 'SE', '22 km/h', '0', '1014 mbar', '12 km', 'Rain'),\n"
+	                      "\t\t        ('19:00 h', '14 °C', '13 °C', '78 %', '50 %', '10 km/h', 'SE', '20 km/h', '0', '1014 mbar', '12 km', 'Rain'),\n"
+	                      "\t\t        ('20:00 h', '14 °C', '13 °C', '80 %', '30 %', '9 km/h', 'S', '18 km/h', '0', '1014 mbar', '14 km', 'Cloudy')):\n"
+	                      "\t\t\trows.append((h, ps, t, f, hu, pr, ws, wd, g, uv, vi, sd, sd, None) + (None,) * 10)\n"
+	                      "\t\tself['detailList'] = List(rows)\n"
+	                      "\t\tself['actions'] = ActionMap(['OkCancelActions', 'InfoActions'], {'cancel': self.close, 'info': self.toggle}, -1)\n"
+	                      "\t\tself.onLayoutFinish.append(self.first)\n"
+	                      "\tdef first(self):\n"
+	                      "\t\tself['detailList'].setStyle('default')\n"
+	                      "\tdef toggle(self):\n"
+	                      "\t\tself['detailList'].setStyle('reduced' if self['detailList'].style == 'default' else 'default')\n"
+	                      "session.open(OAWeatherDetailview)", [], 1.5),
+	"oaweather-frame": ("from Screens.Screen import Screen\nfrom Components.ActionMap import ActionMap\n"
+	                    "from Components.Sources.StaticText import StaticText\nfrom Components.Pixmap import Pixmap\n"
+	                    "class OAWeatherDetailFrame(Screen):\n"
+	                    "\tdef __init__(self, session):\n"
+	                    "\t\tScreen.__init__(self, session)\n"
+	                    "\t\tvals = ('15:00 h', '1016 mbar', '18 °C', '17 °C', '62 %', '10 %', '15 km/h', 'NE', '30 km/h', '2', '24 km', 'Partly cloudy', 'Clouds come and go, a light breeze from the north-east. It stays dry until the evening.')\n"
+	                    "\t\tfor k, v in zip(('time', 'pressure', 'temp', 'feels', 'humid', 'precip', 'windspeed', 'winddir', 'windgusts', 'uvindex', 'visibility', 'shortdesc', 'longdesc'), vals): self[k] = StaticText(v)\n"
+	                    "\t\tself['icon'] = Pixmap()\n"
+	                    "\t\tself['actions'] = ActionMap(['OkCancelActions'], {'cancel': self.close}, -1)\n"
+	                    "session.open(OAWeatherDetailFrame)", [], 1.5),
+	"oaweather-overview": ("from Screens.Screen import Screen\nfrom Components.ActionMap import ActionMap\n"
+	                       "from Components.Sources.StaticText import StaticText\nfrom Components.Label import Label\n"
+	                       "class OAWeatherOverview(Screen):\n"
+	                       "\tdef __init__(self, session):\n"
+	                       "\t\tScreen.__init__(self, session)\n"
+	                       "\t\tself.setTitle('Weather Plugin Overview')\n"
+	                       "\t\tfor k, t in (('red', 'Exit'), ('green', 'Chose favorite'), ('yellow', 'Previous favorite'), ('blue', 'Next favorite'), ('ok', 'View details'), ('menu', 'Settings')): self['key_' + k] = StaticText(t)\n"
+	                       "\t\tself['update'] = Label('Update')\n\t\tself['current'] = Label('Current Weather')\n"
+	                       "\t\tself['actions'] = ActionMap(['OkCancelActions'], {'cancel': self.close}, -1)\n"
+	                       "session.open(OAWeatherOverview)", [], 1.5),
+	# FileList parametreleri skinlenmemis dizin secicide de gecerli
+	"locationbox": ("from Screens.LocationBox import LocationBox\nsession.open(LocationBox, text='Choose a directory', currDir='/usr/share/enigma2/')", [], 2),
 	"tiviatvsettings": ("from Plugins.Extensions.TiviAtvFont.plugin import TiviAtvSettings\nsession.open(TiviAtvSettings)", [], 2),
 	# Kurulum > Kullanim & Arayuz altindaki ayar ekranlari
 	"buttonsetup": ("from Screens.ButtonSetup import ButtonSetup\nsession.open(ButtonSetup)", [], 1.5),

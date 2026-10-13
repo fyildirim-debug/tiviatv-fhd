@@ -120,7 +120,7 @@ class TiviAtvEpg(Converter, object):
 
 	@cached
 	def getBoolean(self):
-		if self.type == "Prime":
+		if self.type in ("Prime", "PrimeTime", "PrimeTitle"):  # o saatte program yoksa cip de gizli
 			return self.primeEvent() is not None
 		return self.panel()
 

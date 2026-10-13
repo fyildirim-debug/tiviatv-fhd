@@ -37,6 +37,12 @@ karşılıklar var (bkz. [Diğer imajlar](#diğer-imajlar-openvix)).
    Kullanıcı Arayüzü → Kanal Seçim Ayarları**:
    - "Kanal listesinde her giriş için iki satır göster" = **Evet**
    - "Kanal listesi satır sayısı" = **10**
+   - "Kanal listesinde kanal numaralarını göster" = **Evet**
+   - "Kanal listesinde picon göster" = **Evet** (kutuda picon olmalı)
+   - "Kanal listesinde program ilerlemesi" = **İlerleme çubuğu sağda**
+
+   Sağdaki sıradaki programlar paneli için aynı menüde **TiviATV Settings ›
+   Kanal listesi: sıradaki programlar** seçeneğini aç.
 
    Satır yüksekliği skinden değil bu sayıdan gelir (liste yüksekliği ÷ satır
    sayısı); satırlar sık ya da seyrek görünürse sayıyı değiştir.
@@ -136,6 +142,20 @@ programı (varsayılan 20:15) gösterir. Karta sığmayan açıklama yavaşça k
 sonra baştan başlar.
 
 ![EPG panelli kanal listesi](docs/screenshots/channelselection-epg.jpg)
+
+Ekran görüntülerindeki listeyi elde etmek için **Menü › Kurulum › Kullanım &
+Kullanıcı Arayüzü › Kanal Seçim Ayarları**:
+
+| Ayar | Değer |
+|---|---|
+| Kanal listesinde her giriş için iki satır göster | Evet |
+| Kanal listesi satır sayısı | 10 |
+| Kanal listesinde kanal numaralarını göster | Evet |
+| Kanal listesinde picon göster | Evet (`/usr/share/enigma2/picon` ya da USB / HDD'de `picon` klasöründe XPicon / 220×132 picon) |
+| Kanal listesinde program ilerlemesi | İlerleme çubuğu sağda |
+
+Sağdaki panel **TiviATV Settings**'ten gelir (aşağıda). Yalnız kutunun
+EPG'sinde olanı listeler; EPG verisi az olan kanalda satır da az olur.
 
 ### Program rehberi
 
@@ -277,6 +297,30 @@ Tipi** eklentisinden seçilir (bkz. [Font](#font)).
 <td><img src="docs/screenshots/video-enhancement.jpg" alt="Video iyileştirme"><br>Video iyileştirme ayarları</td>
 <td><img src="docs/screenshots/video-enhancement-preview.jpg" alt="Video iyileştirme önizleme"><br>Video iyileştirme: değer ayarlama</td>
 </tr>
+<tr>
+<td><img src="docs/screenshots/quick-menu.jpg" alt="Hızlı menü"><br>Hızlı menü (mavi tuş)</td>
+<td><img src="docs/screenshots/software-update.jpg" alt="Yazılım güncelleme"><br>Yazılım güncelleme</td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/file-commander.jpg" alt="File Commander"><br>File Commander</td>
+<td><img src="docs/screenshots/media-player.jpg" alt="Media Player"><br>Media Player</td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/pictureplayer.jpg" alt="Picture Player"><br>Picture Player</td>
+<td><img src="docs/screenshots/history-zap.jpg" alt="Geçmiş zaplama"><br>Geçmiş zaplama (History zap)</td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/programmlisten-updater.jpg" alt="Programmlisten-Updater"><br>Programmlisten-Updater</td>
+<td><img src="docs/screenshots/skin-about.jpg" alt="Skin ayarı: About"><br>Skin ayarı › About</td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/weather-details.jpg" alt="Weather Plugin ayrıntı"><br>Weather Plugin (OAWeather): saatlik ayrıntı</td>
+<td><img src="docs/screenshots/weather-msn.jpg" alt="Weather Plugin (MSN)"><br>Weather Plugin (MSN)</td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/bluetooth.jpg" alt="Bluetooth Devices Manager"><br>Bluetooth Devices Manager</td>
+<td></td>
+</tr>
 </table>
 
 ## Tanımlı ekranlar
@@ -291,10 +335,18 @@ Tipi** eklentisinden seçilir (bkz. [Font](#font)).
 `MoviePlayer` · `PVRState` · `ButtonSetup` · `ButtonSetupSelect` · `InputDeviceSelection` ·
 `LocaleSelection` · `MultiBootManager` · `KexecInit` · `AtileHD_Config` · `VideoEnhancementSetup` ·
 `VideoEnhancementPreview` · `SubtitleDisplay` · `TiviAtvSettings` ·
+`QuickMenu` · `SoftwareUpdate` · `AtileHD_About` · `AtileHDScreens` · `HistoryZapSelector` · `LocationBox` ·
 `SimpleSummary`
 
 EMC: `EMCSelection` · `EMCSelectionOwn` · `EnhancedMovieCenterMenu` · `MovieMenu` ·
 `EMCMediaCenter` · `EMCMediaCenterOwn`
+
+Eklentiler: `FileCommander` · `FileCommanderContextMenu` · `FileCommanderData` ·
+`FileCommanderFileViewer` · `FileCommanderTextEditor` · `MediaPlayer` · `picshow` ·
+`Pic_Exif` · `Programmlisten_Updater` · `PU_History` · `PU_Restore` ·
+`OAWeatherOverview` · `OAWeatherDetailview` · `OAWeatherDetailFrame` · `OAWeatherFavorites` ·
+`MSNWeatherPlugin` · `MSNWeatherPluginEntriesListConfigScreen` · `MSNWeatherPluginEntryConfigScreen` ·
+`MSNWeatherPluginSearch` · `BluetoothDevicesManager`
 
 Ayrıca enigma2'nin standart renk adları (`window-bg`, `window-fg`, `key_red`,
 `grey` …) skin paletine eşlendi. Bunlar tanımsızken, skinde karşılığı olmayan
@@ -576,6 +628,28 @@ python tools/make_designer_copy.py
 ```
 
 ## Sürüm notları
+
+**1.0.8**
+- Bilgi çubuğu: şifre rozeti uydu kanallarında "Invalid type" yazıyordu
+  (openATV'den olmayan bir değer istiyordu). Artık şifreleme sistemini (Nagra,
+  Irdeto … ya da FTA) gösteriyor; IPTV yayınlarında ve sistem bilinmiyorsa
+  gizli.
+- Ayar ekranlarında (Setup) renk tuşları yeniden var (İptal, Kaydet,
+  Varsayılan), yanında MENU / INFO / TEXT / HELP.
+- Kanal listesi EPG paneli: o saatte programı olmayan kanalda boş beyaz bir
+  PRIMETIME hapı çıkıyordu; artık gizli.
+- Skin ayarı (AtileHD): sarı tuşun yazısı sığıyor, "About" artık pencere
+  açıyor (hiçbir şey açmıyordu), "additional screens" skinlendi ve listenin
+  neden boş olduğunu söylüyor.
+- Yeni ekranlar: Hızlı menü (mavi tuş), Yazılım güncelleme, Geçmiş zaplama,
+  File Commander (menü, görüntüleyici, düzenleyici ve bilgi ekranıyla; dosya
+  simgeleri PNG değil ikon fontundan), Media Player, Picture Player,
+  Programmlisten-Updater, Bluetooth Devices Manager ve iki Weather Plugin
+  (OAWeather ve MSN).
+- Dizin seçimi (kayıt, timeshift ve oynatma yerleri): klasörler ve yer
+  imleri yan yana.
+- Bağlam menüleri: renk tuşu, INFO, TEXT ve HELP simgeleri ikon fontundan.
+- README: kanal listesini ekran görüntülerindeki gibi kurmanın yolu.
 
 **1.0.7**
 - 1.0.6 düzeltmesi: renk tuşu çiplerinin sol kenarında yazının koyu bir kopyası

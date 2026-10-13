@@ -38,6 +38,12 @@ their own variants in the skin (see [Other images](#other-images-openvix)).
    GUI → Channel Selection Settings**:
    - "Show two lines per entry" = **Yes**
    - "Number of rows" = **10**
+   - "Show channel numbers in channel selection" = **Yes**
+   - "Show picons in service list" = **Yes** (needs picons on the box)
+   - "Show event-progress in channel selection" = **Progress bar right**
+
+   For the upcoming programmes panel on the right, turn on **TiviATV
+   Settings › Channel list: upcoming programmes** in the same menu.
 
    Row height comes from this number (list height ÷ rows), not from the skin;
    change it if rows look too tight or too loose.
@@ -138,6 +144,21 @@ primetime (20:15 by default). A description that doesn't fit the card scrolls
 slowly, then starts again.
 
 ![Channel list with the EPG panel](docs/screenshots/channelselection-epg.jpg)
+
+To get the list as in the screenshots, set these in **Menu › Setup › Usage &
+GUI › Channel Selection Settings**:
+
+| Setting | Value |
+|---|---|
+| Show two lines per entry | Yes |
+| Number of rows | 10 |
+| Show channel numbers in channel selection | Yes |
+| Show picons in service list | Yes (XPicon / 220×132 picons in `/usr/share/enigma2/picon`, or `picon` on a USB stick / HDD) |
+| Show event-progress in channel selection | Progress bar right |
+
+The panel on the right comes from **TiviATV Settings** (see below). It lists
+only what the receiver's EPG holds, so a channel with little EPG data shows
+fewer rows.
 
 ### TV guide
 
@@ -285,6 +306,30 @@ others are picked in the **TiviATV Font** plugin (see [Font](#font)).
 <td><img src="docs/screenshots/video-enhancement.jpg" alt="Video enhancement setup"><br>Video enhancement setup</td>
 <td><img src="docs/screenshots/video-enhancement-preview.jpg" alt="Video enhancement preview"><br>Video enhancement: adjusting a value</td>
 </tr>
+<tr>
+<td><img src="docs/screenshots/quick-menu.jpg" alt="Quick menu"><br>Quick menu (blue key)</td>
+<td><img src="docs/screenshots/software-update.jpg" alt="Software update"><br>Software update</td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/file-commander.jpg" alt="File Commander"><br>File Commander</td>
+<td><img src="docs/screenshots/media-player.jpg" alt="Media Player"><br>Media Player</td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/pictureplayer.jpg" alt="Picture Player"><br>Picture Player</td>
+<td><img src="docs/screenshots/history-zap.jpg" alt="History zap"><br>History zap</td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/programmlisten-updater.jpg" alt="Programmlisten-Updater"><br>Programmlisten-Updater</td>
+<td><img src="docs/screenshots/skin-about.jpg" alt="Skin setup: About"><br>Skin setup › About</td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/weather-details.jpg" alt="Weather Plugin details"><br>Weather Plugin (OAWeather): hourly details</td>
+<td><img src="docs/screenshots/weather-msn.jpg" alt="Weather Plugin (MSN)"><br>Weather Plugin (MSN)</td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/bluetooth.jpg" alt="Bluetooth Devices Manager"><br>Bluetooth Devices Manager</td>
+<td></td>
+</tr>
 </table>
 
 ## Skinned screens
@@ -299,10 +344,18 @@ others are picked in the **TiviATV Font** plugin (see [Font](#font)).
 `MoviePlayer` · `PVRState` · `ButtonSetup` · `ButtonSetupSelect` · `InputDeviceSelection` ·
 `LocaleSelection` · `MultiBootManager` · `KexecInit` · `AtileHD_Config` · `VideoEnhancementSetup` ·
 `VideoEnhancementPreview` · `SubtitleDisplay` · `TiviAtvSettings` ·
+`QuickMenu` · `SoftwareUpdate` · `AtileHD_About` · `AtileHDScreens` · `HistoryZapSelector` · `LocationBox` ·
 `SimpleSummary`
 
 EMC: `EMCSelection` · `EMCSelectionOwn` · `EnhancedMovieCenterMenu` · `MovieMenu` ·
 `EMCMediaCenter` · `EMCMediaCenterOwn`
+
+Plugins: `FileCommander` · `FileCommanderContextMenu` · `FileCommanderData` ·
+`FileCommanderFileViewer` · `FileCommanderTextEditor` · `MediaPlayer` · `picshow` ·
+`Pic_Exif` · `Programmlisten_Updater` · `PU_History` · `PU_Restore` ·
+`OAWeatherOverview` · `OAWeatherDetailview` · `OAWeatherDetailFrame` · `OAWeatherFavorites` ·
+`MSNWeatherPlugin` · `MSNWeatherPluginEntriesListConfigScreen` · `MSNWeatherPluginEntryConfigScreen` ·
+`MSNWeatherPluginSearch` · `BluetoothDevicesManager`
 
 enigma2's standard colour names (`window-bg`, `window-fg`, `key_red`, `grey` …)
 are also mapped to the skin palette. While they were undefined, every screen
@@ -590,6 +643,27 @@ python tools/make_designer_copy.py
 ```
 
 ## Changelog
+
+**1.0.8**
+- Infobar: the crypto badge showed "Invalid type" on satellite channels (it
+  asked openATV for a value that doesn't exist). It now shows the encryption
+  system (Nagra, Irdeto … or FTA) and stays hidden on IPTV streams and when
+  the system is unknown.
+- Settings screens (Setup) have their colour keys again (Cancel, Save,
+  Default) plus MENU / INFO / TEXT / HELP.
+- Channel list EPG panel: an empty white PRIMETIME pill appeared on channels
+  with no programme at that time; it is hidden now.
+- Skin setup (AtileHD): the yellow key's label fits, "About" now opens a
+  window (it opened nothing), and "additional screens" is skinned and says
+  why the list is empty.
+- New screens: Quick menu (blue key), Software update, History zap, File
+  Commander (with menu, viewer, editor and info; file icons from the icon
+  font, no PNGs), Media Player, Picture Player, Programmlisten-Updater,
+  Bluetooth Devices Manager and both Weather Plugins (OAWeather and MSN).
+- Directory selection (recording, timeshift and playback locations):
+  folders and bookmarks side by side.
+- Context menus: colour key, INFO, TEXT and HELP icons from the icon font.
+- README: how to set up the channel list as in the screenshots.
 
 **1.0.7**
 - Fixes 1.0.6: the colour key chips showed a dark copy of their label at the
