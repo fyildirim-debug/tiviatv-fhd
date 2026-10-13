@@ -38,8 +38,8 @@ karşılıklar var (bkz. [Diğer imajlar](#diğer-imajlar-openvix)).
    - "Kanal listesinde her giriş için iki satır göster" = **Evet**
    - "Kanal listesi satır sayısı" = **10**
    - "Kanal listesinde kanal numaralarını göster" = **Evet**
-   - "Kanal listesinde picon göster" = **Evet** (kutuda picon olmalı)
-   - "Kanal listesinde program ilerlemesi" = **İlerleme çubuğu sağda**
+   - "Kanal listesinde pikonları göster" = **Evet** (kutuda picon olmalı)
+   - "Kanal listesinde etkinlik ilerleme göstergesini göster" = **İlerleme çubuğu olarak sağda**
 
    Sağdaki sıradaki programlar paneli için aynı menüde **TiviATV Settings ›
    Kanal listesi: sıradaki programlar** seçeneğini aç.
@@ -151,8 +151,8 @@ Kullanıcı Arayüzü › Kanal Seçim Ayarları**:
 | Kanal listesinde her giriş için iki satır göster | Evet |
 | Kanal listesi satır sayısı | 10 |
 | Kanal listesinde kanal numaralarını göster | Evet |
-| Kanal listesinde picon göster | Evet (`/usr/share/enigma2/picon` ya da USB / HDD'de `picon` klasöründe XPicon / 220×132 picon) |
-| Kanal listesinde program ilerlemesi | İlerleme çubuğu sağda |
+| Kanal listesinde pikonları göster | Evet (`/usr/share/enigma2/picon` ya da USB / HDD'de `picon` klasöründe XPicon / 220×132 picon) |
+| Kanal listesinde etkinlik ilerleme göstergesini göster | İlerleme çubuğu olarak sağda |
 
 Sağdaki panel **TiviATV Settings**'ten gelir (aşağıda). Yalnız kutunun
 EPG'sinde olanı listeler; EPG verisi az olan kanalda satır da az olur.
