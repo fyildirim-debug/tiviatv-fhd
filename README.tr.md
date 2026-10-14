@@ -497,6 +497,7 @@ tarayıcısında da). Değişiklikler hemen uygulanır, arayüz yeniden başlama
 | Kanal listesi: sıradaki programlar | Hayır | Program kartının üstünde panel: NOW ve NEXT'ten sonraki 5 program |
 | Primetime | 20:15 | O saatteki program (bugün; bittiyse yarın) panelin altında; Kapalı satırı gizler |
 | Uzun açıklamaları kaydır | Evet | Kanal listesi açıklaması sığmazsa kayar |
+| Ses çubuğu | Alt | Ses çubuğunun yeri: bilgi çubuğunun üstünde (Alt), üstte ya da solda dikey |
 
 Değerler `config.plugins.TiviAtv`'de durur; panelin widget'ları onları
 `TiviAtvEpg` converter'ıyla okur, böylece skinde panel serbestçe taşınabilir.

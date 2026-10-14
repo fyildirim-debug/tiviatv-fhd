@@ -507,6 +507,7 @@ browser). Changes apply at once, no GUI restart:
 | Channel list: upcoming programmes | No | Panel above the programme card: the 5 programmes after NOW and NEXT |
 | Primetime | 20:15 | The programme on at that time (today, or tomorrow once it is over) at the bottom of the panel; Off hides the row |
 | Scroll long descriptions | Yes | The channel list description scrolls when it doesn't fit |
+| Volume bar | Bottom | Where the volume bar appears: above the infobar (Bottom), at the top, or upright on the left |
 
 The values are stored in `config.plugins.TiviAtv`; the panel's widgets read
 them through the `TiviAtvEpg` converter, so a skin edit can move or restyle

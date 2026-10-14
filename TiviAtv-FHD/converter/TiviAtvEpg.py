@@ -34,10 +34,14 @@ def settings():
 	"""config.plugins.TiviAtv: converter, renderer ve eklenti ayni ayarlari kullanir."""
 	if not hasattr(config.plugins, "TiviAtv"):
 		config.plugins.TiviAtv = ConfigSubsection()
-		config.plugins.TiviAtv.epgPanel = ConfigYesNo(default=False)
-		config.plugins.TiviAtv.primetime = ConfigSelection(default="20:15", choices=[(x, _("Off") if x == "off" else x) for x in PRIMETIMES])
-		config.plugins.TiviAtv.scroll = ConfigYesNo(default=True)
-	return config.plugins.TiviAtv
+	options = config.plugins.TiviAtv
+	if not hasattr(options, "epgPanel"):
+		options.epgPanel = ConfigYesNo(default=False)
+		options.primetime = ConfigSelection(default="20:15", choices=[(x, _("Off") if x == "off" else x) for x in PRIMETIMES])
+		options.scroll = ConfigYesNo(default=True)
+	if not hasattr(options, "volumePos"):  # ses cubugunun yeri (TiviAtvVolume)
+		options.volumePos = ConfigSelection(default="bottom", choices=[("bottom", _("Bottom")), ("top", _("Top")), ("left", _("Left"))])
+	return options
 
 
 class TiviAtvEpg(Converter, object):

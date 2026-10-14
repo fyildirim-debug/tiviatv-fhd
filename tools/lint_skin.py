@@ -150,8 +150,10 @@ for scr in screens:
                 check_color(where, attr, val)
             # eLabel'de borderWidth/borderColor yazinin dis cizgisidir (elabel.h);
             # kutu kenari widgetBorderWidth/widgetBorderColor ile cizilir
+            # saydam yazi etiketinde dis cizgi bilerek kullanilir (acik zeminde okunurluk)
             if attr in ("borderWidth", "borderColor") and val not in ("0", "") and \
-               (el.tag == "eLabel" or el.get("render") == "Label"):
+               (el.tag == "eLabel" or el.get("render") == "Label") and \
+               not (el.get("transparent") == "1" and el.get("font")):
                 warns.append(f"{where}: {attr} eLabel'de yazi kenaridir, kutu icin widget{attr[0].upper()}{attr[1:]}")
             if attr == "font" and val:
                 fam = val.split(";")[0]

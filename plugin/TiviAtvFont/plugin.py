@@ -90,6 +90,8 @@ TURKISH = {
 	"Shows the 5 programmes after NOW and NEXT of the selected channel above the programme card.": "Seçili kanalın NOW ve NEXT'ten sonraki 5 programını program kartının üstünde gösterir.",
 	"Adds the programme at this time (today, or tomorrow once it is over) to the list.": "Bu saatteki programı (bugün; bittiyse yarın) listeye ekler.",
 	"Descriptions that do not fit slowly scroll up, then start again.": "Sığmayan açıklamalar yavaşça yukarı kayar, sonra baştan başlar.",
+	"Volume bar": "Ses çubuğu",
+	"Where the volume bar appears: above the infobar, at the top, or upright on the left.": "Ses çubuğunun yeri: bilgi çubuğunun üstünde, üstte ya da solda dikey.",
 	"Cancel": "İptal",
 	"Save": "Kaydet",
 }
@@ -228,6 +230,7 @@ class TiviAtvSettings(ConfigListScreen, Screen):
 			("Channel list: upcoming programmes", options.epgPanel, "Shows the 5 programmes after NOW and NEXT of the selected channel above the programme card."),
 			("Primetime", options.primetime, "Adds the programme at this time (today, or tomorrow once it is over) to the list."),
 			("Scroll long descriptions", options.scroll, "Descriptions that do not fit slowly scroll up, then start again."),
+			("Volume bar", options.volumePos, "Where the volume bar appears: above the infobar, at the top, or upright on the left."),
 		):
 			entries.append(getConfigListEntry(tr(label), item))
 			self.help[tr(label)] = tr(text)

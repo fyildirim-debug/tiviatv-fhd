@@ -18,6 +18,13 @@
 #   <convert type="TiviAtvText">Crypto</convert>
 #   <convert type="ConditionalShowHide" />
 #
+# "Audio": dogrudan session.CurrentService'e baglanir, calan ses izinin codec'i
+# kisa adla (AC3, DD+, AAC, HE-AAC, MPEG, DTS ...). Iz yoksa bos.
+#
+#   <widget source="session.CurrentService" render="Label" ...>
+#       <convert type="TiviAtvText">Audio</convert>
+#       <convert type="ConditionalShowHide" />
+#
 # "Blank": metin hep bos, boolean yine kaynaga gore. Renk tusu cipinin zemini ve
 # noktasi icin: tus bosken gizlenir ama kendi yazisini cizmez (yazi rengini
 # zemine esitlemek yari saydam renkte ise yaramiyor, yazi opak cikiyor).
@@ -38,6 +45,7 @@ class TiviAtvText(Converter, object):
 		Converter.__init__(self, type)
 		self.blank = type.strip() == "Blank"
 		self.crypto = type.strip() == "Crypto"
+		self.audio = type.strip() == "Audio"
 
 	def serviceInfo(self):
 		"""Zincirin basindaki CurrentService'in bilgisi (Crypto icin)."""
@@ -59,7 +67,31 @@ class TiviAtvText(Converter, object):
 			return ""
 		return name
 
+	# (aranan parca, gosterilen ad): sirasi onemli, ozel olan once
+	AUDIO = (("truehd", "TrueHD"), ("dts-hd", "DTS-HD"), ("dts", "DTS"), ("e-ac3", "DD+"), ("eac3", "DD+"),
+		("ac3+", "DD+"), ("ac-3+", "DD+"), ("digital+", "DD+"), ("digital plus", "DD+"), ("ac3", "AC3"), ("ac-3", "AC3"),
+		("dolby digital", "AC3"), ("he-aac", "HE-AAC"), ("heaac", "HE-AAC"), ("aac+", "HE-AAC"), ("aac", "AAC"),
+		("mp3", "MP3"), ("mp2", "MP2"), ("mpeg", "MPEG"), ("lpcm", "PCM"), ("pcm", "PCM"), ("opus", "Opus"),
+		("vorbis", "Vorbis"), ("flac", "FLAC"), ("wma", "WMA"), ("amr", "AMR"))
+
+	def audioCodec(self):
+		service = getattr(self.source, "service", None)
+		try:
+			audio = service and service.audioTracks()
+			if not audio or audio.getNumberOfTracks() <= 0 or audio.getCurrentTrack() < 0:
+				return ""
+			desc = (audio.getTrackInfo(audio.getCurrentTrack()).getDescription() or "").strip()
+		except Exception:
+			return ""
+		low = desc.lower()
+		for part, name in self.AUDIO:
+			if part in low:
+				return name
+		return desc.split(" ")[0][:8].upper() if desc else ""
+
 	def value(self):
+		if self.audio:
+			return self.audioCodec()
 		text = getattr(self.source, "text", None)
 		if text is None:  # Boolean kaynak (or. AudioSelection tuslari)
 			return "1" if getattr(self.source, "boolean", False) else ""
