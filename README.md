@@ -330,6 +330,22 @@ others are picked in the **TiviATV Font** plugin (see [Font](#font)).
 <td><img src="docs/screenshots/bluetooth.jpg" alt="Bluetooth Devices Manager"><br>Bluetooth Devices Manager</td>
 <td><img src="docs/screenshots/softcam.jpg" alt="Softcam settings"><br>Softcam settings</td>
 </tr>
+<tr>
+<td><img src="docs/screenshots/movie-selection.jpg" alt="Movie selection"><br>Movie selection</td>
+<td><img src="docs/screenshots/software-update-run.jpg" alt="Software update in progress"><br>Software update in progress</td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/package-manager.jpg" alt="Package manager"><br>Package manager</td>
+<td><img src="docs/screenshots/oscam-info.jpg" alt="OSCam information (sample data)"><br>OSCam information (sample data)</td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/network-overview.jpg" alt="Network overview"><br>Network overview</td>
+<td><img src="docs/screenshots/flash-online.jpg" alt="Flash Online"><br>Flash Online</td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/cron-timers.jpg" alt="Cron Manager (sample jobs)"><br>Cron Manager (sample jobs)</td>
+<td><img src="docs/screenshots/number-key-help.jpg" alt="Number key help while typing a name"><br>Number key help while typing a name</td>
+</tr>
 </table>
 
 ## Skinned screens
@@ -345,7 +361,7 @@ others are picked in the **TiviATV Font** plugin (see [Font](#font)).
 `LocaleSelection` · `MultiBootManager` · `KexecInit` · `AtileHD_Config` · `VideoEnhancementSetup` ·
 `VideoEnhancementPreview` · `SubtitleDisplay` · `TiviAtvSettings` ·
 `QuickMenu` · `SoftwareUpdate` · `AtileHD_About` · `AtileHDScreens` · `HistoryZapSelector` · `LocationBox` · `SoftcamSetup` ·
-`SimpleSummary`
+`MovieSelection` · `RunSoftwareUpdate` · `Processing` · `NumericalTextInputHelpDialog` · `SimpleSummary`
 
 EMC: `EMCSelection` · `EMCSelectionOwn` · `EnhancedMovieCenterMenu` · `MovieMenu` ·
 `EMCMediaCenter` · `EMCMediaCenterOwn`
@@ -356,6 +372,12 @@ Plugins: `FileCommander` · `FileCommanderContextMenu` · `FileCommanderData` ·
 `OAWeatherOverview` · `OAWeatherDetailview` · `OAWeatherDetailFrame` · `OAWeatherFavorites` ·
 `MSNWeatherPlugin` · `MSNWeatherPluginEntriesListConfigScreen` · `MSNWeatherPluginEntryConfigScreen` ·
 `MSNWeatherPluginSearch` · `BluetoothDevicesManager`
+
+System: `CronTimers` · `NimSelection` · `NimSetup` · `ServiceScan` · `ScanSimple` · `ScanSetup` ·
+`Satfinder` · `OSCamInfo` · `OSCamEntitlements` · `OSCamEntitleDetails` · `OSCamInfoCapability` ·
+`OSCamInfoLog` · `PackageActionLog` · `FlashManager` · `FlashImage` · `ImageBackup` · `RestoreMenu` ·
+`BackupSelection` · `SoftwareManagerInfo` · `RestorePlugins` · `PackageFeedSelection` ·
+`NetworkOverview` · `NetworkMountsOverview` · `NetworkShares` · `ScriptRunner`
 
 enigma2's standard colour names (`window-bg`, `window-fg`, `key_red`, `grey` …)
 are also mapped to the skin palette. While they were undefined, every screen
@@ -644,6 +666,32 @@ python tools/make_designer_copy.py
 ```
 
 ## Changelog
+
+**1.0.10**
+- Volume bar position is a setting now: TiviATV Settings › Volume bar ›
+  above the infobar (default), at the top, or upright on the left, where the
+  bar fills from the bottom up.
+- Infobar: the resolution badge is wider (3840x2160p50 HDR10 fits) and a new
+  badge shows the audio codec (AC3, DD+, AAC, HE-AAC, MPEG, DTS …).
+- Lines are white: the signal bars and the software update bar were blue.
+- Channel list: wider colour keys, long translations (Spanish "Todos los
+  servicios") fit.
+- Settings screens: sliders start further right and no longer run over long
+  labels; the description area shows four lines.
+- Movie list (Media › Recordings) has its own TiviATV screen; before, the
+  720p default was drawn unscaled. Preview, recording info and description
+  on the left, list on the right.
+- Package manager: full screen card; the "Downloading plugin information"
+  window on top of it now has a thin progress line instead of the stock white
+  bar, and its text is no longer shown twice. The update progress screen is
+  skinned too.
+- New system screens: Cron Manager, tuner selection and setup, service scan,
+  automatic and manual scan, Signal Finder (SNR / AGC / BER meters and a lock
+  pill), OSCam Information with entitlements, capabilities and log, Flash
+  Online, Flash Image, Image Backup, Advanced Restore and backup selection,
+  Network Overview, Network Mounts and Shares, Script Manager.
+- The number key help (SMS letters) that appears while you type a name sits
+  in the description area as a card; it used to show as a cut-off corner.
 
 **1.0.9**
 - Softcam Settings (blue key › Softcam) has its own screen: the softcam list

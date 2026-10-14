@@ -321,6 +321,22 @@ Tipi** eklentisinden seçilir (bkz. [Font](#font)).
 <td><img src="docs/screenshots/bluetooth.jpg" alt="Bluetooth Devices Manager"><br>Bluetooth Devices Manager</td>
 <td><img src="docs/screenshots/softcam.jpg" alt="Softcam ayarları"><br>Softcam ayarları</td>
 </tr>
+<tr>
+<td><img src="docs/screenshots/movie-selection.jpg" alt="Film listesi"><br>Film listesi</td>
+<td><img src="docs/screenshots/software-update-run.jpg" alt="Yazılım güncelleme sürerken"><br>Yazılım güncelleme sürerken</td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/package-manager.jpg" alt="Paket yöneticisi"><br>Paket yöneticisi</td>
+<td><img src="docs/screenshots/oscam-info.jpg" alt="OSCam bilgisi (örnek veri)"><br>OSCam bilgisi (örnek veri)</td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/network-overview.jpg" alt="Ağ genel bakış"><br>Ağ genel bakış</td>
+<td><img src="docs/screenshots/flash-online.jpg" alt="Flash Online"><br>Flash Online</td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/cron-timers.jpg" alt="Cron Yöneticisi (örnek görevler)"><br>Cron Yöneticisi (örnek görevler)</td>
+<td><img src="docs/screenshots/number-key-help.jpg" alt="Ad yazarken sayı tuşu yardımı"><br>Ad yazarken sayı tuşu yardımı</td>
+</tr>
 </table>
 
 ## Tanımlı ekranlar
@@ -336,7 +352,7 @@ Tipi** eklentisinden seçilir (bkz. [Font](#font)).
 `LocaleSelection` · `MultiBootManager` · `KexecInit` · `AtileHD_Config` · `VideoEnhancementSetup` ·
 `VideoEnhancementPreview` · `SubtitleDisplay` · `TiviAtvSettings` ·
 `QuickMenu` · `SoftwareUpdate` · `AtileHD_About` · `AtileHDScreens` · `HistoryZapSelector` · `LocationBox` · `SoftcamSetup` ·
-`SimpleSummary`
+`MovieSelection` · `RunSoftwareUpdate` · `Processing` · `NumericalTextInputHelpDialog` · `SimpleSummary`
 
 EMC: `EMCSelection` · `EMCSelectionOwn` · `EnhancedMovieCenterMenu` · `MovieMenu` ·
 `EMCMediaCenter` · `EMCMediaCenterOwn`
@@ -347,6 +363,12 @@ Eklentiler: `FileCommander` · `FileCommanderContextMenu` · `FileCommanderData`
 `OAWeatherOverview` · `OAWeatherDetailview` · `OAWeatherDetailFrame` · `OAWeatherFavorites` ·
 `MSNWeatherPlugin` · `MSNWeatherPluginEntriesListConfigScreen` · `MSNWeatherPluginEntryConfigScreen` ·
 `MSNWeatherPluginSearch` · `BluetoothDevicesManager`
+
+Sistem: `CronTimers` · `NimSelection` · `NimSetup` · `ServiceScan` · `ScanSimple` · `ScanSetup` ·
+`Satfinder` · `OSCamInfo` · `OSCamEntitlements` · `OSCamEntitleDetails` · `OSCamInfoCapability` ·
+`OSCamInfoLog` · `PackageActionLog` · `FlashManager` · `FlashImage` · `ImageBackup` · `RestoreMenu` ·
+`BackupSelection` · `SoftwareManagerInfo` · `RestorePlugins` · `PackageFeedSelection` ·
+`NetworkOverview` · `NetworkMountsOverview` · `NetworkShares` · `ScriptRunner`
 
 Ayrıca enigma2'nin standart renk adları (`window-bg`, `window-fg`, `key_red`,
 `grey` …) skin paletine eşlendi. Bunlar tanımsızken, skinde karşılığı olmayan
@@ -629,6 +651,31 @@ python tools/make_designer_copy.py
 ```
 
 ## Sürüm notları
+
+**1.0.10**
+- Ses çubuğunun yeri artık bir ayar: TiviATV Settings › Ses çubuğu › bilgi
+  çubuğunun üstü (varsayılan), üstte ya da solda dikey; dikeyde çubuk aşağıdan
+  yukarı dolar.
+- Bilgi çubuğu: çözünürlük rozeti genişledi (3840x2160p50 HDR10 sığıyor),
+  yeni rozet ses codec'ini gösteriyor (AC3, DD+, AAC, HE-AAC, MPEG, DTS …).
+- Çizgiler beyaz: sinyal çubukları ve yazılım güncelleme çubuğu maviydi.
+- Kanal listesi: renk tuşları genişledi, uzun çeviriler (İspanyolca "Todos
+  los servicios") sığıyor.
+- Ayar ekranları: kaydırıcılar daha sağdan başlıyor, uzun etiketlerin üstüne
+  binmiyor; açıklama alanı dört satır.
+- Film listesi (Medya › Kayıtlar) kendi TiviATV ekranında; önceden 720p
+  varsayılanı ölçeklenmeden çiziliyordu. Solda önizleme, kayıt bilgisi ve
+  açıklama, sağda liste.
+- Paket yöneticisi tam ekran kart; üstüne gelen "Downloading plugin
+  information" penceresinde hazır beyaz çubuk yerine ince ilerleme çizgisi
+  var ve yazı artık iki kez görünmüyor. Güncelleme ilerleme ekranı da skinli.
+- Yeni sistem ekranları: Cron Yöneticisi, tuner seçimi ve ayarı, kanal arama,
+  otomatik ve elle arama, Sinyal Bulucu (SNR / AGC / BER göstergeleri ve kilit
+  hapı), OSCam bilgisi (kart bilgileri, yetenekler, günlük), Flash Online,
+  Flash Image, imaj yedeği, gelişmiş geri yükleme ve yedek seçimi, Ağ genel
+  bakış, ağ bağlama noktaları ve paylaşımlar, Script Yöneticisi.
+- Ad yazarken çıkan sayı tuşu yardımı (SMS harfleri) açıklama alanında bir
+  kart; önceden kesik bir köşe olarak görünüyordu.
 
 **1.0.9**
 - Softcam Ayarları (mavi tuş › Softcam) kendi ekranına kavuştu: softcam

@@ -2365,7 +2365,7 @@
 		<eLabel position="0,0" size="1920,1080" backgroundColor="scrim" zPosition="0" />
 		<eLabel position="480,300" size="960,480" backgroundColor="card" cornerRadius="24" zPosition="0" />
 		<eLabel position="536,344" size="848,64" text="TiviATV FHD" font="TMB;48" foregroundColor="text" transparent="1" valign="center" zPosition="1" />
-		<eLabel position="536,416" size="848,40" text="Version 1.0.9" font="TM;28" foregroundColor="textDim" transparent="1" valign="center" zPosition="1" />
+		<eLabel position="536,416" size="848,40" text="Version 1.0.10" font="TM;28" foregroundColor="textDim" transparent="1" valign="center" zPosition="1" />
 		<eLabel position="536,480" size="848,2" backgroundColor="line" zPosition="1" />
 		<eLabel position="536,504" size="848,84" text="A TiviMate-style skin for openATV, drawn by the enigma2 engine without a single PNG." font="TM;28" foregroundColor="text" transparent="1" zPosition="1" />
 		<eLabel position="536,604" size="848,40" text="Furkan YILDIRIM" font="TMB;28" foregroundColor="text" transparent="1" valign="center" zPosition="1" />
