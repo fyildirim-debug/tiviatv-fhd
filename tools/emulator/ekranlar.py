@@ -252,6 +252,49 @@ SCREENS = {
 	                  "px = lambda n: LoadPixmap(resolveFilename(SCOPE_GUISKIN, 'icons/%s.png' % n))\n"
 	                  "session.current_dialog['list'].setList([('event0', 'Advanced remote control', px('input_rcnew-configured'), None), "
 	                  "('event1', 'Front panel buttons', px('input_rcnew'), None), ('event2', 'USB keyboard', px('input_keyboard'), None)])"], [], 1.5),
+	# RunSoftwareUpdate: opkg calistirmadan, ornek cikti ve ilerleme ile
+	"runsoftwareupdate": ("from Screens.SoftwareUpdate import RunSoftwareUpdate\n"
+	                      "class Onizleme(RunSoftwareUpdate):\n"
+	                      "\tdef __init__(self, session):\n"
+	                      "\t\tRunSoftwareUpdate.__init__(self, session)\n"
+	                      "\t\tself.skinName = 'RunSoftwareUpdate'\n"
+	                      "\tdef layoutFinished(self):\n"
+	                      "\t\tself['update'].setText('Software update starting, please wait.\\n\\nDownloading: enigma2-plugin-skins-tiviatv-fhd\\nUpgrading: enigma2-plugin-skins-tiviatv-fhd 1.0.9 -> 1.0.10\\nDownloading: openatv-base-files\\nUpgrading: openatv-base-files\\nConfiguring: enigma2-plugin-skins-tiviatv-fhd\\n\\n2 packages upgraded.')\n"
+	                      "\t\tself['activity'].setValue(70)\n"
+	                      "session.open(Onizleme)", [], 2),
+	# metin ogesi secili bir zamanlayici: sayi tusu yardimi (NumericalTextInputHelpDialog)
+	"timerentry": ("from RecordTimer import RecordTimerEntry\nfrom ServiceReference import ServiceReference\nimport time\n"
+	               "from Screens.TimerEntry import TimerEntry\nt = int(time.time()) + 3600\n"
+	               "session.open(TimerEntry, RecordTimerEntry(ServiceReference('1:0:1:100:1:1:1A40000:0:0:0:'), t, t + 3600, 'Evening News', 'The day\\'s main stories', None))", ["Down"], 1.5),
+	# sistem ekranlari (1.0.10); veri kaynagi olmayanlar onizleme.py ornekleriyle
+	"crontimers": ("from Plugins.Extensions.TiviAtvTest.onizleme import CronTimersOnizleme\nsession.open(CronTimersOnizleme)", [], 2),
+	"nimselection": ("from Screens.Satconfig import NimSelection\nsession.open(NimSelection)", [], 2),
+	"nimsetup": ("from Screens.Satconfig import NimSetup\nsession.open(NimSetup, 0)", [], 2),
+	"servicescan": ("from Screens.DABScan import DABScan\nsession.open(DABScan)", [], 3),
+	"scansimple": ("from Screens.ScanSetup import ScanSimple\nsession.open(ScanSimple)", [], 2),
+	"scansetup": ("from Screens.ScanSetup import ScanSetup\nsession.open(ScanSetup)", [], 2),
+	"satfinder": ("from Plugins.SystemPlugins.Satfinder.plugin import Satfinder\nsession.open(Satfinder)", [], 3),
+	"oscaminfo": ("from Plugins.Extensions.TiviAtvTest.onizleme import OSCamInfoOnizleme\nsession.open(OSCamInfoOnizleme)", [], 2),
+	"oscam-entitlements": ("from Plugins.Extensions.TiviAtvTest.onizleme import OSCamEntitlementsOnizleme\nsession.open(OSCamEntitlementsOnizleme)", [], 2),
+	"oscam-entitlements-ext": ("from Plugins.Extensions.TiviAtvTest.onizleme import OSCamEntitlementsOnizleme\nsession.open(OSCamEntitlementsOnizleme, 'entitlements')", [], 2),
+	"oscam-details": ("from Screens.OScamInfo import OSCamEntitleDetails\nsession.open(OSCamEntitleDetails, (0, '098C', 'Videoguard', '1', '2', '1A2B', '3C4D', '000000, 000001', 'Sky DE, Sky AT', 'node1, node2', '1', '2', '0', '0', '0', '0', '0', '0', '0', '0', '0'))", [], 2),
+	"oscam-capability": ("from Screens.OScamInfo import OSCamInfoCapability\nsession.open(OSCamInfoCapability)", [], 2),
+	"oscam-log": ("from Screens.OScamInfo import OSCamInfoLog\nsession.open(OSCamInfoLog)", [], 2),
+	"packageaction": ("from Plugins.Extensions.TiviAtvTest.onizleme import PackageActionOnizleme\nsession.open(PackageActionOnizleme)", [], 2),
+	"processing": ("from Screens.Processing import Processing\nProcessing.instance.setDescription('Downloading plugin information. Please wait...')\nProcessing.instance.showProgress(endless=True)", [], 1),
+	"packageactionlog": ("from Screens.PluginBrowser import PackageActionLog\nsession.open(PackageActionLog, 'Installing enigma2-plugin-extensions-mediaplayer (1.0) on root\\nDownloading https://feeds2.mynonpublic.com/8.0/.../enigma2-plugin-extensions-mediaplayer_1.0_all.ipk\\nConfiguring enigma2-plugin-extensions-mediaplayer.\\n')", [], 2),
+	"flashmanager": ("from Screens.FlashManager import FlashManager\nsession.open(FlashManager)", [], 12),
+	"flashimage": ("from Plugins.Extensions.TiviAtvTest.onizleme import FlashImageOnizleme\nsession.open(FlashImageOnizleme)", [], 2),
+	"imagebackup": ("from Screens.ImageBackup import ImageBackup\nsession.open(ImageBackup)", [], 2),
+	"restoremenu": ("from Screens.BackupRestore import RestoreMenu\nsession.open(RestoreMenu)", [], 2),
+	"backupselection": ("from Screens.BackupRestore import BackupHelper\nsession.open(BackupHelper, 6)", [], 2),
+	"softwaremanagerinfo": ("from Screens.BackupRestore import SoftwareManagerInfo\nsession.open(SoftwareManagerInfo, mode='backupinfo', submode='backupfiles')", [], 2),
+	"restoreplugins": ("from Screens.BackupRestore import RestorePlugins, SettingsEntry\nsession.open(RestorePlugins, [SettingsEntry('enigma2-plugin-extensions-epgimport', True), SettingsEntry('enigma2-plugin-extensions-iptvplayer', False), SettingsEntry('enigma2-plugin-softcams-oscam', True)], [])", [], 2),
+	"packagefeedselection": ("from Screens.Opkg import PackageFeedSelection\nsession.open(PackageFeedSelection)", [], 2),
+	"networkoverview": ("from Screens.NetworkSetup import NetworkOverview\nsession.open(NetworkOverview)", [], 3),
+	"networkmounts": ("from Screens.NetworkMounts import NetworkMountsOverview\nsession.open(NetworkMountsOverview)", [], 2),
+	"networkshares": ("from Screens.NetworkMounts import NetworkShares\nsession.open(NetworkShares)", [], 4),
+	"scriptrunner": ("from Screens.ScriptRunner import ScriptRunner\nsession.open(ScriptRunner)", [], 2),
 	"localeselection": ("from Screens.LocaleSelection import LocaleSelection\nsession.open(LocaleSelection)", [], 2),
 	"helpmenu": ("ib.showHelp() if hasattr(ib, 'showHelp') else None", [], 1.5),
 }

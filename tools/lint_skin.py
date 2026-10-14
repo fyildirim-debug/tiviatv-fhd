@@ -127,8 +127,8 @@ def check_color(where, attr, val):
 screens = [s for part in parts for s in part.findall("screen")]
 for scr in screens:
     sname = scr.get("name", "?")
-    # <templates> (openATV Listbox sablonu) ogeleri widget attribute'u degil
-    skip = {id(t) for tmpl in scr.iter("templates") for t in tmpl.iter()}
+    # <templates> / <template> (openATV Listbox sablonu) ogeleri widget attribute'u degil
+    skip = {id(t) for tag in ("templates", "template") for tmpl in scr.iter(tag) for t in tmpl.iter()}
     for el in scr.iter():
         if id(el) in skip:
             continue

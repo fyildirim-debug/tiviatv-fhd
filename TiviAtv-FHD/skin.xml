@@ -141,6 +141,10 @@
 		<parameter name="ChoiceListIcon_info" value="0xe90a,textDim,selFg" />
 		<parameter name="ChoiceListIcon_text" value="0xea05,textDim,selFg" />
 		<parameter name="ChoiceListIcon_help" value="0xe94f,textDim,selFg" />
+		<!-- Flash Online imaj listesi: kategori ac / kapa oku ve imaj satiri cizgisi -->
+		<parameter name="ChoiceListIcon_expandable" value="0xea3f,textDim,selFg" />
+		<parameter name="ChoiceListIcon_expanded" value="0xea41,text,selFg" />
+		<parameter name="ChoiceListIcon_verticalline" value="0xf001,textFaint,selFg" />
 		<!-- dosya listesi (FileCommander, MediaPlayer ...): satir 56 px (fonts.xml
 		     FileList), simgeler PNG yerine enigma2icons glifi (openATV 2026-09+;
 		     eski imajlar parametreyi yok sayar, kendi PNG simgelerini cizer) -->
@@ -196,6 +200,20 @@
 		     200: uzun etiketlerin ustune biniyordu), 10 px kalinliginda -->
 		<parameter name="ConfigListSeperator" value="480" />
 		<parameter name="ConfigListSlider" value="10,0" />
+		<!-- film listesi (MovieSelection) simgeleri: ikon fontu; satir yuksekligi
+		     Kullanim > Film listesi "sayfadaki oge" ayarindan gelir -->
+		<parameter name="MovieListNativeIcons" value="1" />
+		<parameter name="MovieListIcon_folder" value="0xe9b4,accent,selFg" />
+		<parameter name="MovieListIcon_trash" value="0xea6a,textDim,selFg" />
+		<parameter name="MovieListIcon_unwatched" value="0xea81,textFaint,selFg" />
+		<parameter name="MovieListIcon_play" value="0xea0e,text,selFg" />
+		<parameter name="MovieListIcon_record" value="0xea86,live,selFg" />
+		<parameter name="MovieListIcon_play_record" value="0xea87,live,selFg" />
+		<parameter name="MovieListIcon_part_0_4" value="0xea81,textDim,selFg" />
+		<parameter name="MovieListIcon_part_1_4" value="0xea82,textDim,selFg" />
+		<parameter name="MovieListIcon_part_2_4" value="0xea83,textDim,selFg" />
+		<parameter name="MovieListIcon_part_3_4" value="0xea84,textDim,selFg" />
+		<parameter name="MovieListIcon_part_4_4" value="0xea85,textDim,selFg" />
 		<parameter name="EPGNativeControls" value="1" />
 		<parameter name="EpgListSingle" value="90,270" />
 		<parameter name="EpgListMulti" value="300,200,150,30" />
@@ -1519,8 +1537,7 @@
 		        backgroundColor="surface2" transparent="1" valign="top" zPosition="1" />
 		<widget name="footnote" position="296,852" size="1328,32" font="TM;22" foregroundColor="textFaint"
 		        transparent="1" halign="right" valign="center" zPosition="1" />
-		<widget name="HelpWindow" pixmap="skin_default/vkey_icon.png" position="1700,1040" size="1,1"
-		        transparent="1" alphatest="on" zPosition="1" />
+		<widget name="HelpWindow" position="1048,716" size="1,1" transparent="1" zPosition="1" />
 
 		<!-- renk tuslari (Cancel / Save / Default) ve kucuk tuslar; bos tus gizlenir -->
 		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="296,914" size="216,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
@@ -1626,8 +1643,7 @@
 		        backgroundColor="surface2" transparent="1" valign="center" zPosition="1" />
 		<widget name="footnote" position="296,852" size="1328,32" font="TM;22" foregroundColor="textFaint"
 		        transparent="1" halign="right" valign="center" zPosition="1" />
-		<widget name="HelpWindow" pixmap="skin_default/vkey_icon.png" position="1700,1040" size="1,1"
-		        transparent="1" alphatest="on" zPosition="1" />
+		<widget name="HelpWindow" position="1048,716" size="1,1" transparent="1" zPosition="1" />
 
 		<!-- renk tuslari (Cancel / Save / Default) ve kucuk tuslar; bos tus gizlenir -->
 		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="296,914" size="216,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
@@ -2426,8 +2442,7 @@
 		<eLabel position="296,818" size="1328,2" backgroundColor="line" zPosition="1" />
 		<widget name="description" position="296,830" size="1328,72" font="TM;24" foregroundColor="textDim"
 		        backgroundColor="surface2" transparent="1" valign="center" zPosition="1" />
-		<widget name="HelpWindow" pixmap="skin_default/vkey_icon.png" position="1700,1040" size="1,1"
-		        transparent="1" alphatest="on" zPosition="1" />
+		<widget name="HelpWindow" position="1048,716" size="1,1" transparent="1" zPosition="1" />
 		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
 			<convert type="TiviAtvText">Blank</convert>
 			<convert type="ConditionalShowHide" />
@@ -2545,8 +2560,7 @@
 		        transparent="1" valign="center" zPosition="1" />
 		<widget name="footnote" position="296,916" size="1328,36" font="TM;22" foregroundColor="textFaint"
 		        transparent="1" halign="right" valign="center" zPosition="1" />
-		<widget name="HelpWindow" pixmap="skin_default/vkey_icon.png" position="1700,1040" size="1,1"
-		        transparent="1" alphatest="on" zPosition="1" />
+		<widget name="HelpWindow" position="1048,716" size="1,1" transparent="1" zPosition="1" />
 	</screen>
 
 	<screen name="MessageBox" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Message">
@@ -2710,85 +2724,6 @@
 			<convert type="ConditionalShowHide" />
 		</widget>
 		<widget name="key_menu" objectTypes="key_menu,Button,Label" position="e-210,e-66" size="90,46" backgroundColor="surface3" cornerRadius="34" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" transparent="0" />
-		<widget source="key_help" objectTypes="key_help,StaticText,Boolean" render="Label" position="e-110,e-66" size="90,46" backgroundColor="surface3"
-		        cornerRadius="34" font="TMB;18" foregroundColor="textDim" halign="center" valign="center"
-		        conditional="key_help" transparent="0">
-			<convert type="ConditionalShowHide" />
-		</widget>
-		<widget name="key_help" objectTypes="key_help,Button,Label" position="e-110,e-66" size="90,46" backgroundColor="surface3" cornerRadius="34" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" transparent="0" />
-	</screen>
-
-	<screen name="PackageAction" title="Packages" position="center,center" size="940,645"
-	        resolution="1280,720" backgroundColor="transparent" flags="wfNoBorder">
-		<eLabel position="0,0" size="e,e" backgroundColor="card" cornerRadius="36" zPosition="-1" />
-
-		<widget source="plugins" render="Listbox" position="20,20" size="900,500" transparent="1"
-		        itemCornerRadiusSelected="15"
-		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="10" scrollbarRadius="3"
-		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track">
-			<convert type="TemplatedMultiContent">
-				{
-				"template":
-					[
-					MultiContentEntryPixmapAlphaBlend(pos=(5, 0), size=(60, 50), png=6, flags=BT_SCALE),
-					MultiContentEntryText(pos=(70, 0), size=(810, 50), font=0, flags=RT_VALIGN_CENTER, text=2),
-					MultiContentEntryText(pos=(70, 2), size=(530, 25), font=1, flags=RT_VALIGN_CENTER, text=3),
-					MultiContentEntryText(pos=(610, 2), size=(220, 25), font=1, flags=RT_VALIGN_CENTER, text=5),
-					MultiContentEntryText(pos=(70, 28), size=(760, 20), font=2, flags=RT_VALIGN_CENTER, text=4, color=0x00a7adb5),
-					MultiContentEntryPixmapAlphaBlend(pos=(840, 1), size=(48, 48), png=7, flags=BT_SCALE)
-					],
-				"fonts": [parseFont("TM;25"), parseFont("TM;20"), parseFont("TM;16")],
-				"itemHeight": 50
-				}
-			</convert>
-		</widget>
-
-		<widget name="quickselect" position="20,20" size="900,500" font="TMX;100" foregroundColor="accent"
-		        halign="center" transparent="1" valign="center" zPosition="+1" />
-		<widget name="description" position="20,e-95" size="900,28" font="TM;20" foregroundColor="textDim"
-		        transparent="1" valign="center" />
-		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="20,e-66" size="190,46" backgroundColor="chip" cornerRadius="34" font="TMB;18" foregroundColor="chip" halign="left" valign="center" noWrap="1" conditional="key_red" zPosition="0">
-			<convert type="TiviAtvText">Blank</convert>
-			<convert type="ConditionalShowHide" />
-		</widget>
-		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="63,e-66" size="133,46" font="TMB;18" foregroundColor="text" halign="left" valign="center" noWrap="1" conditional="key_red" transparent="1" zPosition="1">
-			<convert type="ConditionalShowHide" />
-		</widget>
-		<eLabel objectTypes="key_red,Button,Label" position="20,e-66" size="190,46" backgroundColor="chip" cornerRadius="34" zPosition="0" />
-		<widget name="key_red" objectTypes="key_red,Button,Label" position="63,e-66" size="133,46" backgroundColor="chip" font="TMB;18" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="1" />
-		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="39,e-49" size="12,12" backgroundColor="live" foregroundColor="live" font="TMB;18" cornerRadius="9" conditional="key_red" zPosition="1">
-			<convert type="TiviAtvText">Blank</convert>
-			<convert type="ConditionalShowHide" />
-		</widget>
-		<eLabel objectTypes="key_red,Button,Label" position="39,e-49" size="12,12" backgroundColor="live" cornerRadius="9" zPosition="1" />
-		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="216,e-66" size="190,46" backgroundColor="chip" cornerRadius="34" font="TMB;18" foregroundColor="chip" halign="left" valign="center" noWrap="1" conditional="key_green" zPosition="0">
-			<convert type="TiviAtvText">Blank</convert>
-			<convert type="ConditionalShowHide" />
-		</widget>
-		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="259,e-66" size="133,46" font="TMB;18" foregroundColor="text" halign="left" valign="center" noWrap="1" conditional="key_green" transparent="1" zPosition="1">
-			<convert type="ConditionalShowHide" />
-		</widget>
-		<eLabel objectTypes="key_green,Button,Label" position="216,e-66" size="190,46" backgroundColor="chip" cornerRadius="34" zPosition="0" />
-		<widget name="key_green" objectTypes="key_green,Button,Label" position="259,e-66" size="133,46" backgroundColor="chip" font="TMB;18" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="1" />
-		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="235,e-49" size="12,12" backgroundColor="ok" foregroundColor="ok" font="TMB;18" cornerRadius="9" conditional="key_green" zPosition="1">
-			<convert type="TiviAtvText">Blank</convert>
-			<convert type="ConditionalShowHide" />
-		</widget>
-		<eLabel objectTypes="key_green,Button,Label" position="235,e-49" size="12,12" backgroundColor="ok" cornerRadius="9" zPosition="1" />
-		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="412,e-66" size="190,46" backgroundColor="chip" cornerRadius="34" font="TMB;18" foregroundColor="chip" halign="left" valign="center" noWrap="1" conditional="key_yellow" zPosition="0">
-			<convert type="TiviAtvText">Blank</convert>
-			<convert type="ConditionalShowHide" />
-		</widget>
-		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="455,e-66" size="133,46" font="TMB;18" foregroundColor="text" halign="left" valign="center" noWrap="1" conditional="key_yellow" transparent="1" zPosition="1">
-			<convert type="ConditionalShowHide" />
-		</widget>
-		<eLabel objectTypes="key_yellow,Button,Label" position="412,e-66" size="190,46" backgroundColor="chip" cornerRadius="34" zPosition="0" />
-		<widget name="key_yellow" objectTypes="key_yellow,Button,Label" position="455,e-66" size="133,46" backgroundColor="chip" font="TMB;18" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="1" />
-		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="431,e-49" size="12,12" backgroundColor="warn" foregroundColor="warn" font="TMB;18" cornerRadius="9" conditional="key_yellow" zPosition="1">
-			<convert type="TiviAtvText">Blank</convert>
-			<convert type="ConditionalShowHide" />
-		</widget>
-		<eLabel objectTypes="key_yellow,Button,Label" position="431,e-49" size="12,12" backgroundColor="warn" cornerRadius="9" zPosition="1" />
 		<widget source="key_help" objectTypes="key_help,StaticText,Boolean" render="Label" position="e-110,e-66" size="90,46" backgroundColor="surface3"
 		        cornerRadius="34" font="TMB;18" foregroundColor="textDim" halign="center" valign="center"
 		        conditional="key_help" transparent="0">
@@ -3481,6 +3416,7 @@ except Exception:
 		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
 		<eLabel position="296,756" size="1328,2" backgroundColor="line" zPosition="1" />
+		<widget name="HelpWindow" position="1048,740" size="1,1" transparent="1" zPosition="1" />
 		<widget source="help" render="Label" position="296,770" size="1328,128" font="TM;24" foregroundColor="textDim"
 		        transparent="1" valign="center" zPosition="1" />
 		<eLabel objectTypes="key_red,Button,Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
@@ -3637,6 +3573,1810 @@ except Exception:
 			<convert type="ConditionalShowHide" />
 		</widget>
 		<widget name="key_help" objectTypes="key_help,Button,Label" position="1534,917" size="90,46" backgroundColor="surface3" cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1" />
+	</screen>
+
+	<!-- metin girerken (SMS usulu) tus yardimi; yeri ekranin HelpWindow widget'indan -->
+	<screen name="NumericalTextInputHelpDialog" position="1048,716" size="576,168" zPosition="5" flags="wfNoBorder" backgroundColor="transparent">
+		<eLabel position="0,0" size="576,168" backgroundColor="surface2" widgetBorderWidth="2" widgetBorderColor="edge" cornerRadius="20" zPosition="0" />
+		<widget name="key1" position="12,12" size="180,36" font="TMB;22" foregroundColor="text" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget name="key2" position="198,12" size="180,36" font="TMB;22" foregroundColor="text" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget name="key3" position="384,12" size="180,36" font="TMB;22" foregroundColor="text" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget name="key4" position="12,48" size="180,36" font="TMB;22" foregroundColor="text" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget name="key5" position="198,48" size="180,36" font="TMB;22" foregroundColor="text" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget name="key6" position="384,48" size="180,36" font="TMB;22" foregroundColor="text" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget name="key7" position="12,84" size="180,36" font="TMB;22" foregroundColor="text" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget name="key8" position="198,84" size="180,36" font="TMB;22" foregroundColor="text" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget name="key9" position="384,84" size="180,36" font="TMB;22" foregroundColor="text" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget name="help1" position="12,120" size="180,36" font="TMB;22" foregroundColor="text" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget name="key0" position="198,120" size="180,36" font="TMB;22" foregroundColor="text" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget name="help2" position="384,120" size="180,36" font="TMB;22" foregroundColor="text" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+	</screen>
+
+	<!-- yazilim guncelleme calisirken: opkg ciktisi ve ilerleme -->
+	<screen name="RunSoftwareUpdate" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Software Update">
+		<eLabel position="0,0" size="1920,1080" backgroundColor="scrim" zPosition="-1" />
+		<eLabel position="240,90" size="1440,900" backgroundColor="card" cornerRadius="24" zPosition="-1" />
+		<widget source="Title" render="Label" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<widget name="activity" position="296,220" size="1328,6" foregroundColor="text" backgroundColor="track" cornerRadius="3" zPosition="1" />
+		<widget name="update" position="296,250" size="1328,640" font="TM;26" foregroundColor="text" transparent="1" zPosition="1"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="12" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
+		<eLabel position="1434,917" size="190,46" text="OK / EXIT" font="TMB;18" foregroundColor="textDim" backgroundColor="surface3" cornerRadius="23" halign="center" valign="center" zPosition="1" />
+	</screen>
+
+	<!-- openATV film listesi (EMC kullanmayanlar): solda mini TV ve secili kayit,
+	     sagda liste. Satir yuksekligi skinden degil, Kullanim > Film listesi
+	     "sayfadaki oge" ayarindan; simgeler ikon fontundan (MovieListIcon_*). -->
+	<screen name="MovieSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Movie Selection">
+		<eLabel position="0,0" size="1920,1080" backgroundColor="scrim" zPosition="-1" />
+		<eLabel position="64,56" size="1792,968" backgroundColor="card" cornerRadius="24" zPosition="-1" />
+		<widget source="Title" render="Label" position="112,88" size="1380,56" font="TMB;38" foregroundColor="text"
+		        transparent="1" valign="center" noWrap="1" wrap="ellipsis" zPosition="1" />
+		<widget name="movie_sort" position="1528,96" size="44,40" iconFont="enigma2icons;30" iconGlyphs="0xe93a,0xe94d,0xe97a,0xe9cc,0xe9f3,0xe93a,0xe9cc,0xe9b7"
+		        iconColors="textDim,textDim,textDim,textDim,textDim,textDim,textDim,textDim" halign="center" valign="center" transparent="1" zPosition="1" />
+		<widget name="movie_off" position="1580,96" size="44,40" iconFont="enigma2icons;30" iconGlyphs="0xe94f,0xe9b3,0xe917,0xea0f,0xea24,0xea25,0xea15,0xea27"
+		        iconColors="textDim,textDim,textDim,textDim,textDim,textDim,textDim,textDim" halign="center" valign="center" transparent="1" zPosition="1" />
+		<widget source="global.CurrentTime" render="Label" position="1640,88" size="168,56" font="TMX;40" foregroundColor="text"
+		        transparent="1" halign="right" valign="center" zPosition="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+
+		<eLabel position="110,166" size="564,321" backgroundColor="surface2" widgetBorderWidth="2" widgetBorderColor="edge" cornerRadius="12" zPosition="0" />
+		<widget source="session.VideoPicture" render="Pig" position="114,170" size="556,313" backgroundColor="transparent" zPosition="1" />
+		<widget source="Service" render="Label" position="112,506" size="300,34" font="TM;24" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="1">
+			<convert type="ServiceTime">StartTime</convert>
+			<convert type="ClockToText">Format:%a %d.%m.%Y  %H:%M</convert>
+		</widget>
+		<widget source="Service" render="Label" position="420,506" size="120,34" font="TM;24" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" halign="center" zPosition="1">
+			<convert type="ServiceTime">Duration</convert>
+			<convert type="ClockToText">InMinutes</convert>
+		</widget>
+		<widget source="Service" render="Label" position="548,506" size="124,34" font="TM;24" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" halign="right" zPosition="1">
+			<convert type="MovieInfo">FileSize</convert>
+		</widget>
+		<widget source="Service" render="Label" position="112,548" size="560,44" font="TMB;30" foregroundColor="text" transparent="1" valign="center" noWrap="1" wrap="ellipsis" zPosition="1">
+			<convert type="MovieInfo">Name</convert>
+		</widget>
+		<widget source="Service" render="Label" position="112,594" size="560,34" font="TM;24" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" wrap="ellipsis" zPosition="1">
+			<convert type="MovieInfo">RecordServiceName</convert>
+		</widget>
+		<widget source="Service" render="Label" position="112,644" size="560,274" font="TM;24" foregroundColor="text" transparent="1" zPosition="1">
+			<convert type="MovieInfo">FullDescription</convert>
+		</widget>
+		<eLabel position="704,166" size="2,752" backgroundColor="line" zPosition="1" />
+		<widget name="list" position="736,166" size="1072,752" font="TM;28" foregroundColor="text" transparent="1" zPosition="1"
+		        itemCornerRadiusSelected="14" scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="12" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
+		<widget name="DescriptionBorder" position="736,918" size="1072,1" zPosition="-2" />
+		<widget name="waitingtext" position="736,166" size="1072,752" font="TM;30" foregroundColor="textDim" transparent="1" halign="center" valign="center" zPosition="2" />
+		<widget name="chosenletter" position="736,166" size="1072,752" font="TMB;120" foregroundColor="text" transparent="1" halign="center" valign="center" zPosition="3" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="112,948" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="160,948" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="112,948" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_red" objectTypes="key_red,Button,Label" position="160,948" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="134,967" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="134,967" size="14,14" backgroundColor="live" cornerRadius="7" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="356,948" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="404,948" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="356,948" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_green" objectTypes="key_green,Button,Label" position="404,948" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="378,967" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="378,967" size="14,14" backgroundColor="ok" cornerRadius="7" zPosition="2" />
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="600,948" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="648,948" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_yellow,Button,Label" position="600,948" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_yellow" objectTypes="key_yellow,Button,Label" position="648,948" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="622,967" size="14,14" backgroundColor="warn" foregroundColor="warn" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_yellow,Button,Label" position="622,967" size="14,14" backgroundColor="warn" cornerRadius="7" zPosition="2" />
+		<widget source="key_blue" objectTypes="key_blue,StaticText,Boolean" render="Label" position="844,948" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" objectTypes="key_blue,StaticText,Boolean" render="Label" position="892,948" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_blue,Button,Label" position="844,948" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_blue" objectTypes="key_blue,Button,Label" position="892,948" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_blue" objectTypes="key_blue,StaticText,Boolean" render="Label" position="866,967" size="14,14" backgroundColor="accent" foregroundColor="accent" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_blue,Button,Label" position="866,967" size="14,14" backgroundColor="accent" cornerRadius="7" zPosition="2" />
+		<widget name="TrashcanSize" position="1100,948" size="340,52" font="TM;22" foregroundColor="textFaint" transparent="1" halign="right" valign="center" noWrap="1" zPosition="1" />
+		<widget name="freeDiskSpace" position="1448,948" size="360,52" font="TM;24" foregroundColor="textDim" transparent="1" halign="right" valign="center" noWrap="1" zPosition="1" />
+	</screen>
+
+	<!-- ============================================================
+	     SISTEM EKRANLARI (openATV): Cron, tuner ve kanal arama, OSCam
+	     bilgisi, paket / imaj / yedek yonetimi, ag ve script yoneticisi.
+	     Bu ekranlar tanimlanmazsa skin_default.xml'in 720p tasarimi
+	     olceklenmeden cizilir.
+	     ============================================================ -->
+	<!-- Cron Timers: otomatik baslatma ve durum ust satirda, gorevler listede -->
+
+	<screen name="CronTimers" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Cron Manager">
+		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
+		<widget source="Title" render="Label" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<widget name="lab1" position="296,226" size="220,44" font="TM;26" foregroundColor="textDim" transparent="1" valign="center" zPosition="1" />
+		<widget name="labactive" position="520,226" size="340,44" font="TMB;26" foregroundColor="ok" transparent="1" valign="center" zPosition="1" />
+		<widget name="labdisabled" position="520,226" size="340,44" font="TMB;26" foregroundColor="textFaint" transparent="1" valign="center" zPosition="1" />
+		<widget name="lab2" position="900,226" size="260,44" font="TM;26" foregroundColor="textDim" transparent="1" valign="center" zPosition="1" />
+		<widget name="labrun" position="1164,226" size="460,44" font="TMB;26" foregroundColor="ok" transparent="1" valign="center" zPosition="1" />
+		<widget name="labstop" position="1164,226" size="460,44" font="TMB;26" foregroundColor="live" transparent="1" valign="center" zPosition="1" />
+		<eLabel position="296,286" size="1328,2" backgroundColor="line" zPosition="1" />
+		<widget source="list" render="Listbox" position="296,302" size="1328,512" transparent="1" zPosition="1"
+		        itemCornerRadiusSelected="14" enableWrapAround="1" scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track">
+			<convert type="TemplatedMultiContent">
+				{"template": [
+					MultiContentEntryText(pos=(24, 0), size=(1280, 64), font=0, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=0)
+				],
+				"fonts": [parseFont("TM;30")],
+				"itemHeight": 64
+				}
+			</convert>
+		</widget>
+		<widget name="key" position="296,830" size="1328,40" font="TM;22" foregroundColor="textDim" transparent="1" valign="center" zPosition="1" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="344,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_red" objectTypes="key_red,Button,Label" position="344,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="318,933" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="318,933" size="14,14" backgroundColor="live" cornerRadius="7" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="588,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_green" objectTypes="key_green,Button,Label" position="588,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="562,933" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="562,933" size="14,14" backgroundColor="ok" cornerRadius="7" zPosition="2" />
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="784,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="832,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_yellow,Button,Label" position="784,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_yellow" objectTypes="key_yellow,Button,Label" position="832,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="806,933" size="14,14" backgroundColor="warn" foregroundColor="warn" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_yellow,Button,Label" position="806,933" size="14,14" backgroundColor="warn" cornerRadius="7" zPosition="2" />
+		<widget source="key_blue" objectTypes="key_blue,StaticText,Boolean" render="Label" position="1028,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" objectTypes="key_blue,StaticText,Boolean" render="Label" position="1076,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_blue,Button,Label" position="1028,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_blue" objectTypes="key_blue,Button,Label" position="1076,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_blue" objectTypes="key_blue,StaticText,Boolean" render="Label" position="1050,933" size="14,14" backgroundColor="accent" foregroundColor="accent" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_blue,Button,Label" position="1050,933" size="14,14" backgroundColor="accent" cornerRadius="7" zPosition="2" />
+	</screen>
+
+	<!-- Tuner secimi: tuner adi ve ayarin ozeti iki satir -->
+
+	<screen name="NimSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Choose Tuner">
+		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
+		<widget source="Title" render="Label" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<widget source="nimlist" render="Listbox" position="296,226" size="1328,600" transparent="1" zPosition="1"
+		        itemCornerRadiusSelected="14" enableWrapAround="1" scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track">
+			<convert type="TemplatedMultiContent">
+				{"template": [
+					MultiContentEntryText(pos=(24, 10), size=(1280, 40), font=0, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=1),
+					MultiContentEntryText(pos=(24, 54), size=(1280, 60), font=1, flags=RT_HALIGN_LEFT | RT_VALIGN_TOP | RT_WRAP, text=2, color=0xa7adb5, color_sel=0x3a4048)
+				],
+				"fonts": [parseFont("TM;30"), parseFont("TM;22")],
+				"itemHeight": 120
+				}
+			</convert>
+		</widget>
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="344,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_red" objectTypes="key_red,Button,Label" position="344,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="318,933" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="318,933" size="14,14" backgroundColor="live" cornerRadius="7" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="588,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_green" objectTypes="key_green,Button,Label" position="588,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="562,933" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="562,933" size="14,14" backgroundColor="ok" cornerRadius="7" zPosition="2" />
+	</screen>
+
+	<!-- Tuner ayarlari (Label renk tuslari: name= varyanti) -->
+
+	<screen name="NimSetup" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Reception Settings">
+		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
+		<widget source="Title" render="Label" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<widget name="config" position="296,226" size="1328,512" transparent="1" zPosition="1"
+		        itemHeight="64" itemAlignment="leftMiddle" font="TM;30" itemCornerRadiusSelected="14" padding="24,12,24,0" enableWrapAround="1"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
+		<eLabel position="296,752" size="1328,2" backgroundColor="line" zPosition="1" />
+		<widget name="description" position="296,764" size="1328,120" font="TM;22" foregroundColor="textDim" transparent="1" valign="top" zPosition="1" />
+		<widget name="HelpWindow" position="1048,716" size="1,1" transparent="1" zPosition="1" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="344,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_red" objectTypes="key_red,Button,Label" position="344,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="318,933" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="318,933" size="14,14" backgroundColor="live" cornerRadius="7" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="588,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_green" objectTypes="key_green,Button,Label" position="588,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="562,933" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="562,933" size="14,14" backgroundColor="ok" cornerRadius="7" zPosition="2" />
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="784,914" size="300,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="832,914" size="238,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_yellow,Button,Label" position="784,914" size="300,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_yellow" objectTypes="key_yellow,Button,Label" position="832,914" size="238,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="806,933" size="14,14" backgroundColor="warn" foregroundColor="warn" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_yellow,Button,Label" position="806,933" size="14,14" backgroundColor="warn" cornerRadius="7" zPosition="2" />
+		<widget source="key_blue" objectTypes="key_blue,StaticText,Boolean" render="Label" position="1100,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" objectTypes="key_blue,StaticText,Boolean" render="Label" position="1148,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_blue,Button,Label" position="1100,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_blue" objectTypes="key_blue,Button,Label" position="1148,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_blue" objectTypes="key_blue,StaticText,Boolean" render="Label" position="1122,933" size="14,14" backgroundColor="accent" foregroundColor="accent" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_blue,Button,Label" position="1122,933" size="14,14" backgroundColor="accent" cornerRadius="7" zPosition="2" />
+		<widget source="key_menu" objectTypes="key_menu,StaticText,Boolean" render="Label" position="1434,917" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget name="key_menu" objectTypes="key_menu,Button,Label" position="1434,917" size="90,46" backgroundColor="surface3" cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1" />
+		<widget source="VKeyIcon" text="TEXT" render="Label" position="1534,917" size="90,46" backgroundColor="surface3" conditional="VKeyIcon"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+	</screen>
+
+	<!-- Kanal arama ilerlemesi (DAB+ taramasi da bu ekrani kullanir) -->
+
+	<screen name="ServiceScan" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Service Scan">
+		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
+		<widget source="Title" render="Label" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<widget name="scan_progress" position="296,226" size="1328,6" foregroundColor="text" backgroundColor="track" cornerRadius="3" zPosition="1" />
+		<widget name="scan_state" position="296,248" size="1328,44" font="TMB;28" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<widget name="pass" position="296,296" size="300,36" font="TM;24" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<widget name="network" position="600,296" size="1024,36" font="TM;24" foregroundColor="textDim" transparent="1" halign="right" valign="center" noWrap="1" zPosition="1" />
+		<widget name="transponder" position="296,336" size="1328,36" font="TM;24" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<eLabel position="296,388" size="1328,2" backgroundColor="line" zPosition="1" />
+		<widget name="servicelist" position="296,404" size="1328,448" transparent="1" zPosition="1"
+		        itemHeight="56" itemAlignment="leftMiddle" font="TM;28" foregroundColor="text" padding="24,0,24,0" itemCornerRadiusSelected="14" enableWrapAround="1" scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="344,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_red" objectTypes="key_red,Button,Label" position="344,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="318,933" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="318,933" size="14,14" backgroundColor="live" cornerRadius="7" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="588,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_green" objectTypes="key_green,Button,Label" position="588,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="562,933" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="562,933" size="14,14" backgroundColor="ok" cornerRadius="7" zPosition="2" />
+		<widget source="key_help" objectTypes="key_help,StaticText,Boolean" render="Label" position="1534,917" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget name="key_help" objectTypes="key_help,Button,Label" position="1534,917" size="90,46" backgroundColor="surface3" cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1" />
+	</screen>
+
+	<!-- Otomatik arama -->
+
+	<screen name="ScanSimple" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Automatic Scan">
+		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
+		<widget name="header" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<widget name="config" position="296,226" size="1328,576" transparent="1" zPosition="1"
+		        itemHeight="64" itemAlignment="leftMiddle" font="TM;30" itemCornerRadiusSelected="14" padding="24,12,24,0" enableWrapAround="1"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
+		<widget name="footer" position="296,826" size="1328,40" font="TM;24" foregroundColor="textDim" transparent="1" valign="center" zPosition="1" />
+		<widget name="HelpWindow" position="1048,716" size="1,1" transparent="1" zPosition="1" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="344,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_red" objectTypes="key_red,Button,Label" position="344,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="318,933" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="318,933" size="14,14" backgroundColor="live" cornerRadius="7" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="588,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_green" objectTypes="key_green,Button,Label" position="588,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="562,933" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="562,933" size="14,14" backgroundColor="ok" cornerRadius="7" zPosition="2" />
+		<widget source="key_menu" objectTypes="key_menu,StaticText,Boolean" render="Label" position="1434,917" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget name="key_menu" objectTypes="key_menu,Button,Label" position="1434,917" size="90,46" backgroundColor="surface3" cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1" />
+		<widget source="VKeyIcon" text="TEXT" render="Label" position="1534,917" size="90,46" backgroundColor="surface3" conditional="VKeyIcon"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+	</screen>
+
+	<!-- Elle arama -->
+
+	<screen name="ScanSetup" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Manual Scan">
+		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
+		<widget name="header" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<widget name="config" position="296,226" size="1328,576" transparent="1" zPosition="1"
+		        itemHeight="64" itemAlignment="leftMiddle" font="TM;30" itemCornerRadiusSelected="14" padding="24,12,24,0" enableWrapAround="1"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
+		<widget name="introduction" position="296,812" size="1328,76" font="TM;24" foregroundColor="textDim" transparent="1" valign="center" zPosition="1" />
+		<widget name="HelpWindow" position="1048,716" size="1,1" transparent="1" zPosition="1" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="344,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_red" objectTypes="key_red,Button,Label" position="344,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="318,933" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="318,933" size="14,14" backgroundColor="live" cornerRadius="7" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="588,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_green" objectTypes="key_green,Button,Label" position="588,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="562,933" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="562,933" size="14,14" backgroundColor="ok" cornerRadius="7" zPosition="2" />
+		<widget source="key_menu" objectTypes="key_menu,StaticText,Boolean" render="Label" position="1434,917" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget name="key_menu" objectTypes="key_menu,Button,Label" position="1434,917" size="90,46" backgroundColor="surface3" cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1" />
+		<widget source="VKeyIcon" text="TEXT" render="Label" position="1534,917" size="90,46" backgroundColor="surface3" conditional="VKeyIcon"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+	</screen>
+
+	<!-- Sinyal bulucu: arama ayarlari + canli SNR / AGC / BER ve kilit -->
+
+	<screen name="Satfinder" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Signal Finder">
+		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
+		<widget source="Title" render="Label" position="296,134" size="1000,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<widget source="Frontend" render="FixedLabel" text="LOCK" position="1424,144" size="200,44" backgroundColor="surface3" cornerRadius="22" font="TMB;22" foregroundColor="ok" halign="center" valign="center" zPosition="1">
+			<convert type="FrontendInfo">LOCK</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget name="config" position="296,226" size="1328,448" transparent="1" zPosition="1"
+		        itemHeight="64" itemAlignment="leftMiddle" font="TM;30" itemCornerRadiusSelected="14" padding="24,12,24,0" enableWrapAround="1"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
+		<eLabel position="296,688" size="1328,2" backgroundColor="line" zPosition="1" />
+		<eLabel text="SNR" position="296,702" size="120,40" font="TMB;22" foregroundColor="textDim" backgroundColor="surface2" transparent="1" halign="left" valign="center" zPosition="1" />
+		<widget source="Frontend" render="Progress" position="424,719" size="1000,6" foregroundColor="text" backgroundColor="track" cornerRadius="3" zPosition="1">
+			<convert type="FrontendInfo">SNR</convert>
+		</widget>
+		<widget source="Frontend" render="Label" position="1440,702" size="184,40" font="TMB;24" foregroundColor="text" transparent="1" halign="right" valign="center" zPosition="1">
+			<convert type="FrontendInfo">SNRdB</convert>
+		</widget>
+		<eLabel text="AGC" position="296,746" size="120,40" font="TMB;22" foregroundColor="textDim" backgroundColor="surface2" transparent="1" halign="left" valign="center" zPosition="1" />
+		<widget source="Frontend" render="Progress" position="424,763" size="1000,6" foregroundColor="text" backgroundColor="track" cornerRadius="3" zPosition="1">
+			<convert type="FrontendInfo">AGC</convert>
+		</widget>
+		<widget source="Frontend" render="Label" position="1440,746" size="184,40" font="TMB;24" foregroundColor="text" transparent="1" halign="right" valign="center" zPosition="1">
+			<convert type="FrontendInfo">AGC</convert>
+		</widget>
+		<eLabel text="BER" position="296,790" size="120,40" font="TMB;22" foregroundColor="textDim" backgroundColor="surface2" transparent="1" halign="left" valign="center" zPosition="1" />
+		<widget source="Frontend" render="Progress" position="424,807" size="1000,6" foregroundColor="text" backgroundColor="track" cornerRadius="3" zPosition="1">
+			<convert type="FrontendInfo">BER</convert>
+		</widget>
+		<widget source="Frontend" render="Label" position="1440,790" size="184,40" font="TMB;24" foregroundColor="text" transparent="1" halign="right" valign="center" zPosition="1">
+			<convert type="FrontendInfo">BER</convert>
+		</widget>
+		<widget name="introduction" position="296,840" size="1328,44" font="TM;24" foregroundColor="textDim" transparent="1" valign="center" zPosition="1" />
+		<widget name="HelpWindow" position="1048,716" size="1,1" transparent="1" zPosition="1" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="344,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_red" objectTypes="key_red,Button,Label" position="344,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="318,933" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="318,933" size="14,14" backgroundColor="live" cornerRadius="7" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="588,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_green" objectTypes="key_green,Button,Label" position="588,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="562,933" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="562,933" size="14,14" backgroundColor="ok" cornerRadius="7" zPosition="2" />
+		<widget source="key_menu" objectTypes="key_menu,StaticText,Boolean" render="Label" position="1434,917" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget name="key_menu" objectTypes="key_menu,Button,Label" position="1434,917" size="90,46" backgroundColor="surface3" cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1" />
+		<widget source="VKeyIcon" text="TEXT" render="Label" position="1534,917" size="90,46" backgroundColor="surface3" conditional="VKeyIcon"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+	</screen>
+
+	<!-- OSCam bilgisi: sunucu / okuyucu / istemci tablosu, gunluk ve bellek -->
+
+	<screen name="OSCamInfo" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="OSCam Information">
+		<eLabel position="0,0" size="1920,1080" backgroundColor="scrim" zPosition="-1" />
+		<eLabel position="64,56" size="1792,968" backgroundColor="card" cornerRadius="24" zPosition="-1" />
+		<widget source="Title" render="Label" position="112,88" size="1300,56" font="TMB;38" foregroundColor="text"
+		        transparent="1" valign="center" noWrap="1" wrap="ellipsis" zPosition="1" />
+		<widget source="global.CurrentTime" render="Label" position="1640,88" size="168,56" font="TMX;40" foregroundColor="text"
+		        transparent="1" halign="right" valign="center" zPosition="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="buildinfos" render="Label" position="112,148" size="1696,34" font="TM;24" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<widget source="extrainfos" render="Label" position="112,182" size="1696,32" font="TM;22" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<widget source="timerinfos" render="Label" position="112,214" size="1696,32" font="TM;22" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<eLabel text="#" position="112,256" size="40,36" font="TMB;20" foregroundColor="textFaint" backgroundColor="surface2" transparent="1" halign="center" valign="center" zPosition="1" />
+		<eLabel text="Reader/User" position="152,256" size="180,36" font="TMB;20" foregroundColor="textFaint" backgroundColor="surface2" transparent="1" halign="center" valign="center" zPosition="1" />
+		<eLabel text="AU" position="332,256" size="70,36" font="TMB;20" foregroundColor="textFaint" backgroundColor="surface2" transparent="1" halign="center" valign="center" zPosition="1" />
+		<eLabel text="Address" position="402,256" size="180,36" font="TMB;20" foregroundColor="textFaint" backgroundColor="surface2" transparent="1" halign="center" valign="center" zPosition="1" />
+		<eLabel text="Port" position="582,256" size="80,36" font="TMB;20" foregroundColor="textFaint" backgroundColor="surface2" transparent="1" halign="center" valign="center" zPosition="1" />
+		<eLabel text="Protocol" position="662,256" size="190,36" font="TMB;20" foregroundColor="textFaint" backgroundColor="surface2" transparent="1" halign="center" valign="center" zPosition="1" />
+		<eLabel text="srvid:caid@provid" position="852,256" size="230,36" font="TMB;20" foregroundColor="textFaint" backgroundColor="surface2" transparent="1" halign="center" valign="center" zPosition="1" />
+		<eLabel text="Last Channel" position="1082,256" size="220,36" font="TMB;20" foregroundColor="textFaint" backgroundColor="surface2" transparent="1" halign="center" valign="center" zPosition="1" />
+		<eLabel text="LB Value/Reader" position="1302,256" size="200,36" font="TMB;20" foregroundColor="textFaint" backgroundColor="surface2" transparent="1" halign="center" valign="center" zPosition="1" />
+		<eLabel text="Online / Idle" position="1502,256" size="150,36" font="TMB;20" foregroundColor="textFaint" backgroundColor="surface2" transparent="1" halign="center" valign="center" zPosition="1" />
+		<eLabel text="Status" position="1652,256" size="156,36" font="TMB;20" foregroundColor="textFaint" backgroundColor="surface2" transparent="1" halign="center" valign="center" zPosition="1" />
+		<eLabel position="112,294" size="1696,2" backgroundColor="line" zPosition="1" />
+		<widget source="outlist" render="Listbox" position="112,300" size="1696,504" transparent="1" zPosition="1"
+		        itemCornerRadiusSelected="14" enableWrapAround="1" scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track">
+			<convert type="TemplatedMultiContent">
+				{"template": [
+					MultiContentEntryText(pos=(0, 0), size=(40, 72), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=1),
+					MultiContentEntryText(pos=(40, 0), size=(180, 72), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=2),
+					MultiContentEntryText(pos=(220, 0), size=(70, 72), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=3),
+					MultiContentEntryText(pos=(290, 0), size=(180, 72), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=4),
+					MultiContentEntryText(pos=(470, 0), size=(80, 72), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=5),
+					MultiContentEntryText(pos=(550, 0), size=(190, 72), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER | RT_WRAP, text=6),
+					MultiContentEntryText(pos=(740, 0), size=(230, 72), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=7),
+					MultiContentEntryText(pos=(970, 0), size=(220, 72), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER | RT_WRAP, text=8),
+					MultiContentEntryText(pos=(1190, 0), size=(200, 72), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=9),
+					MultiContentEntryText(pos=(1390, 0), size=(150, 72), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER | RT_WRAP, text=10),
+					MultiContentEntryText(pos=(1540, 0), size=(156, 72), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=11)
+				],
+				"fonts": [parseFont("TM;22")],
+				"itemHeight": 72
+				}
+			</convert>
+		</widget>
+		<eLabel position="112,810" size="1696,2" backgroundColor="line" zPosition="1" />
+		<!-- kayan yazi -->
+		<widget name="logtext" position="112,818" size="1696,76" font="TM;20" foregroundColor="textDim" transparent="1" zPosition="1"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
+		<eLabel text="System RAM" position="112,900" size="180,36" font="TMB;20" foregroundColor="textFaint" backgroundColor="surface2" transparent="1" halign="left" valign="center" zPosition="1" />
+		<widget source="total" render="Label" position="300,900" size="200,36" font="TM;20" foregroundColor="textDim" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget source="used" render="Label" position="500,900" size="200,36" font="TM;20" foregroundColor="textDim" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget source="free" render="Label" position="700,900" size="200,36" font="TM;20" foregroundColor="textDim" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget source="buffer" render="Label" position="900,900" size="200,36" font="TM;20" foregroundColor="textDim" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget source="camname" render="Label" position="1100,900" size="140,36" font="TM;20" foregroundColor="text" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget source="virtuell" render="Label" position="1240,900" size="280,36" font="TM;20" foregroundColor="textDim" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget source="resident" render="Label" position="1520,900" size="288,36" font="TM;20" foregroundColor="textDim" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="112,948" size="280,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="160,948" size="218,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="112,948" size="280,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_red" objectTypes="key_red,Button,Label" position="160,948" size="218,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="134,967" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="134,967" size="14,14" backgroundColor="live" cornerRadius="7" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="408,948" size="280,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="456,948" size="218,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="408,948" size="280,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_green" objectTypes="key_green,Button,Label" position="456,948" size="218,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="430,967" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="430,967" size="14,14" backgroundColor="ok" cornerRadius="7" zPosition="2" />
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="704,948" size="280,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="752,948" size="218,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_yellow,Button,Label" position="704,948" size="280,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_yellow" objectTypes="key_yellow,Button,Label" position="752,948" size="218,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="726,967" size="14,14" backgroundColor="warn" foregroundColor="warn" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_yellow,Button,Label" position="726,967" size="14,14" backgroundColor="warn" cornerRadius="7" zPosition="2" />
+		<widget source="key_blue" objectTypes="key_blue,StaticText,Boolean" render="Label" position="1000,948" size="280,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" objectTypes="key_blue,StaticText,Boolean" render="Label" position="1048,948" size="218,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_blue,Button,Label" position="1000,948" size="280,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_blue" objectTypes="key_blue,Button,Label" position="1048,948" size="218,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_blue" objectTypes="key_blue,StaticText,Boolean" render="Label" position="1022,967" size="14,14" backgroundColor="accent" foregroundColor="accent" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_blue,Button,Label" position="1022,967" size="14,14" backgroundColor="accent" cornerRadius="7" zPosition="2" />
+		<widget source="key_OK" objectTypes="key_OK,StaticText,Boolean" render="Label" position="1300,951" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget name="key_OK" objectTypes="key_OK,Button,Label" position="1300,951" size="90,46" backgroundColor="surface3" cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1" />
+		<widget source="key_entitlements" render="Label" position="1400,951" size="200,46" font="TM;22" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_menu" objectTypes="key_menu,StaticText,Boolean" render="Label" position="1618,951" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget name="key_menu" objectTypes="key_menu,Button,Label" position="1618,951" size="90,46" backgroundColor="surface3" cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1" />
+		<widget source="key_exit" objectTypes="key_exit,StaticText,Boolean" render="Label" position="1718,951" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget name="key_exit" objectTypes="key_exit,Button,Label" position="1718,951" size="90,46" backgroundColor="surface3" cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1" />
+	</screen>
+
+	<!-- OSCam kart bilgileri: yerel okuyucu ve dis okuyucu icin iki sablon -->
+
+	<screen name="OSCamEntitlements" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="OSCam Entitlements">
+		<eLabel position="0,0" size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="64,56" size="1792,968" backgroundColor="card" cornerRadius="24" zPosition="0" />
+		<widget source="Title" render="Label" position="112,88" size="1300,56" font="TMB;38" foregroundColor="text"
+		        transparent="1" valign="center" noWrap="1" wrap="ellipsis" zPosition="1" />
+		<widget source="global.CurrentTime" render="Label" position="1640,88" size="168,56" font="TMX;40" foregroundColor="text"
+		        transparent="1" halign="right" valign="center" zPosition="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="dheader0" render="Label" position="112,160" size="90,40" font="TMB;20" foregroundColor="textFaint" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget source="dheader1" render="Label" position="202,160" size="100,40" font="TMB;20" foregroundColor="textFaint" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget source="dheader2" render="Label" position="302,160" size="120,40" font="TMB;20" foregroundColor="textFaint" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget source="dheader3" render="Label" position="422,160" size="260,40" font="TMB;20" foregroundColor="textFaint" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget source="dheader4" render="Label" position="682,160" size="140,40" font="TMB;20" foregroundColor="textFaint" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget source="dheader5" render="Label" position="822,160" size="170,40" font="TMB;20" foregroundColor="textFaint" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget source="dheader6" render="Label" position="992,160" size="170,40" font="TMB;20" foregroundColor="textFaint" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget source="dheader7" render="Label" position="1162,160" size="646,40" font="TMB;20" foregroundColor="textFaint" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget source="cheader0" render="Label" position="112,160" size="80,40" font="TMB;20" foregroundColor="textFaint" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget source="cheader1" render="Label" position="192,160" size="180,40" font="TMB;20" foregroundColor="textFaint" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget source="cheader2" render="Label" position="0,0" size="1,1" transparent="1" zPosition="-1" />
+		<widget source="cheader3" render="Label" position="0,0" size="1,1" transparent="1" zPosition="-1" />
+		<widget source="cheader4" render="Label" position="0,0" size="1,1" transparent="1" zPosition="-1" />
+		<widget source="cheader5" render="Label" position="0,0" size="1,1" transparent="1" zPosition="-1" />
+		<widget source="cheader6" render="Label" position="380,160" size="94,40" font="TMB;20" foregroundColor="textFaint" transparent="1" halign="left" valign="center" noWrap="1" zPosition="1" />
+		<widget source="cheader7" render="Label" position="490,160" size="234,40" font="TMB;20" foregroundColor="textFaint" transparent="1" halign="left" valign="center" noWrap="1" zPosition="1" />
+		<widget source="cheader8" render="Label" position="740,160" size="184,40" font="TMB;20" foregroundColor="textFaint" transparent="1" halign="left" valign="center" noWrap="1" zPosition="1" />
+		<widget source="cheader9" render="Label" position="932,160" size="76,40" font="TMB;20" foregroundColor="textFaint" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget source="cheader10" render="Label" position="1008,160" size="76,40" font="TMB;20" foregroundColor="textFaint" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget source="cheader11" render="Label" position="1084,160" size="66,40" font="TMB;20" foregroundColor="textFaint" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget source="cheader12" render="Label" position="1150,160" size="66,40" font="TMB;20" foregroundColor="textFaint" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget source="cheader13" render="Label" position="1216,160" size="66,40" font="TMB;20" foregroundColor="textFaint" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget source="cheader14" render="Label" position="1282,160" size="66,40" font="TMB;20" foregroundColor="textFaint" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget source="cheader15" render="Label" position="1348,160" size="66,40" font="TMB;20" foregroundColor="textFaint" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget source="cheader16" render="Label" position="1414,160" size="66,40" font="TMB;20" foregroundColor="textFaint" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget source="cheader17" render="Label" position="1480,160" size="66,40" font="TMB;20" foregroundColor="textFaint" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget source="cheader18" render="Label" position="1546,160" size="66,40" font="TMB;20" foregroundColor="textFaint" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<widget source="cheader19" render="Label" position="1612,160" size="130,40" font="TMB;20" foregroundColor="textFaint" transparent="1" halign="center" valign="center" noWrap="1" zPosition="1" />
+		<eLabel position="112,202" size="1696,2" backgroundColor="line" zPosition="1" />
+		<widget source="entitleslist" render="Listbox" position="112,208" size="1696,720" transparent="1" zPosition="1"
+		        itemCornerRadiusSelected="14" enableWrapAround="1" scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track">
+			<convert type="TemplatedMultiContent">
+				{"templates": {
+					"default": (48, [
+						MultiContentEntryText(pos=(0, 0), size=(90, 48), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=1),
+						MultiContentEntryText(pos=(90, 0), size=(100, 48), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=2),
+						MultiContentEntryText(pos=(190, 0), size=(120, 48), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=3),
+						MultiContentEntryText(pos=(310, 0), size=(260, 48), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=4),
+						MultiContentEntryText(pos=(570, 0), size=(140, 48), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=5),
+						MultiContentEntryText(pos=(710, 0), size=(170, 48), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER | RT_WRAP, text=6),
+						MultiContentEntryText(pos=(880, 0), size=(170, 48), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=7),
+						MultiContentEntryText(pos=(1050, 0), size=(646, 48), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER | RT_WRAP, text=8)
+					]),
+					"entitlements": (48, [
+						MultiContentEntryText(pos=(0, 0), size=(80, 48), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=1),
+						MultiContentEntryText(pos=(80, 0), size=(180, 48), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=2),
+						MultiContentEntryText(pos=(268, 0), size=(94, 48), font=0, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER | RT_ELLIPSIS, text=7),
+						MultiContentEntryText(pos=(378, 0), size=(234, 48), font=0, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER | RT_ELLIPSIS, text=8),
+						MultiContentEntryText(pos=(628, 0), size=(184, 48), font=0, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER | RT_ELLIPSIS, text=9),
+						MultiContentEntryText(pos=(820, 0), size=(76, 48), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=10),
+						MultiContentEntryText(pos=(896, 0), size=(76, 48), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=11),
+						MultiContentEntryText(pos=(972, 0), size=(66, 48), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=12),
+						MultiContentEntryText(pos=(1038, 0), size=(66, 48), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=13),
+						MultiContentEntryText(pos=(1104, 0), size=(66, 48), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=14),
+						MultiContentEntryText(pos=(1170, 0), size=(66, 48), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=15),
+						MultiContentEntryText(pos=(1236, 0), size=(66, 48), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=16),
+						MultiContentEntryText(pos=(1302, 0), size=(66, 48), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=17),
+						MultiContentEntryText(pos=(1368, 0), size=(66, 48), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=18),
+						MultiContentEntryText(pos=(1434, 0), size=(66, 48), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=19),
+						MultiContentEntryText(pos=(1500, 0), size=(130, 48), font=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=20)
+					])
+				},
+				"fonts": [parseFont("TM;22")],
+				"itemHeight": 48
+				}
+			</convert>
+		</widget>
+		<widget source="key_blue" objectTypes="key_blue,StaticText,Boolean" render="Label" position="112,948" size="260,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" objectTypes="key_blue,StaticText,Boolean" render="Label" position="160,948" size="198,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_blue,Button,Label" position="112,948" size="260,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_blue" objectTypes="key_blue,Button,Label" position="160,948" size="198,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_blue" objectTypes="key_blue,StaticText,Boolean" render="Label" position="134,967" size="14,14" backgroundColor="accent" foregroundColor="accent" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_blue,Button,Label" position="134,967" size="14,14" backgroundColor="accent" cornerRadius="7" zPosition="2" />
+		<widget source="key_OK" objectTypes="key_OK,StaticText,Boolean" render="Label" position="392,951" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget name="key_OK" objectTypes="key_OK,Button,Label" position="392,951" size="90,46" backgroundColor="surface3" cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1" />
+		<widget source="key_detailed" render="Label" position="492,951" size="300,46" font="TM;22" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_exit" objectTypes="key_exit,StaticText,Boolean" render="Label" position="1718,951" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget name="key_exit" objectTypes="key_exit,Button,Label" position="1718,951" size="90,46" backgroundColor="surface3" cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1" />
+	</screen>
+
+	<!-- OSCam kart bilgisi ayrintisi -->
+
+	<screen name="OSCamEntitleDetails" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="OSCam Entitle Details">
+		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
+		<widget source="Title" render="Label" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<eLabel text="CAID" position="296,226" size="440,30" font="TMB;20" foregroundColor="textFaint" backgroundColor="surface2" transparent="1" halign="left" valign="center" zPosition="1" />
+		<widget source="label0" render="Label" position="296,256" size="440,40" font="TMB;28" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<eLabel text="System" position="736,226" size="440,30" font="TMB;20" foregroundColor="textFaint" backgroundColor="surface2" transparent="1" halign="left" valign="center" zPosition="1" />
+		<widget source="label1" render="Label" position="736,256" size="440,40" font="TMB;28" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<eLabel text="Reshare" position="1176,226" size="440,30" font="TMB;20" foregroundColor="textFaint" backgroundColor="surface2" transparent="1" halign="left" valign="center" zPosition="1" />
+		<widget source="label2" render="Label" position="1176,256" size="440,40" font="TMB;28" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<eLabel text="Hop" position="296,300" size="440,30" font="TMB;20" foregroundColor="textFaint" backgroundColor="surface2" transparent="1" halign="left" valign="center" zPosition="1" />
+		<widget source="label3" render="Label" position="296,330" size="440,40" font="TMB;28" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<eLabel text="ShareID" position="736,300" size="440,30" font="TMB;20" foregroundColor="textFaint" backgroundColor="surface2" transparent="1" halign="left" valign="center" zPosition="1" />
+		<widget source="label4" render="Label" position="736,330" size="440,40" font="TMB;28" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<eLabel text="RemoteID" position="1176,300" size="440,30" font="TMB;20" foregroundColor="textFaint" backgroundColor="surface2" transparent="1" halign="left" valign="center" zPosition="1" />
+		<widget source="label5" render="Label" position="1176,330" size="440,40" font="TMB;28" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<eLabel text="ProvIDs" position="296,392" size="432,36" font="TMB;22" foregroundColor="textDim" backgroundColor="surface2" transparent="1" halign="left" valign="center" zPosition="1" />
+		<widget source="ProvIDlist" render="Listbox" position="296,432" size="432,448" transparent="1" zPosition="1"
+		        itemCornerRadiusSelected="14" enableWrapAround="1" scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" selection="0">
+			<convert type="TemplatedMultiContent">
+				{"template": [
+					MultiContentEntryText(pos=(16, 0), size=(400, 56), font=0, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER | RT_ELLIPSIS, text=0)
+				],
+				"fonts": [parseFont("TM;26")],
+				"itemHeight": 56
+				}
+			</convert>
+		</widget>
+		<eLabel text="Providers" position="744,392" size="432,36" font="TMB;22" foregroundColor="textDim" backgroundColor="surface2" transparent="1" halign="left" valign="center" zPosition="1" />
+		<widget source="Providerlist" render="Listbox" position="744,432" size="432,448" transparent="1" zPosition="1"
+		        itemCornerRadiusSelected="14" enableWrapAround="1" scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" selection="0">
+			<convert type="TemplatedMultiContent">
+				{"template": [
+					MultiContentEntryText(pos=(16, 0), size=(400, 56), font=0, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER | RT_ELLIPSIS, text=0)
+				],
+				"fonts": [parseFont("TM;26")],
+				"itemHeight": 56
+				}
+			</convert>
+		</widget>
+		<eLabel text="Nodes" position="1192,392" size="432,36" font="TMB;22" foregroundColor="textDim" backgroundColor="surface2" transparent="1" halign="left" valign="center" zPosition="1" />
+		<widget source="Nodelist" render="Listbox" position="1192,432" size="432,448" transparent="1" zPosition="1"
+		        itemCornerRadiusSelected="14" enableWrapAround="1" scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" selection="0">
+			<convert type="TemplatedMultiContent">
+				{"template": [
+					MultiContentEntryText(pos=(16, 0), size=(400, 56), font=0, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER | RT_ELLIPSIS, text=0)
+				],
+				"fonts": [parseFont("TM;26")],
+				"itemHeight": 56
+				}
+			</convert>
+		</widget>
+		<widget source="key_exit" objectTypes="key_exit,StaticText,Boolean" render="Label" position="1534,917" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget name="key_exit" objectTypes="key_exit,Button,Label" position="1534,917" size="90,46" backgroundColor="surface3" cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1" />
+	</screen>
+
+	<!-- OSCamInfo Capabilities -->
+
+	<screen name="OSCamInfoCapability" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="OSCamInfo Capabilities">
+		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="-1" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="-1" />
+		<widget source="Title" render="Label" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<!-- kayan yazi -->
+		<widget name="captext" position="296,226" size="1328,660" font="TM;22" foregroundColor="text" transparent="1" zPosition="1"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
+	</screen>
+
+	<!-- OSCamInfo Log -->
+
+	<screen name="OSCamInfoLog" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="OSCamInfo Log">
+		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="-1" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="-1" />
+		<widget source="Title" render="Label" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<!-- kayan yazi -->
+		<widget name="logtext" position="296,226" size="1328,660" font="TM;22" foregroundColor="text" transparent="1" zPosition="1"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
+	</screen>
+
+	<!-- Eklenti / paket yonetimi: kategori basliklari ve paket satirlari, PNG simgeler skin_default'tan -->
+
+	<screen name="PackageAction" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Plugin Browser Action">
+		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
+		<widget source="Title" render="Label" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<widget name="description" position="296,222" size="1328,72" font="TM;24" foregroundColor="textDim" transparent="1" valign="center" zPosition="1" />
+		<eLabel position="296,302" size="1328,2" backgroundColor="line" zPosition="1" />
+		<widget source="plugins" render="Listbox" position="296,316" size="1328,576" transparent="1" zPosition="1"
+		        itemCornerRadiusSelected="14" enableWrapAround="1" scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track">
+			<convert type="TemplatedMultiContent">
+				{"template": [
+					MultiContentEntryPixmapAlphaBlend(pos=(16, 16), size=(40, 40), png=6, flags=BT_SCALE | BT_KEEP_ASPECT_RATIO),
+					MultiContentEntryText(pos=(76, 0), size=(1100, 72), font=0, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=2),
+					MultiContentEntryText(pos=(76, 6), size=(900, 36), font=1, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=3),
+					MultiContentEntryText(pos=(980, 6), size=(240, 36), font=2, flags=RT_HALIGN_RIGHT | RT_VALIGN_CENTER, text=5, color=0xa7adb5, color_sel=0x3a4048),
+					MultiContentEntryText(pos=(76, 40), size=(1144, 28), font=3, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER | RT_ELLIPSIS, text=4, color=0xa7adb5, color_sel=0x3a4048),
+					MultiContentEntryPixmapAlphaBlend(pos=(1244, 16), size=(40, 40), png=7, flags=BT_SCALE | BT_KEEP_ASPECT_RATIO)
+				],
+				"fonts": [parseFont("TMB;28"), parseFont("TM;28"), parseFont("TM;22"), parseFont("TM;20")],
+				"itemHeight": 72
+				}
+			</convert>
+		</widget>
+		<widget name="quickselect" position="296,316" size="1328,576" font="TMB;120" foregroundColor="text" transparent="1" halign="center" valign="center" zPosition="3" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="344,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_red" objectTypes="key_red,Button,Label" position="344,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="318,933" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="318,933" size="14,14" backgroundColor="live" cornerRadius="7" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="540,914" size="280,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="588,914" size="218,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="540,914" size="280,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_green" objectTypes="key_green,Button,Label" position="588,914" size="218,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="562,933" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="562,933" size="14,14" backgroundColor="ok" cornerRadius="7" zPosition="2" />
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="836,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="884,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_yellow,Button,Label" position="836,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_yellow" objectTypes="key_yellow,Button,Label" position="884,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="858,933" size="14,14" backgroundColor="warn" foregroundColor="warn" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_yellow,Button,Label" position="858,933" size="14,14" backgroundColor="warn" cornerRadius="7" zPosition="2" />
+		<widget source="key_blue" objectTypes="key_blue,StaticText,Boolean" render="Label" position="1080,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" objectTypes="key_blue,StaticText,Boolean" render="Label" position="1128,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_blue,Button,Label" position="1080,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_blue" objectTypes="key_blue,Button,Label" position="1128,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_blue" objectTypes="key_blue,StaticText,Boolean" render="Label" position="1102,933" size="14,14" backgroundColor="accent" foregroundColor="accent" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_blue,Button,Label" position="1102,933" size="14,14" backgroundColor="accent" cornerRadius="7" zPosition="2" />
+		<widget source="key_menu" objectTypes="key_menu,StaticText,Boolean" render="Label" position="1434,917" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget name="key_menu" objectTypes="key_menu,Button,Label" position="1434,917" size="90,46" backgroundColor="surface3" cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1" />
+		<widget source="key_help" objectTypes="key_help,StaticText,Boolean" render="Label" position="1534,917" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget name="key_help" objectTypes="key_help,Button,Label" position="1534,917" size="90,46" backgroundColor="surface3" cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1" />
+	</screen>
+
+	<!-- Islem penceresi (paket listesi indirilirken vb.): ince ilerleme cizgisi ve aciklama;
+	     yazi uzadikca openATV pencereyi asagi dogru buyutur, zemin pencerenin kendisi -->
+
+	<screen name="Processing" position="center,center" size="760,100" zPosition="99" flags="wfNoBorder" backgroundColor="surface2" title="Processing">
+		<widget name="progress" position="32,24" size="696,6" foregroundColor="text" backgroundColor="track" cornerRadius="3" zPosition="1" />
+		<widget name="description" position="32,44" size="696,36" font="TM;24" foregroundColor="text" transparent="1" halign="center" valign="center" zPosition="1" />
+	</screen>
+
+	<!-- opkg gunlugu -->
+
+	<screen name="PackageActionLog" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Plugin Action Log">
+		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="-1" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="-1" />
+		<widget source="Title" render="Label" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<!-- kayan yazi -->
+		<widget name="log" position="296,226" size="1328,660" font="TM;22" foregroundColor="text" transparent="1" zPosition="1"
+		        scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="344,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_red" objectTypes="key_red,Button,Label" position="344,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="318,933" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="318,933" size="14,14" backgroundColor="live" cornerRadius="7" zPosition="2" />
+		<widget source="key_help" objectTypes="key_help,StaticText,Boolean" render="Label" position="1534,917" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget name="key_help" objectTypes="key_help,Button,Label" position="1534,917" size="90,46" backgroundColor="surface3" cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1" />
+	</screen>
+
+	<!-- Flash Online: imaj kategorileri ve imajlar (ChoiceList glif simgeleri) -->
+
+	<screen name="FlashManager" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Flash Manager">
+		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
+		<widget source="Title" render="Label" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<widget name="list" position="296,226" size="1328,600" transparent="1" zPosition="1"
+		        itemCornerRadiusSelected="14" enableWrapAround="1" scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
+		<widget source="description" render="Label" position="296,836" size="1328,44" font="TM;24" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="344,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_red" objectTypes="key_red,Button,Label" position="344,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="318,933" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="318,933" size="14,14" backgroundColor="live" cornerRadius="7" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="540,914" size="260,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="588,914" size="198,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="540,914" size="260,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_green" objectTypes="key_green,Button,Label" position="588,914" size="198,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="562,933" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="562,933" size="14,14" backgroundColor="ok" cornerRadius="7" zPosition="2" />
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="816,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="864,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_yellow,Button,Label" position="816,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_yellow" objectTypes="key_yellow,Button,Label" position="864,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="838,933" size="14,14" backgroundColor="warn" foregroundColor="warn" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_yellow,Button,Label" position="838,933" size="14,14" backgroundColor="warn" cornerRadius="7" zPosition="2" />
+		<widget source="key_blue" objectTypes="key_blue,StaticText,Boolean" render="Label" position="1060,914" size="280,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" objectTypes="key_blue,StaticText,Boolean" render="Label" position="1108,914" size="218,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_blue,Button,Label" position="1060,914" size="280,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_blue" objectTypes="key_blue,Button,Label" position="1108,914" size="218,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_blue" objectTypes="key_blue,StaticText,Boolean" render="Label" position="1082,933" size="14,14" backgroundColor="accent" foregroundColor="accent" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_blue,Button,Label" position="1082,933" size="14,14" backgroundColor="accent" cornerRadius="7" zPosition="2" />
+		<widget source="key_help" objectTypes="key_help,StaticText,Boolean" render="Label" position="1534,917" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget name="key_help" objectTypes="key_help,Button,Label" position="1534,917" size="90,46" backgroundColor="surface3" cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1" />
+	</screen>
+
+	<!-- Imaj yazma ilerlemesi -->
+
+	<screen name="FlashImage" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Flash Image">
+		<eLabel position="0,0" size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="420,360" size="1080,340" backgroundColor="card" cornerRadius="24" zPosition="0" />
+		<widget name="header" position="476,396" size="968,56" font="TMB;34" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<widget name="info" position="476,464" size="968,150" font="TM;26" foregroundColor="textDim" transparent="1" valign="top" zPosition="1" />
+		<widget name="progress" position="476,640" size="968,6" foregroundColor="text" backgroundColor="track" cornerRadius="3" zPosition="1" />
+	</screen>
+
+	<!-- Imaj yedegi: aciklama ve yuva listesi -->
+
+	<screen name="ImageBackup" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Image Backup">
+		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
+		<widget source="Title" render="Label" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<widget source="description" render="Label" position="296,222" size="1328,120" font="TM;24" foregroundColor="textDim" transparent="1" valign="top" zPosition="1" />
+		<eLabel position="296,352" size="1328,2" backgroundColor="line" zPosition="1" />
+		<widget name="config" position="296,368" size="1328,480" transparent="1" zPosition="1"
+		        itemCornerRadiusSelected="14" enableWrapAround="1" scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="344,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_red" objectTypes="key_red,Button,Label" position="344,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="318,933" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="318,933" size="14,14" backgroundColor="live" cornerRadius="7" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="588,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_green" objectTypes="key_green,Button,Label" position="588,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="562,933" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="562,933" size="14,14" backgroundColor="ok" cornerRadius="7" zPosition="2" />
+		<widget source="key_help" objectTypes="key_help,StaticText,Boolean" render="Label" position="1534,917" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget name="key_help" objectTypes="key_help,Button,Label" position="1534,917" size="90,46" backgroundColor="surface3" cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1" />
+	</screen>
+
+	<!-- Gelismis geri yukleme: yedek dosyalari -->
+
+	<screen name="RestoreMenu" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Restore backups">
+		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
+		<widget source="Title" render="Label" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<widget name="filelist" position="296,226" size="1328,640" transparent="1" zPosition="1"
+		        itemHeight="64" itemAlignment="leftMiddle" font="TM;30" foregroundColor="text" padding="24,0,24,0" itemCornerRadiusSelected="14" enableWrapAround="1" scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="344,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_red" objectTypes="key_red,Button,Label" position="344,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="318,933" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="318,933" size="14,14" backgroundColor="live" cornerRadius="7" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="588,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_green" objectTypes="key_green,Button,Label" position="588,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="562,933" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="562,933" size="14,14" backgroundColor="ok" cornerRadius="7" zPosition="2" />
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="784,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="832,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_yellow,Button,Label" position="784,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_yellow" objectTypes="key_yellow,Button,Label" position="832,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="806,933" size="14,14" backgroundColor="warn" foregroundColor="warn" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_yellow,Button,Label" position="806,933" size="14,14" backgroundColor="warn" cornerRadius="7" zPosition="2" />
+	</screen>
+
+	<!-- Yedeklenecek / haric tutulacak dosyalar (kilit ve tur glifleri FileListMulti parametrelerinden) -->
+
+	<screen name="BackupSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Select files/folders to backup">
+		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
+		<widget source="Title" render="Label" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<widget name="checkList" position="296,226" size="1328,616" foregroundColor="text" transparent="1" zPosition="1"
+		        itemCornerRadiusSelected="14" enableWrapAround="1" scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="344,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_red" objectTypes="key_red,Button,Label" position="344,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="318,933" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="318,933" size="14,14" backgroundColor="live" cornerRadius="7" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="588,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_green" objectTypes="key_green,Button,Label" position="588,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="562,933" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="562,933" size="14,14" backgroundColor="ok" cornerRadius="7" zPosition="2" />
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="784,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="832,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_yellow,Button,Label" position="784,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_yellow" objectTypes="key_yellow,Button,Label" position="832,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="806,933" size="14,14" backgroundColor="warn" foregroundColor="warn" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_yellow,Button,Label" position="806,933" size="14,14" backgroundColor="warn" cornerRadius="7" zPosition="2" />
+	</screen>
+
+	<!-- Yedek ayarlari bilgisi: yedeklenen yollar -->
+
+	<screen name="SoftwareManagerInfo" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Software Manager Information">
+		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
+		<widget source="Title" render="Label" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<widget source="introduction" render="Label" position="296,222" size="1328,44" font="TM;24" foregroundColor="textDim" transparent="1" valign="center" zPosition="1" />
+		<eLabel position="296,274" size="1328,2" backgroundColor="line" zPosition="1" />
+		<widget source="list" render="Listbox" position="296,290" size="1328,560" transparent="1" zPosition="1"
+		        itemCornerRadiusSelected="14" enableWrapAround="1" scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track">
+			<convert type="TemplatedMultiContent">
+				{"template": [
+					MultiContentEntryText(pos=(24, 0), size=(1280, 56), font=0, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=0)
+				],
+				"fonts": [parseFont("TM;28")],
+				"itemHeight": 56
+				}
+			</convert>
+		</widget>
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="344,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_red" objectTypes="key_red,Button,Label" position="344,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="318,933" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="318,933" size="14,14" backgroundColor="live" cornerRadius="7" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="588,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_green" objectTypes="key_green,Button,Label" position="588,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="562,933" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="562,933" size="14,14" backgroundColor="ok" cornerRadius="7" zPosition="2" />
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="784,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="832,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_yellow,Button,Label" position="784,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_yellow" objectTypes="key_yellow,Button,Label" position="832,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="806,933" size="14,14" backgroundColor="warn" foregroundColor="warn" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_yellow,Button,Label" position="806,933" size="14,14" backgroundColor="warn" cornerRadius="7" zPosition="2" />
+		<widget source="key_blue" objectTypes="key_blue,StaticText,Boolean" render="Label" position="1028,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" objectTypes="key_blue,StaticText,Boolean" render="Label" position="1076,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_blue,Button,Label" position="1028,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_blue" objectTypes="key_blue,Button,Label" position="1076,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_blue" objectTypes="key_blue,StaticText,Boolean" render="Label" position="1050,933" size="14,14" backgroundColor="accent" foregroundColor="accent" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_blue,Button,Label" position="1050,933" size="14,14" backgroundColor="accent" cornerRadius="7" zPosition="2" />
+	</screen>
+
+	<!-- Geri yuklenecek eklentiler (secim kilidi PNG'si skin_default'tan) -->
+
+	<screen name="RestorePlugins" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Restore Plugins">
+		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
+		<widget source="Title" render="Label" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<widget source="menu" render="Listbox" position="296,226" size="1328,616" transparent="1" zPosition="1"
+		        itemCornerRadiusSelected="14" enableWrapAround="1" scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track">
+			<convert type="TemplatedMultiContent">
+				{"template": [
+					MultiContentEntryPixmapAlphaBlend(pos=(20, 14), size=(28, 28), png=1, flags=BT_SCALE | BT_KEEP_ASPECT_RATIO),
+					MultiContentEntryText(pos=(68, 0), size=(1236, 56), font=0, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=0)
+				],
+				"fonts": [parseFont("TM;28")],
+				"itemHeight": 56
+				}
+			</convert>
+		</widget>
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="344,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_red" objectTypes="key_red,Button,Label" position="344,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="318,933" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="318,933" size="14,14" backgroundColor="live" cornerRadius="7" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="588,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_green" objectTypes="key_green,Button,Label" position="588,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="562,933" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="562,933" size="14,14" backgroundColor="ok" cornerRadius="7" zPosition="2" />
+	</screen>
+
+	<!-- Guncelleme kaynagi secimi (mandatory: feeds) -->
+
+	<screen name="PackageFeedSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Package Feed Selection">
+		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
+		<widget source="Title" render="Label" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<widget name="feeds" position="296,226" size="1328,640" transparent="1" zPosition="1"
+		        itemHeight="64" itemAlignment="leftMiddle" font="TM;30" foregroundColor="text" padding="24,0,24,0" itemCornerRadiusSelected="14" enableWrapAround="1" scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="344,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_red" objectTypes="key_red,Button,Label" position="344,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="318,933" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="318,933" size="14,14" backgroundColor="live" cornerRadius="7" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="588,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_green" objectTypes="key_green,Button,Label" position="588,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="562,933" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="562,933" size="14,14" backgroundColor="ok" cornerRadius="7" zPosition="2" />
+		<widget source="key_help" objectTypes="key_help,StaticText,Boolean" render="Label" position="1534,917" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget name="key_help" objectTypes="key_help,Button,Label" position="1534,917" size="90,46" backgroundColor="surface3" cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1" />
+	</screen>
+
+	<!-- Ag genel bakis: bagdastiricilar ve kayitli Wi-Fi aglari; ilk satir baslik (secilemez) -->
+
+	<screen name="NetworkOverview" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Network Overview">
+		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
+		<widget source="Title" render="Label" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<widget source="adapterList" render="Listbox" position="296,226" size="1328,264" transparent="1" zPosition="1"
+		        itemCornerRadiusSelected="14" enableWrapAround="1" scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track">
+			<template name="Default" colors="#003ddc84,#00ff4d5a,#006b727b,#00168a4d,#00c0303c,#004a5059" fonts="TMB;20,enigma2icons;34,TM;28,TM;20,enigma2icons;22,TM;18" itemHeight="66">
+				<rowtemplate>
+					<text index="AdapterName" position="72,0" size="230,66" font="0" foregroundColor="textFaint" padding="8,0" verticalAlignment="center" />
+					<text index="StatusText" position="344,0" size="216,66" font="0" foregroundColor="textFaint" padding="8,0" verticalAlignment="center" />
+					<text index="MAC" position="560,0" size="250,66" font="0" foregroundColor="textFaint" padding="8,0" verticalAlignment="center" />
+					<text index="IPAddress" position="810,0" size="210,66" font="0" foregroundColor="textFaint" padding="8,0" verticalAlignment="center" />
+					<text index="Gateway" position="1020,0" size="200,66" font="0" foregroundColor="textFaint" padding="8,0" verticalAlignment="center" />
+					<text index="Speed" position="1220,0" size="108,66" font="0" foregroundColor="textFaint" padding="8,0" verticalAlignment="center" />
+				</rowtemplate>
+				<rowtemplate>
+					<text index="AdapterGlyph" position="16,9" size="48,48" font="1" horizontalAlignment="center" verticalAlignment="center" />
+					<text index="AdapterName" position="72,4" size="230,34" font="2" padding="8,0" verticalAlignment="center" />
+					<text index="AdapterType" position="72,38" size="230,24" font="3" padding="8,0" verticalAlignment="center" />
+					<text index="InternetGlyph" position="302,0" size="40,66" font="4" horizontalAlignment="center" verticalAlignment="center" />
+					<text index="StatusText" position="344,6" size="216,30" font="3" foregroundColor="+StatusColor" foregroundColorSelected="+StatusColorSelected" padding="8,0" verticalAlignment="center" />
+					<text index="ConnectionText" position="344,36" size="216,24" font="5" padding="8,0" verticalAlignment="center" />
+					<text index="MAC" position="560,0" size="250,66" font="3" padding="8,0" verticalAlignment="center" />
+					<text index="IPAddress" position="810,0" size="210,66" font="3" padding="8,0" verticalAlignment="center" />
+					<text index="Gateway" position="1020,0" size="200,66" font="3" padding="8,0" verticalAlignment="center" />
+					<text index="Speed" position="1220,0" size="108,66" font="3" padding="8,0" verticalAlignment="center" />
+				</rowtemplate>
+			</template>
+		</widget>
+		<widget source="savedLabel" render="Label" position="296,506" size="1328,40" font="TMB;24" foregroundColor="textDim" transparent="1" valign="center" noWrap="1" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="savedList" render="Listbox" position="296,554" size="1328,288" transparent="1" zPosition="1"
+		        itemCornerRadiusSelected="14" enableWrapAround="1" scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track">
+			<template name="Default" colors="#003ddc84,#00ff4d5a,#006b727b,#00168a4d,#00c0303c,#004a5059" fonts="TMB;20,TM;26,enigma2icons;26" itemHeight="48">
+				<rowtemplate>
+					<text index="SSID" position="16,0" size="364,48" font="0" foregroundColor="textFaint" padding="8,0" verticalAlignment="center" />
+					<text index="StatusText" position="380,0" size="120,48" font="0" foregroundColor="textFaint" padding="8,0" verticalAlignment="center" />
+					<text index="BSSID" position="500,0" size="280,48" font="0" foregroundColor="textFaint" padding="8,0" verticalAlignment="center" />
+					<text index="Frequency" position="780,0" size="180,48" font="0" foregroundColor="textFaint" padding="8,0" verticalAlignment="center" />
+					<text index="Channel" position="960,0" size="140,48" font="0" foregroundColor="textFaint" padding="8,0" verticalAlignment="center" />
+					<text index="Encryption" position="1100,0" size="228,48" font="0" foregroundColor="textFaint" padding="8,0" verticalAlignment="center" />
+				</rowtemplate>
+				<rowtemplate>
+					<text index="SSID" position="16,0" size="364,48" font="1" padding="8,0" verticalAlignment="center" />
+					<text index="StatusGlyph" position="380,0" size="120,48" font="2" foregroundColor="+StatusColor" foregroundColorSelected="+StatusColorSelected" padding="8,0" verticalAlignment="center" />
+					<text index="BSSID" position="500,0" size="280,48" font="1" padding="8,0" verticalAlignment="center" />
+					<text index="Frequency" position="780,0" size="180,48" font="1" padding="8,0" verticalAlignment="center" />
+					<text index="Channel" position="960,0" size="140,48" font="1" padding="8,0" verticalAlignment="center" />
+					<text index="Encryption" position="1100,0" size="228,48" font="1" padding="8,0" verticalAlignment="center" />
+				</rowtemplate>
+			</template>
+		</widget>
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="296,914" size="220,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="344,914" size="158,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="296,914" size="220,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_red" objectTypes="key_red,Button,Label" position="344,914" size="158,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="318,933" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="318,933" size="14,14" backgroundColor="live" cornerRadius="7" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="528,914" size="220,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="576,914" size="158,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="528,914" size="220,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_green" objectTypes="key_green,Button,Label" position="576,914" size="158,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="550,933" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="550,933" size="14,14" backgroundColor="ok" cornerRadius="7" zPosition="2" />
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="760,914" size="220,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="808,914" size="158,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_yellow,Button,Label" position="760,914" size="220,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_yellow" objectTypes="key_yellow,Button,Label" position="808,914" size="158,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="782,933" size="14,14" backgroundColor="warn" foregroundColor="warn" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_yellow,Button,Label" position="782,933" size="14,14" backgroundColor="warn" cornerRadius="7" zPosition="2" />
+		<widget source="key_blue" objectTypes="key_blue,StaticText,Boolean" render="Label" position="992,914" size="220,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_blue" objectTypes="key_blue,StaticText,Boolean" render="Label" position="1040,914" size="158,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_blue,Button,Label" position="992,914" size="220,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_blue" objectTypes="key_blue,Button,Label" position="1040,914" size="158,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_blue" objectTypes="key_blue,StaticText,Boolean" render="Label" position="1014,933" size="14,14" backgroundColor="accent" foregroundColor="accent" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_blue,Button,Label" position="1014,933" size="14,14" backgroundColor="accent" cornerRadius="7" zPosition="2" />
+		<widget source="key_menu" objectTypes="key_menu,StaticText,Boolean" render="Label" position="1334,917" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget name="key_menu" objectTypes="key_menu,Button,Label" position="1334,917" size="90,46" backgroundColor="surface3" cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1" />
+		<widget source="key_info" objectTypes="key_info,StaticText,Boolean" render="Label" position="1434,917" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget name="key_info" objectTypes="key_info,Button,Label" position="1434,917" size="90,46" backgroundColor="surface3" cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1" />
+		<widget source="key_help" objectTypes="key_help,StaticText,Boolean" render="Label" position="1534,917" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget name="key_help" objectTypes="key_help,Button,Label" position="1534,917" size="90,46" backgroundColor="surface3" cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1" />
+	</screen>
+
+	<!-- Ag baglama noktalari -->
+
+	<screen name="NetworkMountsOverview" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Network Mounts Overview">
+		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
+		<widget source="Title" render="Label" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<widget source="mountList" render="Listbox" position="296,226" size="1328,648" transparent="1" zPosition="1"
+		        itemCornerRadiusSelected="14" enableWrapAround="1" scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track">
+			<templates>
+				<template name="Default" fonts="TM;28,TM;20,TM;24" itemHeight="72">
+					<mode name="default">
+						<text index="ShareName" position="16,6" size="900,36" font="0" padding="8,0" verticalAlignment="center" />
+						<text index="Description" position="16,42" size="900,26" font="1" padding="8,0" foregroundColor="textDim" verticalAlignment="center" />
+						<text index="Mounted" position="930,0" size="210,72" font="2" padding="8,0" verticalAlignment="center" />
+						<text index="Active" position="1140,0" size="172,72" font="2" horizontalAlignment="right" padding="8,0" verticalAlignment="center" />
+					</mode>
+				</template>
+			</templates>
+		</widget>
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="344,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_red" objectTypes="key_red,Button,Label" position="344,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="318,933" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="318,933" size="14,14" backgroundColor="live" cornerRadius="7" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="588,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_green" objectTypes="key_green,Button,Label" position="588,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="562,933" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="562,933" size="14,14" backgroundColor="ok" cornerRadius="7" zPosition="2" />
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="784,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="832,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_yellow,Button,Label" position="784,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_yellow" objectTypes="key_yellow,Button,Label" position="832,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="806,933" size="14,14" backgroundColor="warn" foregroundColor="warn" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_yellow,Button,Label" position="806,933" size="14,14" backgroundColor="warn" cornerRadius="7" zPosition="2" />
+		<widget source="key_menu" objectTypes="key_menu,StaticText,Boolean" render="Label" position="1434,917" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget name="key_menu" objectTypes="key_menu,Button,Label" position="1434,917" size="90,46" backgroundColor="surface3" cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1" />
+		<widget source="key_help" objectTypes="key_help,StaticText,Boolean" render="Label" position="1534,917" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget name="key_help" objectTypes="key_help,Button,Label" position="1534,917" size="90,46" backgroundColor="surface3" cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1" />
+	</screen>
+
+	<!-- Ag paylasimlari tarayicisi: sunucu satiri ve paylasim satirlari -->
+
+	<screen name="NetworkShares" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Network Shares Browser">
+		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
+		<widget source="Title" render="Label" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<widget source="list" render="Listbox" position="296,226" size="1328,576" transparent="1" zPosition="1"
+		        itemCornerRadiusSelected="14" enableWrapAround="1" scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track">
+			<template name="Default" fonts="enigma2icons;36,TM;28,enigma2icons;26,TM;22,TM;20" itemHeight="64">
+				<rowtemplate>
+					<text index="Glyph" position="16,0" size="56,64" font="0" horizontalAlignment="center" verticalAlignment="center" />
+					<text index="IPAddress" position="88,0" size="260,64" font="1" padding="8,0" verticalAlignment="center" />
+					<text index="Name" position="360,0" size="640,64" font="1" padding="8,0" verticalAlignment="center" />
+					<text index="Username" position="1010,0" size="302,64" font="1" padding="8,0" verticalAlignment="center" />
+				</rowtemplate>
+				<rowtemplate>
+					<text index="Glyph" position="88,0" size="44,64" font="2" foregroundColor="+GlyphColor" horizontalAlignment="center" verticalAlignment="center" />
+					<text index="Type" position="140,0" size="100,64" font="3" foregroundColor="textDim" padding="8,0" verticalAlignment="center" />
+					<text index="Name" position="240,0" size="310,64" font="3" padding="8,0" verticalAlignment="center" />
+					<text index="Description" position="560,4" size="752,30" font="3" padding="8,0" verticalAlignment="center" />
+					<text index="LocalPath" position="560,34" size="752,26" font="4" foregroundColor="textDim" padding="8,0" verticalAlignment="center" />
+				</rowtemplate>
+			</template>
+		</widget>
+		<widget name="description" position="296,818" size="1328,52" font="TM;22" foregroundColor="textDim" transparent="1" valign="center" zPosition="1" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="344,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_red" objectTypes="key_red,Button,Label" position="344,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="318,933" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="318,933" size="14,14" backgroundColor="live" cornerRadius="7" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="588,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_green" objectTypes="key_green,Button,Label" position="588,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="562,933" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="562,933" size="14,14" backgroundColor="ok" cornerRadius="7" zPosition="2" />
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="784,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="832,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_yellow,Button,Label" position="784,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_yellow" objectTypes="key_yellow,Button,Label" position="832,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_yellow" objectTypes="key_yellow,StaticText,Boolean" render="Label" position="806,933" size="14,14" backgroundColor="warn" foregroundColor="warn" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_yellow,Button,Label" position="806,933" size="14,14" backgroundColor="warn" cornerRadius="7" zPosition="2" />
+		<widget source="key_menu" objectTypes="key_menu,StaticText,Boolean" render="Label" position="1434,917" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget name="key_menu" objectTypes="key_menu,Button,Label" position="1434,917" size="90,46" backgroundColor="surface3" cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1" />
+		<widget source="key_help" objectTypes="key_help,StaticText,Boolean" render="Label" position="1534,917" size="90,46" backgroundColor="surface3"
+		        cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget name="key_help" objectTypes="key_help,Button,Label" position="1534,917" size="90,46" backgroundColor="surface3" cornerRadius="23" font="TMB;18" foregroundColor="textDim" halign="center" valign="center" zPosition="1" />
+	</screen>
+
+	<!-- Script yoneticisi (Button renk tuslari: name= varyanti) -->
+
+	<screen name="ScriptRunner" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" title="Script Manager">
+		<eLabel position="0,0"     size="1920,1080" backgroundColor="scrim" zPosition="0" />
+		<eLabel position="240,90"  size="1440,900"  backgroundColor="card" cornerRadius="24" zPosition="0" />
+		<widget source="Title" render="Label" position="296,134" size="1328,58"
+		        font="TMB;40" foregroundColor="text" transparent="1" valign="center" noWrap="1" zPosition="1" />
+		<widget name="lab1" position="296,222" size="1328,44" font="TM;26" foregroundColor="textDim" transparent="1" valign="center" zPosition="1" />
+		<eLabel position="296,274" size="1328,2" backgroundColor="line" zPosition="1" />
+		<widget name="list" position="296,290" size="1328,576" transparent="1" zPosition="1"
+		        itemHeight="64" itemAlignment="leftMiddle" font="TM;30" foregroundColor="text" padding="24,0,24,0" itemCornerRadiusSelected="14" enableWrapAround="1" scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="16" scrollbarRadius="2"
+		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="344,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="296,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_red" objectTypes="key_red,Button,Label" position="344,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="318,933" size="14,14" backgroundColor="live" foregroundColor="live" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_red,Button,Label" position="318,933" size="14,14" backgroundColor="live" cornerRadius="7" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="588,914" size="166,52" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2">
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="540,914" size="228,52" backgroundColor="chip" cornerRadius="26" zPosition="1" />
+		<widget name="key_green" objectTypes="key_green,Button,Label" position="588,914" size="166,52" backgroundColor="chip" font="TMB;24" foregroundColor="text" halign="left" valign="center" noWrap="1" transparent="1" zPosition="2" />
+		<widget source="key_green" objectTypes="key_green,StaticText,Boolean" render="Label" position="562,933" size="14,14" backgroundColor="ok" foregroundColor="ok" font="TMB;24" cornerRadius="7" zPosition="2">
+			<convert type="TiviAtvText">Blank</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<eLabel objectTypes="key_green,Button,Label" position="562,933" size="14,14" backgroundColor="ok" cornerRadius="7" zPosition="2" />
 	</screen>
 
 	<!-- ============================================================
@@ -4955,7 +6695,7 @@ except Exception:
 		<widget name="config" position="296,246" size="1328,576" itemHeight="64" font="TM;30" transparent="1" zPosition="1"
 		        itemCornerRadiusSelected="14" padding="24,12,24,0" scrollbarMode="showOnDemand" scrollbarWidth="4" scrollbarOffset="12" scrollbarRadius="2"
 		        scrollbarBorderWidth="0" scrollbarForegroundColor="textDim" scrollbarBackgroundColor="track" />
-		<widget name="HelpWindow" position="1700,1040" size="1,1" transparent="1" zPosition="1" />
+		<widget name="HelpWindow" position="1048,654" size="1,1" transparent="1" zPosition="1" />
 		<widget source="key_red" objectTypes="key_red,StaticText,Boolean" render="Label" position="296,914" size="216,52" backgroundColor="chip" cornerRadius="26" font="TMB;24" foregroundColor="chip" halign="left" valign="center" noWrap="1" zPosition="1">
 			<convert type="TiviAtvText">Blank</convert>
 			<convert type="ConditionalShowHide" />

@@ -65,6 +65,7 @@ TEMPLATE = """<skin>
 \t\t<alias name="FileListMulti" font="TM" size="28" height="56" />
 \t\t<alias name="FileListIcons" font="enigma2icons" size="30" height="36" />
 \t\t<alias name="PlayList" font="TM" size="26" height="48" />
+\t\t<alias name="MovieListIcons" font="enigma2icons" size="28" height="36" />
 \t</fonts>
 </skin>
 """
