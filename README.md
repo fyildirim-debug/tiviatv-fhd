@@ -230,6 +230,11 @@ muted-speaker glyph — no text, so it reads the same in every language.
 
 ![Volume](docs/screenshots/volume.jpg)
 
+TiviATV Settings › Volume bar can also put it at the top or upright on the
+left, where the bar fills from the bottom up:
+
+![Volume bar on the left](docs/screenshots/volume-left.jpg)
+
 ### Number zap
 
 The number sits in its own tile, the channel name next to it. If the number

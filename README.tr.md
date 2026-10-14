@@ -223,6 +223,11 @@ yuvarlak çip; yazı yok, her dilde aynı okunur.
 
 ![Ses](docs/screenshots/volume.jpg)
 
+TiviATV Settings › Ses çubuğu ile üste ya da sola dikey de alınabilir;
+dikeyde çubuk aşağıdan yukarı dolar:
+
+![Solda dikey ses çubuğu](docs/screenshots/volume-left.jpg)
+
 ### Numara ile kanal
 
 Numara kendi karosunda, kanal adı yanında. Kullanım ayarlarında numara zap
