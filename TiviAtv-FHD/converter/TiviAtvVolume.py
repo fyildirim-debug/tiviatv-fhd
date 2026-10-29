@@ -15,7 +15,9 @@
 #   bottom  bilgi cubugunun hemen ustu (skindeki yer)
 #   top     ustte ortada
 #   left    solda dikey; pencere ve icindeki her oge 90 derece cevrilir,
-#           ses cubugu alttan yukari dolar
+#           ses cubugu alttan yukari dolar. Boyu yatay haptan 1/3 kisa ve
+#           alt ucu yatay hapin alt ucunda: bilgi cubuguna binmez (ayri
+#           pencerelerin saydam koseleri alttaki pencereyi deler)
 #
 # Kurulum: /usr/lib/enigma2/python/Components/Converter/TiviAtvVolume.py
 
@@ -58,9 +60,15 @@ def place(screen, kind):
 		scale = desktop.width() / 1920.0
 		x, y, w, h = original
 		vertical = mode == "left" and kind == "volume"
+		shrink = w // 3 if vertical else 0  # dikey boy = yatay boyun 2/3'u
 		for item, cx, cy, cw, ch in geometry:  # bu pencerede 90 derece: (x, y, w, h) -> (y, W - x - w, h, w)
 			if vertical:
-				item.instance.move(ePoint(cy, w - cx - cw))
+				top = w - cx - cw
+				if cw > w // 2:  # zemin ve ses cubugu kisalir
+					cw -= shrink
+				elif cx + cw <= w // 2:  # cubugun solundakiler (hoparlor) alta, yukari kayar
+					top -= shrink
+				item.instance.move(ePoint(cy, top))
 				item.instance.resize(eSize(ch, cw))
 			else:
 				item.instance.move(ePoint(cx, cy))
@@ -71,11 +79,13 @@ def place(screen, kind):
 		if text is not None and getattr(text, "instance", None):
 			text.instance.setHAlign(1 if vertical else 2)  # dikeyde ortada, yatayda sagda
 		if vertical:
-			w, h = h, w
+			w, h = h, w - shrink
 		window.resize(eSize(w, h))
 		margin = int(MARGIN * scale)
 		if mode == "top":
 			window.move(ePoint((desktop.width() - w) // 2, margin))
+		elif vertical:  # alt ucu yatay hapin alt ucunda, bilgi cubugunun ustunde
+			window.move(ePoint(margin, original[1] + original[3] - h))
 		elif mode == "left":
 			window.move(ePoint(margin, (desktop.height() - h) // 2))
 		else:

@@ -82,8 +82,8 @@ boş kalır.
 
 | Yer | İçerik |
 |---|---|
-| `/usr/share/enigma2/TiviAtv-FHD/` | skin, `fonts.xml`, yazı tipleri, lisanslar, önizleme |
-| `/usr/lib/enigma2/python/Components/Converter/` | `TiviAtvSignal.py`, `TiviAtvText.py`, `TiviAtvEcm.py`, `TiviAtvEpg.py` |
+| `/usr/share/enigma2/TiviAtv-FHD/` | skin, `fonts.xml`, yazı tipleri, simge fontu (`TiviAtv-icons.ttf`, openATV 7.x ve Egami için), lisanslar, önizleme |
+| `/usr/lib/enigma2/python/Components/Converter/` | `TiviAtvSignal.py`, `TiviAtvText.py`, `TiviAtvEcm.py`, `TiviAtvEpg.py`, `TiviAtvVolume.py` |
 | `/usr/lib/enigma2/python/Components/Renderer/` | `TiviAtvScroll.py` |
 | `/usr/lib/enigma2/python/Plugins/Extensions/TiviAtvFont/` | **TiviATV Font** (yazı tipi) ve **TiviATV Settings** |
 
@@ -93,6 +93,7 @@ boş kalır.
 | `TiviAtvText.py` | Çözünürlük / codec / şifre rozetlerini boşken gizler; tuş çipinin zemini ve noktası için `Blank` kipi |
 | `TiviAtvEcm.py` | `/tmp/ecm.info`'dan softcam ECM bilgisi (OSCam, CCcam …), yalnız şifreli kanalda — bkz. [Softcam (ECM) bilgisi](#softcam-ecm-bilgisi) |
 | `TiviAtvEpg.py` | Kanal listesinin isteğe bağlı EPG paneli: seçili kanalın sıradaki programları ve primetime — bkz. [TiviATV Settings](#tiviatv-settings) |
+| `TiviAtvVolume.py` | Converter değil, Volume ve Mute ekranlarının çağırdığı yardımcı: ses çubuğunu altta, üstte ya da solda dikey gösterir (TiviATV Settings › Ses çubuğu) |
 | `TiviAtvScroll.py` (renderer) | Sığmayan metni yavaşça kaydıran etiket (kanal listesi açıklaması) |
 
 `fonts.xml` paketin yapılandırma dosyasıdır: değiştirdiysen opkg onu ezmez,
@@ -656,6 +657,24 @@ python tools/make_designer_copy.py
 ```
 
 ## Sürüm notları
+
+**1.0.11**
+- openATV 7.x ve Egami'de simgeler: ses çubuğundaki hoparlör, sessiz çipi ve
+  diğer simgeler görünmüyordu, çünkü bu imajlarda openATV'nin simge fontu yok.
+  Paket artık kendi kopyasını getiriyor; openATV 8 kendindekini kullanmaya
+  devam ediyor.
+- DNS, şifre ve diğer metin alanlarındaki sayı tuşu yardımının (SMS harfleri)
+  köşeleri koyu görünüyordu: ayrı bir pencere ve yuvarlak köşeleri alttaki
+  ekranı deliyordu. Artık düz bir kart, biraz daha geniş; uzun harf takımları
+  sığıyor.
+- Dikey ses çubuğu (TiviATV Settings › Ses çubuğu › Sol) üçte bir kısaldı ve
+  bilgi çubuğunun üstüne binmeden onun üstünde bitiyor.
+- Düz listelerde yazı satırın ortasında (güncelleme kaynağı, geri yükleme,
+  Script Yöneticisi, tarama, klasör yer imleri, Bluetooth, Programmlisten);
+  satırın üstüne yapışıyordu.
+- Menüler renk tuşlarını gösteriyor: mavi düzenleme modunu açar, sonra yeşil
+  taşır, sarı girişi gizler ya da gösterir.
+- Skin Ayarları'nda İptal ve Kaydet tuşları görünüyor.
 
 **1.0.10**
 - Ses çubuğunun yeri artık bir ayar: TiviATV Settings › Ses çubuğu › bilgi

@@ -21,5 +21,12 @@ Barlow typeface (TiviAtv-FHD/Barlow-*.ttf)
   Full text: OFL-Barlow.txt in each skin folder.
   https://github.com/jeremytribby/barlow
 
+enigma2icons icon font (TiviAtv-FHD/TiviAtv-icons.ttf)
+  Copy of enigma2icons.ttf from openATV enigma2 (data/fonts), made with
+  fontello. Part of openATV, licensed under the GNU General Public License
+  version 2. Shipped unchanged so that openATV 7.x and Egami, which do not
+  have this font, can show the skin's icons; openATV 8 uses its own copy.
+  https://github.com/openatv/enigma2/tree/master/data/fonts
+
 Channel logos (picons) are NOT included in this repository.
 They are installed separately under /usr/share/enigma2/picon/.

@@ -54,6 +54,9 @@ TEMPLATE = """<skin>
 %s
 \t\t<!-- font that comes with the box (VFD and fallback) -->
 \t\t<font filename="nmsbd.ttf"  name="Regular" scale="100" />
+\t\t<!-- icon font (speaker, file and list icons): openATV 8 registers its own
+\t\t     copy after the skin; openATV 7.x and Egami have none -->
+\t\t<font filename="TiviAtv-icons.ttf" name="enigma2icons" scale="100" />
 \t\t<!-- aliases enigma2 expects -->
 \t\t<alias name="Body"       font="TM"  size="30" height="40" />
 \t\t<alias name="TextNormal" font="TM"  size="30" height="40" />

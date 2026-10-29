@@ -82,8 +82,8 @@ still opens; only the signal, badge and softcam (ECM) fields stay empty.
 
 | Path | Contents |
 |---|---|
-| `/usr/share/enigma2/TiviAtv-FHD/` | skin, `fonts.xml`, typefaces, licenses, preview |
-| `/usr/lib/enigma2/python/Components/Converter/` | `TiviAtvSignal.py`, `TiviAtvText.py`, `TiviAtvEcm.py`, `TiviAtvEpg.py` |
+| `/usr/share/enigma2/TiviAtv-FHD/` | skin, `fonts.xml`, typefaces, icon font (`TiviAtv-icons.ttf`, for openATV 7.x and Egami), licenses, preview |
+| `/usr/lib/enigma2/python/Components/Converter/` | `TiviAtvSignal.py`, `TiviAtvText.py`, `TiviAtvEcm.py`, `TiviAtvEpg.py`, `TiviAtvVolume.py` |
 | `/usr/lib/enigma2/python/Components/Renderer/` | `TiviAtvScroll.py` |
 | `/usr/lib/enigma2/python/Plugins/Extensions/TiviAtvFont/` | **TiviATV Font** (typeface) and **TiviATV Settings** |
 
@@ -93,6 +93,7 @@ still opens; only the signal, badge and softcam (ECM) fields stay empty.
 | `TiviAtvText.py` | Hides the resolution / codec / crypto badges while they are empty (on IPTV the crypto badge used to show as an empty pill); `Blank` mode for the key chips' background and dot |
 | `TiviAtvEcm.py` | Softcam ECM info (OSCam, CCcam …) from `/tmp/ecm.info` in the infobar, only on encrypted channels — see [Softcam (ECM) info](#softcam-ecm-info) |
 | `TiviAtvEpg.py` | The channel list's optional EPG panel: the next programmes of the selected channel and primetime — see [TiviATV Settings](#tiviatv-settings) |
+| `TiviAtvVolume.py` | Not a converter but a helper the Volume and Mute screens call: puts the volume bar at the bottom, at the top or upright on the left (TiviATV Settings › Volume bar) |
 | `TiviAtvScroll.py` (renderer) | A label that slowly scrolls text that doesn't fit (the channel list description) |
 
 `fonts.xml` is the package's conffile: if you changed it, opkg keeps your copy
@@ -671,6 +672,24 @@ python tools/make_designer_copy.py
 ```
 
 ## Changelog
+
+**1.0.11**
+- Icons on openATV 7.x and Egami: the speaker in the volume bar, the mute
+  chip and the other icons were missing, because those images don't have
+  openATV's icon font. The package brings its own copy now; openATV 8 keeps
+  using the one it has.
+- The number key help (SMS letters) in DNS, password and other text fields
+  had dark corners: it is a separate window, and its rounded corners cut
+  holes into the screen below. It is a plain card now, a bit wider, so long
+  letter sets fit.
+- Upright volume bar (TiviATV Settings › Volume bar › Left) is a third
+  shorter and ends above the infobar instead of running over it.
+- Text sits in the middle of the row in plain lists (upgrade source, restore,
+  Script Manager, scan, directory bookmarks, Bluetooth, Programmlisten); it
+  was stuck to the top.
+- Menus show their colour keys: blue switches edit mode on, then green moves
+  and yellow hides or shows an entry.
+- Skin Settings shows Cancel and Save.
 
 **1.0.10**
 - Volume bar position is a setting now: TiviATV Settings › Volume bar ›
